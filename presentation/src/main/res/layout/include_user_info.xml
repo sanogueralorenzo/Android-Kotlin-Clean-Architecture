@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/linear_gradient"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/spacing_standard">
+
+    <ImageButton
+        android:id="@+id/userAvatar"
+        android:layout_width="@dimen/image_avatar_size"
+        android:layout_height="@dimen/image_avatar_size"
+        android:background="?selectableItemBackgroundBorderless"
+        tools:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_standard"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/userUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorUsername"
+            android:textSize="@dimen/text_small"
+            tools:text="Username" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorName"
+            tools:text="Name" />
+
+    </LinearLayout>
+
+</LinearLayout>

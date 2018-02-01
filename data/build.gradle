@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    defaultPublishConfig "debug"
+
+    compileSdkVersion 27
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    //For sample purposes, not extracting dependencies and versions into different gradles
+    compile project(':domain')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:2.2.0"
+    implementation "com.squareup.moshi:moshi:1.4.0"
+    implementation "com.squareup.retrofit2:retrofit:2.3.0"
+    implementation "javax.inject:javax.inject:1"
+    implementation "com.github.pakoito:RxPaper2:1.1.0"
+
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.assertj:assertj-core:3.8.0"
+    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
+}

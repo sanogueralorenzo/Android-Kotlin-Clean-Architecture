@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.sanogueralorenzo.androidkotlincleanarchitecture"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //For sample purposes, not extracting dependencies and versions into different gradles
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
+    compile project(':data')
+    compile project(':domain')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation "org.jetbrains.anko:anko-commons:0.10.4"
+
+    implementation "com.android.support:appcompat-v7:27.0.2"
+    implementation "com.android.support:design:27.0.2"
+    implementation "com.android.support:cardview-v7:27.0.2"
+    implementation "com.android.support:recyclerview-v7:27.0.2"
+
+    implementation "com.jakewharton.timber:timber:4.6.0"
+
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+    implementation "io.reactivex.rxjava2:rxkotlin:2.2.0"
+
+    implementation "com.squareup.retrofit2:retrofit:2.3.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    implementation "com.squareup.retrofit2:converter-moshi:2.3.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.9.1"
+
+    implementation "com.github.pakoito:RxPaper2:1.1.0"
+
+    implementation "com.google.dagger:dagger:2.14.1"
+    kapt "com.google.dagger:dagger-compiler:2.14.1"
+
+    implementation "com.github.bumptech.glide:glide:4.4.0"
+    kapt "com.github.bumptech.glide:compiler:4.4.0"
+
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.assertj:assertj-core:3.8.0"
+    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
+    testImplementation "org.robolectric:robolectric:3.5.1"
+    androidTestImplementation "com.android.support.test:runner:1.0.1"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.1"
+}

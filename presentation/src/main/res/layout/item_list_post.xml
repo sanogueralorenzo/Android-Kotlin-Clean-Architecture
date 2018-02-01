@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_standard"
+    android:foreground="?selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/include_user_info" />
+
+        <TextView
+            android:id="@+id/postTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_standard"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorTitle"
+            android:textSize="@dimen/text_large"
+            tools:text="Post Title" />
+
+        <TextView
+            android:id="@+id/postBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_standard"
+            android:ellipsize="end"
+            android:maxLines="2"
+            tools:text="This is a long post body that it might get ellipsized at some point beyond imagination." />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

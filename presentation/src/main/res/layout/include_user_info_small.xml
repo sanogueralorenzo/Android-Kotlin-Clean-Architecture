@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/spacing_standard">
+
+    <ImageButton
+        android:id="@+id/userAvatar"
+        android:layout_width="@dimen/small_image_avatar_size"
+        android:layout_height="@dimen/small_image_avatar_size"
+        android:background="?selectableItemBackgroundBorderless"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_standard"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorName"
+        android:textSize="@dimen/text_small"
+        tools:text="Name" />
+
+</LinearLayout>
