@@ -83,15 +83,15 @@ class UserRepositoryImplTest {
         // given
         _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
         _when(mockApi.getUser(userId)).thenReturn(Single.just(remoteItem))
-        _when(mockCache.save(key, cacheList.plus(remoteItem))).thenReturn(Single.just(cacheList))
+        _when(mockCache.save(anyString(), anyList())).thenReturn(Single.just(cacheList))
 
         // when
         val test = repository.getUser(userId).test()
 
         // then
         verify(mockApi).getUser(userId)
-        verify(mockCache).load(key, emptyList())
-        verify(mockCache).save(key, remoteList)
+        verify(mockCache, times(2)).load(key, emptyList())
+        verify(mockCache).save(key, listOf(remoteItem))
 
         test.assertNoErrors()
         test.assertValueCount(2)
@@ -112,7 +112,7 @@ class UserRepositoryImplTest {
         // then
         verify(mockApi).getUser(userId)
         verify(mockCache).load(key, emptyList())
-        verify(mockCache, never()).save(key, remoteList)
+        verify(mockCache, never()).save(anyString(), anyList())
 
         test.assertError(throwable)
         test.assertValueCount(1)
