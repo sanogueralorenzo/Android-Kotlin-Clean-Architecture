@@ -7,7 +7,6 @@ import com.sanogueralorenzo.data.cache.Cache
 import com.sanogueralorenzo.data.createUserEntity
 import com.sanogueralorenzo.data.model.*
 import com.sanogueralorenzo.data.remote.UsersApi
-import io.reactivex.Completable
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -26,11 +25,11 @@ class UserRepositoryImplTest {
 
     private val userId = "1"
 
-    private val cacheEntity = createUserEntity().copy(id = "cache")
-    private val remoteEntity = createUserEntity().copy(id = "remote")
+    private val cacheItem = createUserEntity().copy(name = "cache")
+    private val remoteItem = createUserEntity().copy(name = "remote")
 
-    private val cacheEntityList = listOf(cacheEntity)
-    private val remoteEntityList = listOf(remoteEntity)
+    private val cacheList = listOf(cacheItem)
+    private val remoteList = listOf(remoteItem)
 
     @Before
     fun setUp() {
@@ -40,22 +39,22 @@ class UserRepositoryImplTest {
     @Test
     fun `get users success`() {
         // given
-        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheEntityList))
-        _when(mockApi.getUsers()).thenReturn(Single.just(remoteEntityList))
-        _when(mockCache.save(key, remoteEntityList)).thenReturn(Single.just()))
+        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
+        _when(mockApi.getUsers()).thenReturn(Single.just(remoteList))
+        _when(mockCache.save(key, remoteList)).thenReturn(Single.just(remoteList))
 
         // when
         val test = repository.getUsers().test()
 
         // then
-        verify(mockApi).getUsers()
         verify(mockCache).load(key, emptyList())
-        verify(mockCache).save(key, remoteEntityList)
+        verify(mockApi).getUsers()
+        verify(mockCache).save(key, remoteList)
 
         test.assertNoErrors()
         test.assertValueCount(2)
         test.assertComplete()
-        test.assertValues(mapper.mapToDomain(cacheEntityList), mapper.mapToDomain(remoteEntityList))
+        test.assertValues(mapper.mapToDomain(cacheList), mapper.mapToDomain(remoteList))
     }
 
     @Test
@@ -71,7 +70,7 @@ class UserRepositoryImplTest {
         // then
         verify(mockApi).getUsers()
         verify(mockCache).load(key, emptyList())
-        verify(mockCache, never()).save(key, remoteEntityList)
+        verify(mockCache, never()).save(anyString(), anyList())
 
         test.assertError(throwable)
         test.assertValueCount(1)
@@ -82,9 +81,9 @@ class UserRepositoryImplTest {
     @Test
     fun `get user success`() {
         // given
-        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheEntityList))
-        _when(mockApi.getUser(userId)).thenReturn(Single.just(remoteEntity))
-        _when(mockCache.save(key, remoteEntityList)).thenReturn(Completable.complete())
+        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
+        _when(mockApi.getUser(userId)).thenReturn(Single.just(remoteItem))
+        _when(mockCache.save(key, cacheList.plus(remoteItem))).thenReturn(Single.just(cacheList))
 
         // when
         val test = repository.getUser(userId).test()
@@ -92,19 +91,19 @@ class UserRepositoryImplTest {
         // then
         verify(mockApi).getUser(userId)
         verify(mockCache).load(key, emptyList())
-        verify(mockCache).save(key, remoteEntityList)
+        verify(mockCache).save(key, remoteList)
 
         test.assertNoErrors()
         test.assertValueCount(2)
         test.assertComplete()
-        test.assertValues(mapper.mapToDomain(cacheEntity), mapper.mapToDomain(remoteEntity))
+        test.assertValues(mapper.mapToDomain(cacheItem), mapper.mapToDomain(remoteItem))
     }
 
     @Test
     fun `get user fail`() {
         // given
         val throwable = Throwable()
-        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheEntityList))
+        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
         _when(mockApi.getUser(userId)).thenReturn(Single.error(throwable))
 
         // when
@@ -113,11 +112,11 @@ class UserRepositoryImplTest {
         // then
         verify(mockApi).getUser(userId)
         verify(mockCache).load(key, emptyList())
-        verify(mockCache, never()).save(key, remoteEntityList)
+        verify(mockCache, never()).save(key, remoteList)
 
         test.assertError(throwable)
         test.assertValueCount(1)
         test.assertNotComplete()
-        test.assertValue(mapper.mapToDomain(cacheEntity))
+        test.assertValue(mapper.mapToDomain(cacheItem))
     }
 }

@@ -21,15 +21,15 @@ class UserRepositoryImpl @Inject constructor(private val api: UsersApi,
 
     override fun getUser(userId: String): Flowable<User> = Single.concat(getCache(userId), getRemote(userId))
 
-    private fun getRemote(): Single<List<User>> = api.getUsers().doAfterSuccess { setCache(it) }.map { mapper.mapToDomain(it) }
+    private fun getRemote(): Single<List<User>> = api.getUsers().flatMap { setCache(it) }.map { mapper.mapToDomain(it) }
 
-    private fun getCache(): Single<List<User>> = cache.load(key, listOf()).map { mapper.mapToDomain(it) }
+    private fun getCache(): Single<List<User>> = cache.load(key, emptyList()).map { mapper.mapToDomain(it) }
 
-    private fun getRemote(userId: String): Single<User> = api.getUser(userId).doAfterSuccess { setCache(it) }.map { mapper.mapToDomain(it) }
+    private fun getRemote(userId: String): Single<User> = api.getUser(userId).flatMap { setCache(it) }.map { mapper.mapToDomain(it) }
 
-    private fun getCache(userId: String): Single<User> = cache.load(key, listOf()).map { mapper.mapToDomain(it) }.map { it.first { it.id == userId } }
+    private fun getCache(userId: String): Single<User> = cache.load(key, emptyList()).map { it.first { it.id == userId } }.map { mapper.mapToDomain(it) }
 
-    private fun setCache(list: List<UserEntity>) = cache.save(key, list).subscribe()
+    private fun setCache(list: List<UserEntity>) = cache.save(key, list)
 
-    private fun setCache(user: UserEntity) = cache.load(key, listOf()).map { it.filter { it.id != user.id } }.doAfterSuccess { setCache(it) }.subscribe()
+    private fun setCache(user: UserEntity) = cache.load(key, emptyList()).map { it.filter { it.id != user.id }.plus(user) }.flatMap { setCache(it) }.map { user }
 }

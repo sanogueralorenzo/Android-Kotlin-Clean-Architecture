@@ -19,9 +19,9 @@ class CommentRepositoryImpl @Inject constructor(private val api: CommentsApi,
 
     override fun getComments(postId: String): Flowable<List<Comment>> = Single.concat(getCache(postId), getRemote(postId))
 
-    private fun getRemote(postId: String): Single<List<Comment>> = api.getComments(postId).doAfterSuccess { setCache(postId, it) }.map { mapper.mapToDomain(it) }
+    private fun getRemote(postId: String): Single<List<Comment>> = api.getComments(postId).flatMap { setCache(postId, it) }.map { mapper.mapToDomain(it) }
 
-    private fun getCache(postId: String): Single<List<Comment>> = cache.load(key + postId, listOf()).map { mapper.mapToDomain(it) }
+    private fun getCache(postId: String): Single<List<Comment>> = cache.load(key + postId, emptyList()).map { mapper.mapToDomain(it) }
 
-    private fun setCache(postId: String, list: List<CommentEntity>) = cache.save(key + postId, list).subscribe()
+    private fun setCache(postId: String, list: List<CommentEntity>) = cache.save(key + postId, list)
 }

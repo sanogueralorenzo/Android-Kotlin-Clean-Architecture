@@ -14,7 +14,7 @@ import javax.inject.Inject
  */
 class Cache<T> @Inject constructor() {
 
-    fun save(key: String, anyObject: T): Completable = RxPaperBook.with(io()).write(key, anyObject)
+    fun save(key: String, anyObject: T): Single<T> = RxPaperBook.with(io()).write(key, anyObject).toSingleDefault(anyObject)
 
     fun load(key: String, defaultValue: T): Single<T> = RxPaperBook.with(io()).read(key, defaultValue)
 }

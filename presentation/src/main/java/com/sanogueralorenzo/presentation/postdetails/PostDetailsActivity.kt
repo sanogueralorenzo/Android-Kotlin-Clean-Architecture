@@ -43,6 +43,7 @@ class PostDetailsActivity : AppCompatActivity(), PostDetailsView {
         setContentView(R.layout.activity_post_details)
         getAppInjector().inject(this)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        commentsRecyclerView.isNestedScrollingEnabled = false
         commentsRecyclerView.adapter = adapter
         val postItem = intent.getSerializableExtra(PostItem::class.java.name) as PostItem
         presenter.postId = postItem.postId

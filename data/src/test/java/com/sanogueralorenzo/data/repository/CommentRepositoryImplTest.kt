@@ -4,15 +4,14 @@ package com.sanogueralorenzo.data.repository
 
 import com.nhaarman.mockito_kotlin.mock
 import com.sanogueralorenzo.data.cache.Cache
-import com.sanogueralorenzo.data.createComment
 import com.sanogueralorenzo.data.createCommentEntity
 import com.sanogueralorenzo.data.model.CommentEntity
 import com.sanogueralorenzo.data.model.CommentMapper
 import com.sanogueralorenzo.data.remote.CommentsApi
-import io.reactivex.Completable
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.*
 import org.mockito.Mockito.`when` as _when
 
@@ -27,8 +26,8 @@ class CommentRepositoryImplTest {
     private val postId = "1"
     private val key = "Comment List"
 
-    private val commentEntityList = listOf(createCommentEntity())
-    private val commentList = listOf(createComment())
+    private val cacheList = listOf(createCommentEntity().copy(name = "cache"))
+    private val remoteList = listOf(createCommentEntity().copy(name = "remote"))
 
     @Before
     fun setUp() {
@@ -38,28 +37,29 @@ class CommentRepositoryImplTest {
     @Test
     fun `get comments success`() {
         // given
-        _when(mockApi.getComments(postId)).thenReturn(Single.just(commentEntityList))
-        _when(mockCache.load(postId, emptyList())).thenReturn(Single.just(commentEntityList))
-        _when(mockCache.save(key, commentEntityList)).thenReturn(Completable.complete())
+        _when(mockCache.load(key + postId, emptyList())).thenReturn(Single.just(cacheList))
+        _when(mockApi.getComments(postId)).thenReturn(Single.just(remoteList))
+        _when(mockCache.save(key + postId, remoteList)).thenReturn(Single.just(remoteList))
 
         // when
         val test = repository.getComments(postId).test()
 
         // then
+        verify(mockCache).load(key + postId, emptyList())
         verify(mockApi).getComments(postId)
-        verify(mockCache).load(key, emptyList())
-        verify(mockCache).save(key + postId, commentEntityList)
+        verify(mockCache).save(key + postId, remoteList)
 
         test.assertNoErrors()
         test.assertValueCount(2)
         test.assertComplete()
-        test.assertValue(commentList)
+        test.assertValues(mapper.mapToDomain(cacheList), mapper.mapToDomain(remoteList))
     }
 
     @Test
     fun `get comments fail`() {
         // given
         val throwable = Throwable()
+        _when(mockCache.load(key + postId, emptyList())).thenReturn(Single.just(emptyList()))
         _when(mockApi.getComments(postId)).thenReturn(Single.error(throwable))
 
         // when
@@ -67,12 +67,12 @@ class CommentRepositoryImplTest {
 
         // then
         verify(mockApi).getComments(postId)
-        verify(mockCache).load(key, emptyList())
-        verify(mockCache, never()).save(key + postId, commentEntityList)
+        verify(mockCache).load(key + postId, emptyList())
+        verify(mockCache, never()).save(ArgumentMatchers.anyString(), ArgumentMatchers.anyList())
 
-        test.assertNoErrors()
-        test.assertValueCount(2)
-        test.assertComplete()
-        test.assertValue(commentList)
+        test.assertError(throwable)
+        test.assertValueCount(1)
+        test.assertNotComplete()
+        test.assertValue(emptyList())
     }
 }

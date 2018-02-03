@@ -20,9 +20,9 @@ class PostRepositoryImpl @Inject constructor(private val api: PostsApi,
 
     override fun getPosts(): Flowable<List<Post>> = Single.concat(getCache(), getRemote())
 
-    private fun getRemote(): Single<List<Post>> = api.getPosts().doAfterSuccess { setCache(it) }.map { mapper.mapToDomain(it) }
+    private fun getRemote(): Single<List<Post>> = api.getPosts().flatMap { setCache(it) }.map { mapper.mapToDomain(it) }
 
     private fun getCache(): Single<List<Post>> = cache.load(key, listOf()).map { mapper.mapToDomain(it) }
 
-    private fun setCache(list: List<PostEntity>) = cache.save(key, list).subscribe()
+    private fun setCache(list: List<PostEntity>) = cache.save(key, list)
 }
