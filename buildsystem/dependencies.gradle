@@ -5,7 +5,10 @@ ext {
             minsdk            : 21,
             targetsdk         : 27,
 
+            inject            : "1",
+
             support           : "27.0.2",
+            maps              : "11.8.0",
 
             kotlin            : "1.2.10",
             anko              : "0.10.4",
@@ -17,8 +20,15 @@ ext {
             dagger            : "2.14.1",
             glide             : "4.4.0",
             rxpaper           : "1.1.0",
+            moshi             : "1.4.0",
 
             junit             : "4.12",
+            assertj           : "3.8.0",
+            mockitokotlin     : "1.5.0",
+            robolectric       : "3.5.1",
+
+            runner            : "1.0.1",
+            espresso          : "3.0.1",
     ]
 
     releases = [
@@ -27,8 +37,13 @@ ext {
     ]
 
     libraries = [
+            inject            : "javax.inject:javax.inject:$versions.inject",
+
             kotlinstdlib      : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
             ankocommons       : "org.jetbrains.anko:anko-commons:$versions.anko",
+
+            maps              : "com.google.android.gms:play-services-maps:$versions.maps",
+
             timber            : "com.jakewharton.timber:timber:$versions.timber",
 
             rxandroid         : "io.reactivex.rxjava2:rxandroid:$versions.rxandroid",
@@ -44,7 +59,9 @@ ext {
 
             glide             : "com.github.bumptech.glide:glide:$versions.glide",
             glidecompiler     : "com.github.bumptech.glide:compiler:$versions.glide",
+
             rxpaper           : "com.github.pakoito:RxPaper2:$versions.rxpaper",
+            moshi             : "com.squareup.moshi:moshi:$versions.moshi",
     ]
 
     supportLibraries = [
@@ -55,7 +72,13 @@ ext {
     ]
 
     testLibraries = [
-            junit: "junit:junit:$versions.junit",
+            junit        : "junit:junit:$versions.junit",
+            assertj      : "org.assertj:assertj-core:$versions.assertj",
+            mockitokotlin: "com.nhaarman:mockito-kotlin:$versions.mockitokotlin",
+            robolectric  : "org.robolectric:robolectric:$versions.robolectric",
+
+            runner       : "com.android.support.test:runner:$versions.runner",
+            espresso     : "com.android.support.test.espresso:espresso-core:$versions.espresso",
     ]
 
 }
