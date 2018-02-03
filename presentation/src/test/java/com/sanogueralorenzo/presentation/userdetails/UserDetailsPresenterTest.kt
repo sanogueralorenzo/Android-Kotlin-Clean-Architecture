@@ -10,7 +10,7 @@ import com.sanogueralorenzo.presentation.model.AddressItemMapper
 import com.sanogueralorenzo.presentation.model.CompanyItemMapper
 import com.sanogueralorenzo.presentation.model.LatLngMapper
 import com.sanogueralorenzo.presentation.model.UserItemMapper
-import io.reactivex.Single
+import io.reactivex.Flowable
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -42,7 +42,7 @@ class UserDetailsPresenterTest {
     @Test
     fun `getting user details success`() {
         // given
-        _when(mockUseCase.execute()).thenReturn(Single.just(user))
+        _when(mockUseCase.execute()).thenReturn(Flowable.just(user))
 
         // when
         presenter.attachView(mockView)
