@@ -1,11 +1,9 @@
 package com.sanogueralorenzo.domain.repository
 
 import com.sanogueralorenzo.domain.model.Comment
-import io.reactivex.Single
+import io.reactivex.Flowable
 
 interface CommentRepository {
 
-    fun getRemote(postId: String): Single<List<Comment>>
-
-    fun getCache(postId: String): Single<List<Comment>>
+    fun getComments(postId: String): Flowable<List<Comment>>
 }

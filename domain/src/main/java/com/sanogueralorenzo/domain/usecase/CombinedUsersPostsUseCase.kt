@@ -5,7 +5,6 @@ import com.sanogueralorenzo.domain.model.User
 import com.sanogueralorenzo.domain.repository.PostRepository
 import com.sanogueralorenzo.domain.repository.UserRepository
 import io.reactivex.Flowable
-import io.reactivex.Single
 import io.reactivex.functions.BiFunction
 import javax.inject.Inject
 
@@ -19,16 +18,7 @@ class CombinedUsersPostsUseCase @Inject constructor(private val userRepository: 
                                                     private val postRepository: PostRepository,
                                                     private val mapper: CombinedUserPostMapper) : UseCase<Flowable<List<CombinedUserPost>>> {
 
-    override fun execute(): Flowable<List<CombinedUserPost>> = Single.concat(getCache(), getRemote())
-
-    fun getCache(): Single<List<CombinedUserPost>> = Single.zip(
-            userRepository.getCache(),
-            postRepository.getCache(),
-            BiFunction { userList, postList -> mapper.map(userList, postList) })
-
-    fun getRemote(): Single<List<CombinedUserPost>> = Single.zip(
-            userRepository.getRemote(),
-            postRepository.getRemote(),
+    override fun execute(): Flowable<List<CombinedUserPost>> = Flowable.zip(userRepository.getUsers(), postRepository.getPosts(),
             BiFunction { userList, postList -> mapper.map(userList, postList) })
 
 }

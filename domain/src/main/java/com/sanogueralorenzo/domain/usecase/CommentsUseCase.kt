@@ -10,10 +10,5 @@ class CommentsUseCase @Inject constructor(private val repository: CommentReposit
 
     lateinit var postId: String
 
-    override fun execute(): Flowable<List<Comment>> = Single.concat(getCache(), getRemote())
-
-    fun getCache(): Single<List<Comment>> = repository.getCache(postId)
-
-    fun getRemote(): Single<List<Comment>> = repository.getRemote(postId)
-
+    override fun execute(): Flowable<List<Comment>> = repository.getComments(postId)
 }

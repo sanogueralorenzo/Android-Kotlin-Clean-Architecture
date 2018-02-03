@@ -4,6 +4,7 @@ package com.sanogueralorenzo.data.repository
 
 import com.nhaarman.mockito_kotlin.mock
 import com.sanogueralorenzo.data.cache.Cache
+import com.sanogueralorenzo.data.createPost
 import com.sanogueralorenzo.data.createPostEntity
 import com.sanogueralorenzo.data.model.PostEntity
 import com.sanogueralorenzo.data.model.PostMapper
@@ -17,7 +18,7 @@ import org.mockito.Mockito.`when` as _when
 
 class PostRepositoryImplTest {
 
-    private lateinit var postRepository: PostRepositoryImpl
+    private lateinit var repository: PostRepositoryImpl
 
     private val mockPostsApi = mock<PostsApi> {}
     private val mockCache = mock<Cache<List<PostEntity>>>()
@@ -25,48 +26,32 @@ class PostRepositoryImplTest {
 
     private val key = "Post List"
 
+    private val postEntityList = listOf(createPostEntity())
+    private val postList = listOf(createPost())
+
     @Before
     fun setUp() {
-        postRepository = PostRepositoryImpl(mockPostsApi, mockCache, mapper)
+        repository = PostRepositoryImpl(mockPostsApi, mockCache, mapper)
     }
 
     @Test
-    fun `repository get remote success`() {
+    fun `get posts success`() {
         // given
-        val entity = createPostEntity()
-        val list = listOf(entity)
-        _when(mockPostsApi.getPosts()).thenReturn(Single.just(list))
-        _when(mockCache.save(key, list)).thenReturn(Completable.complete())
+        _when(mockPostsApi.getPosts()).thenReturn(Single.just(postEntityList))
+        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(postEntityList))
+        _when(mockCache.save(key, postEntityList)).thenReturn(Completable.complete())
 
         // when
-        val test = postRepository.getRemote().test()
+        val test = repository.getPosts().test()
 
         // then
         verify(mockPostsApi).getPosts()
-        verify(mockCache).save(key, list)
+        verify(mockCache).load(key, emptyList())
+        verify(mockCache).save(key, postEntityList)
 
         test.assertNoErrors()
         test.assertValueCount(1)
         test.assertComplete()
-        test.assertValue(listOf(mapper.mapToDomain(entity)))
-    }
-
-    @Test
-    fun `repository get remote fail`() {
-        // given
-        val throwable = Throwable()
-        _when(mockPostsApi.getPosts()).thenReturn(Single.error(throwable))
-
-        // when
-        val test = postRepository.getRemote().test()
-
-        // then
-        verify(mockPostsApi).getPosts()
-        verify(mockCache, never()).save(anyString(), anyList())
-
-        test.assertError(throwable)
-        test.assertValueCount(0)
-        test.assertNotComplete()
-        test.assertNoValues()
+        test.assertValue(postList)
     }
 }
