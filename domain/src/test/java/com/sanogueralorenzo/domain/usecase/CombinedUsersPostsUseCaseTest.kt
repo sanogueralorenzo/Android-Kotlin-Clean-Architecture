@@ -7,6 +7,7 @@ import com.sanogueralorenzo.domain.createPost
 import com.sanogueralorenzo.domain.createUser
 import com.sanogueralorenzo.domain.repository.PostRepository
 import com.sanogueralorenzo.domain.repository.UserRepository
+import io.reactivex.Flowable
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -32,95 +33,34 @@ class CombinedUsersPostsUseCaseTest {
     @Test
     fun `repository execute success`() {
         // given
-        _when(mockUserRepository.getCache()).thenReturn(Single.just(listOf(user)))
-        _when(mockPostRepository.getCache()).thenReturn(Single.just(listOf(post)))
-        _when(mockUserRepository.getRemote()).thenReturn(Single.just(listOf(user)))
-        _when(mockPostRepository.getRemote()).thenReturn(Single.just(listOf(post)))
+        _when(mockUserRepository.getUsers()).thenReturn(Flowable.just(listOf(user)))
+        _when(mockPostRepository.getPosts()).thenReturn(Flowable.just(listOf(post)))
 
         // when
         val test = combinedUsersPostsUseCase.execute().test()
 
         // then
-        verify(mockUserRepository).getCache()
-        verify(mockPostRepository).getCache()
-        verify(mockUserRepository).getRemote()
-        verify(mockPostRepository).getRemote()
-
-        test.assertNoErrors()
-        test.assertComplete()
-        test.assertValueCount(2)
-    }
-
-    @Test
-    fun `repository get cache success`() {
-        // given
-        _when(mockUserRepository.getCache()).thenReturn(Single.just(listOf(user)))
-        _when(mockPostRepository.getCache()).thenReturn(Single.just(listOf(post)))
-
-        // when
-        val test = combinedUsersPostsUseCase.getCache().test()
-
-        // then
-        verify(mockUserRepository).getCache()
-        verify(mockPostRepository).getCache()
+        verify(mockUserRepository).getUsers()
+        verify(mockPostRepository).getPosts()
 
         test.assertNoErrors()
         test.assertComplete()
         test.assertValueCount(1)
-        test.assertValue(mapper.map(listOf(user), listOf(post)))
     }
 
     @Test
-    fun `repository get cache fail`() {
-        // given
-        _when(mockUserRepository.getCache()).thenReturn(Single.just(listOf()))
-        _when(mockPostRepository.getCache()).thenReturn(Single.just(listOf()))
-
-        // when
-        val test = combinedUsersPostsUseCase.getCache().test()
-
-        // then
-        verify(mockUserRepository).getCache()
-        verify(mockPostRepository).getCache()
-
-        test.assertNoErrors()
-        test.assertComplete()
-        test.assertValueCount(1)
-        test.assertValue(mapper.map(listOf(), listOf()))
-    }
-
-    @Test
-    fun `repository get remote success`() {
-        // given
-        _when(mockUserRepository.getRemote()).thenReturn(Single.just(listOf(user)))
-        _when(mockPostRepository.getRemote()).thenReturn(Single.just(listOf(post)))
-
-        // when
-        val test = combinedUsersPostsUseCase.getRemote().test()
-
-        // then
-        verify(mockUserRepository).getRemote()
-        verify(mockPostRepository).getRemote()
-
-        test.assertNoErrors()
-        test.assertComplete()
-        test.assertValueCount(1)
-        test.assertValue(mapper.map(listOf(user), listOf(post)))
-    }
-
-    @Test
-    fun `repository get remote fail`() {
+    fun `repository execute fail`() {
         // given
         val throwable = Throwable()
-        _when(mockUserRepository.getRemote()).thenReturn(Single.error(throwable))
-        _when(mockPostRepository.getRemote()).thenReturn(Single.error(throwable))
+        _when(mockUserRepository.getUsers()).thenReturn(Flowable.error(throwable))
+        _when(mockPostRepository.getPosts()).thenReturn(Flowable.error(throwable))
 
         // when
-        val test = combinedUsersPostsUseCase.getRemote().test()
+        val test = combinedUsersPostsUseCase.execute().test()
 
         // then
-        verify(mockUserRepository).getRemote()
-        verify(mockPostRepository).getRemote()
+        verify(mockUserRepository).getUsers()
+        verify(mockPostRepository).getPosts()
 
         test.assertNoValues()
         test.assertNotComplete()

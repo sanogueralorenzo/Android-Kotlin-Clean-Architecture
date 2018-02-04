@@ -5,7 +5,7 @@ package com.sanogueralorenzo.domain.usecase
 import com.nhaarman.mockito_kotlin.mock
 import com.sanogueralorenzo.domain.createComment
 import com.sanogueralorenzo.domain.repository.CommentRepository
-import io.reactivex.Single
+import io.reactivex.Flowable
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -18,7 +18,7 @@ class CommentsUseCaseTest {
     private val mockRepository = mock<CommentRepository> {}
 
     private val postId = "1"
-    private val comment = createComment()
+    private val commentList = listOf(createComment())
 
     @Before
     fun setUp() {
@@ -29,83 +29,31 @@ class CommentsUseCaseTest {
     @Test
     fun `repository execute success`() {
         // given
-        _when(mockRepository.getCache(postId)).thenReturn(Single.just(listOf(comment)))
-        _when(mockRepository.getRemote(postId)).thenReturn(Single.just(listOf(comment)))
+        _when(mockRepository.getComments(postId)).thenReturn(Flowable.just(commentList))
 
         // when
         val test = usecase.execute().test()
 
         // then
-        verify(mockRepository).getCache(postId)
-        verify(mockRepository).getRemote(postId)
-
-        test.assertNoErrors()
-        test.assertComplete()
-        test.assertValueCount(2)
-    }
-
-    @Test
-    fun `repository get cache success`() {
-        // given
-        _when(mockRepository.getCache(postId)).thenReturn(Single.just(listOf(comment)))
-
-        // when
-        val test = usecase.getCache().test()
-
-        // then
-        verify(mockRepository).getCache(postId)
+        verify(mockRepository).getComments(postId)
 
         test.assertNoErrors()
         test.assertComplete()
         test.assertValueCount(1)
-        test.assertValue(listOf(comment))
+        test.assertValue(commentList)
     }
 
     @Test
-    fun `repository get cache fail`() {
-        // given
-        _when(mockRepository.getCache(postId)).thenReturn(Single.just(listOf()))
-
-        // when
-        val test = usecase.getCache().test()
-
-        // then
-        verify(mockRepository).getCache(postId)
-
-        test.assertNoErrors()
-        test.assertComplete()
-        test.assertValueCount(1)
-        test.assertValue(listOf())
-    }
-
-    @Test
-    fun `repository get remote success`() {
-        // given
-        _when(mockRepository.getRemote(postId)).thenReturn(Single.just(listOf(comment)))
-
-        // when
-        val test = usecase.getRemote().test()
-
-        // then
-        verify(mockRepository).getRemote(postId)
-
-        test.assertNoErrors()
-        test.assertComplete()
-        test.assertValueCount(1)
-        test.assertValue(listOf(comment))
-    }
-
-    @Test
-    fun `repository get remote fail`() {
+    fun `repository execute fail`() {
         // given
         val throwable = Throwable()
-        _when(mockRepository.getRemote(postId)).thenReturn(Single.error(throwable))
+        _when(mockRepository.getComments(postId)).thenReturn(Flowable.error(throwable))
 
         // when
-        val test = usecase.getRemote().test()
+        val test = usecase.execute().test()
 
         // then
-        verify(mockRepository).getRemote(postId)
+        verify(mockRepository).getComments(postId)
 
         test.assertNoValues()
         test.assertNotComplete()

@@ -1,15 +1,11 @@
 package com.sanogueralorenzo.domain.repository
 
 import com.sanogueralorenzo.domain.model.User
-import io.reactivex.Single
+import io.reactivex.Flowable
 
 interface UserRepository {
 
-    fun getRemote(): Single<List<User>>
+    fun getUsers(): Flowable<List<User>>
 
-    fun getRemote(userId: String): Single<User>
-
-    fun getCache(): Single<List<User>>
-
-    fun getCache(userId: String): Single<User>
+    fun getUser(userId: String): Flowable<User>
 }

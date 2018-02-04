@@ -7,7 +7,6 @@ import com.sanogueralorenzo.data.cache.Cache
 import com.sanogueralorenzo.data.createUserEntity
 import com.sanogueralorenzo.data.model.*
 import com.sanogueralorenzo.data.remote.UsersApi
-import io.reactivex.Completable
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -16,114 +15,108 @@ import org.mockito.Mockito.`when` as _when
 
 class UserRepositoryImplTest {
 
-    private lateinit var userRepository: UserRepositoryImpl
+    private lateinit var repository: UserRepositoryImpl
 
-    private val mockUserApi = mock<UsersApi> {}
+    private val mockApi = mock<UsersApi> {}
     private val mockCache = mock<Cache<List<UserEntity>>>()
     private val mapper = UserMapper(addressMapper = AddressMapper(GeoMapper()), companyMapper = CompanyMapper())
 
     private val key = "User List"
 
+    private val userId = "1"
+
+    private val cacheItem = createUserEntity().copy(name = "cache")
+    private val remoteItem = createUserEntity().copy(name = "remote")
+
+    private val cacheList = listOf(cacheItem)
+    private val remoteList = listOf(remoteItem)
+
     @Before
     fun setUp() {
-        userRepository = UserRepositoryImpl(mockUserApi, mockCache, mapper)
+        repository = UserRepositoryImpl(mockApi, mockCache, mapper)
     }
 
     @Test
-    fun `repository get remote list success`() {
+    fun `get users success`() {
         // given
-        val entity = createUserEntity()
-        val list = listOf(entity)
-        _when(mockUserApi.getUsers()).thenReturn(Single.just(list))
-        _when(mockCache.save(key, list)).thenReturn(Completable.complete())
+        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
+        _when(mockApi.getUsers()).thenReturn(Single.just(remoteList))
+        _when(mockCache.save(key, remoteList)).thenReturn(Single.just(remoteList))
 
         // when
-        val test = userRepository.getRemote().test()
+        val test = repository.getUsers().test()
 
         // then
-        verify(mockUserApi).getUsers()
-        verify(mockCache).save(key, list)
+        verify(mockCache).load(key, emptyList())
+        verify(mockApi).getUsers()
+        verify(mockCache).save(key, remoteList)
 
         test.assertNoErrors()
-        test.assertValueCount(1)
+        test.assertValueCount(2)
         test.assertComplete()
-        test.assertValue(listOf(mapper.mapToDomain(entity)))
+        test.assertValues(mapper.mapToDomain(cacheList), mapper.mapToDomain(remoteList))
     }
 
     @Test
-    fun `repository get remote single success`() {
-        // given
-        val entity = createUserEntity()
-        val list = listOf(entity)
-        _when(mockUserApi.getUser(entity.id)).thenReturn(Single.just(entity))
-        _when(mockCache.load(key, listOf())).thenReturn(Single.just(list))
-        _when(mockCache.save(key, list)).thenReturn(Completable.complete())
-
-        // when
-        val test = userRepository.getRemote(entity.id).test()
-
-        // then
-        verify(mockUserApi).getUser(entity.id)
-
-        test.assertNoErrors()
-        test.assertValueCount(1)
-        test.assertComplete()
-        test.assertValue(mapper.mapToDomain(entity))
-    }
-
-    @Test
-    fun `repository get cache list success`() {
-        // given
-        val entity = createUserEntity()
-        val list = listOf(entity)
-        _when(mockCache.load(key, listOf())).thenReturn(Single.just(list))
-
-        // when
-        val test = userRepository.getCache(entity.id).test()
-
-        // then
-        verify(mockCache).load(key, listOf())
-
-        test.assertNoErrors()
-        test.assertValueCount(1)
-        test.assertComplete()
-        test.assertValue(mapper.mapToDomain(entity))
-    }
-
-    @Test
-    fun `repository get cache single success`() {
-        // given
-        val entity = createUserEntity()
-        val list = listOf(entity)
-        _when(mockCache.load(key, listOf())).thenReturn(Single.just(list))
-
-        // when
-        val test = userRepository.getCache(entity.id).test()
-
-        // then
-        verify(mockCache).load(key, listOf())
-
-        test.assertNoErrors()
-        test.assertValueCount(1)
-        test.assertComplete()
-        test.assertValue(mapper.mapToDomain(entity))
-    }
-
-    @Test
-    fun `repository get remote fail`() {
+    fun `get users fail`() {
         // given
         val throwable = Throwable()
-        _when(mockUserApi.getUsers()).thenReturn(Single.error(throwable))
+        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(emptyList()))
+        _when(mockApi.getUsers()).thenReturn(Single.error(throwable))
 
         // when
-        val test = userRepository.getRemote().test()
+        val test = repository.getUsers().test()
 
         // then
-        verify(mockUserApi).getUsers()
+        verify(mockApi).getUsers()
+        verify(mockCache).load(key, emptyList())
+        verify(mockCache, never()).save(anyString(), anyList())
 
         test.assertError(throwable)
-        test.assertValueCount(0)
+        test.assertValueCount(1)
         test.assertNotComplete()
-        test.assertNoValues()
+        test.assertValue(emptyList())
+    }
+
+    @Test
+    fun `get user success`() {
+        // given
+        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
+        _when(mockApi.getUser(userId)).thenReturn(Single.just(remoteItem))
+        _when(mockCache.save(anyString(), anyList())).thenReturn(Single.just(cacheList))
+
+        // when
+        val test = repository.getUser(userId).test()
+
+        // then
+        verify(mockApi).getUser(userId)
+        verify(mockCache, times(2)).load(key, emptyList())
+        verify(mockCache).save(key, listOf(remoteItem))
+
+        test.assertNoErrors()
+        test.assertValueCount(2)
+        test.assertComplete()
+        test.assertValues(mapper.mapToDomain(cacheItem), mapper.mapToDomain(remoteItem))
+    }
+
+    @Test
+    fun `get user fail`() {
+        // given
+        val throwable = Throwable()
+        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
+        _when(mockApi.getUser(userId)).thenReturn(Single.error(throwable))
+
+        // when
+        val test = repository.getUser(userId).test()
+
+        // then
+        verify(mockApi).getUser(userId)
+        verify(mockCache).load(key, emptyList())
+        verify(mockCache, never()).save(anyString(), anyList())
+
+        test.assertError(throwable)
+        test.assertValueCount(1)
+        test.assertNotComplete()
+        test.assertValue(mapper.mapToDomain(cacheItem))
     }
 }
