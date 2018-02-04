@@ -5,7 +5,9 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import com.sanogueralorenzo.presentation.*
 import com.sanogueralorenzo.presentation.model.CommentItem
+import com.sanogueralorenzo.presentation.model.POST_ID_KEY
 import com.sanogueralorenzo.presentation.model.PostItem
+import com.sanogueralorenzo.presentation.model.USER_ID_KEY
 import com.sanogueralorenzo.presentation.navigation.UserDetailsNavigator
 import kotlinx.android.synthetic.main.activity_post_details.*
 import kotlinx.android.synthetic.main.include_user_info.*
@@ -14,6 +16,15 @@ import javax.inject.Inject
 
 
 class PostDetailsActivity : AppCompatActivity(), PostDetailsView {
+
+    override fun showPost(item: PostItem) {
+        userAvatar.loadAvatar(item.email)
+        userUsername.text = "@${item.username}"
+        userName.text = item.name
+        postTitle.text = item.title.capitalize()
+        postBody.maxLines = Int.MAX_VALUE
+        postBody.text = item.body.capitalize()
+    }
 
     override fun loading(show: Boolean) = when (show) {
         true -> progressBar.visible()
@@ -45,10 +56,8 @@ class PostDetailsActivity : AppCompatActivity(), PostDetailsView {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         commentsRecyclerView.isNestedScrollingEnabled = false
         commentsRecyclerView.adapter = adapter
-        val postItem = intent.getSerializableExtra(PostItem::class.java.name) as PostItem
-        presenter.postId = postItem.postId
-        showPost(postItem)
-        userAvatar.setOnClickListener { userDetailsNavigator.navigate(this, postItem.userId) }
+        presenter.userIdPostId = UserIdPostId(intent.getStringExtra(USER_ID_KEY), intent.getStringExtra(POST_ID_KEY))
+        userAvatar.setOnClickListener { userDetailsNavigator.navigate(this, intent.getStringExtra(USER_ID_KEY)) }
         presenter.attachView(this)
     }
 
@@ -60,14 +69,5 @@ class PostDetailsActivity : AppCompatActivity(), PostDetailsView {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
-    }
-
-    private fun showPost(item: PostItem) {
-        userAvatar.loadAvatar(item.email)
-        userUsername.text = "@${item.username}"
-        userName.text = item.name
-        postTitle.text = item.title.capitalize()
-        postBody.maxLines = Int.MAX_VALUE
-        postBody.text = item.body.capitalize()
     }
 }

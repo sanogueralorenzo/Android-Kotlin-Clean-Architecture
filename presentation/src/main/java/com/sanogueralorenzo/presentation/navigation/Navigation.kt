@@ -2,6 +2,7 @@ package com.sanogueralorenzo.presentation.navigation
 
 import android.app.Activity
 import android.content.Intent
+import com.sanogueralorenzo.presentation.model.POST_ID_KEY
 import com.sanogueralorenzo.presentation.model.PostItem
 import com.sanogueralorenzo.presentation.model.USER_ID_KEY
 import com.sanogueralorenzo.presentation.postdetails.PostDetailsActivity
@@ -12,7 +13,8 @@ class PostListNavigator @Inject constructor() {
 
     fun navigate(activity: Activity, postItem: PostItem) {
         val intent = Intent(activity, PostDetailsActivity::class.java)
-        intent.putExtra(PostItem::class.java.name, postItem)
+        intent.putExtra(USER_ID_KEY, postItem.userId)
+        intent.putExtra(POST_ID_KEY, postItem.postId)
         activity.startActivity(intent)
     }
 }

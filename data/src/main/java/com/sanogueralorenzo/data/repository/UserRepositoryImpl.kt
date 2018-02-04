@@ -31,5 +31,5 @@ class UserRepositoryImpl @Inject constructor(private val api: UsersApi,
 
     private fun setCache(list: List<UserEntity>) = cache.save(key, list)
 
-    private fun setCache(user: UserEntity) = cache.load(key, emptyList()).map { it.filter { it.id != user.id }.plus(user) }.flatMap { setCache(it) }.map { user }
+    private fun setCache(entity: UserEntity) = cache.load(key, emptyList()).map { it.filter { it.id != entity.id }.plus(entity) }.flatMap { setCache(it) }.map { entity }
 }

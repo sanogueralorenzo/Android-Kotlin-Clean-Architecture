@@ -24,8 +24,13 @@ class PostRepositoryImplTest {
 
     private val key = "Post List"
 
-    private val cacheList = listOf(createPostEntity().copy(title = "cache"))
-    private val remoteList = listOf(createPostEntity().copy(title = "remote"))
+    private val postId = "1"
+
+    private val cacheItem = createPostEntity().copy(title = "cache")
+    private val remoteItem = createPostEntity().copy(title = "remote")
+
+    private val cacheList = listOf(cacheItem)
+    private val remoteList = listOf(remoteItem)
 
     @Before
     fun setUp() {
@@ -72,5 +77,47 @@ class PostRepositoryImplTest {
         test.assertValueCount(1)
         test.assertNotComplete()
         test.assertValue(emptyList())
+    }
+
+    @Test
+    fun `get post success`() {
+        // given
+        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
+        _when(mockApi.getPost(postId)).thenReturn(Single.just(remoteItem))
+        _when(mockCache.save(anyString(), anyList())).thenReturn(Single.just(cacheList))
+
+        // when
+        val test = repository.getPost(postId).test()
+
+        // then
+        verify(mockApi).getPost(postId)
+        verify(mockCache, times(2)).load(key, emptyList())
+        verify(mockCache).save(key, listOf(remoteItem))
+
+        test.assertNoErrors()
+        test.assertValueCount(2)
+        test.assertComplete()
+        test.assertValues(mapper.mapToDomain(cacheItem), mapper.mapToDomain(remoteItem))
+    }
+
+    @Test
+    fun `get post fail`() {
+        // given
+        val throwable = Throwable()
+        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
+        _when(mockApi.getPost(postId)).thenReturn(Single.error(throwable))
+
+        // when
+        val test = repository.getPost(postId).test()
+
+        // then
+        verify(mockApi).getPost(postId)
+        verify(mockCache).load(key, emptyList())
+        verify(mockCache, never()).save(anyString(), anyList())
+
+        test.assertError(throwable)
+        test.assertValueCount(1)
+        test.assertNotComplete()
+        test.assertValue(mapper.mapToDomain(cacheItem))
     }
 }
