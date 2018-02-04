@@ -4,7 +4,7 @@ package com.sanogueralorenzo.presentation.postlist
 
 import com.nhaarman.mockito_kotlin.mock
 import com.sanogueralorenzo.domain.usecase.CombinedUserPost
-import com.sanogueralorenzo.domain.usecase.CombinedUsersPostsUseCase
+import com.sanogueralorenzo.domain.usecase.UsersPostsUseCase
 import com.sanogueralorenzo.presentation.RxSchedulersOverrideRule
 import com.sanogueralorenzo.presentation.createPost
 import com.sanogueralorenzo.presentation.createUser
@@ -20,7 +20,7 @@ class PostListPresenterTest {
 
     private lateinit var presenter: PostListPresenter
 
-    private val mockUseCase = mock<CombinedUsersPostsUseCase> {}
+    private val mockUseCase = mock<UsersPostsUseCase> {}
     private val mockView = mock<PostListView> {}
     private val mapper = PostItemMapper()
 

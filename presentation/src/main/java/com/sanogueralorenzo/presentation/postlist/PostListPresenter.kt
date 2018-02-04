@@ -1,6 +1,6 @@
 package com.sanogueralorenzo.presentation.postlist
 
-import com.sanogueralorenzo.domain.usecase.CombinedUsersPostsUseCase
+import com.sanogueralorenzo.domain.usecase.UsersPostsUseCase
 import com.sanogueralorenzo.presentation.IView
 import com.sanogueralorenzo.presentation.Presenter
 import com.sanogueralorenzo.presentation.model.PostItem
@@ -15,7 +15,7 @@ interface PostListView : IView {
     fun error()
 }
 
-class PostListPresenter @Inject constructor(private val combinedUsersPostsUseCase: CombinedUsersPostsUseCase,
+class PostListPresenter @Inject constructor(private val usersPostsUseCase: UsersPostsUseCase,
                                             private val mapper: PostItemMapper) : Presenter<PostListView>() {
 
     override fun attachView(view: PostListView) {
@@ -30,7 +30,7 @@ class PostListPresenter @Inject constructor(private val combinedUsersPostsUseCas
 
     fun getCombinedPostUsersUseCase() {
         view?.loading(true)
-        addDisposable(combinedUsersPostsUseCase.execute()
+        addDisposable(usersPostsUseCase.execute()
                 .subscribeOn(Schedulers.io())
                 .map { mapper.map(it) }
                 .observeOn(AndroidSchedulers.mainThread())

@@ -12,6 +12,9 @@ interface PostsApi {
 
     @GET("posts/")
     fun getPosts(): Single<List<PostEntity>>
+
+    @GET("posts/{id}")
+    fun getPost(@Path("id") postId: String): Single<PostEntity>
 }
 
 interface UsersApi {
