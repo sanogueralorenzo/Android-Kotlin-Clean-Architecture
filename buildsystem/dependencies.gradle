@@ -10,7 +10,7 @@ ext {
             support           : "27.0.2",
             maps              : "11.8.0",
 
-            kotlin            : "1.2.10",
+            kotlin            : "1.2.21",
             anko              : "0.10.4",
             timber            : "4.6.0",
             rxandroid         : "2.0.1",
