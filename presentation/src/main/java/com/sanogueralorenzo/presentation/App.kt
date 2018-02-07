@@ -6,7 +6,7 @@ import com.sanogueralorenzo.presentation.injection.component.DaggerInjector
 import com.sanogueralorenzo.presentation.injection.component.Injector
 import com.sanogueralorenzo.presentation.injection.module.AppModule
 import timber.log.Timber
-
+import io.reactivex.plugins.RxJavaPlugins
 
 class App : Application() {
 
@@ -17,6 +17,7 @@ class App : Application() {
         initDagger()
         initTimber()
         initRxPaper()
+        initRxJavaPluginsErrorHandler()
     }
 
     private fun initDagger() {
@@ -33,5 +34,9 @@ class App : Application() {
     }
 
     private fun initRxPaper() = RxPaperBook.init(this)
+
+    private fun initRxJavaPluginsErrorHandler(){
+        RxJavaPlugins.setErrorHandler { Timber.e(it) }
+    }
 
 }
