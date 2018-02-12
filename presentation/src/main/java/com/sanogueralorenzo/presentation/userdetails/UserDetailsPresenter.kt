@@ -13,24 +13,14 @@ interface UserDetailsView : IView {
     fun showUser(user: UserItem)
 }
 
-class UserDetailsPresenter @Inject constructor(private val userUseCase: UserUseCase,
+class UserDetailsPresenter @Inject constructor(private val useCase: UserUseCase,
                                                private val mapper: UserItemMapper) : Presenter<UserDetailsView>() {
 
-    lateinit var userId: String
-
-    override fun attachView(view: UserDetailsView) {
-        super.attachView(view)
-        userUseCase.userId = userId
-        getUserUseCase()
-    }
-
-    private fun getUserUseCase() {
-        addDisposable(userUseCase.execute()
+    fun get(userId: String, refresh: Boolean = false) {
+        addDisposable(useCase.get(userId, refresh)
                 .subscribeOn(Schedulers.io())
                 .map { mapper.mapToPresentation(it) }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ view?.showUser(it) }, { }))
     }
-
-    //TODO Implement https://github.com/terrakok/Cicerone for navigation
 }

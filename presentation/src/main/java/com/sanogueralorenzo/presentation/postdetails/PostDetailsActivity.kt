@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.include_user_info.*
 import kotlinx.android.synthetic.main.item_list_post.*
 import javax.inject.Inject
 
+data class UserIdPostId(val userId: String, val postId: String)
 
 class PostDetailsActivity : AppCompatActivity(), PostDetailsView {
 
@@ -36,8 +37,8 @@ class PostDetailsActivity : AppCompatActivity(), PostDetailsView {
     }
 
     override fun error() {
-        Snackbar.make(container, getString(R.string.error_comments), Snackbar.LENGTH_LONG)
-                .setAction(getString(R.string.retry), { presenter.getCommentsUseCase() })
+        Snackbar.make(container, R.string.error, Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.retry), { presenter.getComments(postId, true) })
                 .setDuration(Snackbar.LENGTH_INDEFINITE)
                 .show()
     }
@@ -49,6 +50,9 @@ class PostDetailsActivity : AppCompatActivity(), PostDetailsView {
     @Inject
     lateinit var adapter: CommentsAdapter
 
+    lateinit var userId: String
+    lateinit var postId: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_details)
@@ -56,9 +60,12 @@ class PostDetailsActivity : AppCompatActivity(), PostDetailsView {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         commentsRecyclerView.isNestedScrollingEnabled = false
         commentsRecyclerView.adapter = adapter
-        presenter.userIdPostId = UserIdPostId(intent.getStringExtra(USER_ID_KEY), intent.getStringExtra(POST_ID_KEY))
+        userId = intent.getStringExtra(USER_ID_KEY)
+        postId = intent.getStringExtra(POST_ID_KEY)
         userAvatar.setOnClickListener { userDetailsNavigator.navigate(this, intent.getStringExtra(USER_ID_KEY)) }
         presenter.attachView(this)
+        presenter.getPost(userId, postId)
+        presenter.getComments(postId)
     }
 
     override fun onDestroy() {

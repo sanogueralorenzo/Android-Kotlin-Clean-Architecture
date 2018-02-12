@@ -19,22 +19,14 @@ interface PostDetailsView : IView {
     fun error()
 }
 
-data class UserIdPostId(val userId: String, val postId: String)
-
 class PostDetailsPresenter @Inject constructor(private val userPostUseCase: UserPostUseCase,
                                                private val commentsUseCase: CommentsUseCase,
                                                private val postItemMapper: PostItemMapper,
                                                private val commentItemMapper: CommentItemMapper) : Presenter<PostDetailsView>() {
 
-    lateinit var userIdPostId: UserIdPostId
-
     override fun attachView(view: PostDetailsView) {
         super.attachView(view)
-        userPostUseCase.userId = userIdPostId.userId
-        userPostUseCase.postId = userIdPostId.postId
-        commentsUseCase.postId = userIdPostId.postId
-        getPost()
-        getCommentsUseCase()
+        view.loading(true)
     }
 
     override fun detachView() {
@@ -42,8 +34,8 @@ class PostDetailsPresenter @Inject constructor(private val userPostUseCase: User
         super.detachView()
     }
 
-    private fun getPost() {
-        addDisposable(userPostUseCase.execute()
+    fun getPost(userId: String, postId: String) {
+        addDisposable(userPostUseCase.get(userId, postId, false)
                 .subscribeOn(Schedulers.io())
                 .map { postItemMapper.map(it) }
                 .observeOn(AndroidSchedulers.mainThread())
@@ -52,15 +44,12 @@ class PostDetailsPresenter @Inject constructor(private val userPostUseCase: User
                 }, { view?.error() }))
     }
 
-    fun getCommentsUseCase() {
-        view?.loading(true)
-        addDisposable(commentsUseCase.execute()
+    fun getComments(postId: String, refresh: Boolean = false) {
+        addDisposable(commentsUseCase.get(postId, refresh)
                 .subscribeOn(Schedulers.io())
                 .map { commentItemMapper.map(it) }
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally { view?.loading(false) }
-                .subscribe({
-                    view?.add(it)
-                }, { view?.error() }))
+                .subscribe({ view?.add(it) }, { view?.error() }))
     }
 }

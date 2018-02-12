@@ -7,7 +7,7 @@ import com.sanogueralorenzo.domain.createPost
 import com.sanogueralorenzo.domain.createUser
 import com.sanogueralorenzo.domain.repository.PostRepository
 import com.sanogueralorenzo.domain.repository.UserRepository
-import io.reactivex.Flowable
+import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -30,17 +30,17 @@ class UsersPostsUseCaseTest {
     }
 
     @Test
-    fun `repository execute success`() {
+    fun `repository get success`() {
         // given
-        _when(mockUserRepository.getUsers()).thenReturn(Flowable.just(userList))
-        _when(mockPostRepository.getPosts()).thenReturn(Flowable.just(postList))
+        _when(mockUserRepository.get(false)).thenReturn(Single.just(userList))
+        _when(mockPostRepository.get(false)).thenReturn(Single.just(postList))
 
         // when
-        val test = usersPostsUseCase.execute().test()
+        val test = usersPostsUseCase.get(false).test()
 
         // then
-        verify(mockUserRepository).getUsers()
-        verify(mockPostRepository).getPosts()
+        verify(mockUserRepository).get(false)
+        verify(mockPostRepository).get(false)
 
         test.assertNoErrors()
         test.assertComplete()
@@ -49,18 +49,18 @@ class UsersPostsUseCaseTest {
     }
 
     @Test
-    fun `repository execute fail`() {
+    fun `repository get fail`() {
         // given
         val throwable = Throwable()
-        _when(mockUserRepository.getUsers()).thenReturn(Flowable.error(throwable))
-        _when(mockPostRepository.getPosts()).thenReturn(Flowable.error(throwable))
+        _when(mockUserRepository.get(false)).thenReturn(Single.error(throwable))
+        _when(mockPostRepository.get(false)).thenReturn(Single.error(throwable))
 
         // when
-        val test = usersPostsUseCase.execute().test()
+        val test = usersPostsUseCase.get(false).test()
 
         // then
-        verify(mockUserRepository).getUsers()
-        verify(mockPostRepository).getPosts()
+        verify(mockUserRepository).get(false)
+        verify(mockPostRepository).get(false)
 
         test.assertNoValues()
         test.assertNotComplete()
@@ -86,22 +86,20 @@ class UserPostUseCaseTest {
     @Before
     fun setUp() {
         userPostUseCase = UserPostUseCase(mockUserRepository, mockPostRepository, mapper)
-        userPostUseCase.userId = userId
-        userPostUseCase.postId = postId
     }
 
     @Test
-    fun `repository execute success`() {
+    fun `repository get success`() {
         // given
-        _when(mockUserRepository.getUser(userId)).thenReturn(Flowable.just(user))
-        _when(mockPostRepository.getPost(postId)).thenReturn(Flowable.just(post))
+        _when(mockUserRepository.get(userId, false)).thenReturn(Single.just(user))
+        _when(mockPostRepository.get(postId, false)).thenReturn(Single.just(post))
 
         // when
-        val test = userPostUseCase.execute().test()
+        val test = userPostUseCase.get(userId, postId, false).test()
 
         // then
-        verify(mockUserRepository).getUser(userId)
-        verify(mockPostRepository).getPost(postId)
+        verify(mockUserRepository).get(userId, false)
+        verify(mockPostRepository).get(postId, false)
 
         test.assertNoErrors()
         test.assertComplete()
@@ -110,18 +108,18 @@ class UserPostUseCaseTest {
     }
 
     @Test
-    fun `repository execute fail`() {
+    fun `repository get fail`() {
         // given
         val throwable = Throwable()
-        _when(mockUserRepository.getUser(userId)).thenReturn(Flowable.error(throwable))
-        _when(mockPostRepository.getPost(userId)).thenReturn(Flowable.error(throwable))
+        _when(mockUserRepository.get(userId, false)).thenReturn(Single.error(throwable))
+        _when(mockPostRepository.get(postId, false)).thenReturn(Single.error(throwable))
 
         // when
-        val test = userPostUseCase.execute().test()
+        val test = userPostUseCase.get(userId, postId, false).test()
 
         // then
-        verify(mockUserRepository).getUser(userId)
-        verify(mockPostRepository).getPost(postId)
+        verify(mockUserRepository).get(userId, false)
+        verify(mockPostRepository).get(postId, false)
 
         test.assertNoValues()
         test.assertNotComplete()

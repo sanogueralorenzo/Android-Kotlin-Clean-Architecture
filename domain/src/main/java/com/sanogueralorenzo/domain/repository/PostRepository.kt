@@ -1,11 +1,13 @@
 package com.sanogueralorenzo.domain.repository
 
 import com.sanogueralorenzo.domain.model.Post
-import io.reactivex.Flowable
+import io.reactivex.Single
 
 interface PostRepository {
 
-    fun getPosts(): Flowable<List<Post>>
+    val key: String
 
-    fun getPost(postId: String): Flowable<Post>
+    fun get(refresh: Boolean): Single<List<Post>>
+
+    fun get(postId: String, refresh: Boolean): Single<Post>
 }

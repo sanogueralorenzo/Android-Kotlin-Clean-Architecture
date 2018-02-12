@@ -11,6 +11,7 @@ import com.sanogueralorenzo.presentation.model.CompanyItemMapper
 import com.sanogueralorenzo.presentation.model.LatLngMapper
 import com.sanogueralorenzo.presentation.model.UserItemMapper
 import io.reactivex.Flowable
+import io.reactivex.Single
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -36,19 +37,18 @@ class UserDetailsPresenterTest {
     @Before
     fun setUp() {
         presenter = UserDetailsPresenter(mockUseCase, mapper)
-        presenter.userId = userId
     }
 
     @Test
     fun `getting user details success`() {
         // given
-        _when(mockUseCase.execute()).thenReturn(Flowable.just(user))
+        _when(mockUseCase.get(userId, false)).thenReturn(Single.just(user))
 
         // when
         presenter.attachView(mockView)
+        presenter.get(userId, false)
 
         // then
-        verify(mockUseCase).userId = userId
         verify(mockView).showUser(mapper.mapToPresentation(user))
     }
 }

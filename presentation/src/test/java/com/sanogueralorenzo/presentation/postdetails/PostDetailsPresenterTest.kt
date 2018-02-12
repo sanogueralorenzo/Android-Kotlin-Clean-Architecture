@@ -3,6 +3,7 @@
 package com.sanogueralorenzo.presentation.postdetails
 
 import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.reset
 import com.sanogueralorenzo.domain.usecase.CombinedUserPost
 import com.sanogueralorenzo.domain.usecase.CommentsUseCase
 import com.sanogueralorenzo.domain.usecase.UserPostUseCase
@@ -13,6 +14,7 @@ import com.sanogueralorenzo.presentation.createUser
 import com.sanogueralorenzo.presentation.model.CommentItemMapper
 import com.sanogueralorenzo.presentation.model.PostItemMapper
 import io.reactivex.Flowable
+import io.reactivex.Single
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -43,36 +45,52 @@ class PostDetailsPresenterTest {
     @Before
     fun setUp() {
         presenter = PostDetailsPresenter(mockUserPostUseCase, mockCommentsUseCase, postItemMapper, commentItemMapper)
-        presenter.userIdPostId = UserIdPostId(userId, postId)
+        presenter.attachView(mockView)
+    }
+
+    @Test
+    fun `attaching view shows loading`() {
+        // given
+
+        // when
+
+        // then
+        verify(mockView).loading(true)
+    }
+
+    @Test
+    fun `detaching view hides loading`() {
+        // given
+
+        // when
+        reset(mockView)
+        presenter.detachView()
+
+        // then
+        verify(mockView).loading(false)
     }
 
     @Test
     fun `getting post success`() {
         // given
-        _when(mockUserPostUseCase.execute()).thenReturn(Flowable.just(combinedUserPost))
-        _when(mockCommentsUseCase.execute()).thenReturn(Flowable.empty())
+        _when(mockUserPostUseCase.get(userId, postId, false)).thenReturn(Single.just(combinedUserPost))
 
         // when
-        presenter.attachView(mockView)
+        presenter.getPost(userId, postId)
 
         // then
-        verify(mockUserPostUseCase).userId = presenter.userIdPostId.userId
-        verify(mockUserPostUseCase).postId = presenter.userIdPostId.postId
         verify(mockView).showPost(postItemMapper.map(combinedUserPost))
     }
 
     @Test
     fun `getting comments success`() {
         // given
-        _when(mockUserPostUseCase.execute()).thenReturn(Flowable.empty())
-        _when(mockCommentsUseCase.execute()).thenReturn(Flowable.just(listOf(comment)))
+        _when(mockCommentsUseCase.get(postId, false)).thenReturn(Single.just(listOf(comment)))
 
         // when
-        presenter.attachView(mockView)
+        presenter.getComments(postId)
 
         // then
-        verify(mockCommentsUseCase).postId = presenter.userIdPostId.postId
-        verify(mockView).loading(true)
         verify(mockView).add(commentItemMapper.map(listOf(comment)))
         verify(mockView).loading(false)
     }
@@ -81,14 +99,12 @@ class PostDetailsPresenterTest {
     fun `getting comments fail`() {
         // given
         val throwable = Throwable()
-        _when(mockUserPostUseCase.execute()).thenReturn(Flowable.empty())
-        _when(mockCommentsUseCase.execute()).thenReturn(Flowable.error(throwable))
+        _when(mockCommentsUseCase.get(postId, false)).thenReturn(Single.error(throwable))
 
         // when
-        presenter.attachView(mockView)
+        presenter.getComments(postId)
 
         // then
-        verify(mockView).loading(true)
         verify(mockView).error()
         verify(mockView).loading(false)
     }
