@@ -5,7 +5,7 @@ package com.sanogueralorenzo.domain.usecase
 import com.nhaarman.mockito_kotlin.mock
 import com.sanogueralorenzo.domain.createComment
 import com.sanogueralorenzo.domain.repository.CommentRepository
-import io.reactivex.Flowable
+import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -23,19 +23,18 @@ class CommentsUseCaseTest {
     @Before
     fun setUp() {
         usecase = CommentsUseCase(mockRepository)
-        usecase.postId = postId
     }
 
     @Test
-    fun `repository execute success`() {
+    fun `repository get success`() {
         // given
-        _when(mockRepository.getComments(postId)).thenReturn(Flowable.just(commentList))
+        _when(mockRepository.get(postId, false)).thenReturn(Single.just(commentList))
 
         // when
-        val test = usecase.execute().test()
+        val test = usecase.get(postId, false).test()
 
         // then
-        verify(mockRepository).getComments(postId)
+        verify(mockRepository).get(postId, false)
 
         test.assertNoErrors()
         test.assertComplete()
@@ -44,16 +43,16 @@ class CommentsUseCaseTest {
     }
 
     @Test
-    fun `repository execute fail`() {
+    fun `repository get fail`() {
         // given
         val throwable = Throwable()
-        _when(mockRepository.getComments(postId)).thenReturn(Flowable.error(throwable))
+        _when(mockRepository.get(postId, false)).thenReturn(Single.error(throwable))
 
         // when
-        val test = usecase.execute().test()
+        val test = usecase.get(postId, false).test()
 
         // then
-        verify(mockRepository).getComments(postId)
+        verify(mockRepository).get(postId, false)
 
         test.assertNoValues()
         test.assertNotComplete()

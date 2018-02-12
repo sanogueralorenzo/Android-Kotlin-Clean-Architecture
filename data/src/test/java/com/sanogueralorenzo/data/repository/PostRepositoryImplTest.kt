@@ -32,92 +32,127 @@ class PostRepositoryImplTest {
     private val cacheList = listOf(cacheItem)
     private val remoteList = listOf(remoteItem)
 
+    private val throwable = Throwable()
+
     @Before
     fun setUp() {
         repository = PostRepositoryImpl(mockApi, mockCache, mapper)
     }
 
     @Test
-    fun `get posts success`() {
+    fun `get posts cache success`() {
         // given
-        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
+        _when(mockCache.load(key)).thenReturn(Single.just(cacheList))
+
+        // when
+        val test = repository.get(false).test()
+
+        // then
+        verify(mockCache).load(key)
+        test.assertValue(mapper.mapToDomain(cacheList))
+    }
+
+    @Test
+    fun `get posts cache fail fallback remote succeeds`() {
+        // given
+        _when(mockCache.load(key)).thenReturn(Single.error(throwable))
         _when(mockApi.getPosts()).thenReturn(Single.just(remoteList))
         _when(mockCache.save(key, remoteList)).thenReturn(Single.just(remoteList))
 
         // when
-        val test = repository.getPosts().test()
+        val test = repository.get(false).test()
 
         // then
-        verify(mockCache).load(key, emptyList())
-        verify(mockApi).getPosts()
+        verify(mockCache).load(key)
         verify(mockCache).save(key, remoteList)
-
-        test.assertNoErrors()
-        test.assertValueCount(2)
-        test.assertComplete()
-        test.assertValues(mapper.mapToDomain(cacheList), mapper.mapToDomain(remoteList))
+        verify(mockApi).getPosts()
+        test.assertValue(mapper.mapToDomain(remoteList))
     }
 
     @Test
-    fun `get posts fail`() {
+    fun `get post cache success`() {
         // given
-        val throwable = Throwable()
-        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(emptyList()))
+        _when(mockCache.load(key)).thenReturn(Single.just(cacheList))
+
+        // when
+        val test = repository.get(postId, false).test()
+
+        // then
+        verify(mockCache).load(key)
+        test.assertValue(mapper.mapToDomain(cacheItem))
+    }
+
+    @Test
+    fun `get post cache fail fallback remote succeeds`() {
+        // given
+        _when(mockCache.load(key)).thenReturn(Single.error(throwable), Single.just(emptyList()))
+        _when(mockApi.getPost(postId)).thenReturn(Single.just(remoteItem))
+        _when(mockCache.save(key, remoteList)).thenReturn(Single.just(remoteList))
+
+        // when
+        val test = repository.get(postId, false).test()
+
+        // then
+        verify(mockCache, times(2)).load(key)
+        verify(mockCache).save(key, remoteList)
+        verify(mockApi).getPost(postId)
+        test.assertValue(mapper.mapToDomain(remoteItem))
+    }
+
+
+    @Test
+    fun `get posts remote success`() {
+        // given
+        _when(mockApi.getPosts()).thenReturn(Single.just(remoteList))
+        _when(mockCache.save(key, remoteList)).thenReturn(Single.just(remoteList))
+
+        // when
+        val test = repository.get(true).test()
+
+        // then
+        verify(mockApi).getPosts()
+        verify(mockCache).save(key, remoteList)
+        test.assertValue(mapper.mapToDomain(remoteList))
+    }
+
+    @Test
+    fun `get posts remote fail`() {
+        // given
         _when(mockApi.getPosts()).thenReturn(Single.error(throwable))
 
         // when
-        val test = repository.getPosts().test()
+        val test = repository.get(true).test()
 
         // then
         verify(mockApi).getPosts()
-        verify(mockCache).load(key, emptyList())
-        verify(mockCache, never()).save(anyString(), anyList())
-
         test.assertError(throwable)
-        test.assertValueCount(1)
-        test.assertNotComplete()
-        test.assertValue(emptyList())
     }
 
     @Test
-    fun `get post success`() {
+    fun `get post remote success`() {
         // given
-        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
         _when(mockApi.getPost(postId)).thenReturn(Single.just(remoteItem))
-        _when(mockCache.save(anyString(), anyList())).thenReturn(Single.just(cacheList))
+        _when(mockCache.load(key)).thenReturn(Single.just(remoteList))
+        _when(mockCache.save(key, remoteList)).thenReturn(Single.just(remoteList))
 
         // when
-        val test = repository.getPost(postId).test()
+        val test = repository.get(postId, true).test()
 
         // then
         verify(mockApi).getPost(postId)
-        verify(mockCache, times(2)).load(key, emptyList())
-        verify(mockCache).save(key, listOf(remoteItem))
-
-        test.assertNoErrors()
-        test.assertValueCount(2)
-        test.assertComplete()
-        test.assertValues(mapper.mapToDomain(cacheItem), mapper.mapToDomain(remoteItem))
+        test.assertValue(mapper.mapToDomain(remoteItem))
     }
 
     @Test
-    fun `get post fail`() {
+    fun `get post remote fail`() {
         // given
-        val throwable = Throwable()
-        _when(mockCache.load(key, emptyList())).thenReturn(Single.just(cacheList))
         _when(mockApi.getPost(postId)).thenReturn(Single.error(throwable))
 
         // when
-        val test = repository.getPost(postId).test()
+        val test = repository.get(postId, true).test()
 
         // then
         verify(mockApi).getPost(postId)
-        verify(mockCache).load(key, emptyList())
-        verify(mockCache, never()).save(anyString(), anyList())
-
         test.assertError(throwable)
-        test.assertValueCount(1)
-        test.assertNotComplete()
-        test.assertValue(mapper.mapToDomain(cacheItem))
     }
 }

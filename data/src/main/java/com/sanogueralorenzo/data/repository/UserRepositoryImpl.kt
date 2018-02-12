@@ -6,7 +6,6 @@ import com.sanogueralorenzo.data.model.UserMapper
 import com.sanogueralorenzo.data.remote.UsersApi
 import com.sanogueralorenzo.domain.model.User
 import com.sanogueralorenzo.domain.repository.UserRepository
-import io.reactivex.Flowable
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,21 +14,19 @@ import javax.inject.Singleton
 class UserRepositoryImpl @Inject constructor(private val api: UsersApi,
                                              private val cache: Cache<List<UserEntity>>,
                                              private val mapper: UserMapper) : UserRepository {
-    private val key = "User List"
+    override val key = "User List"
 
-    override fun getUsers(): Flowable<List<User>> = Single.concat(getCache(), getRemote())
+    override fun get(refresh: Boolean): Single<List<User>> = when (refresh) {
+        true -> api.getUsers().flatMap { setCache(it) }.map { mapper.mapToDomain(it) }
+        false -> cache.load(key).map { mapper.mapToDomain(it) }.onErrorResumeNext { get(true) }
+    }
 
-    override fun getUser(userId: String): Flowable<User> = Single.concat(getCache(userId), getRemote(userId))
-
-    private fun getRemote(): Single<List<User>> = api.getUsers().flatMap { setCache(it) }.map { mapper.mapToDomain(it) }
-
-    private fun getCache(): Single<List<User>> = cache.load(key, emptyList()).map { mapper.mapToDomain(it) }
-
-    private fun getRemote(userId: String): Single<User> = api.getUser(userId).flatMap { setCache(it) }.map { mapper.mapToDomain(it) }
-
-    private fun getCache(userId: String): Single<User> = cache.load(key, emptyList()).map { it.first { it.id == userId } }.map { mapper.mapToDomain(it) }
+    override fun get(userId: String, refresh: Boolean): Single<User> = when (refresh) {
+        true -> api.getUser(userId).flatMap { setCache(it) }.map { mapper.mapToDomain(it) }
+        false -> cache.load(key).map { it.first { it.id == userId } }.map { mapper.mapToDomain(it) }.onErrorResumeNext { get(userId, true) }
+    }
 
     private fun setCache(list: List<UserEntity>) = cache.save(key, list)
 
-    private fun setCache(entity: UserEntity) = cache.load(key, emptyList()).map { it.filter { it.id != entity.id }.plus(entity) }.flatMap { setCache(it) }.map { entity }
+    private fun setCache(entity: UserEntity) = cache.load(key).map { it.filter { it.id != entity.id }.plus(entity) }.flatMap { setCache(it) }.map { entity }
 }

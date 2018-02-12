@@ -5,7 +5,7 @@ package com.sanogueralorenzo.domain.usecase
 import com.nhaarman.mockito_kotlin.mock
 import com.sanogueralorenzo.domain.createUser
 import com.sanogueralorenzo.domain.repository.UserRepository
-import io.reactivex.Flowable
+import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
@@ -23,19 +23,18 @@ class UserUseCaseTest {
     @Before
     fun setUp() {
         usecase = UserUseCase(mockRepository)
-        usecase.userId = userId
     }
 
     @Test
-    fun `repository execute success`() {
+    fun `repository get success`() {
         // given
-        _when(mockRepository.getUser(userId)).thenReturn(Flowable.just(user))
+        _when(mockRepository.get(userId, false)).thenReturn(Single.just(user))
 
         // when
-        val test = usecase.execute().test()
+        val test = usecase.get(userId, false).test()
 
         // then
-        verify(mockRepository).getUser(userId)
+        verify(mockRepository).get(userId, false)
 
         test.assertNoErrors()
         test.assertComplete()

@@ -42,8 +42,9 @@ class UserDetailsActivity : AppCompatActivity(), OnMapReadyCallback, UserDetails
         getAppInjector().inject(this)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        presenter.userId = intent.getStringExtra(USER_ID_KEY)
         mapFragment.getMapAsync(this)
+        presenter.attachView(this)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -52,8 +53,10 @@ class UserDetailsActivity : AppCompatActivity(), OnMapReadyCallback, UserDetails
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
+        presenter.get(intent.getStringExtra(USER_ID_KEY))
         mMap = googleMap
         mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.style_json))
-        presenter.attachView(this)
     }
+
+
 }

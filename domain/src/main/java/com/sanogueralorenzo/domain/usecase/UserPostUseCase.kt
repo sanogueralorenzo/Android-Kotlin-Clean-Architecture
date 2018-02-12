@@ -4,7 +4,7 @@ import com.sanogueralorenzo.domain.model.Post
 import com.sanogueralorenzo.domain.model.User
 import com.sanogueralorenzo.domain.repository.PostRepository
 import com.sanogueralorenzo.domain.repository.UserRepository
-import io.reactivex.Flowable
+import io.reactivex.Single
 import io.reactivex.functions.BiFunction
 import javax.inject.Inject
 
@@ -16,23 +16,18 @@ data class CombinedUserPost(val user: User, val post: Post)
 
 class UsersPostsUseCase @Inject constructor(private val userRepository: UserRepository,
                                             private val postRepository: PostRepository,
-                                            private val mapper: UserPostMapper) : UseCase<Flowable<List<CombinedUserPost>>> {
+                                            private val mapper: UserPostMapper) {
 
-    override fun execute(): Flowable<List<CombinedUserPost>> = Flowable.zip(userRepository.getUsers(), postRepository.getPosts(),
+    fun get(refresh: Boolean): Single<List<CombinedUserPost>> = Single.zip(userRepository.get(refresh), postRepository.get(refresh),
             BiFunction { userList, postList -> mapper.map(userList, postList) })
-
 }
 
 class UserPostUseCase @Inject constructor(private val userRepository: UserRepository,
                                           private val postRepository: PostRepository,
-                                          private val mapper: UserPostMapper) : UseCase<Flowable<CombinedUserPost>> {
+                                          private val mapper: UserPostMapper) {
 
-    lateinit var userId: String
-    lateinit var postId: String
-
-    override fun execute(): Flowable<CombinedUserPost> = Flowable.zip(userRepository.getUser(userId), postRepository.getPost(postId),
+    fun get(userId: String, postId: String, refresh: Boolean): Single<CombinedUserPost> = Single.zip(userRepository.get(userId, refresh), postRepository.get(postId, refresh),
             BiFunction { user, post -> mapper.map(user, post) })
-
 }
 
 /**

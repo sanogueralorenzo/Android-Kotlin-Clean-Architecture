@@ -3,9 +3,8 @@
     <string name="screen_post_details_title">Post Details</string>
     <string name="screen_post_list_title">Post List</string>
     <string name="screen_user_details_title">User Details</string>
-    <string name="error_comments">Error loading Comments</string>
-    <string name="retry">Retry</string>
     <string name="error">Error</string>
+    <string name="retry">Retry</string>
 
     <string name="user_name">Name: %1$s</string>
     <string name="user_username">Username: @%1$s</string>

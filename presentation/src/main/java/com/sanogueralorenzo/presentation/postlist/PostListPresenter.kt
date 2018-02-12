@@ -15,12 +15,13 @@ interface PostListView : IView {
     fun error()
 }
 
-class PostListPresenter @Inject constructor(private val usersPostsUseCase: UsersPostsUseCase,
+class PostListPresenter @Inject constructor(private val useCase: UsersPostsUseCase,
                                             private val mapper: PostItemMapper) : Presenter<PostListView>() {
 
     override fun attachView(view: PostListView) {
         super.attachView(view)
-        getCombinedPostUsersUseCase()
+        view.loading(true)
+        get()
     }
 
     override fun detachView() {
@@ -28,17 +29,12 @@ class PostListPresenter @Inject constructor(private val usersPostsUseCase: Users
         super.detachView()
     }
 
-    fun getCombinedPostUsersUseCase() {
-        view?.loading(true)
-        addDisposable(usersPostsUseCase.execute()
+    fun get(refresh: Boolean = false) {
+        addDisposable(useCase.get(refresh)
                 .subscribeOn(Schedulers.io())
                 .map { mapper.map(it) }
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally { view?.loading(false) }
-                .subscribe({
-                    view?.add(it)
-                }, { view?.error() }))
+                .subscribe({ view?.add(it) }, { view?.error() }))
     }
-
-    //TODO Implement https://github.com/terrakok/Cicerone for navigation
 }

@@ -48,7 +48,7 @@ class PostListActivity : AppCompatActivity(), PostListView {
         setContentView(R.layout.activity_post_list)
         getAppInjector().inject(this)
         postsRecyclerView.adapter = adapter
-        swipeRefreshLayout.setOnRefreshListener { presenter.getCombinedPostUsersUseCase() }
+        swipeRefreshLayout.setOnRefreshListener { presenter.get(true) }
         swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorAccent))
         presenter.attachView(this)
     }

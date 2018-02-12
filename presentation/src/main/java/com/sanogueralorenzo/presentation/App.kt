@@ -5,8 +5,8 @@ import com.pacoworks.rxpaper2.RxPaperBook
 import com.sanogueralorenzo.presentation.injection.component.DaggerInjector
 import com.sanogueralorenzo.presentation.injection.component.Injector
 import com.sanogueralorenzo.presentation.injection.module.AppModule
-import timber.log.Timber
 import io.reactivex.plugins.RxJavaPlugins
+import timber.log.Timber
 
 class App : Application() {
 
@@ -35,7 +35,7 @@ class App : Application() {
 
     private fun initRxPaper() = RxPaperBook.init(this)
 
-    private fun initRxJavaPluginsErrorHandler(){
+    private fun initRxJavaPluginsErrorHandler() {
         RxJavaPlugins.setErrorHandler { Timber.e(it) }
     }
 
