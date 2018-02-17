@@ -4,12 +4,12 @@ apply plugin: 'kotlin-android'
 android {
     defaultPublishConfig "debug"
 
-    compileSdkVersion versions.compilesdk
+    compileSdkVersion Versions.compile_sdk
     defaultConfig {
-        minSdkVersion versions.minsdk
-        targetSdkVersion versions.targetsdk
-        versionCode versions.versioncode
-        versionName versions.versionname
+        minSdkVersion Versions.min_sdk
+        targetSdkVersion Versions.target_sdk
+        versionCode Releases.version_code
+        versionName Releases.version_name
     }
 
     buildTypes {
@@ -24,14 +24,14 @@ android {
 dependencies {
     compile project(':domain')
 
-    implementation libraries.kotlinstdlib
-    implementation libraries.rxkotlin
-    implementation libraries.moshi
-    implementation libraries.retrofit
-    implementation libraries.inject
-    implementation libraries.rxpaper
+    implementation Libraries.kotlin_stdlib
+    implementation Libraries.rxkotlin
+    implementation Libraries.moshi
+    implementation Libraries.retrofit
+    implementation Libraries.inject
+    implementation Libraries.rxpaper
 
-    testImplementation testLibraries.junit
-    testImplementation testLibraries.assertj
-    testImplementation testLibraries.mockitokotlin
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.assertj_core
+    testImplementation TestLibraries.mockito_kotlin
 }
