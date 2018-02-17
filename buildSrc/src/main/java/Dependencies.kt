@@ -1,3 +1,17 @@
+object ApplicationId {
+    val application_id = "com.sanogueralorenzo.androidkotlincleanarchitecture"
+}
+
+object Modules {
+    val domain = ":domain"
+    val data = ":data"
+}
+
+object Releases {
+    val version_code = 1
+    val version_name = "1.0"
+}
+
 object Versions {
     val gradle = "3.0.1"
 
@@ -29,15 +43,6 @@ object Versions {
 
     val runner = "1.0.1"
     val espresso_core = "3.0.1"
-}
-
-object ApplicationId{
-    val application_id = "com.sanogueralorenzo.androidkotlincleanarchitecture"
-}
-
-object Releases {
-    val version_code = 1
-    val version_name = "1.0"
 }
 
 object Libraries {

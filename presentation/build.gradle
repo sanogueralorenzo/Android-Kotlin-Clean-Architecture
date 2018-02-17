@@ -22,8 +22,8 @@ android {
 }
 
 dependencies {
-    compile project(':data')
-    compile project(':domain')
+    compile project(Modules.data)
+    compile project(Modules.domain)
 
     implementation Libraries.kotlin_stdlib
     implementation Libraries.anko_commons
