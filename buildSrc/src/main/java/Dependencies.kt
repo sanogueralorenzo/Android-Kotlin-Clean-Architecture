@@ -16,19 +16,19 @@ object Versions {
     val rxandroid = "2.0.1"
     val rxkotlin = "2.2.0"
     val retrofit = "2.3.0"
-    val logginginterceptor = "3.9.1"
+    val logging_interceptor = "3.9.1"
     val dagger = "2.14.1"
     val glide = "4.4.0"
     val rxpaper = "1.1.0"
     val moshi = "1.4.0"
 
     val junit = "4.12"
-    val assertj = "3.8.0"
-    val mockitokotlin = "1.5.0"
+    val assertj_core = "3.8.0"
+    val mockito_kotlin = "1.5.0"
     val robolectric = "3.5.1"
 
     val runner = "1.0.1"
-    val espresso = "3.0.1"
+    val espresso_core = "3.0.1"
 }
 
 object ApplicationId{
@@ -56,7 +56,7 @@ object Libraries {
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val rxjava_adapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     val moshi_converter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
-    val logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.logginginterceptor}"
+    val logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.logging_interceptor}"
 
     val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
@@ -78,10 +78,10 @@ object SupportLibraries {
 
 object TestLibraries {
     val junit = "junit:junit:${Versions.junit}"
-    val assertj_core = "org.assertj:assertj-core:${Versions.assertj}"
-    val mockito_kotlin = "com.nhaarman:mockito-kotlin:${Versions.mockitokotlin}"
+    val assertj_core = "org.assertj:assertj-core:${Versions.assertj_core}"
+    val mockito_kotlin = "com.nhaarman:mockito-kotlin:${Versions.mockito_kotlin}"
     val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
 
     val runner = "com.android.support.test:runner:${Versions.runner}"
-    val espresso_core = "com.android.support.test.espresso:espresso-core:${Versions.espresso}"
+    val espresso_core = "com.android.support.test.espresso:espresso-core:${Versions.espresso_core}"
 }
