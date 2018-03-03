@@ -17,16 +17,16 @@ class UserRepositoryImpl @Inject constructor(private val api: UsersApi,
     override val key = "User List"
 
     override fun get(refresh: Boolean): Single<List<User>> = when (refresh) {
-        true -> api.getUsers().flatMap { setCache(it) }.map { mapper.mapToDomain(it) }
+        true -> api.getUsers().flatMap { set(it) }.map { mapper.mapToDomain(it) }
         false -> cache.load(key).map { mapper.mapToDomain(it) }.onErrorResumeNext { get(true) }
     }
 
     override fun get(userId: String, refresh: Boolean): Single<User> = when (refresh) {
-        true -> api.getUser(userId).flatMap { setCache(it) }.map { mapper.mapToDomain(it) }
+        true -> api.getUser(userId).flatMap { set(it) }.map { mapper.mapToDomain(it) }
         false -> cache.load(key).map { it.first { it.id == userId } }.map { mapper.mapToDomain(it) }.onErrorResumeNext { get(userId, true) }
     }
 
-    private fun setCache(list: List<UserEntity>) = cache.save(key, list)
+    private fun set(list: List<UserEntity>) = cache.save(key, list)
 
-    private fun setCache(entity: UserEntity) = cache.load(key).map { it.filter { it.id != entity.id }.plus(entity) }.flatMap { setCache(it) }.map { entity }
+    private fun set(entity: UserEntity) = cache.load(key).map { it.filter { it.id != entity.id }.plus(entity) }.flatMap { set(it) }.map { entity }
 }
