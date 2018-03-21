@@ -43,7 +43,7 @@ class UserDetailsViewModelTest {
     }
 
     @Test
-    fun `getting user details succeeds`() {
+    fun `get user details succeeds`() {
         // given
         _when(mockUseCase.get(userId, false)).thenReturn(Single.just(user))
 

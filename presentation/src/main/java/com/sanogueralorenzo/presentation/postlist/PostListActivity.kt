@@ -44,11 +44,13 @@ class PostListActivity : AppCompatActivity() {
         is StateData.Loading -> swipeRefreshLayout.startRefreshing()
         is StateData.Success -> swipeRefreshLayout.stopRefreshing()
         is StateData.Error -> errorMessage(stateData.throwable!!)
+
     }
 
     private fun updatePosts(list: List<PostItem>?) = adapter.addItems(list!!)
 
     private fun errorMessage(throwable: Throwable) {
+        swipeRefreshLayout.stopRefreshing()
         toast(throwable.message.toString())
     }
 }

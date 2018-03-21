@@ -47,7 +47,7 @@ class PostDetailsActivity : AppCompatActivity() {
     private fun updateState(stateData: StateData?) = when (stateData!!) {
         is StateData.Loading -> progressBar.visible()
         is StateData.Success -> progressBar.gone()
-        is StateData.Error -> errorMessage()
+        is StateData.Error -> handleErrorState()
     }
 
     private fun updatePost(item: PostItem?) {
@@ -60,6 +60,11 @@ class PostDetailsActivity : AppCompatActivity() {
     }
 
     private fun updateComments(list: List<CommentItem>?) = adapter.addItems(list!!)
+
+    private fun handleErrorState(){
+        progressBar.gone()
+        errorMessage()
+    }
 
     private fun errorMessage() = Snackbar.make(container, R.string.error, Snackbar.LENGTH_LONG)
             .setAction(getString(R.string.retry), { postDetailsViewModel.getComments(true) })
