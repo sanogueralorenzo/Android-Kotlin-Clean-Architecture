@@ -22,7 +22,7 @@ class CommentItemMapperTest {
         val comment = createComment()
 
         // when
-        val commentItem = mapper.map(listOf(comment))[0]
+        val commentItem = mapper.mapToPresentation(listOf(comment))[0]
 
         // then
         assertTrue(commentItem.postId == comment.postId)

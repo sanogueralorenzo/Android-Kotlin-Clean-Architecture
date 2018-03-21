@@ -1,5 +1,6 @@
 package com.sanogueralorenzo.presentation.postdetails
 
+import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -14,44 +15,16 @@ import kotlinx.android.synthetic.main.include_user_info.*
 import kotlinx.android.synthetic.main.item_list_post.*
 import javax.inject.Inject
 
-data class UserIdPostId(val userId: String, val postId: String)
-
-class PostDetailsActivity : AppCompatActivity(), PostDetailsView {
-
-    override fun showPost(item: PostItem) {
-        userAvatar.loadAvatar(item.email)
-        userUsername.text = "@${item.username}"
-        userName.text = item.name
-        postTitle.text = item.title.capitalize()
-        postBody.maxLines = Int.MAX_VALUE
-        postBody.text = item.body.capitalize()
-    }
-
-    override fun loading(show: Boolean) = when (show) {
-        true -> progressBar.visible()
-        false -> progressBar.gone()
-    }
-
-    override fun add(list: List<CommentItem>) {
-        adapter.addItems(list)
-    }
-
-    override fun error() {
-        Snackbar.make(container, R.string.error, Snackbar.LENGTH_LONG)
-                .setAction(getString(R.string.retry), { presenter.getComments(postId, true) })
-                .setDuration(Snackbar.LENGTH_INDEFINITE)
-                .show()
-    }
+class PostDetailsActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var presenter: PostDetailsPresenter
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject
     lateinit var userDetailsNavigator: UserDetailsNavigator
     @Inject
     lateinit var adapter: CommentsAdapter
 
-    lateinit var userId: String
-    lateinit var postId: String
+    private lateinit var postDetailsViewModel: PostDetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,18 +33,38 @@ class PostDetailsActivity : AppCompatActivity(), PostDetailsView {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         commentsRecyclerView.isNestedScrollingEnabled = false
         commentsRecyclerView.adapter = adapter
-        userId = intent.getStringExtra(USER_ID_KEY)
-        postId = intent.getStringExtra(POST_ID_KEY)
         userAvatar.setOnClickListener { userDetailsNavigator.navigate(this, intent.getStringExtra(USER_ID_KEY)) }
-        presenter.attachView(this)
-        presenter.getPost(userId, postId)
-        presenter.getComments(postId)
+
+        withViewModel<PostDetailsViewModel>(viewModelFactory) {
+            userIdPostId = UserIdPostId(intent.getStringExtra(USER_ID_KEY), intent.getStringExtra(POST_ID_KEY))
+            observe(state, ::updateState)
+            observe(post, ::updatePost)
+            observe(comments, ::updateComments)
+            postDetailsViewModel = this
+        }
     }
 
-    override fun onDestroy() {
-        presenter.detachView()
-        super.onDestroy()
+    private fun updateState(stateData: StateData?) = when (stateData!!) {
+        is StateData.Loading -> progressBar.visible()
+        is StateData.Success -> progressBar.gone()
+        is StateData.Error -> errorMessage()
     }
+
+    private fun updatePost(item: PostItem?) {
+        userAvatar.loadAvatar(item!!.email)
+        userUsername.text = "@${item.username}"
+        userName.text = item.name
+        postTitle.text = item.title.capitalize()
+        postBody.maxLines = Int.MAX_VALUE
+        postBody.text = item.body.capitalize()
+    }
+
+    private fun updateComments(list: List<CommentItem>?) = adapter.addItems(list!!)
+
+    private fun errorMessage() = Snackbar.make(container, R.string.error, Snackbar.LENGTH_LONG)
+            .setAction(getString(R.string.retry), { postDetailsViewModel.getComments(true) })
+            .setDuration(Snackbar.LENGTH_INDEFINITE)
+            .show()
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

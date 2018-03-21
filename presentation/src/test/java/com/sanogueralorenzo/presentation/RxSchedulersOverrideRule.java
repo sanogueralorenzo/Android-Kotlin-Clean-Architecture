@@ -14,6 +14,8 @@ import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.Schedulers;
 
 /**
+ * Rule to avoid having schedulers all around https://github.com/ReactiveX/RxAndroid/issues/238
+ *
  * This rule registers Handlers for RxJava and RxAndroid to ensure that subscriptions
  * always subscribeOn and observeOn Schedulers.trampoline().
  * Warning, this rule will reset RxAndroidPlugins and RxJavaPlugins before and after each test so
