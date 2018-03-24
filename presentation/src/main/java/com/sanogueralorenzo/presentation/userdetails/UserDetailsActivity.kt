@@ -22,7 +22,8 @@ class UserDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var mMap: GoogleMap
+
+    private lateinit var map: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +34,9 @@ class UserDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
-
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.style_json))
+        map = googleMap
+        map.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.style_json))
 
         withViewModel<UserDetailsViewModel>(viewModelFactory) {
             userId = intent.getStringExtra(USER_ID_KEY)
@@ -49,17 +45,24 @@ class UserDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun showUser(user: UserItem?) {
-        userName.text = getString(R.string.user_name, user!!.name)
-        userUsername.text = getString(R.string.user_username, user.username)
-        userEmail.text = getString(R.string.user_email, user.email)
-        userPhone.text = getString(R.string.user_phone, user.phone)
-        val address = user.addressItem
-        userAddress.text = getString(R.string.user_address, address.street, address.city, address.zipcode)
-        userWebsite.text = getString(R.string.user_website, user.website)
-        userCompany.text = getString(R.string.user_company, user.companyItem.name)
+        user?.let {
+            userName.text = getString(R.string.user_name, it.name)
+            userUsername.text = getString(R.string.user_username, it.username)
+            userEmail.text = getString(R.string.user_email, it.email)
+            userPhone.text = getString(R.string.user_phone, it.phone)
+            val address = it.addressItem
+            userAddress.text = getString(R.string.user_address, address.street, address.city, address.zipcode)
+            userWebsite.text = getString(R.string.user_website, it.website)
+            userCompany.text = getString(R.string.user_company, it.companyItem.name)
 
-        val position = user.addressItem.latLng
-        mMap.addMarker(MarkerOptions().position(position).title("@${user.username}"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(position))
+            val position = it.addressItem.latLng
+            map.addMarker(MarkerOptions().position(position).title("@${it.username}"))
+            map.moveCamera(CameraUpdateFactory.newLatLng(position))
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

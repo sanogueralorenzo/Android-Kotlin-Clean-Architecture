@@ -2,8 +2,6 @@ package com.sanogueralorenzo.presentation
 
 import android.app.Activity
 import android.arch.lifecycle.*
-import android.content.Context
-import android.content.Intent
 import android.support.v4.app.FragmentActivity
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
@@ -33,11 +31,11 @@ fun View.gone() {
     visibility = View.GONE
 }
 
-fun SwipeRefreshLayout.startRefreshing(){
+fun SwipeRefreshLayout.startRefreshing() {
     isRefreshing = true
 }
 
-fun SwipeRefreshLayout.stopRefreshing(){
+fun SwipeRefreshLayout.stopRefreshing() {
     isRefreshing = false
 }
 
@@ -53,13 +51,4 @@ inline fun <reified T : ViewModel> FragmentActivity.withViewModel(viewModelFacto
 
 fun <T : Any, L : LiveData<T>> LifecycleOwner.observe(liveData: L, body: (T?) -> Unit) {
     liveData.observe(this, Observer(body))
-}
-
-inline fun <reified T : ViewModel> FragmentActivity.getViewModel(crossinline factory: () -> T): T {
-
-    val vmFactory = object : ViewModelProvider.Factory {
-        override fun <U : ViewModel> create(modelClass: Class<U>): U = factory() as U
-    }
-
-    return ViewModelProviders.of(this, vmFactory)[T::class.java]
 }

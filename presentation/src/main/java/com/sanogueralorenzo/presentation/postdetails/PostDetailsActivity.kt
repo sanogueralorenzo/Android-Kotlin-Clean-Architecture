@@ -18,13 +18,13 @@ import javax.inject.Inject
 class PostDetailsActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var adapter: CommentsAdapter
     @Inject
     lateinit var userDetailsNavigator: UserDetailsNavigator
     @Inject
-    lateinit var adapter: CommentsAdapter
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var postDetailsViewModel: PostDetailsViewModel
+    private lateinit var viewModel: PostDetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,39 +37,45 @@ class PostDetailsActivity : AppCompatActivity() {
 
         withViewModel<PostDetailsViewModel>(viewModelFactory) {
             userIdPostId = UserIdPostId(intent.getStringExtra(USER_ID_KEY), intent.getStringExtra(POST_ID_KEY))
-            observe(state, ::updateState)
+            viewModel = this
             observe(post, ::updatePost)
             observe(comments, ::updateComments)
-            postDetailsViewModel = this
         }
     }
 
-    private fun updateState(stateData: StateData?) = when (stateData!!) {
-        is StateData.Loading -> progressBar.visible()
-        is StateData.Success -> progressBar.gone()
-        is StateData.Error -> handleErrorState()
+    private fun updatePost(postItem: PostItem?) {
+        postItem?.let {
+            userAvatar.loadAvatar(it.email)
+            userUsername.text = "@${it.username}"
+            userName.text = it.name
+            postTitle.text = it.title.capitalize()
+            postBody.maxLines = Int.MAX_VALUE
+            postBody.text = it.body.capitalize()
+        }
     }
 
-    private fun updatePost(item: PostItem?) {
-        userAvatar.loadAvatar(item!!.email)
-        userUsername.text = "@${item.username}"
-        userName.text = item.name
-        postTitle.text = item.title.capitalize()
-        postBody.maxLines = Int.MAX_VALUE
-        postBody.text = item.body.capitalize()
+    private fun updateComments(resource: Resource<List<CommentItem>>?) {
+        resource?.let {
+            when (it.status) {
+                ResourceState.LOADING -> {
+                    progressBar.visible()
+                }
+                ResourceState.SUCCESS -> {
+                    progressBar.gone()
+                }
+                ResourceState.ERROR -> {
+                    progressBar.gone()
+                }
+            }
+            it.data?.let { adapter.addItems(it) }
+            it.message?.let {
+                Snackbar.make(container, R.string.error, Snackbar.LENGTH_LONG)
+                        .setAction(getString(R.string.retry), { viewModel.getComments(true) })
+                        .setDuration(Snackbar.LENGTH_INDEFINITE)
+                        .show()
+            }
+        }
     }
-
-    private fun updateComments(list: List<CommentItem>?) = adapter.addItems(list!!)
-
-    private fun handleErrorState(){
-        progressBar.gone()
-        errorMessage()
-    }
-
-    private fun errorMessage() = Snackbar.make(container, R.string.error, Snackbar.LENGTH_LONG)
-            .setAction(getString(R.string.retry), { postDetailsViewModel.getComments(true) })
-            .setDuration(Snackbar.LENGTH_INDEFINITE)
-            .show()
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()

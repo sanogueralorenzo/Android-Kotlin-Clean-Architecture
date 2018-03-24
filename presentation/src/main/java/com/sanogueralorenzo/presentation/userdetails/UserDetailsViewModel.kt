@@ -12,12 +12,12 @@ import javax.inject.Inject
 class UserDetailsViewModel @Inject constructor(private val useCase: UserUseCase,
                                                private val mapper: UserItemMapper) : ViewModel() {
 
-    val user: MutableLiveData<UserItem> = MutableLiveData()
+    val user = MutableLiveData<UserItem>()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     var userId: String? = null
         set(value) {
-            if (userId == null) {
+            if (field == null) {
                 field = value
                 get()
             }

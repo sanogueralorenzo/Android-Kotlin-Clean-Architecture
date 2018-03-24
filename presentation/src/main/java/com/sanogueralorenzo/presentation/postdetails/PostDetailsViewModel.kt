@@ -4,17 +4,14 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.sanogueralorenzo.domain.usecase.CommentsUseCase
 import com.sanogueralorenzo.domain.usecase.UserPostUseCase
-import com.sanogueralorenzo.presentation.StateData
+import com.sanogueralorenzo.presentation.Resource
+import com.sanogueralorenzo.presentation.ResourceState
 import com.sanogueralorenzo.presentation.model.CommentItem
 import com.sanogueralorenzo.presentation.model.CommentItemMapper
 import com.sanogueralorenzo.presentation.model.PostItem
 import com.sanogueralorenzo.presentation.model.PostItemMapper
-import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.internal.operators.observable.ObservableAutoConnect
-import io.reactivex.observables.ConnectableObservable
 import io.reactivex.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 data class UserIdPostId(val userId: String, val postId: String)
@@ -24,14 +21,13 @@ class PostDetailsViewModel @Inject constructor(private val userPostUseCase: User
                                                private val postItemMapper: PostItemMapper,
                                                private val commentItemMapper: CommentItemMapper) : ViewModel() {
 
-    val post: MutableLiveData<PostItem> = MutableLiveData()
-    val comments: MutableLiveData<List<CommentItem>> = MutableLiveData()
-    val state: MutableLiveData<StateData> = MutableLiveData()
-    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+    val post = MutableLiveData<PostItem>()
+    val comments = MutableLiveData<Resource<List<CommentItem>>>()
+    private val compositeDisposable = CompositeDisposable()
 
     var userIdPostId: UserIdPostId? = null
         set(value) {
-            if (userIdPostId == null) {
+            if (field == null) {
                 field = value
                 getPost()
                 getComments()
@@ -48,14 +44,13 @@ class PostDetailsViewModel @Inject constructor(private val userPostUseCase: User
 
     fun getComments(refresh: Boolean = false) =
             compositeDisposable.add(commentsUseCase.get(userIdPostId!!.postId, refresh)
-                    .doOnSubscribe { state.postValue(StateData.Loading) }
+                    .doOnSubscribe { comments.postValue(Resource(status = ResourceState.LOADING, data = comments.value?.data, message = null)) }
                     .subscribeOn(Schedulers.io())
                     .observeOn(Schedulers.io())
                     .map { commentItemMapper.mapToPresentation(it) }
                     .subscribe({
-                        state.postValue(StateData.Success)
-                        comments.postValue(it)
-                    }, { state.postValue(StateData.Error(it)) }))
+                        comments.postValue(Resource(status = ResourceState.SUCCESS, data = it, message = null))
+                    }, { comments.postValue(Resource(status = ResourceState.ERROR, data = comments.value?.data, message = it.message)) }))
 
     override fun onCleared() {
         compositeDisposable.dispose()

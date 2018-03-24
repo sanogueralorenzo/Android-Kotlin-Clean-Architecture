@@ -6,10 +6,7 @@ import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockito_kotlin.mock
 import com.sanogueralorenzo.domain.usecase.CombinedUserPost
 import com.sanogueralorenzo.domain.usecase.UsersPostsUseCase
-import com.sanogueralorenzo.presentation.RxSchedulersOverrideRule
-import com.sanogueralorenzo.presentation.StateData
-import com.sanogueralorenzo.presentation.createPost
-import com.sanogueralorenzo.presentation.createUser
+import com.sanogueralorenzo.presentation.*
 import com.sanogueralorenzo.presentation.model.PostItemMapper
 import io.reactivex.Single
 import org.junit.Assert.assertEquals
@@ -48,8 +45,7 @@ class PostListViewModelTest {
         viewModel = PostListViewModel(mockUseCase, mapper)
 
         // then
-        assertEquals(StateData.Success, viewModel.state.value)
-        assertEquals(mapper.mapToPresentation(combinedUserPosts), viewModel.posts.value)
+        assertEquals(Resource(status = ResourceState.SUCCESS, data = mapper.mapToPresentation(combinedUserPosts), message = null), viewModel.posts.value)
     }
 
     @Test
@@ -61,6 +57,6 @@ class PostListViewModelTest {
         viewModel = PostListViewModel(mockUseCase, mapper)
 
         // then
-        assertEquals(StateData.Error(throwable), viewModel.state.value)
+        assertEquals(Resource(status = ResourceState.ERROR, data = null, message = throwable.message), viewModel.posts.value)
     }
 }

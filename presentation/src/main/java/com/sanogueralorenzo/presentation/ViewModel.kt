@@ -14,11 +14,9 @@ import javax.inject.Provider
 import javax.inject.Singleton
 import kotlin.reflect.KClass
 
-sealed class StateData(val throwable: Throwable? = null){
-    object Loading : StateData()
-    object Success : StateData()
-    data class Error(private val t: Throwable) : StateData(t)
-}
+enum class ResourceState { LOADING, SUCCESS, ERROR }
+
+data class Resource<out T> constructor(val status: ResourceState, val data: T? = null, val message: String? = null)
 
 @Suppress("UNCHECKED_CAST")
 @Singleton

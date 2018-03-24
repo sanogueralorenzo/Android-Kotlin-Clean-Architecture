@@ -34,23 +34,20 @@ class PostListActivity : AppCompatActivity() {
         swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorAccent))
 
         withViewModel<PostListViewModel>(viewModelFactory) {
-            observe(state, ::updateState)
-            observe(posts, ::updatePosts)
-            swipeRefreshLayout.setOnRefreshListener { get(true) }
+            swipeRefreshLayout.setOnRefreshListener { get(refresh = true) }
+            observe(posts, ::updateState)
         }
     }
 
-    private fun updateState(stateData: StateData?) = when (stateData!!) {
-        is StateData.Loading -> swipeRefreshLayout.startRefreshing()
-        is StateData.Success -> swipeRefreshLayout.stopRefreshing()
-        is StateData.Error -> errorMessage(stateData.throwable!!)
-
-    }
-
-    private fun updatePosts(list: List<PostItem>?) = adapter.addItems(list!!)
-
-    private fun errorMessage(throwable: Throwable) {
-        swipeRefreshLayout.stopRefreshing()
-        toast(throwable.message.toString())
+    private fun updateState(resource: Resource<List<PostItem>>?) {
+        resource?.let {
+            when(it.status) {
+                ResourceState.LOADING -> { swipeRefreshLayout.startRefreshing() }
+                ResourceState.SUCCESS -> { swipeRefreshLayout.stopRefreshing() }
+                ResourceState.ERROR -> { swipeRefreshLayout.stopRefreshing() }
+            }
+            it.data?.let { adapter.addItems(it) }
+            it.message?.let { toast(it) }
+        }
     }
 }
