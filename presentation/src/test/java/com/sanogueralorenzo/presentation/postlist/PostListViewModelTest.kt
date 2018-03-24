@@ -45,7 +45,7 @@ class PostListViewModelTest {
         viewModel = PostListViewModel(mockUseCase, mapper)
 
         // then
-        assertEquals(Resource(status = ResourceState.SUCCESS, data = mapper.mapToPresentation(combinedUserPosts), message = null), viewModel.posts.value)
+        assertEquals(Data(dataState = DataState.SUCCESS, data = mapper.mapToPresentation(combinedUserPosts), message = null), viewModel.posts.value)
     }
 
     @Test
@@ -57,6 +57,6 @@ class PostListViewModelTest {
         viewModel = PostListViewModel(mockUseCase, mapper)
 
         // then
-        assertEquals(Resource(status = ResourceState.ERROR, data = null, message = throwable.message), viewModel.posts.value)
+        assertEquals(Data(dataState = DataState.ERROR, data = null, message = throwable.message), viewModel.posts.value)
     }
 }

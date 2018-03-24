@@ -4,8 +4,8 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.sanogueralorenzo.domain.usecase.CommentsUseCase
 import com.sanogueralorenzo.domain.usecase.UserPostUseCase
-import com.sanogueralorenzo.presentation.Resource
-import com.sanogueralorenzo.presentation.ResourceState
+import com.sanogueralorenzo.presentation.Data
+import com.sanogueralorenzo.presentation.DataState
 import com.sanogueralorenzo.presentation.model.CommentItem
 import com.sanogueralorenzo.presentation.model.CommentItemMapper
 import com.sanogueralorenzo.presentation.model.PostItem
@@ -22,7 +22,7 @@ class PostDetailsViewModel @Inject constructor(private val userPostUseCase: User
                                                private val commentItemMapper: CommentItemMapper) : ViewModel() {
 
     val post = MutableLiveData<PostItem>()
-    val comments = MutableLiveData<Resource<List<CommentItem>>>()
+    val comments = MutableLiveData<Data<List<CommentItem>>>()
     private val compositeDisposable = CompositeDisposable()
 
     var userIdPostId: UserIdPostId? = null
@@ -44,13 +44,13 @@ class PostDetailsViewModel @Inject constructor(private val userPostUseCase: User
 
     fun getComments(refresh: Boolean = false) =
             compositeDisposable.add(commentsUseCase.get(userIdPostId!!.postId, refresh)
-                    .doOnSubscribe { comments.postValue(Resource(status = ResourceState.LOADING, data = comments.value?.data, message = null)) }
+                    .doOnSubscribe { comments.postValue(Data(dataState = DataState.LOADING, data = comments.value?.data, message = null)) }
                     .subscribeOn(Schedulers.io())
                     .observeOn(Schedulers.io())
                     .map { commentItemMapper.mapToPresentation(it) }
                     .subscribe({
-                        comments.postValue(Resource(status = ResourceState.SUCCESS, data = it, message = null))
-                    }, { comments.postValue(Resource(status = ResourceState.ERROR, data = comments.value?.data, message = it.message)) }))
+                        comments.postValue(Data(dataState = DataState.SUCCESS, data = it, message = null))
+                    }, { comments.postValue(Data(dataState = DataState.ERROR, data = comments.value?.data, message = it.message)) }))
 
     override fun onCleared() {
         compositeDisposable.dispose()

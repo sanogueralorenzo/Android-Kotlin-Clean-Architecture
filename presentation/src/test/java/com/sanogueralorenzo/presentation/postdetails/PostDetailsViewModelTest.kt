@@ -72,7 +72,7 @@ class PostDetailsViewModelTest {
         viewModel.userIdPostId = UserIdPostId(userId, postId)
 
         // then
-        assertEquals(Resource(status = ResourceState.SUCCESS, data = commentItemMapper.mapToPresentation(comments), message = null), viewModel.comments.value)
+        assertEquals(Data(dataState = DataState.SUCCESS, data = commentItemMapper.mapToPresentation(comments), message = null), viewModel.comments.value)
     }
 
     @Test
@@ -85,6 +85,6 @@ class PostDetailsViewModelTest {
         viewModel.userIdPostId = UserIdPostId(userId, postId)
 
         // then
-        assertEquals(Resource(status = ResourceState.ERROR, data = null, message = throwable.message), viewModel.comments.value)
+        assertEquals(Data(dataState = DataState.ERROR, data = null, message = throwable.message), viewModel.comments.value)
     }
 }

@@ -54,16 +54,16 @@ class PostDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateComments(resource: Resource<List<CommentItem>>?) {
-        resource?.let {
-            when (it.status) {
-                ResourceState.LOADING -> {
+    private fun updateComments(data: Data<List<CommentItem>>?) {
+        data?.let {
+            when (it.dataState) {
+                DataState.LOADING -> {
                     progressBar.visible()
                 }
-                ResourceState.SUCCESS -> {
+                DataState.SUCCESS -> {
                     progressBar.gone()
                 }
-                ResourceState.ERROR -> {
+                DataState.ERROR -> {
                     progressBar.gone()
                 }
             }

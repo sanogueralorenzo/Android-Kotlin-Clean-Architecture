@@ -2,21 +2,15 @@ package com.sanogueralorenzo.presentation
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
-import com.sanogueralorenzo.presentation.postdetails.PostDetailsViewModel
-import com.sanogueralorenzo.presentation.postlist.PostListViewModel
-import com.sanogueralorenzo.presentation.userdetails.UserDetailsViewModel
-import dagger.Binds
 import dagger.MapKey
-import dagger.Module
-import dagger.multibindings.IntoMap
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
 import kotlin.reflect.KClass
 
-enum class ResourceState { LOADING, SUCCESS, ERROR }
+enum class DataState { LOADING, SUCCESS, ERROR }
 
-data class Resource<out T> constructor(val status: ResourceState, val data: T? = null, val message: String? = null)
+data class Data<out T> constructor(val dataState: DataState, val data: T? = null, val message: String? = null)
 
 @Suppress("UNCHECKED_CAST")
 @Singleton
@@ -30,28 +24,3 @@ class ViewModelFactory @Inject constructor(private val viewModels: MutableMap<Cl
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 @MapKey
 internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
-
-@Module
-abstract class ViewModelModule {
-
-    @Binds
-    internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(PostListViewModel::class)
-    internal abstract fun postListViewModel(viewModel: PostListViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(PostDetailsViewModel::class)
-    internal abstract fun postDetailsViewModel(viewModel: PostDetailsViewModel): ViewModel
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(UserDetailsViewModel::class)
-    internal abstract fun userDetailsViewModel(viewModel: UserDetailsViewModel): ViewModel
-
-    //Add ViewModels here
-
-}

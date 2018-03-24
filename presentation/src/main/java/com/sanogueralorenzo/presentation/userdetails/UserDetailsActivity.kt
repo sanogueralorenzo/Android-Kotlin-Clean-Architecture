@@ -40,11 +40,11 @@ class UserDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         withViewModel<UserDetailsViewModel>(viewModelFactory) {
             userId = intent.getStringExtra(USER_ID_KEY)
-            observe(user, ::showUser)
+            observe(user, ::updateUser)
         }
     }
 
-    private fun showUser(user: UserItem?) {
+    private fun updateUser(user: UserItem?) {
         user?.let {
             userName.text = getString(R.string.user_name, it.name)
             userUsername.text = getString(R.string.user_username, it.username)

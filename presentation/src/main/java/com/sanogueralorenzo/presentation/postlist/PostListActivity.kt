@@ -35,16 +35,16 @@ class PostListActivity : AppCompatActivity() {
 
         withViewModel<PostListViewModel>(viewModelFactory) {
             swipeRefreshLayout.setOnRefreshListener { get(refresh = true) }
-            observe(posts, ::updateState)
+            observe(posts, ::updatePosts)
         }
     }
 
-    private fun updateState(resource: Resource<List<PostItem>>?) {
-        resource?.let {
-            when(it.status) {
-                ResourceState.LOADING -> { swipeRefreshLayout.startRefreshing() }
-                ResourceState.SUCCESS -> { swipeRefreshLayout.stopRefreshing() }
-                ResourceState.ERROR -> { swipeRefreshLayout.stopRefreshing() }
+    private fun updatePosts(data: Data<List<PostItem>>?) {
+        data?.let {
+            when(it.dataState) {
+                DataState.LOADING -> { swipeRefreshLayout.startRefreshing() }
+                DataState.SUCCESS -> { swipeRefreshLayout.stopRefreshing() }
+                DataState.ERROR -> { swipeRefreshLayout.stopRefreshing() }
             }
             it.data?.let { adapter.addItems(it) }
             it.message?.let { toast(it) }
