@@ -19,6 +19,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -52,6 +56,10 @@ dependencies {
 
     implementation Libraries.glide
     kapt Libraries.glide_compiler
+
+    implementation "android.arch.lifecycle:extensions:1.1.0"
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.0"
+    testImplementation "android.arch.core:core-testing:1.1.0"
 
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.assertj_core

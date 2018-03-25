@@ -25,7 +25,7 @@ class PostItemMapperTest {
         val post = createPost()
         val combinedUserPost = CombinedUserPost(user, post)
         // when
-        val postItem = mapper.map(listOf(combinedUserPost))[0]
+        val postItem = mapper.mapToPresentation(listOf(combinedUserPost))[0]
 
         // then
         assertTrue(postItem.postId == post.id)
