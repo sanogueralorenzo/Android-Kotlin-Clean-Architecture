@@ -41,10 +41,10 @@ class PostListActivity : AppCompatActivity() {
 
     private fun updatePosts(data: Data<List<PostItem>>?) {
         data?.let {
-            when(it.dataState) {
-                DataState.LOADING -> { swipeRefreshLayout.startRefreshing() }
-                DataState.SUCCESS -> { swipeRefreshLayout.stopRefreshing() }
-                DataState.ERROR -> { swipeRefreshLayout.stopRefreshing() }
+            when (it.dataState) {
+                DataState.LOADING -> swipeRefreshLayout.startRefreshing()
+                DataState.SUCCESS -> swipeRefreshLayout.stopRefreshing()
+                DataState.ERROR -> swipeRefreshLayout.stopRefreshing()
             }
             it.data?.let { adapter.addItems(it) }
             it.message?.let { toast(it) }
