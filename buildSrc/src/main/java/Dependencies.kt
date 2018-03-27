@@ -24,7 +24,7 @@ object Versions {
     val support = "27.0.2"
     val maps = "11.8.0"
 
-    val kotlin = "1.2.21"
+    val kotlin = "1.2.31"
     val anko = "0.10.4"
     val timber = "4.6.0"
     val rxandroid = "2.0.1"
@@ -33,8 +33,9 @@ object Versions {
     val logging_interceptor = "3.9.1"
     val dagger = "2.14.1"
     val glide = "4.4.0"
-    val rxpaper = "1.1.0"
+    val rxpaper = "1.2.0"
     val moshi = "1.4.0"
+    val lifecycle = "1.1.1"
 
     val junit = "4.12"
     val assertj_core = "3.8.0"
@@ -72,6 +73,8 @@ object Libraries {
     val rxpaper = "com.github.pakoito:RxPaper2:${Versions.rxpaper}"
     val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
 
+    val lifecycle_extensions = "android.arch.lifecycle:extensions:${Versions.lifecycle}"
+    val lifecycle_compiler = "android.arch.lifecycle:compiler:${Versions.lifecycle}"
 }
 
 object SupportLibraries {
@@ -85,8 +88,5 @@ object TestLibraries {
     val junit = "junit:junit:${Versions.junit}"
     val assertj_core = "org.assertj:assertj-core:${Versions.assertj_core}"
     val mockito_kotlin = "com.nhaarman:mockito-kotlin:${Versions.mockito_kotlin}"
-    val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
-
-    val runner = "com.android.support.test:runner:${Versions.runner}"
-    val espresso_core = "com.android.support.test.espresso:espresso-core:${Versions.espresso_core}"
+    val lifecycle_testing = "android.arch.core:core-testing:${Versions.lifecycle}"
 }

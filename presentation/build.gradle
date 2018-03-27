@@ -11,8 +11,8 @@ android {
         targetSdkVersion Versions.target_sdk
         versionCode Releases.version_code
         versionName Releases.version_name
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -57,14 +57,11 @@ dependencies {
     implementation Libraries.glide
     kapt Libraries.glide_compiler
 
-    implementation "android.arch.lifecycle:extensions:1.1.0"
-    annotationProcessor "android.arch.lifecycle:compiler:1.1.0"
-    testImplementation "android.arch.core:core-testing:1.1.0"
+    implementation Libraries.lifecycle_extensions
+    kapt Libraries.lifecycle_compiler
 
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.assertj_core
     testImplementation TestLibraries.mockito_kotlin
-    testImplementation TestLibraries.robolectric
-    androidTestImplementation TestLibraries.runner
-    androidTestImplementation TestLibraries.espresso_core
+    testImplementation TestLibraries.lifecycle_testing
 }
