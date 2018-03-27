@@ -63,7 +63,7 @@ class PostRepositoryImplTest {
         val test = repository.get(false).test()
 
         // then
-        verify(mockCache).load(key)
+        verify(mockCache).load(key+"123")
         verify(mockCache).save(key, remoteList)
         verify(mockApi).getPosts()
         test.assertValue(mapper.mapToDomain(remoteList))
