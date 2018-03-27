@@ -22,28 +22,24 @@ object Versions {
     val inject = "1"
 
     val support = "27.0.2"
-    val maps = "11.8.0"
+    val maps = "12.0.0"
 
     val kotlin = "1.2.31"
     val anko = "0.10.4"
-    val timber = "4.6.0"
-    val rxandroid = "2.0.1"
+    val timber = "4.6.1"
+    val rxandroid = "2.0.2"
     val rxkotlin = "2.2.0"
-    val retrofit = "2.3.0"
-    val logging_interceptor = "3.9.1"
-    val dagger = "2.14.1"
-    val glide = "4.4.0"
+    val retrofit = "2.4.0"
+    val logging_interceptor = "3.10.0"
+    val dagger = "2.15"
+    val glide = "4.6.1"
     val rxpaper = "1.2.0"
     val moshi = "1.4.0"
     val lifecycle = "1.1.1"
 
     val junit = "4.12"
-    val assertj_core = "3.8.0"
+    val assertj_core = "3.9.1"
     val mockito_kotlin = "1.5.0"
-    val robolectric = "3.5.1"
-
-    val runner = "1.0.1"
-    val espresso_core = "3.0.1"
 }
 
 object Libraries {

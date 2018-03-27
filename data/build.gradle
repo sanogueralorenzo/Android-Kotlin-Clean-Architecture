@@ -22,7 +22,7 @@ android {
 }
 
 dependencies {
-    compile project(Modules.domain)
+    implementation project(Modules.domain)
 
     implementation Libraries.kotlin_stdlib
     implementation Libraries.rxkotlin

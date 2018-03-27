@@ -13,6 +13,11 @@
 
         <include layout="@layout/include_user_info" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorDivider" />
+
         <TextView
             android:id="@+id/postTitle"
             android:layout_width="match_parent"
