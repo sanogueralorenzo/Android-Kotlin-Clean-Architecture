@@ -17,7 +17,7 @@ class UserItemMapperTest {
     }
 
     @Test
-    fun `map entity to domain`() {
+    fun `map domain to presentation`() {
         // given
         val user = createUser()
 

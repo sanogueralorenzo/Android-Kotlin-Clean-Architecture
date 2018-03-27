@@ -28,7 +28,7 @@ public class RxSchedulersOverrideRule implements TestRule {
                 @Override
                 public Scheduler apply(@NonNull Callable<Scheduler> schedulerCallable)
                         throws Exception {
-                    return getScheduler();
+                    return Schedulers.trampoline();
                 }
             };
 
@@ -36,7 +36,7 @@ public class RxSchedulersOverrideRule implements TestRule {
             new Function<Scheduler, Scheduler>() {
                 @Override
                 public Scheduler apply(@NonNull Scheduler scheduler) throws Exception {
-                    return getScheduler();
+                    return Schedulers.trampoline();
                 }
             };
 
@@ -59,9 +59,4 @@ public class RxSchedulersOverrideRule implements TestRule {
             }
         };
     }
-
-    public Scheduler getScheduler() {
-        return Schedulers.trampoline();
-    }
-
 }
