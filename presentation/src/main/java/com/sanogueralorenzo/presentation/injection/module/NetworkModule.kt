@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-@Singleton
 class NetworkModule {
 
     private val BASE_URL = "http://jsonplaceholder.typicode.com/"
