@@ -28,7 +28,7 @@ jobs:
           name: Run Tests
           command: ./gradlew lint test
       - store_artifacts:
-          path: app/build/reports
+          path: presentation/build/reports
           destination: reports
       - store_test_results:
-          path: app/build/test-results
+          path: presentation/build/test-results
