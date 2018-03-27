@@ -31,7 +31,7 @@ class CommentsUseCaseTest {
         _when(mockRepository.get(postId, false)).thenReturn(Single.just(commentList))
 
         // when
-        val test = usecase.get(postId, true).test()
+        val test = usecase.get(postId, false).test()
 
         // then
         verify(mockRepository).get(postId, false)
