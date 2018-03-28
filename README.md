@@ -50,15 +50,15 @@ Taping the user avatar from Screen1 or Screen2 (selected user) should take you t
 
 Clean Architecture
 -
-(https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture.png)
+![Clean Architecture](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture.png)
 
 Architectural approach
 -
-(https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture_layers.png)
+![Clean Architecture Layers](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture_layers.png)
 
 Architectural reactive approach
 -
-(https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture_layers_details.png)
+![Clean Architecture Layers Details](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture_layers_details.png)
 
 Discussions
 -
