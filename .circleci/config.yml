@@ -31,7 +31,7 @@ jobs:
           path: presentation/build/test-results
       - run:
           name: Run Domain Module Unit Tests
-          command: ./gradlew :domain:testDebugUnitTest
+          command: ./gradlew :domain:test
       - store_test_results:
           path: domain/build/test-results
       - run:
