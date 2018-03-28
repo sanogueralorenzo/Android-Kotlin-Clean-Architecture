@@ -1,10 +1,6 @@
 Domain Layer
 =
 
-Quick overview of the app
--
-
-
 Notes regarding the Domain layer
 -
 
