@@ -28,32 +28,32 @@ jobs:
           name: Run Presentation Module Unit Tests
           command: ./gradlew :presentation:testDebugUnitTest
       - store_artifacts:
-          path: presentation/build/reports
+          path: reports
           destination: presentation-reports
       - store_test_results:
-          path: presentation/build/test-results
+          path: test-results
           destination: presentation-tests
       - run:
           name: Run Domain Module Unit Tests
           command: ./gradlew :domain:test
       - store_artifacts:
-          path: domain/build/reports
+          path: reports
           destination: domain-reports
       - store_test_results:
-          path: domain/build/test-results
+          path: test-results
           destination: domain-tests
       - run:
           name: Run Data Module Unit Tests
           command: ./gradlew :data:testDebugUnitTest
       - store_artifacts:
-          path: data/build/reports
+          path: reports
           destination: data-reports
       - store_test_results:
-          path: data/build/test-results
+          path: test-results
           destination: data-tests
       - run:
           name: Run Lint Test
           command: ./gradlew lint
       - store_artifacts:
-          path: presentation/build/reports
+          path: reports
           destination: presentation-lint
