@@ -26,16 +26,16 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}
       - run:
           name: Run Presentation Module Unit Tests
-          command: ./graldlew :presentation:testDebugUnitTest
+          command: ./gradlew :presentation:testDebugUnitTest
       - store_test_results:
           path: presentation/build/test-results
       - run:
           name: Run Domain Module Unit Tests
-          command: ./graldlew :domain:testDebugUnitTest
+          command: ./gradlew :domain:testDebugUnitTest
       - store_test_results:
           path: domain/build/test-results
       - run:
           name: Run Data Module Unit Tests
-          command: ./graldlew :data:testDebugUnitTest
+          command: ./gradlew :data:testDebugUnitTest
       - store_test_results:
           path: data/build/test-results
