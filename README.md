@@ -1,22 +1,25 @@
 Android Kotlin Clean Architecture
 =
 
-Android Kotlin Clean Architecture project is my attempt to show how a sample/test app can have some clean architecture thrown into it without making it hard to understand.
+Sample project to show how a sample/test app can have some clean architecture without making it hard to understand.
 
-The main benefits from this project are:
-- Makes it easy to understand some concepts from clean architecture.
-- Shows how easy it is to apply/follow design principles (separation of concerns for ex.) and how your project can benefit from them.
-- Shows how easy it is to have different modules in a project and tries to take the fear away from 1 module, several packages for the different layers.
+Main benefits from this project:
+- Easy to understand some concepts from Clean Architecture.
+- Applies & follows design principles (separation of concerns for example).
+- Layer separation by modules (not packages) to set clear boundaries between them.
 - Easy to read, scale, test and maintain.
 
-Once this project is understood I highly recommend [https://github.com/android10/Android-CleanArchitecture](https://github.com/android10/Android-CleanArchitecture)
-it is a complete different app but it contains more clean architecture knowledge.
-
-I added few links at the bottom, kudos to android10's for the images and links which I've added here for simplicity.
-
 Some extra notes:
-- To make it as simple as possible I've skipped some things and kept only the most important ones from the Clean Architecture approach.
+- Simplified Clean Architecture approach.
+- For Continuous integration I've used [CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture). You can check the the config file [here](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/.circleci/config.yml)
 - Each module will have its own readme to try and throw some light under how and why of the decisions.
+
+Shortcuts to the module Readme
+[Presentation Module](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/presentation/README.md)
+
+[Domain Module](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/domain/README.md)
+
+[Data Module](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/data/README.md)
 
 Quick overview of the app
 -
@@ -26,7 +29,7 @@ Using the API endpoints
 - GET http://jsonplaceholder.typicode.com/users
 - GET http://jsonplaceholder.typicode.com/comments
 
-Create a simple Android app with two screens:
+Create a simple Android app with three screens:
 - Screen1: Post list screen that contains:
     - User avatar, name and username of each post.
     - Post title and ellipsized body.
@@ -47,15 +50,15 @@ Taping the user avatar from Screen1 or Screen2 (selected user) should take you t
 
 Clean Architecture
 -
-![http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture.png)
+(https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture.png)
 
 Architectural approach
 -
-![http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture_layers.png)
+(https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture_layers.png)
 
 Architectural reactive approach
 -
-![http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture_layers_details.png)
+(https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/clean_architecture_layers_details.png)
 
 Discussions
 -
@@ -64,14 +67,15 @@ Refer to the issues section: https://github.com/sanogueralorenzo/Android-Kotlin-
 
 Links
 -
+[My Medium which has several stories based on this sample project)](https://medium.com/@sanogueralorenzo)
 
-[Architecting Android…The clean way?](http://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/)
+[Moshi with Retrofit)](https://proandroiddev.com/moshi-with-retrofit-in-kotlin-%EF%B8%8F-a69c2621708b)
 
-[Architecting Android…The evolution](http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/)
+[Gradle Dependency Management with Kotlin (buildSrc)](https://proandroiddev.com/gradle-dependency-management-with-kotlin-94eed4df9a28)
 
-[Tasting Dagger 2 on Android](http://fernandocejas.com/2015/04/11/tasting-dagger-2-on-android/)
+[The death of Presenters and the rise of ViewModels (AAC)](https://proandroiddev.com/the-death-of-presenters-and-the-rise-of-viewmodels-aac-f14d54b419a)
 
-[Clean Architecture…Dynamic Parameters in Use Cases](http://fernandocejas.com/2016/12/24/clean-architecture-dynamic-parameters-in-use-cases/)
+[CircleCI Android Documentation](https://circleci.com/docs/2.0/language-android/)
 
 License
 -
