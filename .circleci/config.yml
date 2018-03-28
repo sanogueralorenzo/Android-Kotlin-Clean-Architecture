@@ -5,7 +5,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/Random-Directory
+    working_directory: ~/Android-Kotlin-Clean-Architecture
     docker:
       - image: circleci/android:api-25-alpha
     environment:
