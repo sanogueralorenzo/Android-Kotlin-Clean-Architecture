@@ -3,10 +3,10 @@ Android Kotlin Clean Architecture
 
 Sample project to show how a sample/test app can have some clean architecture without making it hard to understand.
 
-Main benefits from this project:
+Main benefits:
 - Easy to understand some concepts from Clean Architecture.
 - Applies & follows design principles (separation of concerns for example).
-- Layer separation by modules (not packages) to set clear boundaries between them.
+- Layer separation by modules (not packages) to set clear boundaries between each layer.
 - Easy to read, scale, test and maintain.
 
 Some extra notes:
@@ -15,6 +15,7 @@ Some extra notes:
 - Each module will have its own readme to try and throw some light under how and why of the decisions.
 
 Shortcuts to the module Readme
+
 [Presentation Module](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/presentation/README.md)
 
 [Domain Module](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/domain/README.md)
@@ -67,13 +68,7 @@ Refer to the issues section: https://github.com/sanogueralorenzo/Android-Kotlin-
 
 Links
 -
-[My Medium which has several stories based on this sample project)](https://medium.com/@sanogueralorenzo)
-
-[Moshi with Retrofit)](https://proandroiddev.com/moshi-with-retrofit-in-kotlin-%EF%B8%8F-a69c2621708b)
-
-[Gradle Dependency Management with Kotlin (buildSrc)](https://proandroiddev.com/gradle-dependency-management-with-kotlin-94eed4df9a28)
-
-[The death of Presenters and the rise of ViewModels (AAC)](https://proandroiddev.com/the-death-of-presenters-and-the-rise-of-viewmodels-aac-f14d54b419a)
+[My Medium which has several stories based on this sample project](https://medium.com/@sanogueralorenzo)
 
 [CircleCI Android Documentation](https://circleci.com/docs/2.0/language-android/)
 
