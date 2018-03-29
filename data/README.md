@@ -4,7 +4,7 @@ Data Layer
 Notes regarding the Data layer
 -
 
-- Data layer only has access to the domain layer. This is done by adding to gradle: `compile project(':domain')`
+- Data layer only has access to the domain layer. This is done by adding to gradle: `implementation project(':domain')`
 - Data layer is responsible to save/load from/to disk/cloud.
 - Data layer is responsible to have the repositories implementation.
 These implementations will implement an interface (contract) from the domain layer and it will be the only way to
