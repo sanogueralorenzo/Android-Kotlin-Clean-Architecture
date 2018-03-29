@@ -68,7 +68,17 @@ Refer to the issues section: https://github.com/sanogueralorenzo/Android-Kotlin-
 
 Links
 -
-[My Medium which has several stories based on this sample project](https://medium.com/@sanogueralorenzo)
+[Medium](https://medium.com/@sanogueralorenzo)
+
+[LinkedIn](https://www.linkedin.com/in/mario-sanoguera-de-lorenzo-b7b392103/)
+
+[Twitter](https://twitter.com/MarioSanoguera)
+
+[Moshi with Retrofit](https://proandroiddev.com/moshi-with-retrofit-in-kotlin-%EF%B8%8F-a69c2621708b)
+
+[Gradle Dependency Management with Kotlin (buildSrc)](https://proandroiddev.com/gradle-dependency-management-with-kotlin-94eed4df9a28)
+
+[The death of Presenters and the rise of ViewModels (AAC)](https://proandroiddev.com/the-death-of-presenters-and-the-rise-of-viewmodels-aac-f14d54b419a)
 
 [CircleCI Android Documentation](https://circleci.com/docs/2.0/language-android/)
 
