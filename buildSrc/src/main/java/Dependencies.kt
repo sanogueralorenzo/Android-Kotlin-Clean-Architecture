@@ -26,9 +26,9 @@ object Versions {
     val support = "27.0.2"
     val maps = "12.0.0"
 
-    val kotlin = "1.2.30"
+    val kotlin = "1.2.31"
     val anko = "0.10.4"
-    val timber = "4.6.1"
+    val timber = "4.7.0"
     val rxandroid = "2.0.2"
     val rxkotlin = "2.2.0"
     val retrofit = "2.4.0"
