@@ -13,7 +13,9 @@ object Releases {
 }
 
 object Versions {
-    val gradle = "3.0.1"
+    val gradle = "3.1.0"
+
+    val versions = "0.17.0"
 
     val compile_sdk = 27
     val min_sdk = 21
@@ -24,7 +26,7 @@ object Versions {
     val support = "27.0.2"
     val maps = "12.0.0"
 
-    val kotlin = "1.2.31"
+    val kotlin = "1.2.30"
     val anko = "0.10.4"
     val timber = "4.6.1"
     val rxandroid = "2.0.2"
