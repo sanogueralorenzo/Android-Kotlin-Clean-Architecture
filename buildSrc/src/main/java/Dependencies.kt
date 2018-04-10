@@ -13,7 +13,7 @@ object Releases {
 }
 
 object Versions {
-    val gradle = "3.1.0"
+    val gradle = "3.1.1"
 
     val versions = "0.17.0"
 
