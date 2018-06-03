@@ -2,9 +2,9 @@ package com.sanogueralorenzo.presentation
 
 import android.app.Application
 import com.pacoworks.rxpaper2.RxPaperBook
-import com.sanogueralorenzo.presentation.injection.component.DaggerInjector
-import com.sanogueralorenzo.presentation.injection.component.Injector
-import com.sanogueralorenzo.presentation.injection.module.AppModule
+import com.sanogueralorenzo.presentation.di.Injector
+import com.sanogueralorenzo.presentation.di.AppModule
+import com.sanogueralorenzo.presentation.di.DaggerInjector
 import io.reactivex.plugins.RxJavaPlugins
 import timber.log.Timber
 

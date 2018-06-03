@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     defaultPublishConfig "debug"
@@ -26,10 +27,17 @@ dependencies {
 
     implementation Libraries.kotlin_stdlib
     implementation Libraries.rxkotlin
-    implementation Libraries.moshi
-    implementation Libraries.retrofit
     implementation Libraries.inject
     implementation Libraries.rxpaper
+
+    implementation Libraries.moshi
+    api Libraries.retrofit
+    implementation Libraries.rxjava_adapter
+    implementation Libraries.moshi_converter
+    implementation Libraries.logging_interceptor
+
+    implementation Libraries.dagger
+    kapt Libraries.dagger_compiler
 
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.assertj_core

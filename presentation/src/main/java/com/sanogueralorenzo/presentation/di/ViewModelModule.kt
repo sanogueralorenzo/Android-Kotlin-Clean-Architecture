@@ -1,4 +1,4 @@
-package com.sanogueralorenzo.presentation.injection.module
+package com.sanogueralorenzo.presentation.di
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider

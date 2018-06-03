@@ -1,9 +1,7 @@
-package com.sanogueralorenzo.presentation.injection.component
+package com.sanogueralorenzo.presentation.di
 
-import com.sanogueralorenzo.presentation.injection.module.AppModule
-import com.sanogueralorenzo.presentation.injection.module.NetworkModule
-import com.sanogueralorenzo.presentation.injection.module.RepositoryModule
-import com.sanogueralorenzo.presentation.injection.module.ViewModelModule
+import com.sanogueralorenzo.data.di.NetworkModule
+import com.sanogueralorenzo.data.di.RepositoryModule
 import com.sanogueralorenzo.presentation.postdetails.PostDetailsActivity
 import com.sanogueralorenzo.presentation.postlist.PostListActivity
 import com.sanogueralorenzo.presentation.userdetails.UserDetailsActivity
