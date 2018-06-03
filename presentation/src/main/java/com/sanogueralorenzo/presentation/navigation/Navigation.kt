@@ -9,7 +9,7 @@ import com.sanogueralorenzo.presentation.postdetails.PostDetailsActivity
 import com.sanogueralorenzo.presentation.userdetails.UserDetailsActivity
 import javax.inject.Inject
 
-class PostListNavigator @Inject constructor() {
+class PostDetailsNavigator @Inject constructor() {
 
     fun navigate(activity: Activity, postItem: PostItem) {
         val intent = Intent(activity, PostDetailsActivity::class.java)

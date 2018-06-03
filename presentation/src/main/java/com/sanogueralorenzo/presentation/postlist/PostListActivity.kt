@@ -6,7 +6,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import com.sanogueralorenzo.presentation.*
 import com.sanogueralorenzo.presentation.model.PostItem
-import com.sanogueralorenzo.presentation.navigation.PostListNavigator
+import com.sanogueralorenzo.presentation.navigation.PostDetailsNavigator
 import com.sanogueralorenzo.presentation.navigation.UserDetailsNavigator
 import kotlinx.android.synthetic.main.activity_post_list.*
 import org.jetbrains.anko.toast
@@ -17,12 +17,12 @@ class PostListActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject
-    lateinit var postListNavigator: PostListNavigator
+    lateinit var postDetailsNavigator: PostDetailsNavigator
     @Inject
     lateinit var userDetailsNavigator: UserDetailsNavigator
 
     private val avatarClick: (String) -> Unit = { userDetailsNavigator.navigate(this, it) }
-    private val itemClick: (PostItem) -> Unit = { postListNavigator.navigate(this, it) }
+    private val itemClick: (PostItem) -> Unit = { postDetailsNavigator.navigate(this, it) }
     private val adapter = PostListAdapter(avatarClick, itemClick)
 
     override fun onCreate(savedInstanceState: Bundle?) {
