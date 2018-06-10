@@ -3,7 +3,7 @@ Android Kotlin Clean Architecture
 
 ![Android Kotlin](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/android_kotlin.png)
 
-[![CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master.svg?style=svg)](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master)
+[![CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master.svg?style=svg)](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master) 
 
 Sample project to show how a sample/test app can have some clean architecture without making it hard to understand.
 
@@ -69,6 +69,10 @@ Discussions
 -
 
 Refer to the issues section: https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/issues
+
+Mentions
+-
+[![androidweekly](https://img.shields.io/badge/androidweekly.net-303-orange.svg?style=flat-square)](http://androidweekly.net/issues/issue-303)
 
 Links
 -
