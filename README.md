@@ -1,16 +1,26 @@
 Android Kotlin Clean Architecture
 =
 
+<p align="center">
+    <img src="(https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/feature/readme_update/sample_images/android_kotlin.png"
+        height="130">
+</p>
+<p align="center">
+    <a href="https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master">
+        <img src="https://img.shields.io/circleci/project/github/badges/shields.svg"
+            alt="build status"></a>
+</p>
+
 Sample project to show how a sample/test app can have some clean architecture without making it hard to understand.
 
 Main benefits:
 - Easy to understand some concepts from Clean Architecture.
-- Applies & follows design principles (separation of concerns for example).
+- Applies & follows design principles.
 - Layer separation by modules (not packages) to set clear boundaries between each layer.
 - Easy to read, scale, test and maintain.
 
 Some extra notes:
-- Simplified Clean Architecture approach.
+- Simplified Clean Architecture approach .
 - For Continuous integration I've used [CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture). You can check the the config file [here](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/.circleci/config.yml)
 - Each module will have its own readme to try and throw some light under how and why of the decisions.
 
