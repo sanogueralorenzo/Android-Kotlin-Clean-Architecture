@@ -23,20 +23,6 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
-
-    lintOptions {
-        abortOnError true
-    }
-
-    packagingOptions {
-        exclude 'META-INF/android.arch.lifecycle_runtime.version'
-        exclude 'META-INF/com.android.support_support-fragment.version'
-        exclude 'META-INF/com.android.support_support-v4.version'
-        exclude 'META-INF/com.android.support_support-media-compat.version'
-        exclude 'META-INF/com.android.support_support-core-utils.version'
-        exclude 'META-INF/com.android.support_support-core-ui.version'
-        exclude 'META-INF/com.android.support_support-compat.version'
-    }
 }
 
 dependencies {
@@ -60,6 +46,7 @@ dependencies {
 
     implementation Libraries.rxpaper
 
+    implementation Libraries.retrofit
     implementation Libraries.rxjava_adapter
     implementation Libraries.moshi_converter
     implementation Libraries.logging_interceptor
