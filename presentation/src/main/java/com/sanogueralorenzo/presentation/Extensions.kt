@@ -13,8 +13,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.sanogueralorenzo.presentation.di.Injector
 
-typealias f<T> = (T) -> Unit
-
 val Activity.app: App get() = application as App
 
 fun AppCompatActivity.getAppInjector(): Injector = (app).injector

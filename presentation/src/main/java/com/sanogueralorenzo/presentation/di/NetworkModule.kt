@@ -1,4 +1,4 @@
-package com.sanogueralorenzo.data.di
+package com.sanogueralorenzo.presentation.di
 
 import com.sanogueralorenzo.data.BuildConfig
 import com.sanogueralorenzo.data.remote.CommentsApi
