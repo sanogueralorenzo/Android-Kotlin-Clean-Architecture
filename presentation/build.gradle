@@ -60,6 +60,10 @@ dependencies {
 
     implementation Libraries.rxpaper
 
+    implementation Libraries.rxjava_adapter
+    implementation Libraries.moshi_converter
+    implementation Libraries.logging_interceptor
+
     implementation Libraries.dagger
     kapt Libraries.dagger_compiler
 
