@@ -41,7 +41,6 @@ dependencies {
 
     implementation Libraries.timber
 
-    implementation Libraries.rxandroid
     implementation Libraries.rxkotlin
 
     implementation Libraries.rxpaper
