@@ -23,6 +23,10 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
+    packagingOptions {
+        exclude 'META-INF/android.arch.lifecycle_runtime.version'
+    }
 }
 
 dependencies {
@@ -63,4 +67,15 @@ dependencies {
     testImplementation TestLibraries.assertj_core
     testImplementation TestLibraries.mockito_kotlin
     testImplementation TestLibraries.lifecycle_testing
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'org.jetbrains.kotlin') {
+            details.useVersion Versions.kotlin
+        } else if (requested.group == 'com.android.support') {
+            details.useVersion Versions.support
+        }
+    }
 }
