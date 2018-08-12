@@ -23,6 +23,10 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
+    packagingOptions {
+        exclude 'META-INF/android.arch.lifecycle_runtime.version'
+    }
 }
 
 dependencies {

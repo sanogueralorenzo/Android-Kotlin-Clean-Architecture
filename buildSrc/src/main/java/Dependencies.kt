@@ -13,34 +13,33 @@ object Releases {
 }
 
 object Versions {
-    val gradle = "3.1.2"
+    val gradle = "3.1.4"
 
-    val versions = "0.17.0"
+    val versions = "0.20.0"
 
-    val compile_sdk = 27
+    val compile_sdk = 28
     val min_sdk = 21
-    val target_sdk = 27
+    val target_sdk = 28
 
     val inject = "1"
 
-    val support = "27.0.2"
-    val maps = "12.0.0"
+    val support = "28.0.0-rc01"
+    val maps = "15.0.1"
 
-    val kotlin = "1.2.31"
-    val anko = "0.10.4"
-    val timber = "4.7.0"
-    val rxandroid = "2.0.2"
-    val rxkotlin = "2.2.0"
+    val kotlin = "1.2.60"
+    val anko = "0.10.5"
+    val timber = "4.7.1"
+    val rxkotlin = "2.3.0"
     val retrofit = "2.4.0"
-    val logging_interceptor = "3.10.0"
-    val dagger = "2.15"
-    val glide = "4.6.1"
+    val logging_interceptor = "3.11.0"
+    val dagger = "2.17"
+    val glide = "4.7.1"
     val rxpaper = "1.2.0"
     val moshi = "1.4.0"
     val lifecycle = "1.1.1"
 
     val junit = "4.12"
-    val assertj_core = "3.9.1"
+    val assertj_core = "3.10.0"
     val mockito_kotlin = "1.5.0"
 }
 
@@ -54,7 +53,6 @@ object Libraries {
 
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
-    val rxandroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxandroid}"
     val rxkotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxkotlin}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
