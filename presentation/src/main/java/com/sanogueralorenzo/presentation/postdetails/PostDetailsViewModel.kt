@@ -37,7 +37,6 @@ class PostDetailsViewModel @Inject constructor(private val userPostUseCase: User
     fun getPost() =
             compositeDisposable.add(userPostUseCase.get(userIdPostId!!.userId, userIdPostId!!.postId, false)
                     .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.io())
                     .map { postItemMapper.mapToPresentation(it) }
                     .subscribe({ post.postValue(it) }, { }))
 
@@ -46,7 +45,6 @@ class PostDetailsViewModel @Inject constructor(private val userPostUseCase: User
             compositeDisposable.add(commentsUseCase.get(userIdPostId!!.postId, refresh)
                     .doOnSubscribe { comments.postValue(Data(dataState = DataState.LOADING, data = comments.value?.data, message = null)) }
                     .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.io())
                     .map { commentItemMapper.mapToPresentation(it) }
                     .subscribe({
                         comments.postValue(Data(dataState = DataState.SUCCESS, data = it, message = null))

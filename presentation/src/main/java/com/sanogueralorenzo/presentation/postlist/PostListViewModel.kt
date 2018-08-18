@@ -25,7 +25,6 @@ class PostListViewModel @Inject constructor(private val useCase: UsersPostsUseCa
             compositeDisposable.add(useCase.get(refresh)
                     .doOnSubscribe { posts.postValue(Data(dataState = DataState.LOADING, data = posts.value?.data, message = null)) }
                     .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.io())
                     .map { mapper.mapToPresentation(it) }
                     .subscribe({
                         posts.postValue(Data(dataState = DataState.SUCCESS, data = it, message = null))
