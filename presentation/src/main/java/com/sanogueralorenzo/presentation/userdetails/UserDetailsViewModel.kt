@@ -26,7 +26,6 @@ class UserDetailsViewModel @Inject constructor(private val useCase: UserUseCase,
     fun get(refresh: Boolean = false) =
             compositeDisposable.add(useCase.get(userId!!, refresh)
                     .subscribeOn(Schedulers.io())
-                    .observeOn(Schedulers.io())
                     .map { mapper.mapToPresentation(it) }
                     .subscribe({ user.postValue(it) }, { }))
 
