@@ -47,6 +47,6 @@ jobs:
           path: data/build/test-results
       - run:
           name: Run Lint Test
-          command: ./gradlew lint
+          command: ./gradlew lintDebug
       - store_artifacts:
           path: presentation/build/reports
