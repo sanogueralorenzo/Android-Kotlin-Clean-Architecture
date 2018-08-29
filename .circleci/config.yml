@@ -12,30 +12,15 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}
       - run:
-          name: Download Dependencies
-          command: ./gradlew androidDependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}
-      - run:
-          name: Run Presentation Module Unit Tests
-          command: ./gradlew :presentation:testDebugUnitTest
-      - run:
-          name: Run Domain Module Unit Tests
-          command: ./gradlew :domain:test
-      - run:
-          name: Run Data Module Unit Tests
-          command: ./gradlew :data:testDebugUnitTest
-      - run:
-          name: Run Lint Test
-          command: ./gradlew lintDebug
+          name: Run Detekt
+          command: ./gradlew detektCheck
       - run:
           name: Run Ktlint
           command: ./gradlew ktlint
       - run:
-          name: Run Detekt
-          command: ./gradlew detektCheck
+          name: Run Lint Test
+          command: ./gradlew lintDebug
+      - run:
+          name: Run Unit Tests
+          command: ./gradlew :presentation:testDebugUnitTest :data:testDebugUnitTest :domain:test
