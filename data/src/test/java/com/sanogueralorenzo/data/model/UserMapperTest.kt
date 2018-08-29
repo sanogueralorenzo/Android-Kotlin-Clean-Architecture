@@ -14,7 +14,8 @@ class UserMapperTest {
 
     @Before
     fun setUp() {
-        mapper = UserMapper(addressMapper = AddressMapper(GeoMapper()), companyMapper = CompanyMapper())
+        mapper =
+            UserMapper(addressMapper = AddressMapper(GeoMapper()), companyMapper = CompanyMapper())
     }
 
     @Test

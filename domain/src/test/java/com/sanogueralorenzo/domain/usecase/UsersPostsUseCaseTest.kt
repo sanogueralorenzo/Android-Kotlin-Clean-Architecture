@@ -17,8 +17,8 @@ class UsersPostsUseCaseTest {
 
     private lateinit var usersPostsUseCase: UsersPostsUseCase
 
-    private val mockUserRepository = mock<UserRepository> {}
-    private val mockPostRepository = mock<PostRepository> {}
+    private val mockUserRepository = mock<UserRepository>()
+    private val mockPostRepository = mock<PostRepository>()
     private val mapper = UserPostMapper()
 
     private val userList = listOf(createUser())

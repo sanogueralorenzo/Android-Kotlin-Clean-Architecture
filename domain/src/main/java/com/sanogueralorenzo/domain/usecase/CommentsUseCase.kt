@@ -7,5 +7,6 @@ import javax.inject.Inject
 
 class CommentsUseCase @Inject constructor(private val repository: CommentRepository) {
 
-    fun get(postId: String, refresh: Boolean): Single<List<Comment>> = repository.get(postId, refresh)
+    fun get(postId: String, refresh: Boolean): Single<List<Comment>> =
+        repository.get(postId, refresh)
 }

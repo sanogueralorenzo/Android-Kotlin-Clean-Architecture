@@ -17,11 +17,6 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    private val BASE_URL = "http://jsonplaceholder.typicode.com/"
-    private val CONNECT_TIMEOUT = 10L
-    private val READ_TIMEOUT = 10L
-    private val WRITE_TIMEOUT = 10L
-
     @Provides
     @Singleton
     fun provideHttpClient(): OkHttpClient {
@@ -40,11 +35,11 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
+        .baseUrl(BASE_URL)
+        .client(okHttpClient)
+        .addConverterFactory(MoshiConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
 
     @Provides
     fun providePostsApi(retrofit: Retrofit): PostsApi = retrofit.create(PostsApi::class.java)
@@ -53,5 +48,13 @@ class NetworkModule {
     fun provideUsersApi(retrofit: Retrofit): UsersApi = retrofit.create(UsersApi::class.java)
 
     @Provides
-    fun provideCommentsApi(retrofit: Retrofit): CommentsApi = retrofit.create(CommentsApi::class.java)
+    fun provideCommentsApi(retrofit: Retrofit): CommentsApi =
+        retrofit.create(CommentsApi::class.java)
+
+    companion object {
+        private const val BASE_URL = "http://jsonplaceholder.typicode.com/"
+        private const val CONNECT_TIMEOUT = 10L
+        private const val READ_TIMEOUT = 10L
+        private const val WRITE_TIMEOUT = 10L
+    }
 }

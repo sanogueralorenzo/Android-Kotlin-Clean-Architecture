@@ -15,7 +15,7 @@ class CommentsUseCaseTest {
 
     private lateinit var usecase: CommentsUseCase
 
-    private val mockRepository = mock<CommentRepository> {}
+    private val mockRepository = mock<CommentRepository>()
 
     private val postId = "1"
     private val commentList = listOf(createComment())

@@ -23,8 +23,11 @@ class UserDetailsViewModelTest {
 
     private lateinit var viewModel: UserDetailsViewModel
 
-    private val mockUseCase = mock<UserUseCase> {}
-    private val mapper = UserItemMapper(addressItemMapper = AddressItemMapper(LatLngMapper()), companyItemMapper = CompanyItemMapper())
+    private val mockUseCase = mock<UserUseCase>()
+    private val mapper = UserItemMapper(
+        addressItemMapper = AddressItemMapper(LatLngMapper()),
+        companyItemMapper = CompanyItemMapper()
+    )
 
     private val userId = "1"
     private val user = createUser()

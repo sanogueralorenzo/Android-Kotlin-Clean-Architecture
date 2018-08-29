@@ -41,10 +41,13 @@ class PostDetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         commentsRecyclerView.isNestedScrollingEnabled = false
         commentsRecyclerView.adapter = adapter
-        userAvatar.setOnClickListener { userDetailsNavigator.navigate(this, intent.getStringExtra(USER_ID_KEY)) }
+        userAvatar.setOnClickListener {
+            userDetailsNavigator.navigate(this, intent.getStringExtra(USER_ID_KEY))
+        }
 
         withViewModel<PostDetailsViewModel>(viewModelFactory) {
-            userIdPostId = UserIdPostId(intent.getStringExtra(USER_ID_KEY), intent.getStringExtra(POST_ID_KEY))
+            userIdPostId =
+                UserIdPostId(intent.getStringExtra(USER_ID_KEY), intent.getStringExtra(POST_ID_KEY))
             viewModel = this
             observe(post, ::updatePost)
             observe(comments, ::updateComments)
@@ -72,9 +75,9 @@ class PostDetailsActivity : AppCompatActivity() {
             it.data?.let { adapter.addItems(it) }
             it.message?.let {
                 Snackbar.make(container, R.string.error, Snackbar.LENGTH_LONG)
-                        .setAction(getString(R.string.retry), { viewModel.getComments(true) })
-                        .setDuration(Snackbar.LENGTH_INDEFINITE)
-                        .show()
+                    .setAction(getString(R.string.retry), { viewModel.getComments(true) })
+                    .setDuration(Snackbar.LENGTH_INDEFINITE)
+                    .show()
             }
         }
     }

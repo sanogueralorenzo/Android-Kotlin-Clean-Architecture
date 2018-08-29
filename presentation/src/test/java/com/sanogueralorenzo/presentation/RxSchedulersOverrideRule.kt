@@ -1,13 +1,12 @@
 package com.sanogueralorenzo.presentation
 
-import org.junit.rules.TestRule
-import org.junit.runner.Description
-import org.junit.runners.model.Statement
-
 import io.reactivex.Scheduler
 import io.reactivex.functions.Function
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
+import org.junit.rules.TestRule
+import org.junit.runner.Description
+import org.junit.runners.model.Statement
 
 /**
  * Rule to avoid having schedulers all around https://github.com/ReactiveX/RxAndroid/issues/238
@@ -19,18 +18,19 @@ import io.reactivex.schedulers.Schedulers
  */
 class RxSchedulersOverrideRule : TestRule {
 
-    private val rxJavaImmediateScheduler = Function<Scheduler, Scheduler> { Schedulers.trampoline() }
+    private val rxJavaImmediateScheduler =
+        Function<Scheduler, Scheduler> { Schedulers.trampoline() }
 
     override fun apply(base: Statement, description: Description): Statement =
-            object : Statement() {
-                override fun evaluate() {
-                    RxJavaPlugins.reset()
-                    RxJavaPlugins.setIoSchedulerHandler(rxJavaImmediateScheduler)
-                    RxJavaPlugins.setNewThreadSchedulerHandler(rxJavaImmediateScheduler)
+        object : Statement() {
+            override fun evaluate() {
+                RxJavaPlugins.reset()
+                RxJavaPlugins.setIoSchedulerHandler(rxJavaImmediateScheduler)
+                RxJavaPlugins.setNewThreadSchedulerHandler(rxJavaImmediateScheduler)
 
-                    base.evaluate()
+                base.evaluate()
 
-                    RxJavaPlugins.reset()
-                }
+                RxJavaPlugins.reset()
             }
+        }
 }

@@ -27,8 +27,8 @@ class PostDetailsViewModelTest {
 
     private lateinit var viewModel: PostDetailsViewModel
 
-    private val mockUserPostUseCase = mock<UserPostUseCase> {}
-    private val mockCommentsUseCase = mock<CommentsUseCase> {}
+    private val mockUserPostUseCase = mock<UserPostUseCase>()
+    private val mockCommentsUseCase = mock<CommentsUseCase>()
 
     private val postItemMapper = PostItemMapper()
     private val commentItemMapper = CommentItemMapper()
@@ -51,13 +51,19 @@ class PostDetailsViewModelTest {
 
     @Before
     fun setUp() {
-        viewModel = PostDetailsViewModel(mockUserPostUseCase, mockCommentsUseCase, postItemMapper, commentItemMapper)
+        viewModel = PostDetailsViewModel(
+            mockUserPostUseCase,
+            mockCommentsUseCase,
+            postItemMapper,
+            commentItemMapper
+        )
     }
 
     @Test
     fun `get post succeeds`() {
         // given
-        _when(mockUserPostUseCase.get(userId, postId, false)).thenReturn(Single.just(combinedUserPost))
+        _when(mockUserPostUseCase.get(userId, postId, false))
+            .thenReturn(Single.just(combinedUserPost))
         _when(mockCommentsUseCase.get(postId, false)).thenReturn(Single.just(comments))
 
         // when
@@ -70,26 +76,37 @@ class PostDetailsViewModelTest {
     @Test
     fun `get comments succeeds`() {
         // given
-        _when(mockUserPostUseCase.get(userId, postId, false)).thenReturn(Single.just(combinedUserPost))
+        _when(mockUserPostUseCase.get(userId, postId, false))
+            .thenReturn(Single.just(combinedUserPost))
         _when(mockCommentsUseCase.get(postId, false)).thenReturn(Single.just(comments))
 
         // when
         viewModel.userIdPostId = UserIdPostId(userId, postId)
 
         // then
-        assertEquals(Data(dataState = DataState.SUCCESS, data = commentItemMapper.mapToPresentation(comments), message = null), viewModel.comments.value)
+        assertEquals(
+            Data(
+                dataState = DataState.SUCCESS,
+                data = commentItemMapper.mapToPresentation(comments),
+                message = null
+            ), viewModel.comments.value
+        )
     }
 
     @Test
     fun `get comments fails`() {
         // given
-        _when(mockUserPostUseCase.get(userId, postId, false)).thenReturn(Single.just(combinedUserPost))
+        _when(mockUserPostUseCase.get(userId, postId, false))
+            .thenReturn(Single.just(combinedUserPost))
         _when(mockCommentsUseCase.get(postId, false)).thenReturn(Single.error(throwable))
 
         // when
         viewModel.userIdPostId = UserIdPostId(userId, postId)
 
         // then
-        assertEquals(Data(dataState = DataState.ERROR, data = null, message = throwable.message), viewModel.comments.value)
+        assertEquals(
+            Data(dataState = DataState.ERROR, data = null, message = throwable.message),
+            viewModel.comments.value
+        )
     }
 }

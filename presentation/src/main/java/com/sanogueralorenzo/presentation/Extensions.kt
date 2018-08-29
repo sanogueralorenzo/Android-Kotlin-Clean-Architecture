@@ -22,9 +22,14 @@ val Activity.app: App get() = application as App
 
 fun AppCompatActivity.getAppInjector(): Injector = (app).injector
 
-fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View = LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
+fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View =
+    LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
 
-fun ImageView.loadAvatar(email: String) = Glide.with(this).load("https://api.adorable.io/avatars/285/$email").apply(RequestOptions.circleCropTransform()).into(this)
+fun ImageView.loadAvatar(email: String) =
+    Glide.with(this)
+        .load("https://api.adorable.io/avatars/285/$email")
+        .apply(RequestOptions.circleCropTransform())
+        .into(this)
 
 fun View.visible() {
     visibility = View.VISIBLE
@@ -46,7 +51,10 @@ inline fun <reified T : ViewModel> FragmentActivity.getViewModel(viewModelFactor
     return ViewModelProviders.of(this, viewModelFactory)[T::class.java]
 }
 
-inline fun <reified T : ViewModel> FragmentActivity.withViewModel(viewModelFactory: ViewModelProvider.Factory, body: T.() -> Unit): T {
+inline fun <reified T : ViewModel> FragmentActivity.withViewModel(
+    viewModelFactory: ViewModelProvider.Factory,
+    body: T.() -> Unit
+): T {
     val vm = getViewModel<T>(viewModelFactory)
     vm.body()
     return vm
