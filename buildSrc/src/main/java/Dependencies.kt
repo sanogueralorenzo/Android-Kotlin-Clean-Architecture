@@ -15,8 +15,6 @@ object Releases {
 object Versions {
     val gradle = "3.1.4"
 
-    val versions = "0.20.0"
-
     val compile_sdk = 28
     val min_sdk = 21
     val target_sdk = 28
