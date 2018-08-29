@@ -8,13 +8,10 @@ import com.sanogueralorenzo.presentation.loadAvatar
 import com.sanogueralorenzo.presentation.model.CommentItem
 import kotlinx.android.synthetic.main.include_user_info_small.view.*
 import kotlinx.android.synthetic.main.item_list_comment.view.*
-import java.util.*
+import java.util.ArrayList
 import javax.inject.Inject
 
-class CommentsAdapter
-@Inject
-constructor()
-    : RecyclerView.Adapter<CommentsAdapter.ViewHolder>() {
+class CommentsAdapter @Inject constructor() : RecyclerView.Adapter<CommentsAdapter.ViewHolder>() {
 
     private val items = ArrayList<CommentItem>()
 

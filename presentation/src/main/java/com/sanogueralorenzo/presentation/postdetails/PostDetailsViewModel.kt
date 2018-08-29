@@ -16,10 +16,12 @@ import javax.inject.Inject
 
 data class UserIdPostId(val userId: String, val postId: String)
 
-class PostDetailsViewModel @Inject constructor(private val userPostUseCase: UserPostUseCase,
-                                               private val commentsUseCase: CommentsUseCase,
-                                               private val postItemMapper: PostItemMapper,
-                                               private val commentItemMapper: CommentItemMapper) : ViewModel() {
+class PostDetailsViewModel @Inject constructor(
+    private val userPostUseCase: UserPostUseCase,
+    private val commentsUseCase: CommentsUseCase,
+    private val postItemMapper: PostItemMapper,
+    private val commentItemMapper: CommentItemMapper
+) : ViewModel() {
 
     val post = MutableLiveData<PostItem>()
     val comments = MutableLiveData<Data<List<CommentItem>>>()
@@ -39,7 +41,6 @@ class PostDetailsViewModel @Inject constructor(private val userPostUseCase: User
                     .subscribeOn(Schedulers.io())
                     .map { postItemMapper.mapToPresentation(it) }
                     .subscribe({ post.postValue(it) }, { }))
-
 
     fun getComments(refresh: Boolean = false) =
             compositeDisposable.add(commentsUseCase.get(userIdPostId!!.postId, refresh)

@@ -9,27 +9,35 @@ import javax.inject.Inject
 
 const val USER_ID_KEY = "USER_ID_KEY"
 
-data class UserItem(val id: String,
-                    val name: String,
-                    val username: String,
-                    val email: String,
-                    val addressItem: AddressItem,
-                    val phone: String,
-                    val website: String,
-                    val companyItem: CompanyItem)
+data class UserItem(
+    val id: String,
+    val name: String,
+    val username: String,
+    val email: String,
+    val addressItem: AddressItem,
+    val phone: String,
+    val website: String,
+    val companyItem: CompanyItem
+)
 
-data class AddressItem(val street: String,
-                       val suite: String,
-                       val city: String,
-                       val zipcode: String,
-                       val latLng: LatLng)
+data class AddressItem(
+    val street: String,
+    val suite: String,
+    val city: String,
+    val zipcode: String,
+    val latLng: LatLng
+)
 
-data class CompanyItem(val name: String,
-                       val catchPhrase: String,
-                       val bs: String)
+data class CompanyItem(
+    val name: String,
+    val catchPhrase: String,
+    val bs: String
+)
 
-class UserItemMapper @Inject constructor(private val addressItemMapper: AddressItemMapper,
-                                         private val companyItemMapper: CompanyItemMapper) {
+class UserItemMapper @Inject constructor(
+    private val addressItemMapper: AddressItemMapper,
+    private val companyItemMapper: CompanyItemMapper
+) {
 
     fun mapToPresentation(user: User): UserItem = UserItem(id = user.id,
             name = user.name,
@@ -53,7 +61,6 @@ class UserItemMapper @Inject constructor(private val addressItemMapper: AddressI
 
     fun mapToDomain(list: List<UserItem>): List<User> = list.map { mapToDomain(it) }
 }
-
 
 class AddressItemMapper @Inject constructor(private val mapper: LatLngMapper) {
 

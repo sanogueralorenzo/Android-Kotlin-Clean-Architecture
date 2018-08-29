@@ -32,6 +32,5 @@ abstract class ViewModelModule {
     @ViewModelKey(UserDetailsViewModel::class)
     internal abstract fun userDetailsViewModel(viewModel: UserDetailsViewModel): ViewModel
 
-    //Add ViewModels here
-
+    // Add ViewModels here
 }

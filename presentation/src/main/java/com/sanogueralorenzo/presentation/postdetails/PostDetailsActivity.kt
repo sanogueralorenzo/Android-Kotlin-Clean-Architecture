@@ -4,12 +4,20 @@ import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import com.sanogueralorenzo.presentation.*
+import com.sanogueralorenzo.presentation.Data
+import com.sanogueralorenzo.presentation.DataState
+import com.sanogueralorenzo.presentation.R
+import com.sanogueralorenzo.presentation.getAppInjector
+import com.sanogueralorenzo.presentation.gone
+import com.sanogueralorenzo.presentation.loadAvatar
 import com.sanogueralorenzo.presentation.model.CommentItem
 import com.sanogueralorenzo.presentation.model.POST_ID_KEY
 import com.sanogueralorenzo.presentation.model.PostItem
 import com.sanogueralorenzo.presentation.model.USER_ID_KEY
 import com.sanogueralorenzo.presentation.navigation.UserDetailsNavigator
+import com.sanogueralorenzo.presentation.observe
+import com.sanogueralorenzo.presentation.visible
+import com.sanogueralorenzo.presentation.withViewModel
 import kotlinx.android.synthetic.main.activity_post_details.*
 import kotlinx.android.synthetic.main.include_user_info.*
 import kotlinx.android.synthetic.main.item_list_post.*
@@ -57,15 +65,9 @@ class PostDetailsActivity : AppCompatActivity() {
     private fun updateComments(data: Data<List<CommentItem>>?) {
         data?.let {
             when (it.dataState) {
-                DataState.LOADING -> {
-                    progressBar.visible()
-                }
-                DataState.SUCCESS -> {
-                    progressBar.gone()
-                }
-                DataState.ERROR -> {
-                    progressBar.gone()
-                }
+                DataState.LOADING -> progressBar.visible()
+                DataState.SUCCESS -> progressBar.gone()
+                DataState.ERROR -> progressBar.gone()
             }
             it.data?.let { adapter.addItems(it) }
             it.message?.let {

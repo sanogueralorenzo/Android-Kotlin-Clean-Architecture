@@ -1,6 +1,11 @@
 package com.sanogueralorenzo.presentation
 
-import com.sanogueralorenzo.domain.model.*
+import com.sanogueralorenzo.domain.model.Address
+import com.sanogueralorenzo.domain.model.Comment
+import com.sanogueralorenzo.domain.model.Company
+import com.sanogueralorenzo.domain.model.Geo
+import com.sanogueralorenzo.domain.model.Post
+import com.sanogueralorenzo.domain.model.User
 import com.sanogueralorenzo.presentation.model.PostItem
 
 fun createUser(): User = User("1", "name", "username", "email", createAddress(), "phone", "website", createCompany())

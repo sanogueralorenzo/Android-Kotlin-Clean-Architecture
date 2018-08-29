@@ -36,6 +36,4 @@ class App : Application() {
     private fun initRxPaper() = RxPaperBook.init(this)
 
     private fun initRxJavaPluginsErrorHandler() = RxJavaPlugins.setErrorHandler { Timber.e(it) }
-
-
 }

@@ -6,7 +6,11 @@ import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockito_kotlin.mock
 import com.sanogueralorenzo.domain.usecase.CombinedUserPost
 import com.sanogueralorenzo.domain.usecase.UsersPostsUseCase
-import com.sanogueralorenzo.presentation.*
+import com.sanogueralorenzo.presentation.Data
+import com.sanogueralorenzo.presentation.DataState
+import com.sanogueralorenzo.presentation.RxSchedulersOverrideRule
+import com.sanogueralorenzo.presentation.createPost
+import com.sanogueralorenzo.presentation.createUser
 import com.sanogueralorenzo.presentation.model.PostItemMapper
 import io.reactivex.Single
 import org.junit.Assert.assertEquals

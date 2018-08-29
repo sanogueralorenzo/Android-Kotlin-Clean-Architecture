@@ -11,8 +11,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class PostListViewModel @Inject constructor(private val useCase: UsersPostsUseCase,
-                                            private val mapper: PostItemMapper) : ViewModel() {
+class PostListViewModel @Inject constructor(
+    private val useCase: UsersPostsUseCase,
+    private val mapper: PostItemMapper
+) : ViewModel() {
 
     val posts = MutableLiveData<Data<List<PostItem>>>()
     private val compositeDisposable = CompositeDisposable()
