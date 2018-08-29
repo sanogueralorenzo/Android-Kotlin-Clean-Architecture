@@ -2,7 +2,7 @@
  # Script used for CircleCI cache key.
  # Creates a checksum for all build.gradle files in your project.
  # Thank you Chris Banes: https://medium.com/@chrisbanes/circleci-cache-key-over-many-files-c9e07f4d471a
-RESULT_FILE=$1
+RESULT_FILE=/checksum.txt
  if [ -f $RESULT_FILE ]; then
   rm $RESULT_FILE
 fi
