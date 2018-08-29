@@ -6,13 +6,13 @@ apply plugin: 'kotlin-kapt'
 apply from: "../ktlint.gradle"
 
 android {
-    compileSdkVersion Versions.compile_sdk
+    compileSdkVersion Versions.compileSdk
     defaultConfig {
-        applicationId ApplicationId.application_id
-        minSdkVersion Versions.min_sdk
-        targetSdkVersion Versions.target_sdk
-        versionCode Releases.version_code
-        versionName Releases.version_name
+        applicationId ApplicationId.id
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
     }
 
     buildTypes {
@@ -35,13 +35,13 @@ dependencies {
     implementation project(Modules.data)
     implementation project(Modules.domain)
 
-    implementation Libraries.kotlin_stdlib
-    implementation Libraries.anko_commons
+    implementation Libraries.kotlin
+    implementation Libraries.anko
 
-    implementation SupportLibraries.appcompat_v7
+    implementation SupportLibraries.appcompat
     implementation SupportLibraries.design
-    implementation SupportLibraries.cardview_v7
-    implementation SupportLibraries.recyclerview_v7
+    implementation SupportLibraries.cardview
+    implementation SupportLibraries.recyclerview
 
     implementation Libraries.maps
 
@@ -52,23 +52,23 @@ dependencies {
     implementation Libraries.rxpaper
 
     implementation Libraries.retrofit
-    implementation Libraries.rxjava_adapter
-    implementation Libraries.moshi_converter
-    implementation Libraries.logging_interceptor
+    implementation Libraries.rxjavaAdapter
+    implementation Libraries.moshiConverter
+    implementation Libraries.loggingInterceptor
 
     implementation Libraries.dagger
-    kapt Libraries.dagger_compiler
+    kapt Libraries.daggerCompiler
 
     implementation Libraries.glide
-    kapt Libraries.glide_compiler
+    kapt Libraries.glideCompiler
 
-    implementation Libraries.lifecycle_extensions
-    kapt Libraries.lifecycle_compiler
+    implementation Libraries.lifecycleExtensions
+    kapt Libraries.lifecycleCompiler
 
     testImplementation TestLibraries.junit
-    testImplementation TestLibraries.assertj_core
-    testImplementation TestLibraries.mockito_kotlin
-    testImplementation TestLibraries.lifecycle_testing
+    testImplementation TestLibraries.assertjCore
+    testImplementation TestLibraries.mockitoKotlin
+    testImplementation TestLibraries.lifecycleTesting
 }
 
 configurations.all {

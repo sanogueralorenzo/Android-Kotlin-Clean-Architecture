@@ -4,12 +4,12 @@ apply plugin: 'kotlin-android'
 apply from: "../ktlint.gradle"
 
 android {
-    compileSdkVersion Versions.compile_sdk
+    compileSdkVersion Versions.compileSdk
     defaultConfig {
-        minSdkVersion Versions.min_sdk
-        targetSdkVersion Versions.target_sdk
-        versionCode Releases.version_code
-        versionName Releases.version_name
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
     }
 
     buildTypes {
@@ -24,7 +24,7 @@ android {
 dependencies {
     implementation project(Modules.domain)
 
-    implementation Libraries.kotlin_stdlib
+    implementation Libraries.kotlin
     implementation Libraries.rxkotlin
     implementation Libraries.inject
     implementation Libraries.rxpaper
@@ -33,6 +33,6 @@ dependencies {
     implementation Libraries.retrofit
 
     testImplementation TestLibraries.junit
-    testImplementation TestLibraries.assertj_core
-    testImplementation TestLibraries.mockito_kotlin
+    testImplementation TestLibraries.assertjCore
+    testImplementation TestLibraries.mockitoKotlin
 }
