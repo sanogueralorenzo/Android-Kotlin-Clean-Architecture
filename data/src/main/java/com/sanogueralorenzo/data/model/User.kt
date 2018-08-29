@@ -7,30 +7,40 @@ import com.sanogueralorenzo.domain.model.User
 import com.squareup.moshi.Json
 import javax.inject.Inject
 
-data class UserEntity(@Json(name = "id") val id: String,
-                      @Json(name = "name") val name: String,
-                      @Json(name = "username") val username: String,
-                      @Json(name = "email") val email: String,
-                      @Json(name = "address") val addressEntity: AddressEntity,
-                      @Json(name = "phone") val phone: String,
-                      @Json(name = "website") val website: String,
-                      @Json(name = "company") val companyEntity: CompanyEntity)
+data class UserEntity(
+    @Json(name = "id") val id: String,
+    @Json(name = "name") val name: String,
+    @Json(name = "username") val username: String,
+    @Json(name = "email") val email: String,
+    @Json(name = "address") val addressEntity: AddressEntity,
+    @Json(name = "phone") val phone: String,
+    @Json(name = "website") val website: String,
+    @Json(name = "company") val companyEntity: CompanyEntity
+)
 
-data class AddressEntity(@Json(name = "street") val street: String,
-                         @Json(name = "suite") val suite: String,
-                         @Json(name = "city") val city: String,
-                         @Json(name = "zipcode") val zipcode: String,
-                         @Json(name = "geo") val geoEntity: GeoEntity)
+data class AddressEntity(
+    @Json(name = "street") val street: String,
+    @Json(name = "suite") val suite: String,
+    @Json(name = "city") val city: String,
+    @Json(name = "zipcode") val zipcode: String,
+    @Json(name = "geo") val geoEntity: GeoEntity
+)
 
-data class GeoEntity(@Json(name = "lat") val lat: String,
-                     @Json(name = "lng") val lng: String)
+data class GeoEntity(
+    @Json(name = "lat") val lat: String,
+    @Json(name = "lng") val lng: String
+)
 
-data class CompanyEntity(@Json(name = "name") val name: String,
-                         @Json(name = "catchPhrase") val catchPhrase: String,
-                         @Json(name = "bs") val bs: String)
+data class CompanyEntity(
+    @Json(name = "name") val name: String,
+    @Json(name = "catchPhrase") val catchPhrase: String,
+    @Json(name = "bs") val bs: String
+)
 
-class UserMapper @Inject constructor(private val addressMapper: AddressMapper,
-                                     private val companyMapper: CompanyMapper) {
+class UserMapper @Inject constructor(
+    private val addressMapper: AddressMapper,
+    private val companyMapper: CompanyMapper
+) {
 
     fun mapToDomain(entity: UserEntity): User = User(id = entity.id,
             name = entity.name,
@@ -54,7 +64,6 @@ class UserMapper @Inject constructor(private val addressMapper: AddressMapper,
 
     fun mapToEntity(list: List<User>): List<UserEntity> = list.map { mapToEntity(it) }
 }
-
 
 class AddressMapper @Inject constructor(private val mapper: GeoMapper) {
 

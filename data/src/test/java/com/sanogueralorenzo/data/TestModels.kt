@@ -1,7 +1,17 @@
 package com.sanogueralorenzo.data
 
-import com.sanogueralorenzo.data.model.*
-import com.sanogueralorenzo.domain.model.*
+import com.sanogueralorenzo.data.model.AddressEntity
+import com.sanogueralorenzo.data.model.CommentEntity
+import com.sanogueralorenzo.data.model.CompanyEntity
+import com.sanogueralorenzo.data.model.GeoEntity
+import com.sanogueralorenzo.data.model.PostEntity
+import com.sanogueralorenzo.data.model.UserEntity
+import com.sanogueralorenzo.domain.model.Address
+import com.sanogueralorenzo.domain.model.Comment
+import com.sanogueralorenzo.domain.model.Company
+import com.sanogueralorenzo.domain.model.Geo
+import com.sanogueralorenzo.domain.model.Post
+import com.sanogueralorenzo.domain.model.User
 
 fun createUserEntity(): UserEntity = UserEntity("1", "name", "username", "email", createAddressEntity(), "phone", "website", createCompanyEntity())
 fun createGeoEntity(): GeoEntity = GeoEntity("0.0", "0.0")

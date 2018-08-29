@@ -4,10 +4,12 @@ import com.sanogueralorenzo.domain.model.Post
 import com.squareup.moshi.Json
 import javax.inject.Inject
 
-data class PostEntity(@Json(name = "userId") val userId: String,
-                      @Json(name = "id") val id: String,
-                      @Json(name = "title") val title: String,
-                      @Json(name = "body") val body: String)
+data class PostEntity(
+    @Json(name = "userId") val userId: String,
+    @Json(name = "id") val id: String,
+    @Json(name = "title") val title: String,
+    @Json(name = "body") val body: String
+)
 
 class PostMapper @Inject constructor() {
 

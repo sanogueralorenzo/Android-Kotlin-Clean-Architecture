@@ -11,9 +11,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PostRepositoryImpl @Inject constructor(private val api: PostsApi,
-                                             private val cache: Cache<List<PostEntity>>,
-                                             private val mapper: PostMapper) : PostRepository {
+class PostRepositoryImpl @Inject constructor(
+    private val api: PostsApi,
+    private val cache: Cache<List<PostEntity>>,
+    private val mapper: PostMapper
+) : PostRepository {
     override val key = "Post List"
 
     override fun get(refresh: Boolean): Single<List<Post>> = when (refresh) {

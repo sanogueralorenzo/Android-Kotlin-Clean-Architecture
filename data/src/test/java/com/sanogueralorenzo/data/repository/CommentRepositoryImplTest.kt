@@ -3,6 +3,7 @@
 package com.sanogueralorenzo.data.repository
 
 import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.verify
 import com.sanogueralorenzo.data.cache.Cache
 import com.sanogueralorenzo.data.createCommentEntity
 import com.sanogueralorenzo.data.model.CommentEntity
@@ -11,7 +12,6 @@ import com.sanogueralorenzo.data.remote.CommentsApi
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.*
 import org.mockito.Mockito.`when` as _when
 
 class CommentRepositoryImplTest {
