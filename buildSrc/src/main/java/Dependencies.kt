@@ -1,5 +1,5 @@
 object ApplicationId {
-    val application_id = "com.sanogueralorenzo.androidkotlincleanarchitecture"
+    val id = "com.sanogueralorenzo.androidkotlincleanarchitecture"
 }
 
 object Modules {
@@ -8,16 +8,16 @@ object Modules {
 }
 
 object Releases {
-    val version_code = 1
-    val version_name = "1.0"
+    val versionCode = 1
+    val versionName = "1.0"
 }
 
 object Versions {
     val gradle = "3.1.4"
 
-    val compile_sdk = 28
-    val min_sdk = 21
-    val target_sdk = 28
+    val compileSdk = 28
+    val minSdk = 19
+    val targetSdk = 28
 
     val inject = "1"
 
@@ -29,7 +29,7 @@ object Versions {
     val timber = "4.7.1"
     val rxkotlin = "2.3.0"
     val retrofit = "2.4.0"
-    val logging_interceptor = "3.11.0"
+    val loggingInterceptor = "3.11.0"
     val dagger = "2.17"
     val glide = "4.7.1"
     val rxpaper = "1.2.0"
@@ -37,15 +37,15 @@ object Versions {
     val lifecycle = "1.1.1"
 
     val junit = "4.12"
-    val assertj_core = "3.10.0"
-    val mockito_kotlin = "1.5.0"
+    val assertjCore = "3.10.0"
+    val mockitoKotlin = "1.5.0"
 }
 
 object Libraries {
     val inject = "javax.inject:javax.inject:${Versions.inject}"
 
-    val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
-    val anko_commons = "org.jetbrains.anko:anko-commons:${Versions.anko}"
+    val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+    val anko = "org.jetbrains.anko:anko-commons:${Versions.anko}"
 
     val maps = "com.google.android.gms:play-services-maps:${Versions.maps}"
 
@@ -54,33 +54,33 @@ object Libraries {
     val rxkotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxkotlin}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    val rxjava_adapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
-    val moshi_converter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
-    val logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.logging_interceptor}"
+    val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+    val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
 
     val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-    val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    val glide_compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
 
     val rxpaper = "com.github.pakoito:RxPaper2:${Versions.rxpaper}"
     val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
 
-    val lifecycle_extensions = "android.arch.lifecycle:extensions:${Versions.lifecycle}"
-    val lifecycle_compiler = "android.arch.lifecycle:compiler:${Versions.lifecycle}"
+    val lifecycleExtensions = "android.arch.lifecycle:extensions:${Versions.lifecycle}"
+    val lifecycleCompiler = "android.arch.lifecycle:compiler:${Versions.lifecycle}"
 }
 
 object SupportLibraries {
-    val appcompat_v7 = "com.android.support:appcompat-v7:${Versions.support}}"
+    val appcompat = "com.android.support:appcompat-v7:${Versions.support}}"
     val design = "com.android.support:design:${Versions.support}"
-    val cardview_v7 = "com.android.support:cardview-v7:${Versions.support}"
-    val recyclerview_v7 = "com.android.support:recyclerview-v7:${Versions.support}"
+    val cardview = "com.android.support:cardview-v7:${Versions.support}"
+    val recyclerview = "com.android.support:recyclerview-v7:${Versions.support}"
 }
 
 object TestLibraries {
     val junit = "junit:junit:${Versions.junit}"
-    val assertj_core = "org.assertj:assertj-core:${Versions.assertj_core}"
-    val mockito_kotlin = "com.nhaarman:mockito-kotlin:${Versions.mockito_kotlin}"
-    val lifecycle_testing = "android.arch.core:core-testing:${Versions.lifecycle}"
+    val assertjCore = "org.assertj:assertj-core:${Versions.assertjCore}"
+    val mockitoKotlin = "com.nhaarman:mockito-kotlin:${Versions.mockitoKotlin}"
+    val lifecycleTesting = "android.arch.core:core-testing:${Versions.lifecycle}"
 }

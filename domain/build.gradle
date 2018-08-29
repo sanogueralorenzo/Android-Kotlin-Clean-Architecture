@@ -4,12 +4,12 @@ apply plugin: 'kotlin'
 apply from: "../ktlint.gradle"
 
 dependencies {
-    implementation Libraries.kotlin_stdlib
+    implementation Libraries.kotlin
     implementation Libraries.rxkotlin
 
     implementation Libraries.inject
 
     testImplementation TestLibraries.junit
-    testImplementation TestLibraries.assertj_core
-    testImplementation TestLibraries.mockito_kotlin
+    testImplementation TestLibraries.assertjCore
+    testImplementation TestLibraries.mockitoKotlin
 }
