@@ -23,7 +23,7 @@ class PostListViewModelTest {
 
     private lateinit var viewModel: PostListViewModel
 
-    private val mockUseCase = mock<UsersPostsUseCase> {}
+    private val mockUseCase = mock<UsersPostsUseCase>()
     private val mapper = PostItemMapper()
 
     private val user = createUser()

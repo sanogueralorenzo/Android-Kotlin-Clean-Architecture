@@ -19,7 +19,7 @@ class PostRepositoryImplTest {
 
     private lateinit var repository: PostRepositoryImpl
 
-    private val mockApi = mock<PostsApi> {}
+    private val mockApi = mock<PostsApi>()
     private val mockCache = mock<Cache<List<PostEntity>>>()
     private val mapper = PostMapper()
 

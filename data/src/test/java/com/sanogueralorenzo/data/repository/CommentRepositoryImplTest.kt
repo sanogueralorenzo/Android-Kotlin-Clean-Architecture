@@ -18,7 +18,7 @@ class CommentRepositoryImplTest {
 
     private lateinit var repository: CommentRepositoryImpl
 
-    private val mockApi = mock<CommentsApi> {}
+    private val mockApi = mock<CommentsApi>()
     private val mockCache = mock<Cache<List<CommentEntity>>>()
     private val mapper = CommentMapper()
 

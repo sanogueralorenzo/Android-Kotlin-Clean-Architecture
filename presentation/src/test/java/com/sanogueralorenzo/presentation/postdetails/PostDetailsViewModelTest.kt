@@ -27,8 +27,8 @@ class PostDetailsViewModelTest {
 
     private lateinit var viewModel: PostDetailsViewModel
 
-    private val mockUserPostUseCase = mock<UserPostUseCase> {}
-    private val mockCommentsUseCase = mock<CommentsUseCase> {}
+    private val mockUserPostUseCase = mock<UserPostUseCase>()
+    private val mockCommentsUseCase = mock<CommentsUseCase>()
 
     private val postItemMapper = PostItemMapper()
     private val commentItemMapper = CommentItemMapper()
@@ -62,11 +62,8 @@ class PostDetailsViewModelTest {
     @Test
     fun `get post succeeds`() {
         // given
-        _when(mockUserPostUseCase.get(userId, postId, false)).thenReturn(
-            Single.just(
-                combinedUserPost
-            )
-        )
+        _when(mockUserPostUseCase.get(userId, postId, false))
+            .thenReturn(Single.just(combinedUserPost))
         _when(mockCommentsUseCase.get(postId, false)).thenReturn(Single.just(comments))
 
         // when
@@ -79,11 +76,8 @@ class PostDetailsViewModelTest {
     @Test
     fun `get comments succeeds`() {
         // given
-        _when(mockUserPostUseCase.get(userId, postId, false)).thenReturn(
-            Single.just(
-                combinedUserPost
-            )
-        )
+        _when(mockUserPostUseCase.get(userId, postId, false))
+            .thenReturn(Single.just(combinedUserPost))
         _when(mockCommentsUseCase.get(postId, false)).thenReturn(Single.just(comments))
 
         // when
@@ -102,11 +96,8 @@ class PostDetailsViewModelTest {
     @Test
     fun `get comments fails`() {
         // given
-        _when(mockUserPostUseCase.get(userId, postId, false)).thenReturn(
-            Single.just(
-                combinedUserPost
-            )
-        )
+        _when(mockUserPostUseCase.get(userId, postId, false))
+            .thenReturn(Single.just(combinedUserPost))
         _when(mockCommentsUseCase.get(postId, false)).thenReturn(Single.error(throwable))
 
         // when

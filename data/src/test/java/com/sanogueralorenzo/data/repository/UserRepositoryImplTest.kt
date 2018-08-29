@@ -22,7 +22,7 @@ class UserRepositoryImplTest {
 
     private lateinit var repository: UserRepositoryImpl
 
-    private val mockApi = mock<UsersApi> {}
+    private val mockApi = mock<UsersApi>()
     private val mockCache = mock<Cache<List<UserEntity>>>()
     private val mapper =
         UserMapper(addressMapper = AddressMapper(GeoMapper()), companyMapper = CompanyMapper())

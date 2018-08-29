@@ -35,7 +35,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(Companion.BASE_URL)
+        .baseUrl(BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

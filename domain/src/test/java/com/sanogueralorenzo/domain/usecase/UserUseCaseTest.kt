@@ -15,7 +15,7 @@ class UserUseCaseTest {
 
     private lateinit var usecase: UserUseCase
 
-    private val mockRepository = mock<UserRepository> {}
+    private val mockRepository = mock<UserRepository>()
 
     private val userId = "1"
     private val user = createUser()

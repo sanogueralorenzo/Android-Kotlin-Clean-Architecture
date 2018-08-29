@@ -42,10 +42,7 @@ class PostDetailsActivity : AppCompatActivity() {
         commentsRecyclerView.isNestedScrollingEnabled = false
         commentsRecyclerView.adapter = adapter
         userAvatar.setOnClickListener {
-            userDetailsNavigator.navigate(
-                this,
-                intent.getStringExtra(USER_ID_KEY)
-            )
+            userDetailsNavigator.navigate(this, intent.getStringExtra(USER_ID_KEY))
         }
 
         withViewModel<PostDetailsViewModel>(viewModelFactory) {
