@@ -13,14 +13,14 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum "presentation/build.gradle"+"domain/build.gradle"+"data/build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}-{{ checksum  "domain/build.gradle" }}-{{ checksum  "data/build.gradle" }}
       - run:
           name: Download Dependencies
           command: ./gradlew dependencies
       - save_cache:
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum "presentation/build.gradle"+"domain/build.gradle"+"data/build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}-{{ checksum  "domain/build.gradle" }}-{{ checksum  "data/build.gradle" }}
       - run:
           name: Run Detekt
           command: ./gradlew detektCheck
