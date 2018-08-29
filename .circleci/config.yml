@@ -14,9 +14,9 @@ jobs:
       - checkout
       - run:
           name: Generate cache key
-          command: sudo chmod +x ./checksum.sh /tmp/checksum.txt
+          command: sudo chmod +x ./checksum.sh Android-Kotlin-Clean-Architecture/tmp/checksum.txt
       - restore_cache:
-          key: gradle-{{ checksum "/tmp/checksum.txt" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
+          key: gradle-{{ checksum "Android-Kotlin-Clean-Architecture/tmp/checksum.txt" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
       - run:
           name: Run Detekt
           command: ./gradlew detektCheck
@@ -33,4 +33,4 @@ jobs:
           paths:
             - ~/.gradle
             - buildSrc
-          key: gradle-{{ checksum "/tmp/checksum.txt" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
+          key: gradle-{{ checksum "Android-Kotlin-Clean-Architecture/tmp/checksum.txt" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
