@@ -20,7 +20,12 @@ class CommentRepositoryImpl @Inject constructor(
 
     override fun get(postId: String, refresh: Boolean): Single<List<Comment>> = when (refresh) {
         true -> api.getComments(postId).flatMap { set(postId, it) }.map { mapper.mapToDomain(it) }
-        false -> cache.load(key + postId).map { mapper.mapToDomain(it) }.onErrorResumeNext { get(postId, true) }
+        false -> cache.load(key + postId).map { mapper.mapToDomain(it) }.onErrorResumeNext {
+            get(
+                postId,
+                true
+            )
+        }
     }
 
     private fun set(postId: String, list: List<CommentEntity>) = cache.save(key + postId, list)

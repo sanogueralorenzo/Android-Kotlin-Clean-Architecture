@@ -24,13 +24,32 @@ class PostListViewModel @Inject constructor(
     }
 
     fun get(refresh: Boolean = false) =
-            compositeDisposable.add(useCase.get(refresh)
-                    .doOnSubscribe { posts.postValue(Data(dataState = DataState.LOADING, data = posts.value?.data, message = null)) }
-                    .subscribeOn(Schedulers.io())
-                    .map { mapper.mapToPresentation(it) }
-                    .subscribe({
-                        posts.postValue(Data(dataState = DataState.SUCCESS, data = it, message = null))
-                    }, { posts.postValue(Data(dataState = DataState.ERROR, data = posts.value?.data, message = it.message)) }))
+        compositeDisposable.add(useCase.get(refresh)
+            .doOnSubscribe {
+                posts.postValue(
+                    Data(
+                        dataState = DataState.LOADING,
+                        data = posts.value?.data,
+                        message = null
+                    )
+                )
+            }
+            .subscribeOn(Schedulers.io())
+            .map { mapper.mapToPresentation(it) }
+            .subscribe(
+                {
+                    posts.postValue(Data(dataState = DataState.SUCCESS, data = it, message = null))
+                },
+                {
+                    posts.postValue(
+                        Data(
+                            dataState = DataState.ERROR,
+                            data = posts.value?.data,
+                            message = it.message
+                        )
+                    )
+                })
+        )
 
     override fun onCleared() {
         compositeDisposable.dispose()

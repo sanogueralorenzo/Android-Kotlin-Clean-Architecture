@@ -8,7 +8,9 @@ import com.sanogueralorenzo.domain.model.Post
 import com.sanogueralorenzo.domain.model.User
 import com.sanogueralorenzo.presentation.model.PostItem
 
-fun createUser(): User = User("1", "name", "username", "email", createAddress(), "phone", "website", createCompany())
+fun createUser(): User =
+    User("1", "name", "username", "email", createAddress(), "phone", "website", createCompany())
+
 fun createGeo(): Geo = Geo("0.0", "0.0")
 fun createAddress(): Address = Address("street", "suite", "city", "zipcode", createGeo())
 fun createCompany(): Company = Company("name", "catchPhrase", "bs")

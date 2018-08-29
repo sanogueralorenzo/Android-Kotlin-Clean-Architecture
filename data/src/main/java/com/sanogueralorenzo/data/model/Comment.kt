@@ -14,19 +14,23 @@ data class CommentEntity(
 
 class CommentMapper @Inject constructor() {
 
-    fun mapToDomain(entity: CommentEntity): Comment = Comment(entity.postId,
-            entity.id,
-            entity.name,
-            entity.email,
-            entity.body)
+    fun mapToDomain(entity: CommentEntity): Comment = Comment(
+        entity.postId,
+        entity.id,
+        entity.name,
+        entity.email,
+        entity.body
+    )
 
     fun mapToDomain(list: List<CommentEntity>): List<Comment> = list.map { mapToDomain(it) }
 
-    fun mapToEntity(comment: Comment): CommentEntity = CommentEntity(comment.postId,
-            comment.id,
-            comment.name,
-            comment.email,
-            comment.body)
+    fun mapToEntity(comment: Comment): CommentEntity = CommentEntity(
+        comment.postId,
+        comment.id,
+        comment.name,
+        comment.email,
+        comment.body
+    )
 
     fun mapToEntity(list: List<Comment>): List<CommentEntity> = list.map { mapToEntity(it) }
 }

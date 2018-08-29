@@ -26,10 +26,11 @@ class UserDetailsViewModel @Inject constructor(
         }
 
     fun get(refresh: Boolean = false) =
-            compositeDisposable.add(useCase.get(userId!!, refresh)
-                    .subscribeOn(Schedulers.io())
-                    .map { mapper.mapToPresentation(it) }
-                    .subscribe({ user.postValue(it) }, { }))
+        compositeDisposable.add(useCase.get(userId!!, refresh)
+            .subscribeOn(Schedulers.io())
+            .map { mapper.mapToPresentation(it) }
+            .subscribe({ user.postValue(it) }, { })
+        )
 
     override fun onCleared() {
         compositeDisposable.dispose()

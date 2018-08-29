@@ -13,7 +13,10 @@ class UserItemMapperTest {
 
     @Before
     fun setUp() {
-        mapper = UserItemMapper(addressItemMapper = AddressItemMapper(LatLngMapper()), companyItemMapper = CompanyItemMapper())
+        mapper = UserItemMapper(
+            addressItemMapper = AddressItemMapper(LatLngMapper()),
+            companyItemMapper = CompanyItemMapper()
+        )
     }
 
     @Test

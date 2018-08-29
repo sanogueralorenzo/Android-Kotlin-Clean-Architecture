@@ -25,10 +25,17 @@ class UserRepositoryImpl @Inject constructor(
 
     override fun get(userId: String, refresh: Boolean): Single<User> = when (refresh) {
         true -> api.getUser(userId).flatMap { set(it) }.map { mapper.mapToDomain(it) }
-        false -> cache.load(key).map { it.first { it.id == userId } }.map { mapper.mapToDomain(it) }.onErrorResumeNext { get(userId, true) }
+        false -> cache.load(key).map { it.first { it.id == userId } }.map { mapper.mapToDomain(it) }.onErrorResumeNext {
+            get(
+                userId,
+                true
+            )
+        }
     }
 
     private fun set(list: List<UserEntity>) = cache.save(key, list)
 
-    private fun set(entity: UserEntity) = cache.load(key).map { it.filter { it.id != entity.id }.plus(entity) }.flatMap { set(it) }.map { entity }
+    private fun set(entity: UserEntity) = cache.load(key).map {
+        it.filter { it.id != entity.id }.plus(entity)
+    }.flatMap { set(it) }.map { entity }
 }

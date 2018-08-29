@@ -51,7 +51,8 @@ class UserDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
             userEmail.text = getString(R.string.user_email, it.email)
             userPhone.text = getString(R.string.user_phone, it.phone)
             val address = it.addressItem
-            userAddress.text = getString(R.string.user_address, address.street, address.city, address.zipcode)
+            userAddress.text =
+                getString(R.string.user_address, address.street, address.city, address.zipcode)
             userWebsite.text = getString(R.string.user_website, it.website)
             userCompany.text = getString(R.string.user_company, it.companyItem.name)
 

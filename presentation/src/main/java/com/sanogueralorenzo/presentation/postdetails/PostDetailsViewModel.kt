@@ -37,19 +37,49 @@ class PostDetailsViewModel @Inject constructor(
         }
 
     fun getPost() =
-            compositeDisposable.add(userPostUseCase.get(userIdPostId!!.userId, userIdPostId!!.postId, false)
-                    .subscribeOn(Schedulers.io())
-                    .map { postItemMapper.mapToPresentation(it) }
-                    .subscribe({ post.postValue(it) }, { }))
+        compositeDisposable.add(userPostUseCase.get(
+            userIdPostId!!.userId,
+            userIdPostId!!.postId,
+            false
+        )
+            .subscribeOn(Schedulers.io())
+            .map { postItemMapper.mapToPresentation(it) }
+            .subscribe({ post.postValue(it) }, { })
+        )
 
     fun getComments(refresh: Boolean = false) =
-            compositeDisposable.add(commentsUseCase.get(userIdPostId!!.postId, refresh)
-                    .doOnSubscribe { comments.postValue(Data(dataState = DataState.LOADING, data = comments.value?.data, message = null)) }
-                    .subscribeOn(Schedulers.io())
-                    .map { commentItemMapper.mapToPresentation(it) }
-                    .subscribe({
-                        comments.postValue(Data(dataState = DataState.SUCCESS, data = it, message = null))
-                    }, { comments.postValue(Data(dataState = DataState.ERROR, data = comments.value?.data, message = it.message)) }))
+        compositeDisposable.add(commentsUseCase.get(userIdPostId!!.postId, refresh)
+            .doOnSubscribe {
+                comments.postValue(
+                    Data(
+                        dataState = DataState.LOADING,
+                        data = comments.value?.data,
+                        message = null
+                    )
+                )
+            }
+            .subscribeOn(Schedulers.io())
+            .map { commentItemMapper.mapToPresentation(it) }
+            .subscribe(
+                {
+                    comments.postValue(
+                        Data(
+                            dataState = DataState.SUCCESS,
+                            data = it,
+                            message = null
+                        )
+                    )
+                },
+                {
+                    comments.postValue(
+                        Data(
+                            dataState = DataState.ERROR,
+                            data = comments.value?.data,
+                            message = it.message
+                        )
+                    )
+                })
+        )
 
     override fun onCleared() {
         compositeDisposable.dispose()

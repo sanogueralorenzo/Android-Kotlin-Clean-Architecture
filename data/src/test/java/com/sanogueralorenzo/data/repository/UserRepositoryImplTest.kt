@@ -24,7 +24,8 @@ class UserRepositoryImplTest {
 
     private val mockApi = mock<UsersApi> {}
     private val mockCache = mock<Cache<List<UserEntity>>>()
-    private val mapper = UserMapper(addressMapper = AddressMapper(GeoMapper()), companyMapper = CompanyMapper())
+    private val mapper =
+        UserMapper(addressMapper = AddressMapper(GeoMapper()), companyMapper = CompanyMapper())
 
     private val key = "User List"
 

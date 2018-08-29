@@ -2,9 +2,9 @@ package com.sanogueralorenzo.presentation
 
 import android.app.Application
 import com.pacoworks.rxpaper2.RxPaperBook
-import com.sanogueralorenzo.presentation.di.Injector
 import com.sanogueralorenzo.presentation.di.AppModule
 import com.sanogueralorenzo.presentation.di.DaggerInjector
+import com.sanogueralorenzo.presentation.di.Injector
 import io.reactivex.plugins.RxJavaPlugins
 import timber.log.Timber
 
@@ -22,9 +22,9 @@ class App : Application() {
 
     private fun initDagger() {
         injector = DaggerInjector
-                .builder()
-                .appModule(AppModule(this))
-                .build()
+            .builder()
+            .appModule(AppModule(this))
+            .build()
     }
 
     private fun initTimber() {

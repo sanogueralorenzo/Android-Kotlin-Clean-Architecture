@@ -13,5 +13,6 @@ class Cache<T> @Inject constructor() {
 
     fun load(key: String): Single<T> = RxPaperBook.with(io()).read(key)
 
-    fun save(key: String, anyObject: T): Single<T> = RxPaperBook.with(io()).write(key, anyObject).toSingleDefault(anyObject)
+    fun save(key: String, anyObject: T): Single<T> =
+        RxPaperBook.with(io()).write(key, anyObject).toSingleDefault(anyObject)
 }

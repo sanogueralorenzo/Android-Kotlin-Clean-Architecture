@@ -1,43 +1,7 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
   <Blacklist timestamp="1535550703022"></Blacklist>
-  <Whitelist timestamp="1535550703022">
-    <ID>MagicNumber:NetworkModule.kt$NetworkModule$10L</ID>
-    <ID>MaxLineLength:Cache.kt$Cache$fun save(key: String, anyObject: T): Single&lt;T&gt;</ID>
-    <ID>MaxLineLength:Comment.kt$CommentItemMapper$fun mapToPresentation(commentsList: List&lt;Comment&gt;): List&lt;CommentItem&gt;</ID>
-    <ID>MaxLineLength:Comment.kt$com.sanogueralorenzo.presentation.model.Comment.kt</ID>
-    <ID>MaxLineLength:Extensions.kt$fun ImageView.loadAvatar(email: String)</ID>
-    <ID>MaxLineLength:Extensions.kt$fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View</ID>
-    <ID>MaxLineLength:Extensions.kt$inline fun &lt;reified T : ViewModel&gt; FragmentActivity.withViewModel(viewModelFactory: ViewModelProvider.Factory, body: T.() -&gt; Unit): T</ID>
-    <ID>MaxLineLength:Post.kt$PostItem : Serializable</ID>
-    <ID>MaxLineLength:Post.kt$PostItemMapper$fun mapToPresentation(combinedUserPostList: List&lt;CombinedUserPost&gt;): List&lt;PostItem&gt;</ID>
-    <ID>MaxLineLength:Post.kt$PostItemMapper$fun mapToPresentation(cup: CombinedUserPost): PostItem</ID>
-    <ID>MaxLineLength:Post.kt$com.sanogueralorenzo.presentation.model.Post.kt</ID>
-    <ID>MaxLineLength:PostDetailsViewModel.kt$PostDetailsViewModel${ comments.postValue(Data(dataState = DataState.SUCCESS, data = it, message = null)) }</ID>
-    <ID>MaxLineLength:PostDetailsViewModel.kt$com.sanogueralorenzo.presentation.postdetails.PostDetailsViewModel.kt</ID>
-    <ID>MaxLineLength:PostListAdapter.kt$PostListAdapter : Adapter</ID>
-    <ID>MaxLineLength:PostListViewModel.kt$PostListViewModel${ posts.postValue(Data(dataState = DataState.SUCCESS, data = it, message = null)) }</ID>
-    <ID>MaxLineLength:PostListViewModel.kt$com.sanogueralorenzo.presentation.postlist.PostListViewModel.kt</ID>
-    <ID>MaxLineLength:PostRepositoryImpl.kt$PostRepositoryImpl$private fun set(entity: PostEntity)</ID>
-    <ID>MaxLineLength:PostRepositoryImpl.kt$com.sanogueralorenzo.data.repository.PostRepositoryImpl.kt</ID>
-    <ID>MaxLineLength:TestModels.kt$fun createUserEntity(): UserEntity</ID>
-    <ID>MaxLineLength:UserPostUseCase.kt$UserPostMapper$fun map(userList: List&lt;User&gt;, postList: List&lt;Post&gt;): List&lt;CombinedUserPost&gt;</ID>
-    <ID>MaxLineLength:UserPostUseCase.kt$UserPostUseCase$fun get(userId: String, postId: String, refresh: Boolean): Single&lt;CombinedUserPost&gt;</ID>
-    <ID>MaxLineLength:UserPostUseCase.kt$UsersPostsUseCase$fun get(refresh: Boolean): Single&lt;List&lt;CombinedUserPost&gt;&gt;</ID>
-    <ID>MaxLineLength:UserPostUseCase.kt$com.sanogueralorenzo.domain.usecase.UserPostUseCase.kt</ID>
-    <ID>MaxLineLength:UserRepositoryImpl.kt$UserRepositoryImpl$private fun set(entity: UserEntity)</ID>
-    <ID>MaxLineLength:UserRepositoryImpl.kt$com.sanogueralorenzo.data.repository.UserRepositoryImpl.kt</ID>
-    <ID>MaxLineLength:ViewModel.kt$ViewModelFactory : Factory</ID>
-    <ID>NewLineAtEndOfFile:Navigation.kt$com.sanogueralorenzo.presentation.navigation.Navigation.kt</ID>
-    <ID>NewLineAtEndOfFile:RxSchedulersOverrideRule.kt$com.sanogueralorenzo.presentation.RxSchedulersOverrideRule.kt</ID>
-    <ID>NewLineAtEndOfFile:TestModels.kt$com.sanogueralorenzo.data.TestModels.kt</ID>
-    <ID>NewLineAtEndOfFile:TestModels.kt$com.sanogueralorenzo.domain.TestModels.kt</ID>
-    <ID>NewLineAtEndOfFile:TestModels.kt$com.sanogueralorenzo.presentation.TestModels.kt</ID>
-    <ID>NewLineAtEndOfFile:User.kt$com.sanogueralorenzo.presentation.model.User.kt</ID>
+  <Whitelist timestamp="1535555944004">
     <ID>TooManyFunctions:TestModels.kt$com.sanogueralorenzo.data.TestModels.kt</ID>
-    <ID>VariableNaming:NetworkModule.kt$NetworkModule$private val BASE_URL = "http://jsonplaceholder.typicode.com/"</ID>
-    <ID>VariableNaming:NetworkModule.kt$NetworkModule$private val CONNECT_TIMEOUT = 10L</ID>
-    <ID>VariableNaming:NetworkModule.kt$NetworkModule$private val READ_TIMEOUT = 10L</ID>
-    <ID>VariableNaming:NetworkModule.kt$NetworkModule$private val WRITE_TIMEOUT = 10L</ID>
   </Whitelist>
 </SmellBaseline>

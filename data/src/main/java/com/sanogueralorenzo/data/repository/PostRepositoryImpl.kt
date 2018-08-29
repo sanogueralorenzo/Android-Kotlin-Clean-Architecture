@@ -25,10 +25,17 @@ class PostRepositoryImpl @Inject constructor(
 
     override fun get(postId: String, refresh: Boolean): Single<Post> = when (refresh) {
         true -> api.getPost(postId).flatMap { set(it) }.map { mapper.mapToDomain(it) }
-        false -> cache.load(key).map { it.first { it.id == postId } }.map { mapper.mapToDomain(it) }.onErrorResumeNext { get(postId, true) }
+        false -> cache.load(key).map { it.first { it.id == postId } }.map { mapper.mapToDomain(it) }.onErrorResumeNext {
+            get(
+                postId,
+                true
+            )
+        }
     }
 
     private fun set(list: List<PostEntity>) = cache.save(key, list)
 
-    private fun set(entity: PostEntity) = cache.load(key).map { it.filter { it.id != entity.id }.plus(entity) }.flatMap { set(it) }.map { entity }
+    private fun set(entity: PostEntity) = cache.load(key).map {
+        it.filter { it.id != entity.id }.plus(entity)
+    }.flatMap { set(it) }.map { entity }
 }

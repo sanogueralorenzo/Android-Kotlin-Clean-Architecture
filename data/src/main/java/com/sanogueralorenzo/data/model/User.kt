@@ -42,42 +42,50 @@ class UserMapper @Inject constructor(
     private val companyMapper: CompanyMapper
 ) {
 
-    fun mapToDomain(entity: UserEntity): User = User(id = entity.id,
-            name = entity.name,
-            username = entity.username,
-            email = entity.email,
-            address = addressMapper.mapToDomain(entity.addressEntity),
-            phone = entity.phone,
-            website = entity.website,
-            company = companyMapper.mapToDomain(entity.companyEntity))
+    fun mapToDomain(entity: UserEntity): User = User(
+        id = entity.id,
+        name = entity.name,
+        username = entity.username,
+        email = entity.email,
+        address = addressMapper.mapToDomain(entity.addressEntity),
+        phone = entity.phone,
+        website = entity.website,
+        company = companyMapper.mapToDomain(entity.companyEntity)
+    )
 
     fun mapToDomain(list: List<UserEntity>): List<User> = list.map { mapToDomain(it) }
 
-    fun mapToEntity(user: User): UserEntity = UserEntity(id = user.id,
-            name = user.name,
-            username = user.username,
-            email = user.email,
-            addressEntity = addressMapper.mapToEntity(user.address),
-            phone = user.phone,
-            website = user.website,
-            companyEntity = companyMapper.mapToEntity(user.company))
+    fun mapToEntity(user: User): UserEntity = UserEntity(
+        id = user.id,
+        name = user.name,
+        username = user.username,
+        email = user.email,
+        addressEntity = addressMapper.mapToEntity(user.address),
+        phone = user.phone,
+        website = user.website,
+        companyEntity = companyMapper.mapToEntity(user.company)
+    )
 
     fun mapToEntity(list: List<User>): List<UserEntity> = list.map { mapToEntity(it) }
 }
 
 class AddressMapper @Inject constructor(private val mapper: GeoMapper) {
 
-    fun mapToDomain(entity: AddressEntity): Address = Address(street = entity.street,
-            suite = entity.suite,
-            city = entity.city,
-            zipcode = entity.zipcode,
-            geo = mapper.mapToDomain(entity.geoEntity))
+    fun mapToDomain(entity: AddressEntity): Address = Address(
+        street = entity.street,
+        suite = entity.suite,
+        city = entity.city,
+        zipcode = entity.zipcode,
+        geo = mapper.mapToDomain(entity.geoEntity)
+    )
 
-    fun mapToEntity(address: Address): AddressEntity = AddressEntity(street = address.street,
-            suite = address.suite,
-            city = address.city,
-            zipcode = address.zipcode,
-            geoEntity = mapper.mapToEntity(address.geo))
+    fun mapToEntity(address: Address): AddressEntity = AddressEntity(
+        street = address.street,
+        suite = address.suite,
+        city = address.city,
+        zipcode = address.zipcode,
+        geoEntity = mapper.mapToEntity(address.geo)
+    )
 }
 
 class GeoMapper @Inject constructor() {
@@ -89,11 +97,15 @@ class GeoMapper @Inject constructor() {
 
 class CompanyMapper @Inject constructor() {
 
-    fun mapToDomain(entity: CompanyEntity): Company = Company(name = entity.name,
-            catchPhrase = entity.catchPhrase,
-            bs = entity.bs)
+    fun mapToDomain(entity: CompanyEntity): Company = Company(
+        name = entity.name,
+        catchPhrase = entity.catchPhrase,
+        bs = entity.bs
+    )
 
-    fun mapToEntity(company: Company): CompanyEntity = CompanyEntity(name = company.name,
-            catchPhrase = company.catchPhrase,
-            bs = company.bs)
+    fun mapToEntity(company: Company): CompanyEntity = CompanyEntity(
+        name = company.name,
+        catchPhrase = company.catchPhrase,
+        bs = company.bs
+    )
 }
