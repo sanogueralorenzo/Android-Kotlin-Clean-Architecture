@@ -12,11 +12,8 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-      - run:
-          name: Generate cache key
-          command: sudo chmod +x ./checksum.sh
       - restore_cache:
-          key: gradle-{{ checksum "/checksum.txt" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
+          key: gradle-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}-{{ checksum  "domain/build.gradle" }}-{{ checksum  "data/build.gradle" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
       - run:
           name: Run Detekt
           command: ./gradlew detektCheck
@@ -33,4 +30,4 @@ jobs:
           paths:
             - ~/.gradle
             - buildSrc
-          key: gradle-{{ checksum "/checksum.txt" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
+          key: gradle-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}-{{ checksum  "domain/build.gradle" }}-{{ checksum  "data/build.gradle" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
