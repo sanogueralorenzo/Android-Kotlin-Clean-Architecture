@@ -12,15 +12,11 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}-{{ checksum  "domain/build.gradle" }}-{{ checksum  "data/build.gradle" }}
       - run:
-          name: Download Dependencies
-          command: ./gradlew dependencies
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}-{{ checksum  "domain/build.gradle" }}-{{ checksum  "data/build.gradle" }}
+          name: Generate cache key
+          command: ./checksum.sh /tmp/checksum.txt
+      - restore_cache:
+          key: gradle-{{ checksum "/tmp/checksum.txt" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
       - run:
           name: Run Detekt
           command: ./gradlew detektCheck
@@ -33,3 +29,8 @@ jobs:
       - run:
           name: Run Unit Tests
           command: ./gradlew :presentation:testDebugUnitTest :data:testDebugUnitTest :domain:test
+      - save_cache:
+          paths:
+            - ~/.gradle
+            - buildSrc
+          key: gradle-{{ checksum "/tmp/checksum.txt" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
