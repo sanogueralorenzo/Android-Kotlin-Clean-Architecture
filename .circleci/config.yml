@@ -14,7 +14,7 @@ jobs:
       - checkout
       - run:
           name: Generate cache key
-          command: ./checksum.sh /tmp/checksum.txt
+          command: sudo chmod +x ./checksum.sh /tmp/checksum.txt
       - restore_cache:
           key: gradle-{{ checksum "/tmp/checksum.txt" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
       - run:
