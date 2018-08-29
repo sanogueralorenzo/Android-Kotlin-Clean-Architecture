@@ -14,17 +14,21 @@ import javax.inject.Inject
  */
 data class CombinedUserPost(val user: User, val post: Post)
 
-class UsersPostsUseCase @Inject constructor(private val userRepository: UserRepository,
-                                            private val postRepository: PostRepository,
-                                            private val mapper: UserPostMapper) {
+class UsersPostsUseCase @Inject constructor(
+    private val userRepository: UserRepository,
+    private val postRepository: PostRepository,
+    private val mapper: UserPostMapper
+) {
 
     fun get(refresh: Boolean): Single<List<CombinedUserPost>> = Single.zip(userRepository.get(refresh), postRepository.get(refresh),
             BiFunction { userList, postList -> mapper.map(userList, postList) })
 }
 
-class UserPostUseCase @Inject constructor(private val userRepository: UserRepository,
-                                          private val postRepository: PostRepository,
-                                          private val mapper: UserPostMapper) {
+class UserPostUseCase @Inject constructor(
+    private val userRepository: UserRepository,
+    private val postRepository: PostRepository,
+    private val mapper: UserPostMapper
+) {
 
     fun get(userId: String, postId: String, refresh: Boolean): Single<CombinedUserPost> = Single.zip(userRepository.get(userId, refresh), postRepository.get(postId, refresh),
             BiFunction { user, post -> mapper.map(user, post) })

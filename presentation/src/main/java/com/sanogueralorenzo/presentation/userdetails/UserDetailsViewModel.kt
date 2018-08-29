@@ -9,8 +9,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class UserDetailsViewModel @Inject constructor(private val useCase: UserUseCase,
-                                               private val mapper: UserItemMapper) : ViewModel() {
+class UserDetailsViewModel @Inject constructor(
+    private val useCase: UserUseCase,
+    private val mapper: UserItemMapper
+) : ViewModel() {
 
     val user = MutableLiveData<UserItem>()
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()

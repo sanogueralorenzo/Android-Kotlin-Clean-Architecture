@@ -3,14 +3,19 @@
 package com.sanogueralorenzo.data.repository
 
 import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.times
+import com.nhaarman.mockito_kotlin.verify
 import com.sanogueralorenzo.data.cache.Cache
 import com.sanogueralorenzo.data.createUserEntity
-import com.sanogueralorenzo.data.model.*
+import com.sanogueralorenzo.data.model.AddressMapper
+import com.sanogueralorenzo.data.model.CompanyMapper
+import com.sanogueralorenzo.data.model.GeoMapper
+import com.sanogueralorenzo.data.model.UserEntity
+import com.sanogueralorenzo.data.model.UserMapper
 import com.sanogueralorenzo.data.remote.UsersApi
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito.*
 import org.mockito.Mockito.`when` as _when
 
 class UserRepositoryImplTest {
@@ -97,7 +102,6 @@ class UserRepositoryImplTest {
         verify(mockApi).getUser(userId)
         test.assertValue(mapper.mapToDomain(remoteItem))
     }
-
 
     @Test
     fun `get users remote success`() {

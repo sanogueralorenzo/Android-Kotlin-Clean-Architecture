@@ -1,6 +1,11 @@
 package com.sanogueralorenzo.domain
 
-import com.sanogueralorenzo.domain.model.*
+import com.sanogueralorenzo.domain.model.Address
+import com.sanogueralorenzo.domain.model.Comment
+import com.sanogueralorenzo.domain.model.Company
+import com.sanogueralorenzo.domain.model.Geo
+import com.sanogueralorenzo.domain.model.Post
+import com.sanogueralorenzo.domain.model.User
 
 fun createUser(): User = User("1", "name", "username", "email", createAddress(), "phone", "website", createCompany())
 fun createGeo(): Geo = Geo("0.0", "0.0")

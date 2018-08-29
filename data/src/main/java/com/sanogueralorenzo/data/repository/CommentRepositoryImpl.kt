@@ -11,9 +11,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CommentRepositoryImpl @Inject constructor(private val api: CommentsApi,
-                                                private val cache: Cache<List<CommentEntity>>,
-                                                private val mapper: CommentMapper) : CommentRepository {
+class CommentRepositoryImpl @Inject constructor(
+    private val api: CommentsApi,
+    private val cache: Cache<List<CommentEntity>>,
+    private val mapper: CommentMapper
+) : CommentRepository {
     override val key = "Comment List"
 
     override fun get(postId: String, refresh: Boolean): Single<List<Comment>> = when (refresh) {

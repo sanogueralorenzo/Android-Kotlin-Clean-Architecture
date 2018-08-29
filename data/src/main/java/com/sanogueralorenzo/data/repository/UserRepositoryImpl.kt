@@ -11,9 +11,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class UserRepositoryImpl @Inject constructor(private val api: UsersApi,
-                                             private val cache: Cache<List<UserEntity>>,
-                                             private val mapper: UserMapper) : UserRepository {
+class UserRepositoryImpl @Inject constructor(
+    private val api: UsersApi,
+    private val cache: Cache<List<UserEntity>>,
+    private val mapper: UserMapper
+) : UserRepository {
     override val key = "User List"
 
     override fun get(refresh: Boolean): Single<List<User>> = when (refresh) {

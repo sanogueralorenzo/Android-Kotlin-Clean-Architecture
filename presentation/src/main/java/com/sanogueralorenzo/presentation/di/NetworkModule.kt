@@ -54,5 +54,4 @@ class NetworkModule {
 
     @Provides
     fun provideCommentsApi(retrofit: Retrofit): CommentsApi = retrofit.create(CommentsApi::class.java)
-
 }

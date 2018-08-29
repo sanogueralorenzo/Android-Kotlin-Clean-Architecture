@@ -50,3 +50,8 @@ jobs:
           command: ./gradlew lintDebug
       - store_artifacts:
           path: presentation/build/reports
+      - run:
+          name: Run Ktlint
+          command: ./gradlew ktlint
+      - store_artifacts:
+          path: ktlint/build/reports
