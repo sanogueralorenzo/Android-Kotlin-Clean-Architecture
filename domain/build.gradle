@@ -1,6 +1,8 @@
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
+apply from: "../ktlint.gradle"
+
 dependencies {
     implementation Libraries.kotlin_stdlib
     implementation Libraries.rxkotlin
