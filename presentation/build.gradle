@@ -2,7 +2,7 @@ apply from: "../base-android-library.gradle"
 apply plugin: 'kotlin-kapt'
 
 dependencies {
-    implementation Libraries.lifecycleExtensions
+    api Libraries.lifecycleExtensions
     kapt Libraries.lifecycleCompiler
     api Libraries.glide
     kapt Libraries.glideCompiler

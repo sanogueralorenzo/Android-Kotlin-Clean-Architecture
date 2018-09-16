@@ -14,10 +14,6 @@ dependencies {
 
     implementation Libraries.rxkotlin
 
-    implementation Libraries.lifecycleExtensions
-    kapt Libraries.lifecycleCompiler
-    testImplementation TestLibraries.lifecycleTesting
-
     implementation Libraries.retrofit
     implementation Libraries.moshiConverter
     implementation Libraries.loggingInterceptor
