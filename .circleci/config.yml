@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: gradle-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}-{{ checksum  "domain/build.gradle" }}-{{ checksum  "data/build.gradle" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
+          key: gradle-{{ checksum "build.gradle" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
       - run:
           name: Run Detekt
           command: ./gradlew detektCheck
@@ -21,7 +21,7 @@ jobs:
           name: Run Ktlint
           command: ./gradlew ktlint
       - run:
-          name: Run Lint Test
+          name: Run Lint
           command: ./gradlew lintDebug
       - run:
           name: Run Unit Tests
@@ -29,5 +29,4 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-            - buildSrc
-          key: gradle-{{ checksum "build.gradle" }}-{{ checksum  "presentation/build.gradle" }}-{{ checksum  "domain/build.gradle" }}-{{ checksum  "data/build.gradle" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
+          key: gradle-{{ checksum "build.gradle" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}

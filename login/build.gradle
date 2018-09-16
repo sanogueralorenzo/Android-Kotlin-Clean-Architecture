@@ -1,0 +1,8 @@
+apply from: "../base-android-library.gradle"
+
+dependencies {
+    implementation FirebaseLibraries.auth
+    implementation GoogleLibraries.auth
+
+    implementation SupportLibraries.appcompat
+}

@@ -1,0 +1,25 @@
+apply from: "../base-android-library.gradle"
+
+dependencies {
+    implementation project(Modules.presentation)
+
+    implementation Libraries.rxpaper
+
+    implementation Libraries.koinViewModel
+
+    implementation SupportLibraries.appcompat
+    implementation SupportLibraries.design
+    implementation SupportLibraries.cardview
+    implementation SupportLibraries.recyclerview
+
+    implementation Libraries.rxkotlin
+
+    implementation Libraries.lifecycleExtensions
+    kapt Libraries.lifecycleCompiler
+    testImplementation TestLibraries.lifecycleTesting
+
+    implementation Libraries.retrofit
+    implementation Libraries.moshiConverter
+    implementation Libraries.loggingInterceptor
+    implementation Libraries.rxjavaAdapter
+}

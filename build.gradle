@@ -2,9 +2,14 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
+        maven { url "http://jcenter.bintray.com"}
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:${Versions.gradle}"
+        classpath "com.google.gms:google-services:${Versions.googleServices}"
+        classpath "io.fabric.tools:gradle:${Versions.fabric}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     }
 }
@@ -29,9 +34,13 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
+        maven { url "http://jcenter.bintray.com"}
+        maven { url 'https://maven.fabric.io/public' }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task x(type: GradleBuild) { tasks = ["detektCheck", "ktlint", "lintDebug"] }

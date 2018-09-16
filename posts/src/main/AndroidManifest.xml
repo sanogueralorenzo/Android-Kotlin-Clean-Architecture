@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.sanogueralorenzo.posts">
+
+<application>
+    <activity android:name=".presentation.postlist.PostListActivity" />
+    <activity android:name=".presentation.postdetails.PostDetailsActivity" />
+</application>
+
+</manifest>

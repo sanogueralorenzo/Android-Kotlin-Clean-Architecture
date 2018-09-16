@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Posts</string>
+    <string name="screen_post_details_title">Post Details</string>
+    <string name="screen_post_list_title">Post List</string>
+    <string name="screen_user_details_title">User Details</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
+
+    <string name="user_name">Name: %1$s</string>
+    <string name="user_username">Username: @%1$s</string>
+    <string name="user_email">Email: %1$s</string>
+    <string name="user_phone">Phone: %1$s</string>
+    <string name="user_address">%1$s, %2$s, %3$s</string>
+    <string name="user_website">Website: %1$s</string>
+    <string name="user_company">Company: %1$s</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

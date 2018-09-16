@@ -1,10 +1,12 @@
 object ApplicationId {
-    val id = "com.sanogueralorenzo.androidkotlincleanarchitecture"
+    val id = "com.sanogueralorenzo.namingishard"
 }
 
 object Modules {
-    val domain = ":domain"
-    val data = ":data"
+    val home = ":home"
+    val login = ":login"
+    val posts = ":posts"
+    val presentation = ":presentation"
 }
 
 object Releases {
@@ -16,16 +18,21 @@ object Versions {
     val gradle = "3.1.4"
 
     val compileSdk = 28
-    val minSdk = 19
+    val minSdk = 21
     val targetSdk = 28
 
-    val inject = "1"
+    val googleServices = "4.1.0"
+    val firebase = "16.0.3"
+    val googleAuth = "16.0.0"
 
-    val support = "28.0.0-rc01"
+    val fabric = "1.25.4"
+
+    val support = "28.0.0-rc02"
     val maps = "15.0.1"
 
-    val kotlin = "1.2.61"
-    val anko = "0.10.5"
+    val ktx = "1.0.0-alpha1"
+
+    val kotlin = "1.2.70"
     val timber = "4.7.1"
     val rxkotlin = "2.3.0"
     val retrofit = "2.4.0"
@@ -35,6 +42,9 @@ object Versions {
     val rxpaper = "1.2.0"
     val moshi = "1.4.0"
     val lifecycle = "1.1.1"
+    val leakCanary = "1.6.1"
+    val crashlytics = "2.9.5"
+    val koin = "1.0.0"
 
     val junit = "4.12"
     val assertjCore = "3.11.1"
@@ -42,10 +52,9 @@ object Versions {
 }
 
 object Libraries {
-    val inject = "javax.inject:javax.inject:${Versions.inject}"
-
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
-    val anko = "org.jetbrains.anko:anko-commons:${Versions.anko}"
+
+    val ktx = "androidx.core:core-ktx:${Versions.ktx}"
 
     val maps = "com.google.android.gms:play-services-maps:${Versions.maps}"
 
@@ -69,6 +78,14 @@ object Libraries {
 
     val lifecycleExtensions = "android.arch.lifecycle:extensions:${Versions.lifecycle}"
     val lifecycleCompiler = "android.arch.lifecycle:compiler:${Versions.lifecycle}"
+
+    val leakCanaryAndroid = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
+    val leakCanaryAndroidNoOp = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakCanary}"
+    val leakCanaryAndroidSupportFragment = "com.squareup.leakcanary:leakcanary-support-fragment:${Versions.leakCanary}"
+
+    val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
+
+    val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin}"
 }
 
 object SupportLibraries {
@@ -76,6 +93,15 @@ object SupportLibraries {
     val design = "com.android.support:design:${Versions.support}"
     val cardview = "com.android.support:cardview-v7:${Versions.support}"
     val recyclerview = "com.android.support:recyclerview-v7:${Versions.support}"
+}
+
+object GoogleLibraries {
+    val auth = "com.google.android.gms:play-services-auth:${Versions.googleAuth}"
+}
+
+object FirebaseLibraries {
+    val auth = "com.google.firebase:firebase-auth:${Versions.firebase}"
+    val core = "com.google.firebase:firebase-core:${Versions.firebase}"
 }
 
 object TestLibraries {
