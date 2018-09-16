@@ -58,9 +58,9 @@ val cacheModule: Module = module {
     single(name = "CommentEntityCache") { Cache<List<CommentEntity>>() }
 }
 
-private val httpClient: OkHttpClient by lazy {
-    val timeout = 10L
+private const val TIMEOUT = 10L
 
+private val httpClient: OkHttpClient by lazy {
     val httpLoggingInterceptor =
         HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
     val clientBuilder = OkHttpClient.Builder()
@@ -68,17 +68,17 @@ private val httpClient: OkHttpClient by lazy {
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         clientBuilder.addInterceptor(httpLoggingInterceptor)
     }
-    clientBuilder.connectTimeout(timeout, TimeUnit.SECONDS)
-    clientBuilder.writeTimeout(timeout, TimeUnit.SECONDS)
-    clientBuilder.readTimeout(timeout, TimeUnit.SECONDS)
+    clientBuilder.connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+    clientBuilder.writeTimeout(TIMEOUT, TimeUnit.SECONDS)
+    clientBuilder.readTimeout(TIMEOUT, TimeUnit.SECONDS)
     clientBuilder.build()
 }
 
-private val retrofit: Retrofit by lazy {
-    val baseUrl = "http://jsonplaceholder.typicode.com/"
+private const val BASE_URL = "http://jsonplaceholder.typicode.com/"
 
+private val retrofit: Retrofit by lazy {
     Retrofit.Builder()
-        .baseUrl(baseUrl)
+        .baseUrl(BASE_URL)
         .client(httpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

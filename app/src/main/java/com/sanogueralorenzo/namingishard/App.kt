@@ -11,7 +11,8 @@ class App : Application() {
         super.onCreate()
         when {
             LeakCanary.isInAnalyzerProcess(this) -> return
-            // Report Leaks to Firebase Crashlytics? :thinking: https://github.com/square/leakcanary/wiki/Customizing-LeakCanary#uploading-to-a-server
+            // Report Leaks to Firebase Crashlytics? :thinking:
+            // https://github.com/square/leakcanary/wiki/Customizing-LeakCanary#uploading-to-a-server
             else -> LeakCanary.install(this)
         }
 
