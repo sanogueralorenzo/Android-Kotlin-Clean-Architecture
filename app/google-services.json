@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "526437137953",
+    "firebase_url": "https://naming-is-hard-139bf.firebaseio.com",
+    "project_id": "naming-is-hard-139bf",
+    "storage_bucket": "naming-is-hard-139bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526437137953:android:9c4097694a30145b",
+        "android_client_info": {
+          "package_name": "com.sanogueralorenzo.namingishard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526437137953-89j3prenqub126t2vdvqn34od3c7ioaf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sanogueralorenzo.namingishard",
+            "certificate_hash": "42ac0ee0ced575cdb6c26b79a1fbc84ad2876eeb"
+          }
+        },
+        {
+          "client_id": "526437137953-vgvc4t4pq9e4d5ug9779h74p3scdm9ma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpmONKg7OJs3ulBPY7c8fs1f-luu8P6hE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526437137953-vgvc4t4pq9e4d5ug9779h74p3scdm9ma.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
