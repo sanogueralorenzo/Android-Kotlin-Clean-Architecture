@@ -1,6 +1,6 @@
 package com.sanogueralorenzo.posts.data.repository
 
-import com.sanogueralorenzo.posts.data.cache.Cache
+import com.sanogueralorenzo.cache.Cache
 import com.sanogueralorenzo.posts.data.model.CommentEntity
 import com.sanogueralorenzo.posts.data.model.mapToDomain
 import com.sanogueralorenzo.posts.data.remote.CommentsApi

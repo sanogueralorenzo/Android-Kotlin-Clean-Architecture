@@ -41,6 +41,8 @@ dependencies {
     debugImplementation Libraries.leakCanaryAndroid
     releaseImplementation Libraries.leakCanaryAndroidNoOp
     debugImplementation Libraries.leakCanaryAndroidSupportFragment
+
+    implementation Libraries.rxpaper
 }
 
 configurations.all {

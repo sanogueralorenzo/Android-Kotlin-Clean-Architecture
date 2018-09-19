@@ -2,8 +2,8 @@ apply from: "../base-android-library.gradle"
 
 dependencies {
     implementation project(Modules.presentation)
-
-    implementation Libraries.rxpaper
+    implementation project(":network")
+    implementation project(":cache")
 
     implementation Libraries.koinViewModel
 
@@ -14,8 +14,5 @@ dependencies {
 
     implementation Libraries.rxkotlin
 
-    implementation Libraries.retrofit
     implementation Libraries.moshiConverter
-    implementation Libraries.loggingInterceptor
-    implementation Libraries.rxjavaAdapter
 }

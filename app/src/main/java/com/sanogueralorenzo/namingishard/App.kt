@@ -1,6 +1,7 @@
 package com.sanogueralorenzo.namingishard
 
 import android.app.Application
+import com.pacoworks.rxpaper2.RxPaperBook
 import com.sanogueralorenzo.posts.Posts
 import com.squareup.leakcanary.LeakCanary
 
@@ -16,6 +17,7 @@ class App : Application() {
             else -> LeakCanary.install(this)
         }
 
-        Posts.init(this)
+        RxPaperBook.init(this)
+        Posts.init()
     }
 }

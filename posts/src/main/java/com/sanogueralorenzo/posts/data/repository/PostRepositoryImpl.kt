@@ -1,8 +1,7 @@
 package com.sanogueralorenzo.posts.data.repository
 
-import com.sanogueralorenzo.posts.data.cache.Cache
+import com.sanogueralorenzo.cache.Cache
 import com.sanogueralorenzo.posts.data.model.PostEntity
-import com.sanogueralorenzo.posts.data.model.mapToDomain
 import com.sanogueralorenzo.posts.data.remote.PostsApi
 import com.sanogueralorenzo.posts.domain.model.Post
 import com.sanogueralorenzo.posts.domain.repository.PostRepository

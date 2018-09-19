@@ -1,4 +1,4 @@
-package com.sanogueralorenzo.posts.data.cache
+package com.sanogueralorenzo.cache
 
 import com.pacoworks.rxpaper2.RxPaperBook
 import io.reactivex.Single

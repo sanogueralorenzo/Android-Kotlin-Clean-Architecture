@@ -1,6 +1,7 @@
 package com.sanogueralorenzo.posts
 
-import com.sanogueralorenzo.posts.data.cache.Cache
+import com.sanogueralorenzo.cache.Cache
+import com.sanogueralorenzo.network.createNetworkClient
 import com.sanogueralorenzo.posts.data.model.CommentEntity
 import com.sanogueralorenzo.posts.data.model.PostEntity
 import com.sanogueralorenzo.posts.data.model.UserEntity
@@ -18,15 +19,10 @@ import com.sanogueralorenzo.posts.domain.usecase.UserPostUseCase
 import com.sanogueralorenzo.posts.domain.usecase.UsersPostsUseCase
 import com.sanogueralorenzo.posts.presentation.postdetails.PostDetailsViewModel
 import com.sanogueralorenzo.posts.presentation.postlist.PostListViewModel
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.Module
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.concurrent.TimeUnit
 
 val postListModule: Module = module {
     viewModel { PostListViewModel(get()) }
@@ -40,53 +36,31 @@ val postDetailsModule: Module = module {
 }
 
 val repositoryModule: Module = module {
-    single { UserRepositoryImpl(get(), get("UserEntityCache")) as UserRepository }
-    single { PostRepositoryImpl(get(), get("PostEntityCache")) as PostRepository }
-    single { CommentRepositoryImpl(get(), get("CommentEntityCache")) as CommentRepository }
+    single { UserRepositoryImpl(get(), get(USER_ENTITY_CACHE)) as UserRepository }
+    single { PostRepositoryImpl(get(), get(POST_ENTITY_CACHE)) as PostRepository }
+    single { CommentRepositoryImpl(get(), get(COMMENT_ENTITY_CACHE)) as CommentRepository }
 }
 
 val networkModule: Module = module {
-    single { retrofit }
     single { usersApi }
     single { postsApi }
     single { commentsApi }
 }
 
 val cacheModule: Module = module {
-    single(name = "UserEntityCache") { Cache<List<UserEntity>>() }
-    single(name = "PostEntityCache") { Cache<List<PostEntity>>() }
-    single(name = "CommentEntityCache") { Cache<List<CommentEntity>>() }
-}
-
-private const val TIMEOUT = 10L
-
-private val httpClient: OkHttpClient by lazy {
-    val httpLoggingInterceptor =
-        HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
-    val clientBuilder = OkHttpClient.Builder()
-    if (BuildConfig.DEBUG) {
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        clientBuilder.addInterceptor(httpLoggingInterceptor)
-    }
-    clientBuilder.connectTimeout(TIMEOUT, TimeUnit.SECONDS)
-    clientBuilder.writeTimeout(TIMEOUT, TimeUnit.SECONDS)
-    clientBuilder.readTimeout(TIMEOUT, TimeUnit.SECONDS)
-    clientBuilder.build()
+    single(name = USER_ENTITY_CACHE) { Cache<List<UserEntity>>() }
+    single(name = POST_ENTITY_CACHE) { Cache<List<PostEntity>>() }
+    single(name = COMMENT_ENTITY_CACHE) { Cache<List<CommentEntity>>() }
 }
 
 private const val BASE_URL = "http://jsonplaceholder.typicode.com/"
 
-private val retrofit: Retrofit by lazy {
-    Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .client(httpClient)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .build()
-}
+private val retrofit: Retrofit = createNetworkClient(BASE_URL, BuildConfig.DEBUG)
 
-private val postsApi: PostsApi by lazy { retrofit.create(PostsApi::class.java) }
+private val postsApi: PostsApi = retrofit.create(PostsApi::class.java)
+private val usersApi: UsersApi = retrofit.create(UsersApi::class.java)
+private val commentsApi: CommentsApi = retrofit.create(CommentsApi::class.java)
 
-private val usersApi: UsersApi by lazy { retrofit.create(UsersApi::class.java) }
-
-private val commentsApi: CommentsApi by lazy { retrofit.create(CommentsApi::class.java) }
+private const val USER_ENTITY_CACHE = "USER_ENTITY_CACHE"
+private const val POST_ENTITY_CACHE = "POST_ENTITY_CACHE"
+private const val COMMENT_ENTITY_CACHE = "COMMENT_ENTITY_CACHE"

@@ -1,0 +1,6 @@
+apply from: "../base-android-library.gradle"
+
+dependencies {
+    implementation Libraries.rxpaper
+    implementation Libraries.rxkotlin
+}
