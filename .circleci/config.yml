@@ -25,7 +25,7 @@ jobs:
           command: ./gradlew lintDebug
       - run:
           name: Run Unit Tests
-          command: ./gradlew :presentation:testDebugUnitTest :data:testDebugUnitTest :domain:test
+          command: ./gradlew testDebugUnitTest
       - save_cache:
           paths:
             - ~/.gradle
