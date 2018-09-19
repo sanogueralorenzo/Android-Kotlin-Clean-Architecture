@@ -5,21 +5,17 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.concurrent.TimeUnit
 
-fun createNetworkClient(baseUrl: String, debug: Boolean = false, timeout: Long) =
-    retrofitClient(baseUrl, httpClient(debug, timeout))
+fun createNetworkClient(baseUrl: String, debug: Boolean = false) =
+    retrofitClient(baseUrl, httpClient(debug))
 
-private fun httpClient(debug: Boolean, timeout: Long): OkHttpClient {
+private fun httpClient(debug: Boolean): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
     val clientBuilder = OkHttpClient.Builder()
     if (debug) {
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         clientBuilder.addInterceptor(httpLoggingInterceptor)
     }
-    clientBuilder.connectTimeout(timeout, TimeUnit.SECONDS)
-    clientBuilder.writeTimeout(timeout, TimeUnit.SECONDS)
-    clientBuilder.readTimeout(timeout, TimeUnit.SECONDS)
     return clientBuilder.build()
 }
 
