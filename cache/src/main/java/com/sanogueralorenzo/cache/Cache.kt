@@ -10,8 +10,10 @@ import io.reactivex.schedulers.Schedulers.io
  */
 class Cache<T> {
 
-    fun load(key: String): Single<T> = RxPaperBook.with(io()).read(key)
+    private val book: RxPaperBook = RxPaperBook.with(io())
+
+    fun load(key: String): Single<T> = book.read(key)
 
     fun save(key: String, anyObject: T): Single<T> =
-        RxPaperBook.with(io()).write(key, anyObject).toSingleDefault(anyObject)
+        book.write(key, anyObject).toSingleDefault(anyObject)
 }
