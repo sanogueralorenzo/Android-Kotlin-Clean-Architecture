@@ -16,7 +16,8 @@ data class CombinedUserPost(val user: User, val post: Post)
 
 class UsersPostsUseCase constructor(
     private val userRepository: UserRepository,
-    private val postRepository: PostRepository) {
+    private val postRepository: PostRepository
+) {
 
     fun get(refresh: Boolean): Single<List<CombinedUserPost>> =
         Single.zip(userRepository.get(refresh), postRepository.get(refresh),
@@ -25,7 +26,8 @@ class UsersPostsUseCase constructor(
 
 class UserPostUseCase constructor(
     private val userRepository: UserRepository,
-    private val postRepository: PostRepository) {
+    private val postRepository: PostRepository
+) {
 
     fun get(userId: String, postId: String, refresh: Boolean): Single<CombinedUserPost> =
         Single.zip(userRepository.get(userId, refresh), postRepository.get(postId, refresh),

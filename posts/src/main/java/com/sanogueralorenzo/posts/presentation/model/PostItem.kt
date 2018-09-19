@@ -1,7 +1,6 @@
 package com.sanogueralorenzo.posts.presentation.model
 
 import com.sanogueralorenzo.posts.domain.usecase.CombinedUserPost
-import java.io.Serializable
 
 const val POST_ID_KEY = "POST_ID_KEY"
 
@@ -13,7 +12,7 @@ data class PostItem(
     val name: String,
     val username: String,
     val email: String
-) : Serializable
+)
 
 /**
  * Presentation layer should be responsible of mapping the domain model to an

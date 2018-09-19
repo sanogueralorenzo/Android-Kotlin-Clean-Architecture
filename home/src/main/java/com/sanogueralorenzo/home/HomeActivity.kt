@@ -10,15 +10,3 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
     }
 }
-
-//interface MapperContext {
-//    val myDependency: String
-//
-//    fun Int.toPresentationModel() = myDependency + this
-//}
-//
-//data class MyViewModel(): MapperContext {
-//    override fun Int.toPresentationModel(): String {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
-//}

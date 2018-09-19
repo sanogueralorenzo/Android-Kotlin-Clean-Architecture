@@ -20,4 +20,3 @@ data class CommentItem(
 
 fun mapToPresentation(commentsList: List<Comment>): List<CommentItem> =
     commentsList.map { CommentItem(it.postId, it.id, it.name, it.email, it.body) }
-

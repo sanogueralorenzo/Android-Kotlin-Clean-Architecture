@@ -7,7 +7,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
-fun createNetworkClient(baseUrl: String, debug: Boolean = false, timeout: Long = 10L) =
+fun createNetworkClient(baseUrl: String, debug: Boolean = false, timeout: Long) =
     retrofitClient(baseUrl, httpClient(debug, timeout))
 
 private fun httpClient(debug: Boolean, timeout: Long): OkHttpClient {
