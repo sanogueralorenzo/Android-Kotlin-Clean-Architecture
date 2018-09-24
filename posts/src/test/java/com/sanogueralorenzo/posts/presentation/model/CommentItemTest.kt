@@ -13,7 +13,7 @@ class CommentItemTest {
         // given
 
         // when
-        val commentItem = mapToPresentation(listOf(comment)).first()
+        val commentItem = listOf(comment).mapToPresentation().first()
 
         // then
         assertTrue(commentItem.postId == comment.postId)

@@ -52,7 +52,7 @@ class PostListViewModelTest {
         // then
         verify(mockUseCase).get(false)
         assertEquals(
-            Data(DataState.SUCCESS, mapToPresentation(combinedUserPostList), null),
+            Data(DataState.SUCCESS, combinedUserPostList.mapToPresentation(), null),
             viewModel.posts.value
         )
     }

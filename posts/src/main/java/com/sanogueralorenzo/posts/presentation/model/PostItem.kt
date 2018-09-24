@@ -29,5 +29,4 @@ fun CombinedUserPost.mapToPresentation(): PostItem = PostItem(
     user.email
 )
 
-fun mapToPresentation(combinedUserPostList: List<CombinedUserPost>): List<PostItem> =
-    combinedUserPostList.map { it.mapToPresentation() }
+fun List<CombinedUserPost>.mapToPresentation(): List<PostItem> = map { it.mapToPresentation() }

@@ -36,7 +36,7 @@ class PostDetailsViewModel constructor(
         compositeDisposable.add(commentsUseCase.get(postId, refresh)
             .doOnSubscribe { comments.setLoading() }
             .subscribeOn(Schedulers.io())
-            .map { mapToPresentation(it) }
+            .map { it.mapToPresentation() }
             .subscribe({ comments.setSuccess(it) }, { comments.setError(it.message) })
         )
 

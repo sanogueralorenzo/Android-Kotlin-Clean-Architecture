@@ -77,7 +77,7 @@ class PostDetailsViewModelTest {
         assertEquals(
             Data(
                 dataState = DataState.SUCCESS,
-                data = mapToPresentation(comments),
+                data = comments.mapToPresentation(),
                 message = null
             ), viewModel.comments.value
         )

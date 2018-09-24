@@ -19,9 +19,9 @@ class UserRepositoryImpl constructor(
         when (refresh) {
             true -> api.getUsers()
                 .flatMap { set(it) }
-                .map { mapToDomain(it) }
+                .map { it.mapToDomain() }
             false -> cache.load(key)
-                .map { mapToDomain(it) }
+                .map { it.mapToDomain() }
                 .onErrorResumeNext { get(true) }
         }
 

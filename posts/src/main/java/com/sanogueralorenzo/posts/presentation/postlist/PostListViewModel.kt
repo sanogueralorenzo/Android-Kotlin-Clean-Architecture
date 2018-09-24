@@ -21,7 +21,7 @@ class PostListViewModel constructor(private val useCase: UsersPostsUseCase) : Vi
         compositeDisposable.add(useCase.get(refresh)
             .doOnSubscribe { posts.setLoading() }
             .subscribeOn(Schedulers.io())
-            .map { mapToPresentation(it) }
+            .map { it.mapToPresentation() }
             .subscribe({ posts.setSuccess(it) }, { posts.setError(it.message) })
         )
 

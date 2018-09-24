@@ -12,4 +12,4 @@ data class UserEntity(
 
 fun UserEntity.mapToDomain(): User = User(id, name, username, email)
 
-fun mapToDomain(list: List<UserEntity>): List<User> = list.map { it.mapToDomain() }
+fun List<UserEntity>.mapToDomain(): List<User> = map { it.mapToDomain() }

@@ -12,4 +12,4 @@ data class PostEntity(
 
 fun PostEntity.mapToDomain(): Post = Post(userId, id, title, body)
 
-fun mapToDomain(list: List<PostEntity>): List<Post> = list.map { it.mapToDomain() }
+fun List<PostEntity>.mapToDomain(): List<Post> = map { it.mapToDomain() }

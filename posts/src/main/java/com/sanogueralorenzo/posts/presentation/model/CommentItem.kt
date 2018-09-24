@@ -18,5 +18,5 @@ data class CommentItem(
  * and shouldn't know at all about presentation or data layers.
  */
 
-fun mapToPresentation(commentsList: List<Comment>): List<CommentItem> =
-    commentsList.map { CommentItem(it.postId, it.id, it.name, it.email, it.body) }
+fun List<Comment>.mapToPresentation(): List<CommentItem> =
+    map { CommentItem(it.postId, it.id, it.name, it.email, it.body) }

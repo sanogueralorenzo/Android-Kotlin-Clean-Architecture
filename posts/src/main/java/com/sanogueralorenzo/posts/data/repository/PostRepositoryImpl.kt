@@ -19,9 +19,9 @@ class PostRepositoryImpl constructor(
         when (refresh) {
             true -> api.getPosts()
                 .flatMap { set(it) }
-                .map { mapToDomain(it) }
+                .map { it.mapToDomain() }
             false -> cache.load(key)
-                .map { mapToDomain(it) }
+                .map { it.mapToDomain() }
                 .onErrorResumeNext { get(true) }
         }
 

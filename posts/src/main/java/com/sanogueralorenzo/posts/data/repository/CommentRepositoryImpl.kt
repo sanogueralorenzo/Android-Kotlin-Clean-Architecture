@@ -19,9 +19,9 @@ class CommentRepositoryImpl constructor(
         when (refresh) {
             true -> api.getComments(postId)
                 .flatMap { set(postId, it) }
-                .map { mapToDomain(it) }
+                .map { it.mapToDomain() }
             false -> cache.load(key + postId)
-                .map { mapToDomain(it) }
+                .map { it.mapToDomain() }
                 .onErrorResumeNext { get(postId, true) }
         }
 
