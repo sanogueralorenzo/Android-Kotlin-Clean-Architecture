@@ -2,11 +2,12 @@ package com.sanogueralorenzo.posts.presentation
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
-import com.sanogueralorenzo.posts.presentation.model.POST_ID_KEY
 import com.sanogueralorenzo.posts.presentation.model.PostItem
-import com.sanogueralorenzo.posts.presentation.model.USER_ID_KEY
 import com.sanogueralorenzo.posts.presentation.postdetails.PostDetailsActivity
 import com.sanogueralorenzo.posts.presentation.postlist.PostListActivity
+
+const val USER_ID_KEY = "USER_ID_KEY"
+const val POST_ID_KEY = "POST_ID_KEY"
 
 fun AppCompatActivity.startPostDetails(postItem: PostItem) {
     val intent = Intent(this, PostDetailsActivity::class.java)

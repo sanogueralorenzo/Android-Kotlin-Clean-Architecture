@@ -2,8 +2,6 @@ package com.sanogueralorenzo.posts.presentation.model
 
 import com.sanogueralorenzo.posts.domain.usecase.CombinedUserPost
 
-const val POST_ID_KEY = "POST_ID_KEY"
-
 data class PostItem(
     val postId: String,
     val userId: String,

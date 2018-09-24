@@ -25,7 +25,7 @@ object Versions {
     val firebase = "16.0.3"
     val googleAuth = "16.0.0"
 
-    val fabric = "1.25.4"
+    val fabric = "1.26.0"
 
     val support = "28.0.0-rc02"
     val maps = "15.0.1"
@@ -44,11 +44,12 @@ object Versions {
     val lifecycle = "1.1.1"
     val leakCanary = "1.6.1"
     val crashlytics = "2.9.5"
-    val koin = "1.0.0"
+    val koin = "1.0.1"
 
     val junit = "4.12"
     val assertjCore = "3.11.1"
-    val mockitoKotlin = "1.5.0"
+    val mockitoKotlin = "2.0.0-RC1"
+    val mockitoInline = "2.22.0"
 }
 
 object Libraries {
@@ -107,6 +108,7 @@ object FirebaseLibraries {
 object TestLibraries {
     val junit = "junit:junit:${Versions.junit}"
     val assertjCore = "org.assertj:assertj-core:${Versions.assertjCore}"
-    val mockitoKotlin = "com.nhaarman:mockito-kotlin:${Versions.mockitoKotlin}"
+    val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlin}"
+    val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoInline}"
     val lifecycleTesting = "android.arch.core:core-testing:${Versions.lifecycle}"
 }

@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import com.sanogueralorenzo.posts.R
+import com.sanogueralorenzo.posts.presentation.POST_ID_KEY
+import com.sanogueralorenzo.posts.presentation.USER_ID_KEY
 import com.sanogueralorenzo.posts.presentation.loadAvatar
 import com.sanogueralorenzo.posts.presentation.model.CommentItem
-import com.sanogueralorenzo.posts.presentation.model.POST_ID_KEY
 import com.sanogueralorenzo.posts.presentation.model.PostItem
-import com.sanogueralorenzo.posts.presentation.model.USER_ID_KEY
 import com.sanogueralorenzo.presentation.Data
 import com.sanogueralorenzo.presentation.DataState
 import com.sanogueralorenzo.presentation.gone

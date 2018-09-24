@@ -26,7 +26,7 @@ fun <T> MutableLiveData<Data<T>>.setLoading() =
     postValue(Data(DataState.LOADING, value?.data))
 
 fun <T> MutableLiveData<Data<T>>.setError(message: String? = null) =
-    postValue(Data(DataState.ERROR, value?.data, message ?: "Something went wrong"))
+    postValue(Data(DataState.ERROR, value?.data, message))
 
 class SingleLiveEvent<T> : MutableLiveData<T>() {
 
