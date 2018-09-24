@@ -4,6 +4,7 @@ package com.sanogueralorenzo.posts.presentation.postlist
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.sanogueralorenzo.posts.combinedUserPost
 import com.sanogueralorenzo.posts.domain.usecase.UsersPostsUseCase
@@ -49,6 +50,7 @@ class PostListViewModelTest {
         viewModel.get(false)
 
         // then
+        verify(mockUseCase).get(false)
         assertEquals(
             Data(DataState.SUCCESS, mapToPresentation(combinedUserPostList), null),
             viewModel.posts.value
@@ -64,6 +66,7 @@ class PostListViewModelTest {
         viewModel.get(false)
 
         // then
+        verify(mockUseCase).get(false)
         assertEquals(
             Data(DataState.ERROR, null, throwable.message),
             viewModel.posts.value

@@ -4,6 +4,7 @@ package com.sanogueralorenzo.posts.presentation.postdetails
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.sanogueralorenzo.posts.combinedUserPost
 import com.sanogueralorenzo.posts.comment
@@ -59,6 +60,7 @@ class PostDetailsViewModelTest {
         viewModel.getPost(UserIdPostId(userId, postId))
 
         // then
+        verify(mockUserPostUseCase).get(userId, postId, false)
         assertEquals(combinedUserPost.mapToPresentation(), viewModel.post.value)
     }
 
@@ -71,6 +73,7 @@ class PostDetailsViewModelTest {
         viewModel.getComments(postId, false)
 
         // then
+        verify(mockCommentsUseCase).get(postId, false)
         assertEquals(
             Data(
                 dataState = DataState.SUCCESS,
@@ -89,6 +92,7 @@ class PostDetailsViewModelTest {
         viewModel.getComments(postId, true)
 
         // then
+        verify(mockCommentsUseCase).get(postId, true)
         assertEquals(
             Data(dataState = DataState.ERROR, data = null, message = throwable.message),
             viewModel.comments.value
