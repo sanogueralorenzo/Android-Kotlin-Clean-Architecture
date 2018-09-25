@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity
 import com.sanogueralorenzo.posts.R
 import com.sanogueralorenzo.posts.presentation.model.PostItem
 import com.sanogueralorenzo.posts.presentation.startPostDetails
-import com.sanogueralorenzo.posts.presentation.startUserDetails
 import com.sanogueralorenzo.presentation.Data
 import com.sanogueralorenzo.presentation.DataState
 import com.sanogueralorenzo.presentation.startRefreshing
@@ -21,9 +20,8 @@ class PostListActivity : AppCompatActivity() {
 
     private val vm: PostListViewModel by viewModel()
 
-    private val avatarClick: (String) -> Unit = { startUserDetails(it) }
     private val itemClick: (PostItem) -> Unit = { startPostDetails(it) }
-    private val adapter = PostListAdapter(avatarClick, itemClick)
+    private val adapter = PostListAdapter(itemClick)
     private val snackBar by lazy {
         Snackbar.make(container, getString(R.string.error), Snackbar.LENGTH_INDEFINITE)
             .setAction(getString(R.string.retry)) { vm.get(refresh = true) }

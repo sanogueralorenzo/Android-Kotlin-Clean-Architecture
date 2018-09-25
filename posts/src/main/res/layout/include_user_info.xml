@@ -7,12 +7,10 @@
     android:orientation="horizontal"
     android:padding="@dimen/spacing_standard">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/userAvatar"
         android:layout_width="@dimen/image_avatar_size"
-        android:layout_height="@dimen/image_avatar_size"
-        android:background="?selectableItemBackgroundBorderless"
-        tools:src="@mipmap/ic_launcher" />
+        android:layout_height="@dimen/image_avatar_size" />
 
     <LinearLayout
         android:layout_width="match_parent"
