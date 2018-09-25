@@ -10,10 +10,8 @@ import kotlinx.android.synthetic.main.include_user_info.view.*
 import kotlinx.android.synthetic.main.item_list_post.view.*
 import java.util.ArrayList
 
-class PostListAdapter constructor(
-    private val avatarClick: (String) -> Unit,
-    private val itemClick: (PostItem) -> Unit
-) : RecyclerView.Adapter<PostListAdapter.ViewHolder>() {
+class PostListAdapter constructor(private val itemClick: (PostItem) -> Unit) :
+    RecyclerView.Adapter<PostListAdapter.ViewHolder>() {
 
     private val items = ArrayList<PostItem>()
 
@@ -33,7 +31,6 @@ class PostListAdapter constructor(
             itemView.userName.text = item.name
             itemView.postTitle.text = item.title.capitalize()
             itemView.postBody.text = item.body.capitalize()
-            itemView.userAvatar.setOnClickListener { avatarClick.invoke(item.userId) }
             itemView.setOnClickListener { itemClick.invoke(item) }
         }
     }
