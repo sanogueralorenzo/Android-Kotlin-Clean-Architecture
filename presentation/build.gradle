@@ -1,83 +1,10 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply from: "../base-android-library.gradle"
 apply plugin: 'kotlin-kapt'
 
-apply from: "../ktlint.gradle"
-
-android {
-    compileSdkVersion Versions.compileSdk
-    defaultConfig {
-        applicationId ApplicationId.id
-        minSdkVersion Versions.minSdk
-        targetSdkVersion Versions.targetSdk
-        versionCode Releases.versionCode
-        versionName Releases.versionName
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    testOptions {
-        unitTests.returnDefaultValues = true
-    }
-
-    packagingOptions {
-        exclude 'META-INF/android.arch.lifecycle_runtime.version'
-    }
-}
-
 dependencies {
-    implementation project(Modules.data)
-    implementation project(Modules.domain)
-
-    implementation Libraries.kotlin
-    implementation Libraries.anko
-
-    implementation SupportLibraries.appcompat
-    implementation SupportLibraries.design
-    implementation SupportLibraries.cardview
-    implementation SupportLibraries.recyclerview
-
-    implementation Libraries.maps
-
-    implementation Libraries.timber
-
-    implementation Libraries.rxkotlin
-
-    implementation Libraries.rxpaper
-
-    implementation Libraries.retrofit
-    implementation Libraries.rxjavaAdapter
-    implementation Libraries.moshiConverter
-    implementation Libraries.loggingInterceptor
-
-    implementation Libraries.dagger
-    kapt Libraries.daggerCompiler
-
-    implementation Libraries.glide
-    kapt Libraries.glideCompiler
-
     implementation Libraries.lifecycleExtensions
     kapt Libraries.lifecycleCompiler
-
-    testImplementation TestLibraries.junit
-    testImplementation TestLibraries.assertjCore
-    testImplementation TestLibraries.mockitoKotlin
     testImplementation TestLibraries.lifecycleTesting
-}
-
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        def requested = details.requested
-        if (requested.group == 'org.jetbrains.kotlin') {
-            details.useVersion Versions.kotlin
-        } else if (requested.group == 'com.android.support') {
-            details.useVersion Versions.support
-        }
-    }
+    api Libraries.glide
+    kapt Libraries.glideCompiler
 }

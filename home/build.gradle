@@ -1,0 +1,6 @@
+apply from: "../base-android-library.gradle"
+
+dependencies {
+    implementation SupportLibraries.design
+    implementation SupportLibraries.appcompat
+}

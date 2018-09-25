@@ -1,0 +1,16 @@
+apply plugin: 'kotlin'
+
+apply from: "../ktlint.gradle"
+
+dependencies {
+    implementation Libraries.kotlin
+    implementation Libraries.rxkotlin
+
+    implementation Libraries.retrofit
+    implementation Libraries.moshiConverter
+    implementation Libraries.loggingInterceptor
+    implementation Libraries.rxjavaAdapter
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

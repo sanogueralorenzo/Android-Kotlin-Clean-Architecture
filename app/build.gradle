@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.fabric'
+
+apply from: "../ktlint.gradle"
+
+android {
+    compileSdkVersion Versions.compileSdk
+    defaultConfig {
+        applicationId ApplicationId.id
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    implementation project(Modules.login)
+    implementation project(Modules.home)
+    implementation project(Modules.posts)
+
+    implementation Libraries.kotlin
+    implementation FirebaseLibraries.core
+    implementation SupportLibraries.appcompat
+    implementation Libraries.crashlytics
+
+    debugImplementation Libraries.leakCanaryAndroid
+    releaseImplementation Libraries.leakCanaryAndroidNoOp
+    debugImplementation Libraries.leakCanaryAndroidSupportFragment
+
+    implementation Libraries.rxpaper
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'org.jetbrains.kotlin') {
+            details.useVersion Versions.kotlin
+        } else if (requested.group == 'com.android.support') {
+            details.useVersion Versions.support
+        }
+    }
+}
+
+apply plugin: 'com.google.gms.google-services'

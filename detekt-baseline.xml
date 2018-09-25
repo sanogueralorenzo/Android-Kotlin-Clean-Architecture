@@ -2,6 +2,5 @@
 <SmellBaseline>
   <Blacklist timestamp="1535550703022"></Blacklist>
   <Whitelist timestamp="1535555944004">
-    <ID>TooManyFunctions:TestModels.kt$com.sanogueralorenzo.data.TestModels.kt</ID>
   </Whitelist>
 </SmellBaseline>

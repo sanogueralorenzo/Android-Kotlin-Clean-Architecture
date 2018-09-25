@@ -1,0 +1,28 @@
+apply from: "../base-android-library.gradle"
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation project(Modules.presentation)
+    implementation project(":network")
+    implementation project(":cache")
+
+    implementation Libraries.koinViewModel
+
+    implementation SupportLibraries.appcompat
+    implementation SupportLibraries.design
+    implementation SupportLibraries.cardview
+    implementation SupportLibraries.recyclerview
+
+    implementation Libraries.rxkotlin
+
+    implementation Libraries.moshiConverter
+
+    implementation Libraries.lifecycleExtensions
+    kapt Libraries.lifecycleCompiler
+    testImplementation TestLibraries.lifecycleTesting
+
+    testImplementation TestLibraries.junit
+    testImplementation TestLibraries.assertjCore
+    testImplementation TestLibraries.mockitoKotlin
+    testImplementation TestLibraries.mockitoInline
+}
