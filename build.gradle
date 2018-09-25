@@ -15,17 +15,16 @@ buildscript {
 }
 
 plugins {
-    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC8"
+    id "io.gitlab.arturbosch.detekt" version "1.0.0.RC9.2"
     id "com.github.ben-manes.versions" version "0.20.0"
 }
 
-detekt {
-    version = "1.0.0.RC8"
-    profile("main") {
-        input = "$projectDir"
-        config = "$projectDir/default-detekt-config.yml"
+subprojects {
+    apply plugin: 'io.gitlab.arturbosch.detekt'
+
+    detekt {
+        config = files("../default-detekt-config.yml")
         filters = ".*build.*,.*/resources/.*,.*/tmp/.*"
-        baseline = "detekt-baseline.xml"
     }
 }
 
