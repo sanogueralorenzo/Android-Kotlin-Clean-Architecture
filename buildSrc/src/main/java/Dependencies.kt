@@ -15,7 +15,7 @@ object Releases {
 }
 
 object Versions {
-    val gradle = "3.1.4"
+    val gradle = "3.2.0"
 
     val compileSdk = 28
     val minSdk = 21
@@ -32,7 +32,7 @@ object Versions {
 
     val ktx = "1.0.0-alpha1"
 
-    val kotlin = "1.2.70"
+    val kotlin = "1.2.71"
     val timber = "4.7.1"
     val rxkotlin = "2.3.0"
     val retrofit = "2.4.0"
