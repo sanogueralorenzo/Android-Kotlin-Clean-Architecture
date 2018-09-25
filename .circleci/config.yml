@@ -23,7 +23,7 @@ jobs:
           key: gradle-{{ checksum "build.gradle" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}
       - run:
           name: Run Detekt
-          command: ./gradlew detektCheck
+          command: ./gradlew detekt
       - run:
           name: Run Ktlint
           command: ./gradlew ktlint
