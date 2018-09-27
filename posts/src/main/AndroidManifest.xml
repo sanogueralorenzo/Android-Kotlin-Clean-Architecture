@@ -1,7 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.sanogueralorenzo.posts">
 
-    <application>
+    <!--network_security_config due to Android 8 and above none https-->
+    <!--https://stackoverflow.com/questions/45940861/android-8-cleartext-http-traffic-not-permitted-->
+
+    <application
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:targetApi="n">
         <activity android:name=".presentation.postlist.PostListActivity" />
         <activity android:name=".presentation.postdetails.PostDetailsActivity" />
     </application>
