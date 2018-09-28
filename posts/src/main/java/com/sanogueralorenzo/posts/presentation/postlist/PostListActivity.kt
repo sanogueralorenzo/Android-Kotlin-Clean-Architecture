@@ -12,7 +12,6 @@ import com.sanogueralorenzo.presentation.Data
 import com.sanogueralorenzo.presentation.DataState
 import com.sanogueralorenzo.presentation.startRefreshing
 import com.sanogueralorenzo.presentation.stopRefreshing
-import kotlinx.android.synthetic.main.activity_post_details.*
 import kotlinx.android.synthetic.main.activity_post_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -23,7 +22,7 @@ class PostListActivity : AppCompatActivity() {
     private val itemClick: (PostItem) -> Unit = { startPostDetails(it) }
     private val adapter = PostListAdapter(itemClick)
     private val snackBar by lazy {
-        Snackbar.make(container, getString(R.string.error), Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(swipeRefreshLayout, getString(R.string.error), Snackbar.LENGTH_INDEFINITE)
             .setAction(getString(R.string.retry)) { vm.get(refresh = true) }
     }
 
