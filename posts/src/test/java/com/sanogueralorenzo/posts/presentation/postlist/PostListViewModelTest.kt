@@ -10,8 +10,8 @@ import com.sanogueralorenzo.posts.combinedUserPost
 import com.sanogueralorenzo.posts.domain.usecase.UsersPostsUseCase
 import com.sanogueralorenzo.posts.presentation.RxSchedulersOverrideRule
 import com.sanogueralorenzo.posts.presentation.model.mapToPresentation
-import com.sanogueralorenzo.presentation.Data
-import com.sanogueralorenzo.presentation.DataState
+import com.sanogueralorenzo.presentation.Resource
+import com.sanogueralorenzo.presentation.ResourceState
 import io.reactivex.Single
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -52,7 +52,7 @@ class PostListViewModelTest {
         // then
         verify(mockUseCase).get(false)
         assertEquals(
-            Data(DataState.SUCCESS, combinedUserPostList.mapToPresentation(), null),
+            Resource(ResourceState.SUCCESS, combinedUserPostList.mapToPresentation(), null),
             viewModel.posts.value
         )
     }
@@ -68,7 +68,7 @@ class PostListViewModelTest {
         // then
         verify(mockUseCase).get(false)
         assertEquals(
-            Data(DataState.ERROR, null, throwable.message),
+            Resource(ResourceState.ERROR, null, throwable.message),
             viewModel.posts.value
         )
     }

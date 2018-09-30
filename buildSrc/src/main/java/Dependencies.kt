@@ -3,10 +3,14 @@ object ApplicationId {
 }
 
 object Modules {
+    val cache = ":cache"
+    val network = ":network"
+
+    val presentation = ":presentation"
+
     val home = ":home"
     val login = ":login"
     val posts = ":posts"
-    val presentation = ":presentation"
 }
 
 object Releases {

@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity
 import com.sanogueralorenzo.posts.R
 import com.sanogueralorenzo.posts.presentation.model.PostItem
 import com.sanogueralorenzo.posts.presentation.startPostDetails
-import com.sanogueralorenzo.presentation.Data
-import com.sanogueralorenzo.presentation.DataState
+import com.sanogueralorenzo.presentation.Resource
+import com.sanogueralorenzo.presentation.ResourceState
 import com.sanogueralorenzo.presentation.startRefreshing
 import com.sanogueralorenzo.presentation.stopRefreshing
 import kotlinx.android.synthetic.main.activity_post_list.*
@@ -41,12 +41,12 @@ class PostListActivity : AppCompatActivity() {
         swipeRefreshLayout.setOnRefreshListener { vm.get(refresh = true) }
     }
 
-    private fun updatePosts(data: Data<List<PostItem>>?) {
-        data?.let {
-            when (it.dataState) {
-                DataState.LOADING -> swipeRefreshLayout.startRefreshing()
-                DataState.SUCCESS -> swipeRefreshLayout.stopRefreshing()
-                DataState.ERROR -> swipeRefreshLayout.stopRefreshing()
+    private fun updatePosts(resource: Resource<List<PostItem>>?) {
+        resource?.let {
+            when (it.state) {
+                ResourceState.LOADING -> swipeRefreshLayout.startRefreshing()
+                ResourceState.SUCCESS -> swipeRefreshLayout.stopRefreshing()
+                ResourceState.ERROR -> swipeRefreshLayout.stopRefreshing()
             }
             it.data?.let { adapter.addItems(it) }
             it.message?.let { snackBar.show() }

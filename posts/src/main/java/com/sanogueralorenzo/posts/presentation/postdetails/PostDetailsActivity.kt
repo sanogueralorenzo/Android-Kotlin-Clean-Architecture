@@ -10,8 +10,8 @@ import com.sanogueralorenzo.posts.presentation.USER_ID_KEY
 import com.sanogueralorenzo.posts.presentation.loadAvatar
 import com.sanogueralorenzo.posts.presentation.model.CommentItem
 import com.sanogueralorenzo.posts.presentation.model.PostItem
-import com.sanogueralorenzo.presentation.Data
-import com.sanogueralorenzo.presentation.DataState
+import com.sanogueralorenzo.presentation.Resource
+import com.sanogueralorenzo.presentation.ResourceState
 import com.sanogueralorenzo.presentation.gone
 import com.sanogueralorenzo.presentation.visible
 import kotlinx.android.synthetic.main.activity_post_details.*
@@ -58,12 +58,12 @@ class PostDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateComments(data: Data<List<CommentItem>>?) {
-        data?.let {
-            when (it.dataState) {
-                DataState.LOADING -> progressBar.visible()
-                DataState.SUCCESS -> progressBar.gone()
-                DataState.ERROR -> progressBar.gone()
+    private fun updateComments(resource: Resource<List<CommentItem>>?) {
+        resource?.let {
+            when (it.state) {
+                ResourceState.LOADING -> progressBar.visible()
+                ResourceState.SUCCESS -> progressBar.gone()
+                ResourceState.ERROR -> progressBar.gone()
             }
             it.data?.let { adapter.addItems(it) }
             it.message?.let { snackBar.show() }

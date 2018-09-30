@@ -3,8 +3,8 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation project(Modules.presentation)
-    implementation project(":network")
-    implementation project(":cache")
+    implementation project(Modules.network)
+    implementation project(Modules.cache)
 
     implementation Libraries.koinViewModel
 
@@ -20,6 +20,9 @@ dependencies {
     implementation Libraries.lifecycleExtensions
     kapt Libraries.lifecycleCompiler
     testImplementation TestLibraries.lifecycleTesting
+
+    implementation Libraries.glide
+    kapt Libraries.glideCompiler
 
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.assertjCore
