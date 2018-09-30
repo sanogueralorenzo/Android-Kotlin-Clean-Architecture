@@ -5,6 +5,7 @@ dependencies {
     implementation Libraries.lifecycleExtensions
     kapt Libraries.lifecycleCompiler
     testImplementation TestLibraries.lifecycleTesting
-    api Libraries.glide
+
+    implementation Libraries.glide
     kapt Libraries.glideCompiler
 }

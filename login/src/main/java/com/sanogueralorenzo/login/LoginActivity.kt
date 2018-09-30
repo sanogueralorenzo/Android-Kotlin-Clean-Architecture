@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
     private fun signInSuccess() = setResult(RESULT_OK).also { finish() }
 
     private fun signInFail() =
-        Toast.makeText(this, "Error During Login", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.login_error), Toast.LENGTH_SHORT).show()
             .also {
                 setResult(RESULT_CANCELED)
                 finish()

@@ -14,8 +14,8 @@ import com.sanogueralorenzo.posts.post
 import com.sanogueralorenzo.posts.presentation.RxSchedulersOverrideRule
 import com.sanogueralorenzo.posts.presentation.model.mapToPresentation
 import com.sanogueralorenzo.posts.user
-import com.sanogueralorenzo.presentation.Data
-import com.sanogueralorenzo.presentation.DataState
+import com.sanogueralorenzo.presentation.Resource
+import com.sanogueralorenzo.presentation.ResourceState
 import io.reactivex.Single
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -75,8 +75,8 @@ class PostDetailsViewModelTest {
         // then
         verify(mockCommentsUseCase).get(postId, false)
         assertEquals(
-            Data(
-                dataState = DataState.SUCCESS,
+            Resource(
+                state = ResourceState.SUCCESS,
                 data = comments.mapToPresentation(),
                 message = null
             ), viewModel.comments.value
@@ -94,7 +94,7 @@ class PostDetailsViewModelTest {
         // then
         verify(mockCommentsUseCase).get(postId, true)
         assertEquals(
-            Data(dataState = DataState.ERROR, data = null, message = throwable.message),
+            Resource(state = ResourceState.ERROR, data = null, message = throwable.message),
             viewModel.comments.value
         )
     }

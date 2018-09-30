@@ -29,9 +29,9 @@ android {
 }
 
 dependencies {
-    implementation project(Modules.login)
     implementation project(Modules.home)
     implementation project(Modules.posts)
+    implementation project(Modules.cache)
 
     implementation Libraries.kotlin
     implementation FirebaseLibraries.core
@@ -41,8 +41,6 @@ dependencies {
     debugImplementation Libraries.leakCanaryAndroid
     releaseImplementation Libraries.leakCanaryAndroidNoOp
     debugImplementation Libraries.leakCanaryAndroidSupportFragment
-
-    implementation Libraries.rxpaper
 }
 
 configurations.all {

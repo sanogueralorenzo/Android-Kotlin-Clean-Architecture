@@ -4,29 +4,7 @@ import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Observer
 import android.support.annotation.MainThread
-
 import java.util.concurrent.atomic.AtomicBoolean
-
-sealed class DataState {
-    object LOADING : DataState()
-    object SUCCESS : DataState()
-    object ERROR : DataState()
-}
-
-data class Data<out T> constructor(
-    val dataState: DataState,
-    val data: T? = null,
-    val message: String? = null
-)
-
-fun <T> MutableLiveData<Data<T>>.setSuccess(data: T? = null) =
-    postValue(Data(DataState.SUCCESS, data))
-
-fun <T> MutableLiveData<Data<T>>.setLoading() =
-    postValue(Data(DataState.LOADING, value?.data))
-
-fun <T> MutableLiveData<Data<T>>.setError(message: String? = null) =
-    postValue(Data(DataState.ERROR, value?.data, message))
 
 class SingleLiveEvent<T> : MutableLiveData<T>() {
 

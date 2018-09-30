@@ -7,7 +7,7 @@ import com.sanogueralorenzo.posts.domain.usecase.UserPostUseCase
 import com.sanogueralorenzo.posts.presentation.model.CommentItem
 import com.sanogueralorenzo.posts.presentation.model.PostItem
 import com.sanogueralorenzo.posts.presentation.model.mapToPresentation
-import com.sanogueralorenzo.presentation.Data
+import com.sanogueralorenzo.presentation.Resource
 import com.sanogueralorenzo.presentation.setError
 import com.sanogueralorenzo.presentation.setLoading
 import com.sanogueralorenzo.presentation.setSuccess
@@ -22,7 +22,7 @@ class PostDetailsViewModel constructor(
 ) : ViewModel() {
 
     val post = MutableLiveData<PostItem>()
-    val comments = MutableLiveData<Data<List<CommentItem>>>()
+    val comments = MutableLiveData<Resource<List<CommentItem>>>()
     private val compositeDisposable = CompositeDisposable()
 
     fun getPost(ids: UserIdPostId) =

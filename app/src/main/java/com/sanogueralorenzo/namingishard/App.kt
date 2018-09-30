@@ -1,7 +1,7 @@
 package com.sanogueralorenzo.namingishard
 
 import android.app.Application
-import com.pacoworks.rxpaper2.RxPaperBook
+import com.sanogueralorenzo.cache.CacheLibrary
 import com.sanogueralorenzo.posts.Posts
 import com.squareup.leakcanary.LeakCanary
 
@@ -17,7 +17,10 @@ class App : Application() {
             else -> LeakCanary.install(this)
         }
 
-        RxPaperBook.init(this)
+        // Unique initialization of Cache library to allow saving into device
+        CacheLibrary.init(this)
+
+        // Unique initialization of specific features (such as dependency injection)
         Posts.init()
     }
 }
