@@ -1,4 +1,4 @@
-apply from: "../base-android-library.gradle"
+apply from: "../common-android-library.gradle"
 
 dependencies {
     implementation Libraries.rxpaper
