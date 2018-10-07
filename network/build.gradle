@@ -1,9 +1,6 @@
-apply plugin: 'kotlin'
-
-apply from: "../ktlint.gradle"
+apply from: "../common-kotlin-library.gradle"
 
 dependencies {
-    implementation Libraries.kotlin
     implementation Libraries.rxkotlin
 
     implementation Libraries.retrofit
@@ -11,6 +8,3 @@ dependencies {
     implementation Libraries.loggingInterceptor
     implementation Libraries.rxjavaAdapter
 }
-
-sourceCompatibility = "7"
-targetCompatibility = "7"
