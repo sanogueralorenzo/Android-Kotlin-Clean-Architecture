@@ -26,10 +26,10 @@ object Versions {
     val targetSdk = 28
 
     val googleServices = "4.1.0"
-    val firebase = "16.0.3"
+    val firebase = "16.0.4"
     val googleAuth = "16.0.0"
 
-    val fabric = "1.26.0"
+    val fabric = "1.26.1"
 
     val support = "28.0.0-rc02"
     val maps = "15.0.1"
@@ -53,7 +53,7 @@ object Versions {
     val junit = "4.12"
     val assertjCore = "3.11.1"
     val mockitoKotlin = "2.0.0-RC1"
-    val mockitoInline = "2.22.0"
+    val mockitoInline = "2.23.0"
 }
 
 object Libraries {

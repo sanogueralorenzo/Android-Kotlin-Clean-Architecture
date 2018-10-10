@@ -30,8 +30,9 @@ android {
 
 dependencies {
     implementation project(Modules.home)
-    implementation project(Modules.posts)
+    implementation project(Modules.login)
     implementation project(Modules.cache)
+    implementation project(Modules.posts)
 
     implementation Libraries.kotlin
     implementation FirebaseLibraries.core

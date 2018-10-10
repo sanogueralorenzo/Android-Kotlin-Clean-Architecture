@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
-                firebaseAuthWithGoogle(account)
+                account?.let { firebaseAuthWithGoogle(it) }
             } catch (e: ApiException) {
                 // Google Sign In failed
                 onBackPressed()
