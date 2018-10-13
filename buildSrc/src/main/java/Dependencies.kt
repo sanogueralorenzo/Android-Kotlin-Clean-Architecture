@@ -25,7 +25,7 @@ object Versions {
     val minSdk = 21
     val targetSdk = 28
 
-    val googleServices = "4.1.0"
+    val googleServices = "4.0.1"
     val firebase = "16.0.4"
     val googleAuth = "16.0.0"
 
