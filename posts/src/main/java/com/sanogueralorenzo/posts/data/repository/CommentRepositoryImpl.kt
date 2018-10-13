@@ -9,7 +9,7 @@ import com.sanogueralorenzo.posts.domain.repository.CommentRepository
 import io.reactivex.Single
 
 class CommentRepositoryImpl constructor(
-    private val api: CommentsApi,
+    private val commentsApi: CommentsApi,
     private val cache: Cache<List<CommentEntity>>
 ) : CommentRepository {
 
@@ -17,7 +17,7 @@ class CommentRepositoryImpl constructor(
 
     override fun get(postId: String, refresh: Boolean): Single<List<Comment>> =
         when (refresh) {
-            true -> api.getComments(postId)
+            true -> commentsApi.getComments(postId)
                 .flatMap { set(postId, it) }
                 .map { it.mapToDomain() }
             false -> cache.load(key + postId)

@@ -8,8 +8,8 @@ import org.koin.standalone.StandAloneContext.loadKoinModules
 object Posts {
     fun init() {
         loadKoinModules(
-            postListModule,
-            postDetailsModule,
+            viewModelModule,
+            useCaseModule,
             repositoryModule,
             networkModule,
             cacheModule

@@ -12,13 +12,13 @@ import com.sanogueralorenzo.presentation.setSuccess
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class PostListViewModel constructor(private val useCase: UsersPostsUseCase) : ViewModel() {
+class PostListViewModel constructor(private val usersPostsUseCase: UsersPostsUseCase) : ViewModel() {
 
     val posts = MutableLiveData<Resource<List<PostItem>>>()
     private val compositeDisposable = CompositeDisposable()
 
     fun get(refresh: Boolean = false) =
-        compositeDisposable.add(useCase.get(refresh)
+        compositeDisposable.add(usersPostsUseCase.get(refresh)
             .doOnSubscribe { posts.setLoading() }
             .subscribeOn(Schedulers.io())
             .map { it.mapToPresentation() }

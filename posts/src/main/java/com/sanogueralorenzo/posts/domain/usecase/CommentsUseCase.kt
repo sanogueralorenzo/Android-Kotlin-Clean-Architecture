@@ -4,8 +4,8 @@ import com.sanogueralorenzo.posts.domain.model.Comment
 import com.sanogueralorenzo.posts.domain.repository.CommentRepository
 import io.reactivex.Single
 
-class CommentsUseCase constructor(private val repository: CommentRepository) {
+class CommentsUseCase constructor(private val commentRepository: CommentRepository) {
 
     fun get(postId: String, refresh: Boolean): Single<List<Comment>> =
-        repository.get(postId, refresh)
+        commentRepository.get(postId, refresh)
 }
