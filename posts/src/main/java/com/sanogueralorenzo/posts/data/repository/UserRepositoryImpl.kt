@@ -9,7 +9,7 @@ import com.sanogueralorenzo.posts.domain.repository.UserRepository
 import io.reactivex.Single
 
 class UserRepositoryImpl constructor(
-    private val api: UsersApi,
+    private val userApi: UsersApi,
     private val cache: Cache<List<UserEntity>>
 ) : UserRepository {
 
@@ -17,7 +17,7 @@ class UserRepositoryImpl constructor(
 
     override fun get(refresh: Boolean): Single<List<User>> =
         when (refresh) {
-            true -> api.getUsers()
+            true -> userApi.getUsers()
                 .flatMap { set(it) }
                 .map { it.mapToDomain() }
             false -> cache.load(key)
@@ -27,7 +27,7 @@ class UserRepositoryImpl constructor(
 
     override fun get(userId: String, refresh: Boolean): Single<User> =
         when (refresh) {
-            true -> api.getUser(userId)
+            true -> userApi.getUser(userId)
                 .flatMap { set(it) }
                 .map { it.mapToDomain() }
             false -> cache.load(key)

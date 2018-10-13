@@ -24,21 +24,21 @@ import org.koin.dsl.module.Module
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
 
-val postListModule: Module = module {
-    viewModel { PostListViewModel(get()) }
-    factory { UsersPostsUseCase(get(), get()) }
+val viewModelModule: Module = module {
+    viewModel { PostListViewModel(usersPostsUseCase = get()) }
+    viewModel { PostDetailsViewModel(userPostUseCase = get(), commentsUseCase = get()) }
 }
 
-val postDetailsModule: Module = module {
-    viewModel { PostDetailsViewModel(get(), get()) }
-    factory { UserPostUseCase(get(), get()) }
-    factory { CommentsUseCase(get()) }
+val useCaseModule: Module = module {
+    factory { UsersPostsUseCase(userRepository = get(), postRepository = get()) }
+    factory { UserPostUseCase(userRepository = get(), postRepository = get()) }
+    factory { CommentsUseCase(commentRepository = get()) }
 }
 
 val repositoryModule: Module = module {
-    single { UserRepositoryImpl(get(), get(USER_ENTITY_CACHE)) as UserRepository }
-    single { PostRepositoryImpl(get(), get(POST_ENTITY_CACHE)) as PostRepository }
-    single { CommentRepositoryImpl(get(), get(COMMENT_ENTITY_CACHE)) as CommentRepository }
+    single { UserRepositoryImpl(userApi = get(), cache = get(USER_ENTITY_CACHE)) as UserRepository }
+    single { PostRepositoryImpl(postsApi = get(), cache = get(POST_ENTITY_CACHE)) as PostRepository }
+    single { CommentRepositoryImpl(commentsApi = get(), cache = get(COMMENT_ENTITY_CACHE)) as CommentRepository }
 }
 
 val networkModule: Module = module {

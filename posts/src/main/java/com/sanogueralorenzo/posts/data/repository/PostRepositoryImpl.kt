@@ -9,7 +9,7 @@ import com.sanogueralorenzo.posts.domain.repository.PostRepository
 import io.reactivex.Single
 
 class PostRepositoryImpl constructor(
-    private val api: PostsApi,
+    private val postsApi: PostsApi,
     private val cache: Cache<List<PostEntity>>
 ) : PostRepository {
 
@@ -17,7 +17,7 @@ class PostRepositoryImpl constructor(
 
     override fun get(refresh: Boolean): Single<List<Post>> =
         when (refresh) {
-            true -> api.getPosts()
+            true -> postsApi.getPosts()
                 .flatMap { set(it) }
                 .map { it.mapToDomain() }
             false -> cache.load(key)
@@ -27,7 +27,7 @@ class PostRepositoryImpl constructor(
 
     override fun get(postId: String, refresh: Boolean): Single<Post> =
         when (refresh) {
-            true -> api.getPost(postId)
+            true -> postsApi.getPost(postId)
                 .flatMap { set(it) }
                 .map { it.mapToDomain() }
             false -> cache.load(key)
