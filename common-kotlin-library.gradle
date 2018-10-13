@@ -1,6 +1,7 @@
 apply plugin: 'kotlin'
 
 apply from: "../ktlint.gradle"
+apply from: "../detekt.gradle"
 
 dependencies {
     implementation Libraries.kotlin
