@@ -3,9 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
 
-apply from: "../ktlint.gradle"
-apply from: "../detekt.gradle"
-
 android {
     compileSdkVersion Versions.compileSdk
     defaultConfig {
