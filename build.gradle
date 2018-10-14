@@ -20,8 +20,8 @@ plugins {
 }
 
 subprojects {
-    apply from: "../ktlint.gradle"
-    apply from: "../detekt.gradle"
+    apply from: "$rootDir/ktlint.gradle"
+    apply from: "$rootDir/detekt.gradle"
 }
 
 allprojects {
