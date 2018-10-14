@@ -3,14 +3,12 @@
 
 [![CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master.svg?style=svg)](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master) 
 
-Personal project to try out things!
-
+Personal project to try out things:
 - Simplified Clean Architecture approach.
 - Feature Modularized.
 - Easy to RUDT (read, update, debug & test).
 - Playground to try different architectures.
 - Playground to try different libraries/frameworks.
-
 - [CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture) [CircleCI config file](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/.circleci/config.yml)
 - [koin (Kotlin Dependency Injection framework)](https://github.com/InsertKoinIO/koin)
 - [detekt (Kotlin Static Code Analysis Tool)](https://github.com/arturbosch/detekt)
