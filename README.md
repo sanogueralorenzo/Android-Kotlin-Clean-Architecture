@@ -1,7 +1,7 @@
 ![Android Kotlin Clean Architecture](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/android_kotlin_clean_architecture.png)
 =
 
-[![CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master.svg?style=svg)](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master) [![androidweekly](https://img.shields.io/badge/androidweekly.net-303-orange.svg?style=flat-square)](http://androidweekly.net/issues/issue-303) [Twitter](https://twitter.com/MarioDroidcon) [Medium](https://medium.com/@sanogueralorenzo) [LinkedIn](https://www.linkedin.com/in/mario-sanoguera-de-lorenzo-b7b392103/)
+[![CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master.svg?style=svg)](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master)
 
 Personal project to try out things:
 - Simplified Clean Architecture approach.
@@ -20,6 +20,14 @@ Personal project to try out things:
 Discussions
 -
 Refer to the issues section: https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/issues
+
+Mentions
+-
+[![androidweekly](https://img.shields.io/badge/androidweekly.net-303-orange.svg?style=flat-square)](http://androidweekly.net/issues/issue-303)
+
+Social Media
+-
+[Twitter](https://twitter.com/MarioDroidcon)|[Medium](https://medium.com/@sanogueralorenzo)|[LinkedIn](https://www.linkedin.com/in/mario-sanoguera-de-lorenzo-b7b392103/)
 
 Articles
 -
