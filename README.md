@@ -27,7 +27,7 @@ Mentions
 
 Social Media
 -
-[Twitter](https://twitter.com/MarioDroidcon)|[Medium](https://medium.com/@sanogueralorenzo)|[LinkedIn](https://www.linkedin.com/in/mario-sanoguera-de-lorenzo-b7b392103/)
+[Twitter](https://twitter.com/MarioDroidcon) | [Medium](https://medium.com/@sanogueralorenzo) | [LinkedIn](https://www.linkedin.com/in/mario-sanoguera-de-lorenzo-b7b392103/)
 
 Articles
 -
