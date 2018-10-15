@@ -27,7 +27,7 @@ object Versions {
 
     val googleServices = "4.0.1"
     val firebase = "16.0.4"
-    val googleAuth = "16.0.0"
+    val googleAuth = "16.0.1"
 
     val fabric = "1.26.1"
 
