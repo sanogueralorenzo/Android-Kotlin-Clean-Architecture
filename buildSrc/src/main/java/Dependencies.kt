@@ -31,9 +31,8 @@ object Versions {
 
     val fabric = "1.26.1"
 
-    val support = "28.0.0-rc02"
     val appcompat = "1.0.0"
-    val design = "1.0.0-rc01"
+    val design = "1.0.0"
     val cardview = "1.0.0"
     val recyclerview = "1.0.0"
     val maps = "15.0.1"
@@ -45,12 +44,11 @@ object Versions {
     val rxkotlin = "2.3.0"
     val retrofit = "2.4.0"
     val loggingInterceptor = "3.11.0"
-    val dagger = "2.17"
     val glide = "4.8.0"
     val rxpaper = "1.2.0"
     val moshi = "1.4.0"
-    val lifecycle = "2.0.0-rc01"
-    val leakCanary = "1.6.1"
+    val lifecycle = "2.0.0"
+    val leakCanary = "1.6.2"
     val crashlytics = "2.9.5"
     val koin = "1.0.1"
 
@@ -75,9 +73,6 @@ object Libraries {
     val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
-
-    val dagger = "com.google.dagger:dagger:${Versions.dagger}"
-    val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
