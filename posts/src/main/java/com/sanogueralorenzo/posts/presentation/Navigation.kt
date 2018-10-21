@@ -1,7 +1,7 @@
 package com.sanogueralorenzo.posts.presentation
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.sanogueralorenzo.posts.presentation.model.PostItem
 import com.sanogueralorenzo.posts.presentation.postdetails.PostDetailsActivity
 

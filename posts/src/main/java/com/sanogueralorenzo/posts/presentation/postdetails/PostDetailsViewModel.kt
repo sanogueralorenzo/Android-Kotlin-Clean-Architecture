@@ -1,7 +1,7 @@
 package com.sanogueralorenzo.posts.presentation.postdetails
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.sanogueralorenzo.posts.domain.usecase.CommentsUseCase
 import com.sanogueralorenzo.posts.domain.usecase.UserPostUseCase
 import com.sanogueralorenzo.posts.presentation.model.CommentItem

@@ -1,7 +1,7 @@
 package com.sanogueralorenzo.posts.presentation.postdetails
 
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.sanogueralorenzo.posts.R
 import com.sanogueralorenzo.posts.presentation.loadAvatar
 import com.sanogueralorenzo.posts.presentation.model.CommentItem
