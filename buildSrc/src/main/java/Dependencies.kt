@@ -32,6 +32,10 @@ object Versions {
     val fabric = "1.26.1"
 
     val support = "28.0.0-rc02"
+    val appcompat = "1.0.0"
+    val design = "1.0.0-rc01"
+    val cardview = "1.0.0"
+    val recyclerview = "1.0.0"
     val maps = "15.0.1"
 
     val ktx = "1.0.0-alpha1"
@@ -45,7 +49,7 @@ object Versions {
     val glide = "4.8.0"
     val rxpaper = "1.2.0"
     val moshi = "1.4.0"
-    val lifecycle = "1.1.1"
+    val lifecycle = "2.0.0-rc01"
     val leakCanary = "1.6.1"
     val crashlytics = "2.9.5"
     val koin = "1.0.1"
@@ -81,8 +85,8 @@ object Libraries {
     val rxpaper = "com.github.pakoito:RxPaper2:${Versions.rxpaper}"
     val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
 
-    val lifecycleExtensions = "android.arch.lifecycle:extensions:${Versions.lifecycle}"
-    val lifecycleCompiler = "android.arch.lifecycle:compiler:${Versions.lifecycle}"
+    val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+    val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
 
     val leakCanaryAndroid = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
     val leakCanaryAndroidNoOp = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakCanary}"
@@ -94,10 +98,10 @@ object Libraries {
 }
 
 object SupportLibraries {
-    val appcompat = "com.android.support:appcompat-v7:${Versions.support}}"
-    val design = "com.android.support:design:${Versions.support}"
-    val cardview = "com.android.support:cardview-v7:${Versions.support}"
-    val recyclerview = "com.android.support:recyclerview-v7:${Versions.support}"
+    val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+    val design = "com.google.android.material:material:${Versions.design}"
+    val cardview = "androidx.cardview:cardview:${Versions.cardview}"
+    val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
 }
 
 object GoogleLibraries {
@@ -114,5 +118,5 @@ object TestLibraries {
     val assertjCore = "org.assertj:assertj-core:${Versions.assertjCore}"
     val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlin}"
     val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoInline}"
-    val lifecycleTesting = "android.arch.core:core-testing:${Versions.lifecycle}"
+    val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
 }

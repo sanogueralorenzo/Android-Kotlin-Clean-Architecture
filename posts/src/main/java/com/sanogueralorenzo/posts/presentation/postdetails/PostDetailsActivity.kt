@@ -1,9 +1,9 @@
 package com.sanogueralorenzo.posts.presentation.postdetails
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import com.sanogueralorenzo.posts.R
 import com.sanogueralorenzo.posts.presentation.POST_ID_KEY
 import com.sanogueralorenzo.posts.presentation.USER_ID_KEY
