@@ -19,12 +19,10 @@ plugins {
     id "com.github.ben-manes.versions" version "0.20.0"
 }
 
-subprojects {
+allprojects {
     apply from: "$rootDir/ktlint.gradle"
     apply from: "$rootDir/detekt.gradle"
-}
 
-allprojects {
     repositories {
         jcenter()
         google()
