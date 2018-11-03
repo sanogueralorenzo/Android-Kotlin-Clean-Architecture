@@ -39,7 +39,7 @@ object Versions {
 
     val ktx = "1.0.0-alpha1"
 
-    val kotlin = "1.2.71"
+    val kotlin = "1.3.0"
     val timber = "4.7.1"
     val rxkotlin = "2.3.0"
     val retrofit = "2.4.0"
