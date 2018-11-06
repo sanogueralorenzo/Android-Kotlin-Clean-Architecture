@@ -31,7 +31,7 @@ object Versions {
 
     val fabric = "1.26.1"
 
-    val appcompat = "1.0.0"
+    val appcompat = "1.0.1"
     val design = "1.0.0"
     val cardview = "1.0.0"
     val recyclerview = "1.0.0"

@@ -19,6 +19,7 @@ test-pattern: # Configure exclusions for test sources
     - 'SpreadOperator'
     - 'TooManyFunctions'
     - 'ForEachOnRange'
+    - 'FunctionMaxLength'
 
 build:
   maxIssues: 1
@@ -77,6 +78,7 @@ complexity:
     active: true
     threshold: 10
     ignoreSingleWhenExpression: false
+    ignoreSimpleWhenEntries: false
   LabeledExpression:
     active: false
   LargeClass:
@@ -254,6 +256,9 @@ formatting:
   NoWildcardImports:
     active: true
     autoCorrect: true
+  PackageName:
+    active: true
+    autoCorrect: true
   ParameterListWrapping:
     active: true
     autoCorrect: true
@@ -271,6 +276,9 @@ formatting:
     active: true
     autoCorrect: true
   SpacingAroundOperators:
+    active: true
+    autoCorrect: true
+  SpacingAroundParens:
     active: true
     autoCorrect: true
   SpacingAroundRangeOperator:
@@ -311,6 +319,7 @@ naming:
     active: true
     parameterPattern: '[a-z][A-Za-z0-9]*'
     excludeClassPattern: '$^'
+    ignoreOverriddenFunctions: true
   MatchingDeclarationName:
     active: true
   MemberNameEqualsClassName:
@@ -344,6 +353,8 @@ naming:
 
 performance:
   active: true
+  ArrayPrimitive:
+    active: false
   ForEachOnRange:
     active: true
   SpreadOperator:
@@ -392,6 +403,8 @@ style:
     active: false
     conversionFunctionPrefix: 'to'
   EqualsNullCall:
+    active: false
+  ExplicitItLambdaParameter:
     active: false
   ExpressionBodySyntax:
     active: false
@@ -469,6 +482,8 @@ style:
   UnnecessaryAbstractClass:
     active: false
     excludeAnnotatedClasses: "dagger.Module"
+  UnnecessaryApply:
+    active: false
   UnnecessaryInheritance:
     active: false
   UnnecessaryLet:
