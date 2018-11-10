@@ -1,15 +1,16 @@
-![Android Kotlin Clean Architecture](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/android_kotlin_clean_architecture.png)
+Droidcon Global App
+![Readme Header](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/readme_header.png)
 =
 
 [![CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master.svg?style=svg)](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master)
 
-Personal project to try out things:
+Personal project to try out things, transitioning to Droidcon's Global App:
 - Simplified Clean Architecture approach.
 - Feature Modularized.
 - Easy to RUDT (read, update, debug & test).
 - Playground to try different architectures.
 - Playground to try different libraries/frameworks.
-- [CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture) [CircleCI config file](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/.circleci/config.yml)
+- [CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture)
 - [koin (Kotlin Dependency Injection framework)](https://github.com/InsertKoinIO/koin)
 - [detekt (Kotlin Static Code Analysis Tool)](https://github.com/arturbosch/detekt)
 - [ktlint (Kotlin Style Guide Static Code Analysis Tool)](https://github.com/shyiko/ktlint) [Kotlin Style Guide](https://android.github.io/kotlin-guides/style.html)
@@ -38,6 +39,12 @@ Articles
 [Intro to App Architecture](https://proandroiddev.com/intro-to-app-architecture-922b392b21b2)
 
 [Intro to App Modularization](https://proandroiddev.com/intro-to-app-modularization-42411e4c421e)
+
+[Official Kotlin Style Guide with Ktlint](https://proandroiddev.com/official-kotlin-style-guide-with-ktlint-4a649c172956)
+
+[Koin in Feature Modules Project](https://proandroiddev.com/koin-in-feature-modules-project-6329f069f943)
+
+[Detecting Kotlin Code Smells with Detekt](https://proandroiddev.com/detecting-kotlin-code-smells-with-detekt-e79c52a35faf)
 
 [Moshi with Retrofit](https://proandroiddev.com/moshi-with-retrofit-in-kotlin-%EF%B8%8F-a69c2621708b)
 
