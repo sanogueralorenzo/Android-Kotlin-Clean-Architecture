@@ -40,7 +40,7 @@ class PostDetailsActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             vm.getPost(UserIdPostId(userId, postId))
-            vm.getComments(postId)
+            vm.getComments(postId, refresh = false)
         }
 
         vm.post.observe(this, Observer { updatePost(it) })
@@ -65,7 +65,7 @@ class PostDetailsActivity : AppCompatActivity() {
                 ResourceState.SUCCESS -> progressBar.gone()
                 ResourceState.ERROR -> progressBar.gone()
             }
-            it.data?.let { adapter.addItems(it) }
+            it.data?.let { adapter.submitList(it) }
             it.message?.let { snackBar.show() }
         }
     }
