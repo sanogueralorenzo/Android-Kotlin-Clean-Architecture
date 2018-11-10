@@ -1,8 +1,9 @@
 Droidcon Global App
-![Readme Header](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/sample_images/readme_header.png)
 =
 
 [![CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master.svg?style=svg)](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.0-blue.svg)](http://kotlinlang.org/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 Personal project to try out things, transitioning to Droidcon's Global App:
 - Simplified Clean Architecture approach.
