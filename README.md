@@ -25,9 +25,10 @@ Refer to the issues section: https://github.com/sanogueralorenzo/Android-Kotlin-
 
 Mentions
 -
-[![androidweekly](https://img.shields.io/badge/androidweekly.net-303-orange.svg)](http://androidweekly.net/issues/issue-303)
-[![androidweekly](https://img.shields.io/badge/androidweekly.net-333-orange.svg)](http://androidweekly.net/issues/issue-333)
+[![androidweekly](https://img.shields.io/badge/androidweekly.net-303-orange.svg)](https://androidweekly.net/issues/issue-303)
+[![androidweekly](https://img.shields.io/badge/androidweekly.net-333-orange.svg)](https://androidweekly.net/issues/issue-333)
 [![kotlinweekly](https://img.shields.io/badge/kotlinweekly.net-119-blue.svg)](https://mailchi.mp/kotlinweekly/kotlin-weekly-119)
+[![androidweekly](https://img.shields.io/badge/androidweekly.net-335-orange.svg)](https://androidweekly.net/issues/issue-335)
 
 Social Media
 -
