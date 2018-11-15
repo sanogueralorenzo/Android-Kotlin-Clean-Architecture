@@ -39,7 +39,7 @@ object Versions {
 
     val ktx = "1.0.0-alpha1"
 
-    val kotlin = "1.3.0"
+    val kotlin = "1.3.10"
     val timber = "4.7.1"
     val rxkotlin = "2.3.0"
     val retrofit = "2.4.0"
@@ -49,8 +49,8 @@ object Versions {
     val moshi = "1.4.0"
     val lifecycle = "2.0.0"
     val leakCanary = "1.6.2"
-    val crashlytics = "2.9.5"
-    val koin = "1.0.1"
+    val crashlytics = "2.9.6"
+    val koin = "1.0.2"
 
     val junit = "4.12"
     val assertjCore = "3.11.1"
