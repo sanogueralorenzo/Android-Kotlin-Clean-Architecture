@@ -25,13 +25,13 @@ object Versions {
     val minSdk = 21
     val targetSdk = 28
 
-    val googleServices = "4.0.1"
+    val googleServices = "4.2.0"
     val firebase = "16.0.4"
     val googleAuth = "16.0.1"
 
     val fabric = "1.26.1"
 
-    val appcompat = "1.0.1"
+    val appcompat = "1.0.2"
     val design = "1.0.0"
     val cardview = "1.0.0"
     val recyclerview = "1.0.0"
@@ -42,8 +42,8 @@ object Versions {
     val kotlin = "1.3.10"
     val timber = "4.7.1"
     val rxkotlin = "2.3.0"
-    val retrofit = "2.4.0"
-    val loggingInterceptor = "3.11.0"
+    val retrofit = "2.5.0"
+    val loggingInterceptor = "3.12.0"
     val glide = "4.8.0"
     val rxpaper = "1.2.0"
     val moshi = "1.4.0"
@@ -55,7 +55,7 @@ object Versions {
     val junit = "4.12"
     val assertjCore = "3.11.1"
     val mockitoKotlin = "2.0.0-RC1"
-    val mockitoInline = "2.23.0"
+    val mockitoInline = "2.23.4"
 }
 
 object Libraries {
