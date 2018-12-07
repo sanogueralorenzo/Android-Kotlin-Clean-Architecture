@@ -3,6 +3,9 @@ object ApplicationId {
 }
 
 object Modules {
+    val app = ":app"
+    val navigation = ":navigation"
+
     val cache = ":cache"
     val network = ":network"
 
@@ -50,7 +53,9 @@ object Versions {
     val lifecycle = "2.0.0"
     val leakCanary = "1.6.2"
     val crashlytics = "2.9.6"
-    val koin = "1.0.2"
+    val koin = "2.0.0-alpha-3"
+
+    val playCore = "1.3.6"
 
     val junit = "4.12"
     val assertjCore = "3.11.1"
@@ -89,7 +94,7 @@ object Libraries {
 
     val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
 
-    val koinViewModel = "org.koin:koin-android-viewmodel:${Versions.koin}"
+    val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
 }
 
 object SupportLibraries {
@@ -101,6 +106,7 @@ object SupportLibraries {
 
 object GoogleLibraries {
     val auth = "com.google.android.gms:play-services-auth:${Versions.googleAuth}"
+    val playCore = "com.google.android.play:core:${Versions.playCore}"
 }
 
 object FirebaseLibraries {

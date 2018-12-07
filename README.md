@@ -1,13 +1,15 @@
-Droidcon Global App
+Android Kotlin Clean Architecture App
 =
 
 [![CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master.svg?style=svg)](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.10-blue.svg)](http://kotlinlang.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
-Personal project to try out things, transitioning to Droidcon's Global App:
+Personal project to try out things:
 - Simplified Clean Architecture approach.
-- Feature Modularized.
+- Simplified Dependency Injection with Koin
+- Simplified Dependency-less & independent Navigation.
+- Dynamic Feature Modularized.
 - Easy to RUDT (read, update, debug & test).
 - Playground to try different architectures.
 - Playground to try different libraries/frameworks.

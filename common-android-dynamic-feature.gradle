@@ -1,4 +1,4 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -11,15 +11,9 @@ android {
         versionCode Releases.versionCode
         versionName Releases.versionName
     }
-
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
 }
 
 dependencies {
+    implementation project(Modules.app)
     implementation Libraries.kotlin
 }

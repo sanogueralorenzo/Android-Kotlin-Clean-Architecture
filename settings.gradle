@@ -1,1 +1,1 @@
-include ':app', ':login', ':home', ':posts', ':presentation', ':network', ':cache'
+include ':app', ':login', ':home', ':posts', ':presentation', ':network', ':cache', ':navigation'

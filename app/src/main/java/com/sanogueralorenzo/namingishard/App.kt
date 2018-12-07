@@ -2,8 +2,9 @@ package com.sanogueralorenzo.namingishard
 
 import android.app.Application
 import com.sanogueralorenzo.cache.CacheLibrary
-import com.sanogueralorenzo.posts.Posts
 import com.squareup.leakcanary.LeakCanary
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class App : Application() {
 
@@ -20,7 +21,6 @@ class App : Application() {
         // Unique initialization of Cache library to allow saving into device
         CacheLibrary.init(this)
 
-        // Unique initialization of specific features (such as dependency injection)
-        Posts.init()
+        startKoin { androidContext(this@App) }
     }
 }

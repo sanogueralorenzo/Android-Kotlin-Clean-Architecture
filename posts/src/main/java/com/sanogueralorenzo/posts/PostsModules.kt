@@ -19,9 +19,9 @@ import com.sanogueralorenzo.posts.domain.usecase.UserPostUseCase
 import com.sanogueralorenzo.posts.domain.usecase.UsersPostsUseCase
 import com.sanogueralorenzo.posts.presentation.postdetails.PostDetailsViewModel
 import com.sanogueralorenzo.posts.presentation.postlist.PostListViewModel
-import org.koin.android.viewmodel.ext.koin.viewModel
-import org.koin.dsl.module.Module
-import org.koin.dsl.module.module
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.module.Module
+import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val viewModelModule: Module = module {
