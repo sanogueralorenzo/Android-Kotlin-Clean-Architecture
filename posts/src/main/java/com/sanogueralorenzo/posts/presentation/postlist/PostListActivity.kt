@@ -1,25 +1,30 @@
 package com.sanogueralorenzo.posts.presentation.postlist
 
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
+import com.sanogueralorenzo.navigation.PostsNavigation
+import com.sanogueralorenzo.posts.Posts
 import com.sanogueralorenzo.posts.R
 import com.sanogueralorenzo.posts.presentation.model.PostItem
-import com.sanogueralorenzo.posts.presentation.startPostDetails
 import com.sanogueralorenzo.presentation.Resource
 import com.sanogueralorenzo.presentation.ResourceState
 import com.sanogueralorenzo.presentation.startRefreshing
 import com.sanogueralorenzo.presentation.stopRefreshing
 import kotlinx.android.synthetic.main.activity_post_list.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.viewModel
+
+private val loadFeature by lazy { Posts.init() }
+private fun injectFeature() = loadFeature
 
 class PostListActivity : AppCompatActivity() {
 
     private val vm: PostListViewModel by viewModel()
 
-    private val itemClick: (PostItem) -> Unit = { startPostDetails(it) }
+    private val itemClick: (PostItem) -> Unit =
+        { startActivity(PostsNavigation.postDetails(userId = it.userId, postId = it.postId)) }
     private val adapter = PostListAdapter(itemClick)
     private val snackBar by lazy {
         Snackbar.make(swipeRefreshLayout, getString(R.string.error), Snackbar.LENGTH_INDEFINITE)
@@ -29,6 +34,8 @@ class PostListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_list)
+
+        injectFeature()
 
         if (savedInstanceState == null) {
             vm.get(refresh = false)

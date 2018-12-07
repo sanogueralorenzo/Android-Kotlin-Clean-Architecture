@@ -1,10 +1,11 @@
-apply from: "../common-android-library.gradle"
+apply from: "../common-android-dynamic-feature.gradle"
 apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation project(Modules.presentation)
     implementation project(Modules.network)
     implementation project(Modules.cache)
+    implementation project(Modules.navigation)
 
     implementation Libraries.koinViewModel
 

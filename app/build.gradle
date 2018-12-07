@@ -24,33 +24,27 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+    dynamicFeatures = [":posts"]
 }
 
 dependencies {
+    implementation GoogleLibraries.playCore
+
     implementation project(Modules.home)
     implementation project(Modules.login)
     implementation project(Modules.cache)
-    implementation project(Modules.posts)
+    implementation project(Modules.navigation)
 
     implementation Libraries.kotlin
     implementation FirebaseLibraries.core
     implementation SupportLibraries.appcompat
     implementation Libraries.crashlytics
 
+    implementation Libraries.koinViewModel
+
     debugImplementation Libraries.leakCanaryAndroid
     releaseImplementation Libraries.leakCanaryAndroidNoOp
     debugImplementation Libraries.leakCanaryAndroidSupportFragment
-}
-
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        def requested = details.requested
-        if (requested.group == 'org.jetbrains.kotlin') {
-            details.useVersion Versions.kotlin
-        } else if (requested.group == 'com.android.support') {
-            details.useVersion Versions.support
-        }
-    }
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -1,6 +1,6 @@
 package com.sanogueralorenzo.posts
 
-import org.koin.standalone.StandAloneContext.loadKoinModules
+import org.koin.core.context.loadKoinModules
 
 /**
  * To be used by main application

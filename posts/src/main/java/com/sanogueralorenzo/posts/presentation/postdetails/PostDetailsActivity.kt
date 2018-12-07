@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
+import com.sanogueralorenzo.navigation.POST_ID_KEY
+import com.sanogueralorenzo.navigation.USER_ID_KEY
 import com.sanogueralorenzo.posts.R
-import com.sanogueralorenzo.posts.presentation.POST_ID_KEY
-import com.sanogueralorenzo.posts.presentation.USER_ID_KEY
 import com.sanogueralorenzo.posts.presentation.loadAvatar
 import com.sanogueralorenzo.posts.presentation.model.CommentItem
 import com.sanogueralorenzo.posts.presentation.model.PostItem
@@ -17,7 +17,7 @@ import com.sanogueralorenzo.presentation.visible
 import kotlinx.android.synthetic.main.activity_post_details.*
 import kotlinx.android.synthetic.main.include_user_info.*
 import kotlinx.android.synthetic.main.item_list_post.*
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.viewModel
 
 class PostDetailsActivity : AppCompatActivity() {
 

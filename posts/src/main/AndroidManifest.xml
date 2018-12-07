@@ -1,15 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.sanogueralorenzo.posts">
+          xmlns:dist="http://schemas.android.com/apk/distribution"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.sanogueralorenzo.posts">
 
-    <!--network_security_config due to Android 8 and above none https-->
-    <!--https://stackoverflow.com/questions/45940861/android-8-cleartext-http-traffic-not-permitted-->
+    <dist:module
+            dist:instant="false"
+            dist:onDemand="true"
+            dist:title="posts">
+        <dist:fusing dist:include="true"/>
+    </dist:module>
 
-    <application
-        android:networkSecurityConfig="@xml/network_security_config"
-        tools:targetApi="n">
-        <activity android:name=".presentation.postlist.PostListActivity" />
-        <activity android:name=".presentation.postdetails.PostDetailsActivity" />
+    <application android:name="com.sanogueralorenzo.namingishard.App"
+                 tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.sanogueralorenzo.posts.presentation.postlist.PostListActivity"/>
+        <activity android:name="com.sanogueralorenzo.posts.presentation.postdetails.PostDetailsActivity"/>
     </application>
-
 </manifest>
