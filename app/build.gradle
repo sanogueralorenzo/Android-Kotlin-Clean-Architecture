@@ -28,8 +28,6 @@ android {
 }
 
 dependencies {
-    implementation GoogleLibraries.playCore
-
     implementation project(Modules.home)
     implementation project(Modules.login)
     implementation project(Modules.cache)
