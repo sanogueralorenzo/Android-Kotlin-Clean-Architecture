@@ -7,7 +7,6 @@ const val POST_ID_KEY = "POST_ID_KEY"
 
 object PostsNavigation : DynamicFeature {
 
-    override val dynamicModule = "posts"
     override val dynamicIntent: Intent?
         get() = loadIntentOrNull("com.sanogueralorenzo.posts.presentation.postlist.PostListActivity")
 
