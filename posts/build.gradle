@@ -21,4 +21,5 @@ dependencies {
     testImplementation TestLibraries.assertjCore
     testImplementation TestLibraries.mockitoKotlin
     testImplementation TestLibraries.mockitoInline
+    testImplementation TestLibraries.lifecycleTesting
 }
