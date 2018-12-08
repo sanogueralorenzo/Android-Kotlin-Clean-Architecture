@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             requestCode == LOGIN && resultCode == Activity.RESULT_OK -> startHome()
             else -> startPosts()
         }
+        finish()
     }
 
     companion object {
