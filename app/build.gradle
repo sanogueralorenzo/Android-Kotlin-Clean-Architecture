@@ -28,6 +28,7 @@ android {
 }
 
 dependencies {
+    implementation project(Modules.presentation)
     implementation project(Modules.home)
     implementation project(Modules.login)
     implementation project(Modules.cache)

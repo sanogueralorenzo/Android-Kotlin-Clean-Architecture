@@ -1,5 +1,4 @@
 apply from: "../common-android-dynamic-feature.gradle"
-apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation project(Modules.presentation)
@@ -18,15 +17,9 @@ dependencies {
 
     implementation Libraries.moshiConverter
 
-    implementation Libraries.lifecycleExtensions
-    kapt Libraries.lifecycleCompiler
-    testImplementation TestLibraries.lifecycleTesting
-
-    implementation Libraries.glide
-    kapt Libraries.glideCompiler
-
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.assertjCore
     testImplementation TestLibraries.mockitoKotlin
     testImplementation TestLibraries.mockitoInline
+    testImplementation TestLibraries.lifecycleTesting
 }
