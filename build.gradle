@@ -1,7 +1,7 @@
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
         maven { url 'https://jitpack.io' }
         maven { url "http://jcenter.bintray.com"}
         maven { url 'https://maven.fabric.io/public' }
