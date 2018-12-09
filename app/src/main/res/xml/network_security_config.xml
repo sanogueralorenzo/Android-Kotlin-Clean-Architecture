@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-    <!--network_security_config file to avoid network errors due to no https in Android 8-->
-    <!--https://stackoverflow.com/questions/45940861/android-8-cleartext-http-traffic-not-permitted-->
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">jsonplaceholder.typicode.com</domain>
-    </domain-config>
-</network-security-config>

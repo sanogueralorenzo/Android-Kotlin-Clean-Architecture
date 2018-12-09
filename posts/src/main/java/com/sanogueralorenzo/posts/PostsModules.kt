@@ -53,7 +53,7 @@ val cacheModule: Module = module {
     single(name = COMMENT_ENTITY_CACHE) { Cache<List<CommentEntity>>() }
 }
 
-private const val BASE_URL = "http://jsonplaceholder.typicode.com/"
+private const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
 private val retrofit: Retrofit = createNetworkClient(BASE_URL, BuildConfig.DEBUG)
 
