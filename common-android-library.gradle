@@ -23,3 +23,14 @@ android {
 dependencies {
     implementation Libraries.kotlin
 }
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'org.jetbrains.kotlin') {
+            details.useVersion Versions.kotlin
+        } else if (requested.group == 'com.android.support') {
+            details.useVersion Versions.support
+        }
+    }
+}
