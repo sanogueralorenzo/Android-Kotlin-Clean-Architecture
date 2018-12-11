@@ -1,4 +1,4 @@
-apply from: "../common-android-library.gradle"
+apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
     implementation GoogleLibraries.playCore

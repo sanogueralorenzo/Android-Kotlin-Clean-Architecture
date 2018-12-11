@@ -13,7 +13,4 @@
     <string name="user_address">%1$s, %2$s, %3$s</string>
     <string name="user_website">Website: %1$s</string>
     <string name="user_company">Company: %1$s</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
