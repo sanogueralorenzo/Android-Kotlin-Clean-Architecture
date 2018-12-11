@@ -6,14 +6,14 @@ object Modules {
     val app = ":app"
     val navigation = ":navigation"
 
-    val cache = ":cache"
-    val network = ":network"
+    val cache = ":common:cache"
+    val network = ":common:network"
 
-    val presentation = ":presentation"
+    val presentation = ":common:presentation"
 
-    val home = ":home"
-    val login = ":login"
-    val posts = ":posts"
+    val home = ":features:home"
+    val login = ":features:login"
+    val posts = ":features:posts"
 }
 
 object Releases {
