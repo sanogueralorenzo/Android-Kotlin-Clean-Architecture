@@ -8,29 +8,15 @@ import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 
 private const val PACKAGE_NAME = "com.sanogueralorenzo.namingishard"
 
-private val classMap = mutableMapOf<String, Class<*>>()
-private inline fun <reified T : Any> Any.castOrNull() = this as? T
+private fun intentTo(className: String): Intent =
+    Intent(Intent.ACTION_VIEW).setClassName(PACKAGE_NAME, className)
 
-internal fun <T> loadClassOrNull(className: String): Class<out T>? {
-    return classMap.getOrPut(className) {
-        try {
-            Class.forName(className)
-        } catch (e: ClassNotFoundException) {
-            return null
-        }
-    }.castOrNull()
-}
-
-private val intentMap = mutableMapOf<String, Intent>()
-private fun intentTo(className: String): Intent = Intent(Intent.ACTION_VIEW).setClassName(PACKAGE_NAME, className)
-
-internal fun loadIntentOrNull(className: String): Intent? = intentMap.getOrPut(className) {
+internal fun loadIntentOrNull(className: String): Intent? =
     try {
         Class.forName(className).run { intentTo(className) }
     } catch (e: ClassNotFoundException) {
-        return null
+        null
     }
-}
 
 fun dynamicModuleDownload(c: Context, dynamicModule: String, installedAction: () -> Unit) {
     val manager = SplitInstallManagerFactory.create(c)
