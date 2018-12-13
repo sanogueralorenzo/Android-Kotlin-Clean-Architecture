@@ -1,10 +1,8 @@
 buildscript {
     repositories {
+        maven { url 'https://maven.fabric.io/public' }
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }
-        maven { url "http://jcenter.bintray.com"}
-        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:${Versions.gradle}"
@@ -24,11 +22,10 @@ allprojects {
     apply from: "$rootDir/detekt.gradle"
 
     repositories {
+        maven { url 'https://maven.fabric.io/public' }
+        maven { url 'https://jitpack.io' }
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }
-        maven { url "http://jcenter.bintray.com"}
-        maven { url 'https://maven.fabric.io/public' }
     }
 }
 
