@@ -24,21 +24,20 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
-    dynamicFeatures = [Modules.posts]
+    dynamicFeatures = [Modules.posts, Modules.login, Modules.home]
 }
 
 dependencies {
-    implementation project(Modules.presentation)
-    implementation project(Modules.home)
-    implementation project(Modules.login)
     implementation project(Modules.cache)
     implementation project(Modules.navigation)
 
     implementation Libraries.kotlin
     implementation FirebaseLibraries.core
+    implementation SupportLibraries.design
     implementation SupportLibraries.appcompat
     implementation Libraries.crashlytics
 
+    implementation Libraries.lifecycleExtensions
     implementation Libraries.koinViewModel
 
     debugImplementation Libraries.leakCanaryAndroid
