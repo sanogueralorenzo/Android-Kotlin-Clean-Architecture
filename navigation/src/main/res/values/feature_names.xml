@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="module_feature_posts">posts</string>
+    <string name="module_feature_login">login</string>
+    <string name="module_feature_home">home</string>
 </resources>
