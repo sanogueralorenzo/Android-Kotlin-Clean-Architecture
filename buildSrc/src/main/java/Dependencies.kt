@@ -32,7 +32,7 @@ object Versions {
     val firebase = "16.0.4"
     val googleAuth = "16.0.1"
 
-    val fabric = "1.26.1"
+    val fabric = "1.27.0"
 
     val appcompat = "1.0.2"
     val design = "1.0.0"
@@ -48,12 +48,12 @@ object Versions {
     val retrofit = "2.5.0"
     val loggingInterceptor = "3.12.0"
     val glide = "4.8.0"
-    val rxpaper = "1.2.0"
+    val rxpaper = "1.3.0"
     val moshi = "1.4.0"
     val lifecycle = "2.0.0"
     val leakCanary = "1.6.2"
-    val crashlytics = "2.9.6"
-    val koin = "2.0.0-alpha-3"
+    val crashlytics = "2.9.7"
+    val koin = "2.0.0-alpha-4"
 
     val playCore = "1.3.6"
 
