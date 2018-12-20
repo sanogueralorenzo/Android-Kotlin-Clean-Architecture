@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(it, LOGIN)
     }
 
-
     private fun startHome() = HomeNavigation.dynamicIntent?.let {
         startActivity(it)
     }
