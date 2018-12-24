@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
-import com.sanogueralorenzo.navigation.PostsNavigation
+import com.sanogueralorenzo.navigation.features.PostsNavigation
 import com.sanogueralorenzo.posts.Posts
 import com.sanogueralorenzo.posts.R
 import com.sanogueralorenzo.posts.presentation.model.PostItem

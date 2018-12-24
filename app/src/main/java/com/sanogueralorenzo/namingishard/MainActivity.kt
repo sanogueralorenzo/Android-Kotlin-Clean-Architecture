@@ -4,9 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.sanogueralorenzo.navigation.HomeNavigation
-import com.sanogueralorenzo.navigation.LoginNavigation
-import com.sanogueralorenzo.navigation.PostsNavigation
+import com.sanogueralorenzo.navigation.features.HomeNavigation
+import com.sanogueralorenzo.navigation.features.LoginNavigation
+import com.sanogueralorenzo.navigation.features.PostsNavigation
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,15 +16,15 @@ class MainActivity : AppCompatActivity() {
         startLogin()
     }
 
-    private fun startLogin() = LoginNavigation.dynamicIntent?.let {
+    private fun startLogin() = LoginNavigation.dynamicStart?.let {
         startActivityForResult(it, LOGIN)
     }
 
-    private fun startHome() = HomeNavigation.dynamicIntent?.let {
+    private fun startHome() = HomeNavigation.dynamicStart?.let {
         startActivity(it)
     }
 
-    private fun startPosts() = PostsNavigation.dynamicIntent?.let {
+    private fun startPosts() = PostsNavigation.dynamicStart?.let {
         startActivity(it)
     }
 
