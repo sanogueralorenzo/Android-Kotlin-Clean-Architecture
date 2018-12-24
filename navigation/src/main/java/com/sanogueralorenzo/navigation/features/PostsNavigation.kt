@@ -14,7 +14,6 @@ object PostsNavigation : DynamicFeature<Intent> {
     override val dynamicStart: Intent?
         get() = POST_LIST.loadIntentOrNull()
 
-
     fun postDetails(userId: String, postId: String): Intent? =
         POST_DETAILS.loadIntentOrNull()
             ?.apply {
