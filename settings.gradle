@@ -1,1 +1,1 @@
-include ':app', ':navigation', ':common:presentation', ':common:network', ':common:cache', ':features:login', ':features:home', ':features:posts'
+include Modules.app, Modules.navigation, Modules.presentation, Modules.network, Modules.cache, Modules.login, Modules.home, Modules.posts

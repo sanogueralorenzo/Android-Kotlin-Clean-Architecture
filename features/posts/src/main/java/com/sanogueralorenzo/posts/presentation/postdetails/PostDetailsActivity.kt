@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
-import com.sanogueralorenzo.navigation.POST_ID_KEY
-import com.sanogueralorenzo.navigation.USER_ID_KEY
+import com.sanogueralorenzo.navigation.features.PostsNavigation
 import com.sanogueralorenzo.posts.R
 import com.sanogueralorenzo.posts.presentation.loadAvatar
 import com.sanogueralorenzo.posts.presentation.model.CommentItem
@@ -23,8 +22,8 @@ class PostDetailsActivity : AppCompatActivity() {
 
     private val vm: PostDetailsViewModel by viewModel()
     private val adapter = CommentsAdapter()
-    private val userId by lazy { intent.getStringExtra(USER_ID_KEY) }
-    private val postId by lazy { intent.getStringExtra(POST_ID_KEY) }
+    private val userId by lazy { intent.getStringExtra(PostsNavigation.USER_ID_KEY) }
+    private val postId by lazy { intent.getStringExtra(PostsNavigation.POST_ID_KEY) }
     private val snackBar by lazy {
         Snackbar.make(container, getString(R.string.error), Snackbar.LENGTH_INDEFINITE)
             .setAction(getString(R.string.retry)) { vm.getComments(postId, refresh = true) }
