@@ -5,8 +5,8 @@ import com.sanogueralorenzo.navigation.loadIntentOrNull
 
 object LoginNavigation : DynamicFeature<Intent> {
 
-    private const val LOGIN_ENTRY_POINT = "com.sanogueralorenzo.login.LoginActivity"
+    private const val LOGIN = "com.sanogueralorenzo.login.LoginActivity"
 
     override val dynamicStart: Intent?
-        get() = LOGIN_ENTRY_POINT.loadIntentOrNull()
+        get() = LOGIN.loadIntentOrNull()
 }
