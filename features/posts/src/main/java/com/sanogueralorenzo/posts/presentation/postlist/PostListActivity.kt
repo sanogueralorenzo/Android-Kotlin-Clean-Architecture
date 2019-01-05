@@ -2,7 +2,6 @@ package com.sanogueralorenzo.posts.presentation.postlist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.sanogueralorenzo.navigation.features.PostsNavigation
@@ -42,7 +41,6 @@ class PostListActivity : AppCompatActivity() {
         }
 
         postsRecyclerView.adapter = adapter
-        swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorAccent))
 
         vm.posts.observe(this, Observer { updatePosts(it) })
         swipeRefreshLayout.setOnRefreshListener { vm.get(refresh = true) }

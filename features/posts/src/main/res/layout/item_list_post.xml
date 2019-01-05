@@ -25,7 +25,7 @@
             android:layout_margin="@dimen/spacing_standard"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/colorTitle"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="@dimen/text_large"
             tools:text="Post Title" />
 
@@ -36,6 +36,7 @@
             android:layout_margin="@dimen/spacing_standard"
             android:ellipsize="end"
             android:maxLines="2"
+            android:textColor="?android:attr/textColorPrimary"
             tools:text="This is a long post body that it might get ellipsized at some point beyond imagination." />
 
     </LinearLayout>
