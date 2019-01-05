@@ -29,16 +29,24 @@ android {
 
 dependencies {
     implementation project(Modules.cache)
+    implementation project(Modules.network)
     implementation project(Modules.navigation)
+    implementation project(Modules.presentation)
 
     implementation Libraries.kotlin
     implementation FirebaseLibraries.core
-    implementation SupportLibraries.design
-    implementation SupportLibraries.appcompat
     implementation Libraries.crashlytics
 
-    implementation Libraries.lifecycleExtensions
+    implementation SupportLibraries.design
+    implementation SupportLibraries.cardview
+    implementation SupportLibraries.appcompat
+    implementation SupportLibraries.recyclerview
+
     implementation Libraries.koinViewModel
+    implementation Libraries.lifecycleExtensions
+
+    implementation Libraries.rxkotlin
+    implementation Libraries.moshiConverter
 
     debugImplementation Libraries.leakCanaryAndroid
     releaseImplementation Libraries.leakCanaryAndroidNoOp
