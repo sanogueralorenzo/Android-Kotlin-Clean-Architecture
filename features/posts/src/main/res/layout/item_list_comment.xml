@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_standard"
+        android:textColor="?android:attr/textColorPrimary"
         tools:text="This is a comment body. Its length will determine the length of the post. To infinity and beyond!" />
 
     <View

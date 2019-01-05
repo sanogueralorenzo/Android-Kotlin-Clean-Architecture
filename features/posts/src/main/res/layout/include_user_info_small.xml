@@ -21,7 +21,7 @@
         android:layout_marginStart="@dimen/spacing_standard"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/colorName"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="@dimen/text_small"
         tools:text="Name" />
 

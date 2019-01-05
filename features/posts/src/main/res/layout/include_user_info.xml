@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/colorUsername"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="@dimen/text_small"
             tools:text="Username" />
 
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/colorName"
+            android:textColor="?android:attr/textColorPrimary"
             tools:text="Name" />
 
     </LinearLayout>
