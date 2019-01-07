@@ -4,18 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:orientation="horizontal"
-    android:padding="@dimen/spacing_standard">
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/userAvatar"
-        android:layout_width="@dimen/image_avatar_size"
-        android:layout_height="@dimen/image_avatar_size" />
+        android:layout_width="@dimen/medium_icon_size"
+        android:layout_height="@dimen/medium_icon_size" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_standard"
+        android:layout_marginStart="@dimen/image_text_horizontal_margin"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -25,8 +24,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="@dimen/text_small"
+            android:textColor="@color/colorAccent"
             tools:text="Username" />
 
         <TextView
@@ -35,7 +33,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="?android:attr/textColorPrimary"
+            android:textAppearance="@style/SmallTextAppearance"
             tools:text="Name" />
 
     </LinearLayout>
