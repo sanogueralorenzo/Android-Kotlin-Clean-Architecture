@@ -1,11 +1,26 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowBackground">@color/color_window_background</item>
     </style>
 
+    <style name="Divider">
+        <item name="android:background">@color/color_divider</item>
+    </style>
+
+    <style name="SmallTextAppearance" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/color_body</item>
+    </style>
+
+    <style name="TitleTextAppearance" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/color_title</item>
+    </style>
+
+    <style name="SubtitleTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/color_subtitle</item>
+    </style>
 </resources>
