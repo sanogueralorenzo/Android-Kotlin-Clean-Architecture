@@ -46,14 +46,14 @@ object Versions {
     val timber = "4.7.1"
     val rxkotlin = "2.3.0"
     val retrofit = "2.5.0"
-    val loggingInterceptor = "3.12.0"
+    val loggingInterceptor = "3.12.1"
     val glide = "4.8.0"
     val rxpaper = "1.3.0"
     val moshi = "1.4.0"
     val lifecycle = "2.0.0"
     val leakCanary = "1.6.2"
-    val crashlytics = "2.9.7"
-    val koin = "2.0.0-alpha-4"
+    val crashlytics = "2.9.8"
+    val koin = "2.0.0-alpha-6"
 
     val playCore = "1.3.6"
 
