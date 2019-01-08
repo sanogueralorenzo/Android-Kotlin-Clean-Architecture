@@ -3,15 +3,11 @@
 package com.sanogueralorenzo.posts.data.repository
 
 import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import com.sanogueralorenzo.cache.Cache
-import com.sanogueralorenzo.posts.data.model.UserEntity
-import com.sanogueralorenzo.posts.data.model.mapToDomain
-import com.sanogueralorenzo.posts.data.remote.UsersApi
+import com.sanogueralorenzo.posts.data.datasource.UserCacheDataSource
+import com.sanogueralorenzo.posts.data.datasource.UserRemoteDataSource
 import com.sanogueralorenzo.posts.user
-import com.sanogueralorenzo.posts.userEntity
 import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
@@ -20,139 +16,168 @@ class UserRepositoryImplTest {
 
     private lateinit var repository: UserRepositoryImpl
 
-    private val mockApi: UsersApi = mock()
-    private val mockCache: Cache<List<UserEntity>> = mock()
-
-    private val key = "User List"
+    private val mockCacheDataSource: UserCacheDataSource = mock()
+    private val mockRemoteDataSource: UserRemoteDataSource = mock()
 
     private val userId = user.id
 
-    private val cacheItem = userEntity.copy(name = "cache")
-    private val remoteItem = userEntity.copy(name = "remote")
+    private val cacheItem = user.copy(name = "cache")
+    private val remoteItem = user.copy(name = "remote")
 
     private val cacheList = listOf(cacheItem)
     private val remoteList = listOf(remoteItem)
 
-    private val throwable = Throwable()
+    private val cacheThrowable = Throwable()
+    private val remoteThrowable = Throwable()
 
     @Before
     fun setUp() {
-        repository = UserRepositoryImpl(mockApi, mockCache)
+        repository = UserRepositoryImpl(mockCacheDataSource, mockRemoteDataSource)
     }
 
     @Test
     fun `get users cache success`() {
         // given
-        whenever(mockCache.load(key)).thenReturn(Single.just(cacheList))
+        whenever(mockCacheDataSource.get()).thenReturn(Single.just(cacheList))
 
         // when
         val test = repository.get(false).test()
 
         // then
-        verify(mockCache).load(key)
-        test.assertValue(cacheList.mapToDomain())
+        verify(mockCacheDataSource).get()
+        test.assertValue(cacheList)
     }
 
     @Test
     fun `get users cache fail fallback remote succeeds`() {
         // given
-        whenever(mockCache.load(key)).thenReturn(Single.error(throwable))
-        whenever(mockApi.getUsers()).thenReturn(Single.just(remoteList))
-        whenever(mockCache.save(key, remoteList)).thenReturn(Single.just(remoteList))
+        whenever(mockCacheDataSource.get()).thenReturn(Single.error(cacheThrowable))
+        whenever(mockRemoteDataSource.get()).thenReturn(Single.just(remoteList))
+        whenever(mockCacheDataSource.set(remoteList)).thenReturn(Single.just(remoteList))
 
         // when
         val test = repository.get(false).test()
 
         // then
-        verify(mockCache).load(key)
-        verify(mockCache).save(key, remoteList)
-        verify(mockApi).getUsers()
-        test.assertValue(remoteList.mapToDomain())
+        verify(mockCacheDataSource).get()
+        verify(mockRemoteDataSource).get()
+        verify(mockCacheDataSource).set(remoteList)
+        test.assertValue(remoteList)
     }
 
     @Test
-    fun `get user cache success`() {
+    fun `get users cache fail fallback remote fails`() {
         // given
-        whenever(mockCache.load(key)).thenReturn(Single.just(cacheList))
+        whenever(mockCacheDataSource.get()).thenReturn(Single.error(cacheThrowable))
+        whenever(mockRemoteDataSource.get()).thenReturn(Single.error(remoteThrowable))
 
         // when
-        val test = repository.get(userId, false).test()
+        val test = repository.get(false).test()
 
         // then
-        verify(mockCache).load(key)
-        test.assertValue(cacheItem.mapToDomain())
-    }
-
-    @Test
-    fun `get user cache fail fallback remote succeeds`() {
-        // given
-        whenever(mockCache.load(key)).thenReturn(Single.error(throwable), Single.just(emptyList()))
-        whenever(mockApi.getUser(userId)).thenReturn(Single.just(remoteItem))
-        whenever(mockCache.save(key, remoteList)).thenReturn(Single.just(remoteList))
-
-        // when
-        val test = repository.get(userId, false).test()
-
-        // then
-        verify(mockCache, times(2)).load(key)
-        verify(mockCache).save(key, remoteList)
-        verify(mockApi).getUser(userId)
-        test.assertValue(remoteItem.mapToDomain())
+        verify(mockCacheDataSource).get()
+        verify(mockRemoteDataSource).get()
+        test.assertError(remoteThrowable)
     }
 
     @Test
     fun `get users remote success`() {
         // given
-        whenever(mockApi.getUsers()).thenReturn(Single.just(remoteList))
-        whenever(mockCache.save(key, remoteList)).thenReturn(Single.just(remoteList))
+        whenever(mockRemoteDataSource.get()).thenReturn(Single.just(remoteList))
+        whenever(mockCacheDataSource.set(remoteList)).thenReturn(Single.just(remoteList))
 
         // when
         val test = repository.get(true).test()
 
         // then
-        verify(mockApi).getUsers()
-        verify(mockCache).save(key, remoteList)
-        test.assertValue(remoteList.mapToDomain())
+        verify(mockRemoteDataSource).get()
+        verify(mockCacheDataSource).set(remoteList)
+        test.assertValue(remoteList)
     }
 
     @Test
     fun `get users remote fail`() {
         // given
-        whenever(mockApi.getUsers()).thenReturn(Single.error(throwable))
+        whenever(mockRemoteDataSource.get()).thenReturn(Single.error(remoteThrowable))
 
         // when
         val test = repository.get(true).test()
 
         // then
-        verify(mockApi).getUsers()
-        test.assertError(throwable)
+        verify(mockRemoteDataSource).get()
+        test.assertError(remoteThrowable)
+    }
+
+    @Test
+    fun `get user cache success`() {
+        // given
+        whenever(mockCacheDataSource.get(userId)).thenReturn(Single.just(cacheItem))
+
+        // when
+        val test = repository.get(userId, false).test()
+
+        // then
+        verify(mockCacheDataSource).get(userId)
+        test.assertValue(cacheItem)
+    }
+
+    @Test
+    fun `get user cache fail fallback remote succeeds`() {
+        // given
+        whenever(mockCacheDataSource.get(userId)).thenReturn(Single.error(cacheThrowable))
+        whenever(mockRemoteDataSource.get(userId)).thenReturn(Single.just(remoteItem))
+        whenever(mockCacheDataSource.set(remoteItem)).thenReturn(Single.just(remoteItem))
+
+        // when
+        val test = repository.get(userId, false).test()
+
+        // then
+        verify(mockCacheDataSource).get(userId)
+        verify(mockRemoteDataSource).get(userId)
+        verify(mockCacheDataSource).set(remoteItem)
+        test.assertValue(remoteItem)
+    }
+
+    @Test
+    fun `get user cache fail fallback remote fails`() {
+        // given
+        whenever(mockCacheDataSource.get(userId)).thenReturn(Single.error(cacheThrowable))
+        whenever(mockRemoteDataSource.get(userId)).thenReturn(Single.error(remoteThrowable))
+
+        // when
+        val test = repository.get(userId, false).test()
+
+        // then
+        verify(mockCacheDataSource).get(userId)
+        verify(mockRemoteDataSource).get(userId)
+        test.assertError(remoteThrowable)
     }
 
     @Test
     fun `get user remote success`() {
         // given
-        whenever(mockApi.getUser(userId)).thenReturn(Single.just(remoteItem))
-        whenever(mockCache.load(key)).thenReturn(Single.just(remoteList))
-        whenever(mockCache.save(key, remoteList)).thenReturn(Single.just(remoteList))
+        whenever(mockRemoteDataSource.get(userId)).thenReturn(Single.just(remoteItem))
+        whenever(mockCacheDataSource.set(remoteItem)).thenReturn(Single.just(remoteItem))
 
         // when
         val test = repository.get(userId, true).test()
 
         // then
-        verify(mockApi).getUser(userId)
-        test.assertValue(remoteItem.mapToDomain())
+        verify(mockRemoteDataSource).get(userId)
+        verify(mockCacheDataSource).set(remoteItem)
+        test.assertValue(remoteItem)
     }
 
     @Test
     fun `get user remote fail`() {
         // given
-        whenever(mockApi.getUser(userId)).thenReturn(Single.error(throwable))
+        whenever(mockRemoteDataSource.get()).thenReturn(Single.error(remoteThrowable))
 
         // when
-        val test = repository.get(userId, true).test()
+        val test = repository.get(true).test()
 
         // then
-        verify(mockApi).getUser(userId)
-        test.assertError(throwable)
+        verify(mockRemoteDataSource).get()
+        test.assertError(remoteThrowable)
     }
 }

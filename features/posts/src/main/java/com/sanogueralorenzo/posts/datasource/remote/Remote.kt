@@ -1,8 +1,8 @@
-package com.sanogueralorenzo.posts.data.remote
+package com.sanogueralorenzo.posts.datasource.remote
 
-import com.sanogueralorenzo.posts.data.model.CommentEntity
-import com.sanogueralorenzo.posts.data.model.PostEntity
-import com.sanogueralorenzo.posts.data.model.UserEntity
+import com.sanogueralorenzo.posts.datasource.model.CommentEntity
+import com.sanogueralorenzo.posts.datasource.model.PostEntity
+import com.sanogueralorenzo.posts.datasource.model.UserEntity
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

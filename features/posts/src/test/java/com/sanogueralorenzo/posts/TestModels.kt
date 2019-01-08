@@ -1,8 +1,8 @@
 package com.sanogueralorenzo.posts
 
-import com.sanogueralorenzo.posts.data.model.CommentEntity
-import com.sanogueralorenzo.posts.data.model.PostEntity
-import com.sanogueralorenzo.posts.data.model.UserEntity
+import com.sanogueralorenzo.posts.datasource.model.CommentEntity
+import com.sanogueralorenzo.posts.datasource.model.PostEntity
+import com.sanogueralorenzo.posts.datasource.model.UserEntity
 import com.sanogueralorenzo.posts.domain.model.Comment
 import com.sanogueralorenzo.posts.domain.model.Post
 import com.sanogueralorenzo.posts.domain.model.User

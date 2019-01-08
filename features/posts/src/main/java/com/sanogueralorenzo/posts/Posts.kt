@@ -7,6 +7,7 @@ object Posts {
         viewModelModule,
         useCaseModule,
         repositoryModule,
+        dataSourceModule,
         networkModule,
         cacheModule
     )
