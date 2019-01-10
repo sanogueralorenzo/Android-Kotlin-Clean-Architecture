@@ -6,8 +6,6 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.sanogueralorenzo.posts.datasource.model.mapToDomain
-import com.sanogueralorenzo.posts.datasource.remote.UserRemoteDataSourceImpl
-import com.sanogueralorenzo.posts.datasource.remote.UsersApi
 import com.sanogueralorenzo.posts.user
 import com.sanogueralorenzo.posts.userEntity
 import io.reactivex.Single
