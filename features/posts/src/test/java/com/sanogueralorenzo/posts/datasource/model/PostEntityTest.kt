@@ -1,6 +1,6 @@
 @file:Suppress("IllegalIdentifier")
 
-package com.sanogueralorenzo.posts.data.model
+package com.sanogueralorenzo.posts.datasource.model
 
 import com.sanogueralorenzo.posts.postEntity
 import org.junit.Assert.assertTrue
