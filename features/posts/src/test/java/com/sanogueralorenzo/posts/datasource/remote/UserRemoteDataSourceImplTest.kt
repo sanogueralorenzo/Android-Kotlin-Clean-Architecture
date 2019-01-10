@@ -1,6 +1,6 @@
 @file:Suppress("IllegalIdentifier")
 
-package com.sanogueralorenzo.users.datasource.remote
+package com.sanogueralorenzo.posts.datasource.remote
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
