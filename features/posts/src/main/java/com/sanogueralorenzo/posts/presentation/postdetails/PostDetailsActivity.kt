@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.sanogueralorenzo.navigation.features.PostsNavigation
 import com.sanogueralorenzo.posts.R
+import com.sanogueralorenzo.posts.injectFeature
 import com.sanogueralorenzo.posts.presentation.loadAvatar
 import com.sanogueralorenzo.posts.presentation.model.CommentItem
 import com.sanogueralorenzo.posts.presentation.model.PostItem
@@ -32,6 +33,8 @@ class PostDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_details)
+
+        injectFeature()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         commentsRecyclerView.isNestedScrollingEnabled = false

@@ -32,9 +32,23 @@ import com.sanogueralorenzo.posts.domain.usecase.UsersPostsUseCase
 import com.sanogueralorenzo.posts.presentation.postdetails.PostDetailsViewModel
 import com.sanogueralorenzo.posts.presentation.postlist.PostListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
+
+fun injectFeature() = loadFeature
+
+private val loadFeature by lazy {
+    loadKoinModules(
+        viewModelModule,
+        useCaseModule,
+        repositoryModule,
+        dataSourceModule,
+        networkModule,
+        cacheModule
+    )
+}
 
 val viewModelModule: Module = module {
     viewModel { PostListViewModel(usersPostsUseCase = get()) }
