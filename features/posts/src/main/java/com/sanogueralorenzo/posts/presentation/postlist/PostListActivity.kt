@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
 import com.sanogueralorenzo.navigation.features.PostsNavigation
-import com.sanogueralorenzo.posts.Posts
 import com.sanogueralorenzo.posts.R
+import com.sanogueralorenzo.posts.injectFeature
 import com.sanogueralorenzo.posts.presentation.model.PostItem
 import com.sanogueralorenzo.presentation.Resource
 import com.sanogueralorenzo.presentation.ResourceState
@@ -14,9 +14,6 @@ import com.sanogueralorenzo.presentation.startRefreshing
 import com.sanogueralorenzo.presentation.stopRefreshing
 import kotlinx.android.synthetic.main.activity_post_list.*
 import org.koin.androidx.viewmodel.ext.viewModel
-
-private val loadFeature by lazy { Posts.init() }
-private fun injectFeature() = loadFeature
 
 class PostListActivity : AppCompatActivity() {
 
