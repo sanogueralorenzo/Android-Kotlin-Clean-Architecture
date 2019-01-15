@@ -1,6 +1,7 @@
 apply from: "$rootDir/common-kotlin-library.gradle"
 
 dependencies {
+    implementation Libraries.rxjava
     implementation Libraries.rxkotlin
 
     implementation Libraries.retrofit
