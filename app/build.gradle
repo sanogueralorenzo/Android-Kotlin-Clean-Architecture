@@ -45,6 +45,7 @@ dependencies {
     implementation Libraries.koinViewModel
     implementation Libraries.lifecycleExtensions
 
+    implementation Libraries.rxjava
     implementation Libraries.rxkotlin
     implementation Libraries.moshiConverter
 

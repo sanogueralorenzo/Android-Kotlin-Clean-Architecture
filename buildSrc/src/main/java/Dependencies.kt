@@ -44,6 +44,7 @@ object Versions {
 
     val kotlin = "1.3.11"
     val timber = "4.7.1"
+    val rxjava = "2.2.5"
     val rxkotlin = "2.3.0"
     val retrofit = "2.5.0"
     val loggingInterceptor = "3.12.1"
@@ -72,6 +73,7 @@ object Libraries {
 
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
+    val rxjava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava}"
     val rxkotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxkotlin}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"

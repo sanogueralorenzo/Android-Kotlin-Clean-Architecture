@@ -13,6 +13,7 @@ dependencies {
     implementation SupportLibraries.cardview
     implementation SupportLibraries.recyclerview
 
+    implementation Libraries.rxjava
     implementation Libraries.rxkotlin
 
     implementation Libraries.moshiConverter
