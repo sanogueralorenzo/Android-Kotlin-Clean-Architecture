@@ -22,7 +22,7 @@ object Releases {
 }
 
 object Versions {
-    val gradle = "3.2.1"
+    val gradle = "3.3.0"
 
     val compileSdk = 28
     val minSdk = 21
