@@ -3,6 +3,3 @@ apply plugin: 'kotlin'
 dependencies {
     implementation Libraries.kotlin
 }
-
-sourceCompatibility = "7"
-targetCompatibility = "7"
