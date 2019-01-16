@@ -1,0 +1,6 @@
+apply from: "$rootDir/common-android-dynamic-feature.gradle"
+
+dependencies {
+    implementation SupportLibraries.design
+    implementation SupportLibraries.appcompat
+}

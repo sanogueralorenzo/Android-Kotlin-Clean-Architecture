@@ -14,6 +14,7 @@ object Modules {
     val home = ":features:home"
     val login = ":features:login"
     val posts = ":features:posts"
+    val launcher = ":features:launcher"
 }
 
 object Releases {
