@@ -12,8 +12,6 @@ jobs:
       JVM_OPTS: -Xmx4g
     steps:
       - checkout
-      - restore_cache:
-          key: gradle-{{ checksum "build.gradle" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}-{{ checksum  "gradle/wrapper/gradle-wrapper.properties" }}
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
