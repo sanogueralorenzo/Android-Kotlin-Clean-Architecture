@@ -24,7 +24,7 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
-    dynamicFeatures = [Modules.posts, Modules.login, Modules.home, Modules.launcher]
+    dynamicFeatures = [Modules.sample, Modules.login, Modules.home, Modules.launcher]
 }
 
 dependencies {

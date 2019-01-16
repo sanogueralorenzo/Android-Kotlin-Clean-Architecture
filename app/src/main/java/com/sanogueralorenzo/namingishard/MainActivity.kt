@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sanogueralorenzo.navigation.features.HomeNavigation
 import com.sanogueralorenzo.navigation.features.LoginNavigation
-import com.sanogueralorenzo.navigation.features.PostsNavigation
+import com.sanogueralorenzo.navigation.features.SampleNavigation
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(it)
     }
 
-    private fun startPosts() = PostsNavigation.dynamicStart?.let {
+    private fun startPosts() = SampleNavigation.dynamicStart?.let {
         startActivity(it)
     }
 
