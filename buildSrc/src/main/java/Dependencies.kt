@@ -13,7 +13,7 @@ object Modules {
 
     val home = ":features:home"
     val login = ":features:login"
-    val posts = ":features:posts"
+    val sample = ":sample"
     val launcher = ":features:launcher"
 }
 

@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sanogueralorenzo.sample">
+
+    <dist:module
+        dist:instant="false"
+        dist:onDemand="true"
+        dist:title="@string/module_feature_posts">
+        <dist:fusing dist:include="true" />
+    </dist:module>
+
+    <application tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.sanogueralorenzo.sample.presentation.postlist.PostListActivity" />
+        <activity android:name="com.sanogueralorenzo.sample.presentation.postdetails.PostDetailsActivity" />
+    </application>
+</manifest>
