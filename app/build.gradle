@@ -42,11 +42,14 @@ dependencies {
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.recyclerview
 
+    implementation Libraries.koinAndroid
     implementation Libraries.koinViewModel
+
     implementation Libraries.lifecycleExtensions
 
     implementation Libraries.rxjava
     implementation Libraries.rxkotlin
+
     implementation Libraries.moshiConverter
 
     debugImplementation Libraries.leakCanaryAndroid
