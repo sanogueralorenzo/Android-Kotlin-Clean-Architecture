@@ -1,17 +1,20 @@
 apply from: "$rootDir/common-android-dynamic-feature.gradle"
 
 dependencies {
-    implementation project(Modules.presentation)
-    implementation project(Modules.network)
     implementation project(Modules.cache)
+    implementation project(Modules.network)
     implementation project(Modules.navigation)
+    implementation project(Modules.presentation)
 
-    implementation Libraries.koinViewModel
-
-    implementation SupportLibraries.appcompat
     implementation SupportLibraries.design
     implementation SupportLibraries.cardview
+    implementation SupportLibraries.appcompat
     implementation SupportLibraries.recyclerview
+
+    implementation Libraries.koinAndroid
+    implementation Libraries.koinViewModel
+
+    implementation Libraries.lifecycleExtensions
 
     implementation Libraries.rxjava
     implementation Libraries.rxkotlin
