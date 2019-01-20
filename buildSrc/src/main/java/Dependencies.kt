@@ -51,7 +51,7 @@ object Versions {
     val loggingInterceptor = "3.12.1"
     val glide = "4.8.0"
     val rxpaper = "1.3.0"
-    val moshi = "1.4.0"
+    val moshi = "1.8.0"
     val lifecycle = "2.0.0"
     val leakCanary = "1.6.3"
     val crashlytics = "2.9.8"
