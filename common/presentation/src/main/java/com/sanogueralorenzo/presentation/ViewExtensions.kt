@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 fun View.visible() {
     visibility = View.VISIBLE
@@ -31,3 +32,6 @@ fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View =
     LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
 
 fun ImageView.loadImage(url: String) = Glide.with(this).load(url).into(this)
+
+fun ImageView.loadImageRound(url: String) =
+    Glide.with(this).load(url).apply(RequestOptions.circleCropTransform()).into(this)
