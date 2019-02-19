@@ -13,6 +13,7 @@ import com.sanogueralorenzo.presentation.setLoading
 import com.sanogueralorenzo.presentation.setSuccess
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 data class UserIdPostId(val userId: String, val postId: String)
 
@@ -37,7 +38,11 @@ class PostDetailsViewModel constructor(
             .doOnSubscribe { comments.setLoading() }
             .subscribeOn(Schedulers.io())
             .map { it.mapToPresentation() }
-            .subscribe({ comments.setSuccess(it) }, { comments.setError(it.message) })
+            .subscribe({ comments.setSuccess(it) }, {
+                Timber.log(1, "Test", it)
+                Timber.e(it)
+                comments.setError(it.message)
+            })
         )
 
     override fun onCleared() {

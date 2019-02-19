@@ -26,4 +26,6 @@ dependencies {
     testImplementation TestLibraries.mockitoKotlin
     testImplementation TestLibraries.mockitoInline
     testImplementation TestLibraries.lifecycleTesting
+
+    implementation Libraries.timber
 }

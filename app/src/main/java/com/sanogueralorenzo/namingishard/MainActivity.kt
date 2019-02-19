@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        startLogin()
+        startPosts()
     }
 
     private fun startLogin() = LoginNavigation.dynamicStart?.let {
