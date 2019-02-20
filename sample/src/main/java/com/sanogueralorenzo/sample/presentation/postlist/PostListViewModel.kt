@@ -11,6 +11,7 @@ import com.sanogueralorenzo.presentation.setLoading
 import com.sanogueralorenzo.presentation.setSuccess
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 class PostListViewModel constructor(private val usersPostsUseCase: UsersPostsUseCase) :
     ViewModel() {
@@ -23,7 +24,10 @@ class PostListViewModel constructor(private val usersPostsUseCase: UsersPostsUse
             .doOnSubscribe { posts.setLoading() }
             .subscribeOn(Schedulers.io())
             .map { it.mapToPresentation() }
-            .subscribe({ posts.setSuccess(it) }, { posts.setError(it.message) })
+            .subscribe({ posts.setSuccess(it) }, {
+                Timber.e(it)
+                posts.setError(it.message)
+            })
         )
 
     override fun onCleared() {

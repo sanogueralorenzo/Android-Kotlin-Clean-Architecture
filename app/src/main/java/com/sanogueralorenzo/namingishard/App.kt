@@ -1,9 +1,7 @@
 package com.sanogueralorenzo.namingishard
 
 import android.app.Application
-import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
-import com.crashlytics.android.Crashlytics
 import com.sanogueralorenzo.cache.CacheLibrary
 import com.squareup.leakcanary.LeakCanary
 import org.koin.android.ext.koin.androidContext
@@ -37,18 +35,5 @@ class App : Application() {
 
         AppCompatDelegate.setDefaultNightMode(nightMode)
         Timber.plant(CrashReportingTree())
-    }
-}
-
-class CrashReportingTree : Timber.Tree() {
-    override fun e(t: Throwable?) {
-        Log.e("Error", t.toString() + " " + t?.stackTrace)
-        Crashlytics.logException(t)
-        Crashlytics.logException(t)
-        super.e(t)
-    }
-    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-        Crashlytics.log(message)
-        t?.let { Crashlytics.logException(it) }
     }
 }

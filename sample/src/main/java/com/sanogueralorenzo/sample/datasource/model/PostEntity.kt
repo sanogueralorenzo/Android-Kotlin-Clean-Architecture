@@ -10,6 +10,6 @@ data class PostEntity(
     @field:Json(name = "body") val body: String
 )
 
-fun PostEntity.mapToDomain(): Post = Post(userId, id, title, body)
+fun PostEntity.mapToDomain(): Post = throw TestException(this)
 
 fun List<PostEntity>.mapToDomain(): List<Post> = map { it.mapToDomain() }

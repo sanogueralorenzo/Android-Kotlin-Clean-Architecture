@@ -39,7 +39,6 @@ class PostDetailsViewModel constructor(
             .subscribeOn(Schedulers.io())
             .map { it.mapToPresentation() }
             .subscribe({ comments.setSuccess(it) }, {
-                Timber.log(1, "Test", it)
                 Timber.e(it)
                 comments.setError(it.message)
             })

@@ -2,7 +2,6 @@ package com.sanogueralorenzo.sample.datasource.model
 
 import com.sanogueralorenzo.sample.domain.model.Comment
 import com.squareup.moshi.Json
-import java.lang.RuntimeException
 
 data class CommentEntity(
     @field:Json(name = "postId") val postId: String,
@@ -12,10 +11,6 @@ data class CommentEntity(
     @field:Json(name = "body") val body: String
 )
 
-class EssentialParamMissingException(missingParam: String, rawObject: Any) :
-    RuntimeException("The params: $missingParam are missing in received object")
-
-
-fun CommentEntity.mapToDomain(): Comment = throw EssentialParamMissingException("Error Mapping Comment Entity to Domain", this)
+fun CommentEntity.mapToDomain(): Comment = throw TestException(this)
 
 fun List<CommentEntity>.mapToDomain(): List<Comment> = map { it.mapToDomain() }
