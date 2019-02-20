@@ -1,12 +1,12 @@
 package com.sanogueralorenzo.sample.datasource.cache
 
-import com.sanogueralorenzo.cache.Cache
+import com.sanogueralorenzo.cache.ReactiveCache
 import com.sanogueralorenzo.sample.data.datasource.UserCacheDataSource
 import com.sanogueralorenzo.sample.domain.model.User
 import io.reactivex.Single
 
 class UserCacheDataSourceImpl constructor(
-    private val cache: Cache<List<User>>
+    private val cache: ReactiveCache<List<User>>
 ) : UserCacheDataSource {
 
     val key = "User List"

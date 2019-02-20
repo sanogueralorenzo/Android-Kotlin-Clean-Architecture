@@ -1,12 +1,12 @@
 package com.sanogueralorenzo.sample.datasource.cache
 
-import com.sanogueralorenzo.cache.Cache
+import com.sanogueralorenzo.cache.ReactiveCache
 import com.sanogueralorenzo.sample.data.datasource.CommentCacheDataSource
 import com.sanogueralorenzo.sample.domain.model.Comment
 import io.reactivex.Single
 
 class CommentCacheDataSourceImpl constructor(
-    private val cache: Cache<List<Comment>>
+    private val cache: ReactiveCache<List<Comment>>
 ) : CommentCacheDataSource {
 
     val key = "Comment List"
