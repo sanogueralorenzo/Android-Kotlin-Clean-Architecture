@@ -1,6 +1,6 @@
 package com.sanogueralorenzo.sample
 
-import com.sanogueralorenzo.cache.Cache
+import com.sanogueralorenzo.cache.ReactiveCache
 import com.sanogueralorenzo.network.createNetworkClient
 import com.sanogueralorenzo.sample.data.datasource.CommentCacheDataSource
 import com.sanogueralorenzo.sample.data.datasource.CommentRemoteDataSource
@@ -83,9 +83,9 @@ val networkModule: Module = module {
 }
 
 val cacheModule: Module = module {
-    single(name = USER_CACHE) { Cache<List<UserEntity>>() }
-    single(name = POST_CACHE) { Cache<List<PostEntity>>() }
-    single(name = COMMENT_CACHE) { Cache<List<Comment>>() }
+    single(name = USER_CACHE) { ReactiveCache<List<UserEntity>>() }
+    single(name = POST_CACHE) { ReactiveCache<List<PostEntity>>() }
+    single(name = COMMENT_CACHE) { ReactiveCache<List<Comment>>() }
 }
 
 private const val BASE_URL = "https://jsonplaceholder.typicode.com/"

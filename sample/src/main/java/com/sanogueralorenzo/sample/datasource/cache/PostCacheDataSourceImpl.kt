@@ -1,12 +1,12 @@
 package com.sanogueralorenzo.sample.datasource.cache
 
-import com.sanogueralorenzo.cache.Cache
+import com.sanogueralorenzo.cache.ReactiveCache
 import com.sanogueralorenzo.sample.data.datasource.PostCacheDataSource
 import com.sanogueralorenzo.sample.domain.model.Post
 import io.reactivex.Single
 
 class PostCacheDataSourceImpl constructor(
-    private val cache: Cache<List<Post>>
+    private val cache: ReactiveCache<List<Post>>
 ) : PostCacheDataSource {
     val key = "Post List"
 

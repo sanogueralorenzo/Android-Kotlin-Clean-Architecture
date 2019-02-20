@@ -5,7 +5,7 @@ package com.sanogueralorenzo.sample.datasource.cache
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import com.sanogueralorenzo.cache.Cache
+import com.sanogueralorenzo.cache.ReactiveCache
 import com.sanogueralorenzo.sample.comment
 import com.sanogueralorenzo.sample.domain.model.Comment
 import com.sanogueralorenzo.sample.post
@@ -17,7 +17,7 @@ class CommentCacheDataSourceImplTest {
 
     private lateinit var dataSource: CommentCacheDataSourceImpl
 
-    private val mockCache: Cache<List<Comment>> = mock()
+    private val mockCache: ReactiveCache<List<Comment>> = mock()
 
     val key = "Comment List"
 

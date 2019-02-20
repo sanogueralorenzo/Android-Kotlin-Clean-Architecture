@@ -5,7 +5,7 @@ package com.sanogueralorenzo.sample.datasource.cache
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import com.sanogueralorenzo.cache.Cache
+import com.sanogueralorenzo.cache.ReactiveCache
 import com.sanogueralorenzo.sample.domain.model.User
 import com.sanogueralorenzo.sample.user
 import io.reactivex.Single
@@ -16,7 +16,7 @@ class UserCacheDataSourceImplTest {
 
     private lateinit var dataSource: UserCacheDataSourceImpl
 
-    private val mockCache: Cache<List<User>> = mock()
+    private val mockCache: ReactiveCache<List<User>> = mock()
 
     val key = "User List"
 
