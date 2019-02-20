@@ -33,8 +33,8 @@ object Versions {
 
     val googleServices = "4.2.0"
 
-    val firebaseAuth = "16.1.0"
-    val firebaseCore = "16.0.7"
+    val firebaseAuth = "16.0.4"
+    val firebaseCore = "16.0.4"
 
     val fabric = "1.27.1"
 
@@ -54,6 +54,7 @@ object Versions {
     val loggingInterceptor = "3.12.1"
     val glide = "4.9.0"
     val rxpaper = "1.4.0"
+    val paperdb = "2.6"
     val moshi = "1.8.0"
     val lifecycle = "2.0.0"
     val leakCanary = "1.6.3"
@@ -88,6 +89,7 @@ object Libraries {
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
 
+    val paperdb = "io.paperdb:paperdb:${Versions.paperdb}"
     val rxpaper = "com.github.pakoito:RxPaper2:${Versions.rxpaper}"
     val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
 
