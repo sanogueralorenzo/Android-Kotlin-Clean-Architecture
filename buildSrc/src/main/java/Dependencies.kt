@@ -29,11 +29,14 @@ object Versions {
     val minSdk = 21
     val targetSdk = 28
 
-    val googleServices = "4.2.0"
-    val firebase = "16.0.4"
     val googleAuth = "16.0.1"
 
-    val fabric = "1.27.0"
+    val googleServices = "4.2.0"
+
+    val firebaseAuth = "16.1.0"
+    val firebaseCore = "16.0.7"
+
+    val fabric = "1.27.1"
 
     val appcompat = "1.0.2"
     val design = "1.0.0"
@@ -45,24 +48,24 @@ object Versions {
 
     val kotlin = "1.3.21"
     val timber = "4.7.1"
-    val rxjava = "2.2.5"
+    val rxjava = "2.2.6"
     val rxkotlin = "2.3.0"
     val retrofit = "2.5.0"
     val loggingInterceptor = "3.12.1"
-    val glide = "4.8.0"
-    val rxpaper = "1.3.0"
+    val glide = "4.9.0"
+    val rxpaper = "1.4.0"
     val moshi = "1.8.0"
     val lifecycle = "2.0.0"
     val leakCanary = "1.6.3"
-    val crashlytics = "2.9.8"
-    val koin = "2.0.0-alpha-6"
+    val crashlytics = "2.9.9"
+    val koin = "2.0.0-beta-1"
 
-    val playCore = "1.3.6"
+    val playCore = "1.3.7"
 
     val junit = "4.12"
-    val assertjCore = "3.11.1"
-    val mockitoKotlin = "2.0.0-RC1"
-    val mockitoInline = "2.23.4"
+    val assertjCore = "3.12.0"
+    val mockitoKotlin = "2.1.0"
+    val mockitoInline = "2.24.5"
 }
 
 object Libraries {
@@ -114,8 +117,8 @@ object GoogleLibraries {
 }
 
 object FirebaseLibraries {
-    val auth = "com.google.firebase:firebase-auth:${Versions.firebase}"
-    val core = "com.google.firebase:firebase-core:${Versions.firebase}"
+    val auth = "com.google.firebase:firebase-auth:${Versions.firebaseAuth}"
+    val core = "com.google.firebase:firebase-core:${Versions.firebaseCore}"
 }
 
 object TestLibraries {
