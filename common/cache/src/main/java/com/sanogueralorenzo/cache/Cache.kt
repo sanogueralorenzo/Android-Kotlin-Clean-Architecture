@@ -18,18 +18,15 @@ object CacheLibrary {
 }
 
 class Cache<T> {
-
     private val book: Book = Paper.book()
 
     fun load(key: String): T = book.read(key)
 
     fun save(key: String, anyObject: T): T =
         book.write(key, anyObject).run { anyObject }
-
 }
 
 class ReactiveCache<T> {
-
     private val book: RxPaperBook = RxPaperBook.with(io())
 
     fun load(key: String): Single<T> = book.read(key)
@@ -39,7 +36,6 @@ class ReactiveCache<T> {
 }
 
 class MemoryCache<T> {
-
     private val map: MutableMap<String, T> = mutableMapOf()
 
     fun load(key: String): T = map.getValue(key)
