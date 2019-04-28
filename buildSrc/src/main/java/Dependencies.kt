@@ -23,7 +23,7 @@ object Releases {
 }
 
 object Versions {
-    val gradle = "3.3.1"
+    val gradle = "3.4.0"
 
     val compileSdk = 28
     val minSdk = 21
@@ -36,7 +36,7 @@ object Versions {
     val firebaseAuth = "16.0.4"
     val firebaseCore = "16.0.4"
 
-    val fabric = "1.27.1"
+    val fabric = "1.28.1"
 
     val appcompat = "1.0.2"
     val design = "1.0.0"
@@ -46,9 +46,9 @@ object Versions {
 
     val ktx = "1.0.0-alpha1"
 
-    val kotlin = "1.3.21"
+    val kotlin = "1.3.31"
     val timber = "4.7.1"
-    val rxjava = "2.2.6"
+    val rxjava = "2.2.8"
     val rxkotlin = "2.3.0"
     val retrofit = "2.5.0"
     val loggingInterceptor = "3.12.1"
@@ -57,16 +57,16 @@ object Versions {
     val paperdb = "2.6"
     val moshi = "1.8.0"
     val lifecycle = "2.0.0"
-    val leakCanary = "1.6.3"
+    val leakCanary = "2.0-alpha-1"
     val crashlytics = "2.9.9"
     val koin = "2.0.0-beta-1"
 
-    val playCore = "1.3.7"
+    val playCore = "1.4.1"
 
     val junit = "4.12"
-    val assertjCore = "3.12.0"
+    val assertjCore = "3.12.2"
     val mockitoKotlin = "2.1.0"
-    val mockitoInline = "2.24.5"
+    val mockitoInline = "2.27.0"
 }
 
 object Libraries {
@@ -97,8 +97,6 @@ object Libraries {
     val lifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.lifecycle}"
 
     val leakCanaryAndroid = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
-    val leakCanaryAndroidNoOp = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakCanary}"
-    val leakCanaryAndroidSupportFragment = "com.squareup.leakcanary:leakcanary-support-fragment:${Versions.leakCanary}"
 
     val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
 
