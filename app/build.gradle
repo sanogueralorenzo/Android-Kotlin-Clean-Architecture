@@ -52,8 +52,6 @@ dependencies {
     implementation Libraries.moshiConverter
 
     debugImplementation Libraries.leakCanaryAndroid
-    releaseImplementation Libraries.leakCanaryAndroidNoOp
-    debugImplementation Libraries.leakCanaryAndroidSupportFragment
 }
 
 apply plugin: 'com.google.gms.google-services'
