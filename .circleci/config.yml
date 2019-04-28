@@ -2,12 +2,12 @@
 #
 # Check https://circleci.com/docs/2.0/language-android/ for more details
 #
-version: 2
+version: 2.1
 jobs:
   build:
     working_directory: ~/Android-Kotlin-Clean-Architecture
     docker:
-      - image: circleci/android:api-28-alpha
+      - image: circleci/android:api-28
     environment:
       GRADLE_OPTS: -Xmx4g -Dorg.gradle.daemon=false
       JVM_OPTS: -Xmx4g
