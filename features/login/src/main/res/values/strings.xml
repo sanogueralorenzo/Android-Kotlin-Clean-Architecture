@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">Login</string>
-    <string name="default_web_client_id">526437137953-vgvc4t4pq9e4d5ug9779h74p3scdm9ma.apps.googleusercontent.com</string>
-    <string name="login_error">Login Error</string>
-</resources>

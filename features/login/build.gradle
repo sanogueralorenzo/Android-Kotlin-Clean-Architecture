@@ -1,8 +1,0 @@
-apply from: "$rootDir/common-android-dynamic-feature.gradle"
-
-dependencies {
-    implementation FirebaseLibraries.auth
-    implementation GoogleLibraries.auth
-
-    implementation SupportLibraries.appcompat
-}
