@@ -36,7 +36,7 @@ object Versions {
     val firebaseAuth = "16.0.4"
     val firebaseCore = "16.0.4"
 
-    val fabric = "1.28.1"
+    val fabric = "1.30.0"
 
     val appcompat = "1.0.2"
     val design = "1.0.0"
@@ -46,27 +46,27 @@ object Versions {
 
     val ktx = "1.0.0-alpha1"
 
-    val kotlin = "1.3.31"
+    val kotlin = "1.3.40"
     val timber = "4.7.1"
-    val rxjava = "2.2.8"
+    val rxjava = "2.2.10"
     val rxkotlin = "2.3.0"
-    val retrofit = "2.5.0"
-    val loggingInterceptor = "3.12.1"
+    val retrofit = "2.6.0"
+    val loggingInterceptor = "4.0.0"
     val glide = "4.9.0"
     val rxpaper = "1.4.0"
     val paperdb = "2.6"
     val moshi = "1.8.0"
     val lifecycle = "2.0.0"
-    val leakCanary = "2.0-alpha-1"
-    val crashlytics = "2.9.9"
+    val leakCanary = "2.0-alpha-2"
+    val crashlytics = "2.10.1"
     val koin = "2.0.0-beta-1"
 
-    val playCore = "1.4.1"
+    val playCore = "1.6.1"
 
     val junit = "4.12"
     val assertjCore = "3.12.2"
     val mockitoKotlin = "2.1.0"
-    val mockitoInline = "2.27.0"
+    val mockitoInline = "3.0.0"
 }
 
 object Libraries {
