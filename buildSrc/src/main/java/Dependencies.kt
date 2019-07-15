@@ -11,10 +11,7 @@ object Modules {
 
     val presentation = ":common:presentation"
 
-    val home = ":features:home"
-    val login = ":features:login"
     val sample = ":sample"
-    val launcher = ":features:launcher"
 }
 
 object Releases {

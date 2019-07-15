@@ -1,1 +1,1 @@
-include Modules.app, Modules.navigation, Modules.presentation, Modules.network, Modules.cache, Modules.sample, Modules.launcher
+include Modules.app, Modules.navigation, Modules.presentation, Modules.network, Modules.cache, Modules.sample

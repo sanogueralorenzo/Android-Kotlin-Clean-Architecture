@@ -12,7 +12,5 @@ class MainActivity : AppCompatActivity() {
         startPosts()
     }
 
-    private fun startPosts() = SampleNavigation.dynamicStart?.let {
-        startActivity(it)
-    }
+    private fun startPosts() = SampleNavigation.dynamicStart?.let { startActivity(it) }
 }
