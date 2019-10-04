@@ -18,7 +18,7 @@ class PostCacheDataSourceImplTest {
 
     private val mockCache: ReactiveCache<List<Post>> = mock()
 
-    val key = "Post List"
+    private val key = "Post List"
 
     private val postId = post.id
 

@@ -9,7 +9,7 @@ class CommentCacheDataSourceImpl constructor(
     private val cache: ReactiveCache<List<Comment>>
 ) : CommentCacheDataSource {
 
-    val key = "Comment List"
+    private val key = "Comment List"
 
     override fun get(postId: String): Single<List<Comment>> =
         cache.load(key + postId)

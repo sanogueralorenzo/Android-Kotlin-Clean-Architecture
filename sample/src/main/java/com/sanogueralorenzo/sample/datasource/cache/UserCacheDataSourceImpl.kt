@@ -9,7 +9,7 @@ class UserCacheDataSourceImpl constructor(
     private val cache: ReactiveCache<List<User>>
 ) : UserCacheDataSource {
 
-    val key = "User List"
+    private val key = "User List"
 
     override fun get(): Single<List<User>> =
         cache.load(key)
@@ -19,11 +19,11 @@ class UserCacheDataSourceImpl constructor(
 
     override fun get(userId: String): Single<User> =
         cache.load(key)
-            .map { it.first { it.id == userId } }
+            .map { it -> it.first { it.id == userId } }
 
     override fun set(item: User): Single<User> =
         cache.load(key)
-            .map { it.filter { it.id != item.id }.plus(item) }
+            .map { it -> it.filter { it.id != item.id }.plus(item) }
             .flatMap { set(it) }
             .map { item }
 }

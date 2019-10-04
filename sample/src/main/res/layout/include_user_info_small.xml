@@ -11,7 +11,8 @@
         android:layout_width="@dimen/small_icon_size"
         android:layout_height="@dimen/small_icon_size"
         android:background="?selectableItemBackgroundBorderless"
-        tools:src="@mipmap/ic_launcher" />
+        tools:src="@mipmap/ic_launcher"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/userName"

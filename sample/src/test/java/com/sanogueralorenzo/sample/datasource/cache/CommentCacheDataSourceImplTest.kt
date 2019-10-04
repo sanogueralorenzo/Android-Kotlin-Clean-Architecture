@@ -19,7 +19,7 @@ class CommentCacheDataSourceImplTest {
 
     private val mockCache: ReactiveCache<List<Comment>> = mock()
 
-    val key = "Comment List"
+    private val key = "Comment List"
 
     private val postId = post.id
 

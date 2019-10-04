@@ -50,7 +50,7 @@ class PostListActivity : AppCompatActivity() {
                 ResourceState.SUCCESS -> swipeRefreshLayout.stopRefreshing()
                 ResourceState.ERROR -> swipeRefreshLayout.stopRefreshing()
             }
-            it.data?.let { adapter.submitList(it) }
+            it.data?.let(adapter::submitList)
             it.message?.let { snackBar.show() }
         }
     }

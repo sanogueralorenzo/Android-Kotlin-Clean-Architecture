@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_post_details.*
 import kotlinx.android.synthetic.main.include_user_info.*
 import kotlinx.android.synthetic.main.item_list_post.*
 import org.koin.androidx.viewmodel.ext.viewModel
+import java.util.Locale
 
 class PostDetailsActivity : AppCompatActivity() {
 
@@ -54,20 +55,20 @@ class PostDetailsActivity : AppCompatActivity() {
             userAvatar.loadAvatar(it.email)
             userUsername.text = "@${it.username}"
             userName.text = it.name
-            postTitle.text = it.title.capitalize()
+            postTitle.text = it.title.toUpperCase(Locale.getDefault())
             postBody.maxLines = Int.MAX_VALUE
-            postBody.text = it.body.capitalize()
+            postBody.text = it.body.toUpperCase(Locale.getDefault())
         }
     }
 
     private fun updateComments(resource: Resource<List<CommentItem>>?) {
-        resource?.let {
+        resource?.let { it ->
             when (it.state) {
                 ResourceState.LOADING -> progressBar.visible()
                 ResourceState.SUCCESS -> progressBar.gone()
                 ResourceState.ERROR -> progressBar.gone()
             }
-            it.data?.let { adapter.submitList(it) }
+            it.data?.let(adapter::submitList)
             it.message?.let { snackBar.show() }
         }
     }

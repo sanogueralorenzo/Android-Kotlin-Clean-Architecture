@@ -10,6 +10,7 @@ import com.sanogueralorenzo.sample.presentation.model.PostItem
 import com.sanogueralorenzo.presentation.inflate
 import kotlinx.android.synthetic.main.include_user_info.view.*
 import kotlinx.android.synthetic.main.item_list_post.view.*
+import java.util.Locale
 
 class PostListAdapter constructor(private val itemClick: (PostItem) -> Unit) :
     ListAdapter<PostItem, PostListAdapter.ViewHolder>(PostDiffCallback()) {
@@ -27,8 +28,8 @@ class PostListAdapter constructor(private val itemClick: (PostItem) -> Unit) :
             itemView.userAvatar.loadAvatar(item.email)
             itemView.userUsername.text = "@${item.username}"
             itemView.userName.text = item.name
-            itemView.postTitle.text = item.title.capitalize()
-            itemView.postBody.text = item.body.capitalize()
+            itemView.postTitle.text = item.title.toUpperCase(Locale.getDefault())
+            itemView.postBody.text = item.body.toUpperCase(Locale.getDefault())
             itemView.setOnClickListener { itemClick.invoke(item) }
         }
     }

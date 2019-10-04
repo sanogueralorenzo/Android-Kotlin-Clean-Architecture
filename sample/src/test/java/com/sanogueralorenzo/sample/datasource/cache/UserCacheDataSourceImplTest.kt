@@ -18,7 +18,7 @@ class UserCacheDataSourceImplTest {
 
     private val mockCache: ReactiveCache<List<User>> = mock()
 
-    val key = "User List"
+    private val key = "User List"
 
     private val userId = user.id
 

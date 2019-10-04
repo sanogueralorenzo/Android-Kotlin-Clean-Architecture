@@ -10,6 +10,7 @@ import com.sanogueralorenzo.sample.presentation.model.CommentItem
 import com.sanogueralorenzo.presentation.inflate
 import kotlinx.android.synthetic.main.include_user_info_small.view.*
 import kotlinx.android.synthetic.main.item_list_comment.view.*
+import java.util.Locale
 
 class CommentsAdapter : ListAdapter<CommentItem, CommentsAdapter.ViewHolder>(CommentDiffCallback()) {
 
@@ -24,8 +25,8 @@ class CommentsAdapter : ListAdapter<CommentItem, CommentsAdapter.ViewHolder>(Com
 
         fun bind(item: CommentItem) {
             itemView.userAvatar.loadAvatar(item.email)
-            itemView.userName.text = item.name.capitalize()
-            itemView.commentBody.text = item.body.capitalize()
+            itemView.userName.text = item.name.toUpperCase(Locale.getDefault())
+            itemView.commentBody.text = item.body.toUpperCase(Locale.getDefault())
         }
     }
 }
