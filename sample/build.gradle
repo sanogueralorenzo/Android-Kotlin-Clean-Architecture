@@ -10,6 +10,7 @@ dependencies {
     implementation SupportLibraries.cardview
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.recyclerview
+    implementation SupportLibraries.swiperefreshlayout
 
     implementation Libraries.koinAndroid
     implementation Libraries.koinViewModel

@@ -20,50 +20,51 @@ object Releases {
 }
 
 object Versions {
-    val gradle = "3.4.2"
+    val gradle = "3.5.3"
 
-    val compileSdk = 28
-    val minSdk = 21
-    val targetSdk = 28
+    val compileSdk = 29
+    val minSdk = 24
+    val targetSdk = 29
 
     val googleAuth = "16.0.1"
 
-    val googleServices = "4.3.0"
+    val googleServices = "4.3.3"
 
     val firebaseAuth = "16.0.4"
-    val firebaseCore = "16.0.4"
+    val firebaseCore = "17.2.1"
 
-    val fabric = "1.30.0"
+    val fabric = "1.31.2"
 
-    val appcompat = "1.0.2"
-    val design = "1.0.0"
+    val appcompat = "1.2.0-alpha01"
+    val design = "1.2.0-alpha03"
     val cardview = "1.0.0"
-    val recyclerview = "1.0.0"
+    val recyclerview = "1.2.0-alpha01"
+    val swiperefreshlayout = "1.1.0-alpha03"
     val maps = "15.0.1"
 
     val ktx = "1.0.0-alpha1"
 
-    val kotlin = "1.3.41"
+    val kotlin = "1.3.61"
     val timber = "4.7.1"
-    val rxjava = "2.2.10"
-    val rxkotlin = "2.3.0"
-    val retrofit = "2.6.0"
-    val loggingInterceptor = "4.0.0"
-    val glide = "4.9.0"
+    val rxjava = "2.2.16"
+    val rxkotlin = "2.4.0"
+    val retrofit = "2.7.0"
+    val loggingInterceptor = "4.2.2"
+    val glide = "4.10.0"
     val rxpaper = "1.4.0"
     val paperdb = "2.6"
     val moshi = "1.8.0"
-    val lifecycle = "2.0.0"
-    val leakCanary = "2.0-alpha-2"
+    val lifecycle = "2.1.0"
+    val leakCanary = "2.0"
     val crashlytics = "2.10.1"
     val koin = "2.0.0-beta-1"
 
-    val playCore = "1.6.1"
+    val playCore = "1.6.4"
 
     val junit = "4.12"
-    val assertjCore = "3.12.2"
+    val assertjCore = "3.14.0"
     val mockitoKotlin = "2.1.0"
-    val mockitoInline = "3.0.0"
+    val mockitoInline = "3.2.4"
 }
 
 object Libraries {
@@ -106,6 +107,7 @@ object SupportLibraries {
     val design = "com.google.android.material:material:${Versions.design}"
     val cardview = "androidx.cardview:cardview:${Versions.cardview}"
     val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
+    val swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swiperefreshlayout}"
 }
 
 object GoogleLibraries {
