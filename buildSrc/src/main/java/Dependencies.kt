@@ -20,7 +20,7 @@ object Releases {
 }
 
 object Versions {
-    val gradle = "3.5.3"
+    val gradle = "3.6.1"
 
     val compileSdk = 29
     val minSdk = 24
@@ -31,40 +31,40 @@ object Versions {
     val googleServices = "4.3.3"
 
     val firebaseAuth = "16.0.4"
-    val firebaseCore = "17.2.1"
+    val firebaseCore = "17.2.3"
 
     val fabric = "1.31.2"
 
-    val appcompat = "1.2.0-alpha01"
-    val design = "1.2.0-alpha03"
+    val appcompat = "1.2.0-alpha03"
+    val design = "1.2.0-alpha05"
     val cardview = "1.0.0"
     val recyclerview = "1.2.0-alpha01"
-    val swiperefreshlayout = "1.1.0-alpha03"
+    val swiperefreshlayout = "1.1.0-beta01"
     val maps = "15.0.1"
 
     val ktx = "1.0.0-alpha1"
 
-    val kotlin = "1.3.61"
+    val kotlin = "1.3.71"
     val timber = "4.7.1"
-    val rxjava = "2.2.16"
+    val rxjava = "2.2.19"
     val rxkotlin = "2.4.0"
-    val retrofit = "2.7.0"
-    val loggingInterceptor = "4.2.2"
-    val glide = "4.10.0"
+    val retrofit = "2.8.1"
+    val loggingInterceptor = "4.5.0-RC1"
+    val glide = "4.11.0"
     val rxpaper = "1.4.0"
     val paperdb = "2.6"
     val moshi = "1.8.0"
     val lifecycle = "2.1.0"
-    val leakCanary = "2.0"
+    val leakCanary = "2.2"
     val crashlytics = "2.10.1"
     val koin = "2.0.0-beta-1"
 
-    val playCore = "1.6.4"
+    val playCore = "1.7.1"
 
-    val junit = "4.12"
-    val assertjCore = "3.14.0"
+    val junit = "4.13"
+    val assertjCore = "3.15.0"
     val mockitoKotlin = "2.1.0"
-    val mockitoInline = "3.2.4"
+    val mockitoInline = "3.3.3"
 }
 
 object Libraries {
