@@ -16,11 +16,8 @@ jobs:
       - restore_cache:
           key: gradle-{{ checksum "build.gradle" }}-{{ checksum  "buildSrc/src/main/java/Dependencies.kt" }}-{{ checksum  "gradle/wrapper/gradle-wrapper.properties" }}
       - run:
-          name: Run Detekt
-          command: ./gradlew detekt
-      - run:
-          name: Run Ktlint
-          command: ./gradlew ktlint
+          name: Run Detekt & Ktlint
+          command: ./gradlew detektAll
       - run:
           name: Run Lint
           command: ./gradlew lintDebug
