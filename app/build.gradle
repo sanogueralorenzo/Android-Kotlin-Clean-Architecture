@@ -1,17 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion Versions.compileSdk
+    compileSdkVersion DefaultConfig.compileSdk
     defaultConfig {
-        applicationId ApplicationId.id
-        minSdkVersion Versions.minSdk
-        targetSdkVersion Versions.targetSdk
+        applicationId App.mood
+        minSdkVersion DefaultConfig.minSdk
+        targetSdkVersion DefaultConfig.targetSdk
         versionCode Releases.versionCode
         versionName Releases.versionName
-        multiDexEnabled true
     }
 
     buildTypes {
@@ -19,39 +17,20 @@ android {
             minifyEnabled true
         }
     }
-
-    testOptions {
-        unitTests.returnDefaultValues = true
-    }
-    dynamicFeatures = [Modules.sample]
 }
 
 dependencies {
+    implementation project(Modules.home)
     implementation project(Modules.cache)
-    implementation project(Modules.network)
     implementation project(Modules.navigation)
-    implementation project(Modules.presentation)
 
-    implementation Libraries.kotlin
-    implementation FirebaseLibraries.core
-    implementation Libraries.crashlytics
+    implementation Deps.kotlin
+    implementation Deps.design
+    implementation Deps.appcompat
 
-    implementation SupportLibraries.design
-    implementation SupportLibraries.cardview
-    implementation SupportLibraries.appcompat
-    implementation SupportLibraries.recyclerview
+    implementation Deps.mvrx
 
-    implementation Libraries.koinAndroid
-    implementation Libraries.koinViewModel
+    implementation Deps.rxJava2
 
-    implementation Libraries.lifecycleExtensions
-
-    implementation Libraries.rxjava
-    implementation Libraries.rxkotlin
-
-    implementation Libraries.moshiConverter
-
-    debugImplementation Libraries.leakCanaryAndroid
+    debugImplementation Deps.leakCanaryAndroid
 }
-
-apply plugin: 'com.google.gms.google-services'

@@ -13,5 +13,5 @@ android {
 
 dependencies {
     implementation project(Modules.app)
-    implementation Libraries.kotlin
+    implementation Deps.kotlin
 }

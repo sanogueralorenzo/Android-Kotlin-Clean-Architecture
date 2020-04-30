@@ -1,8 +1,9 @@
 include(
     ":app",
+    ":sample",
     ":navigation",
     ":common:cache",
     ":common:network",
-    ":common:presentation",
-    ":sample"
+    ":common:views",
+    ":features:home"
 )

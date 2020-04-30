@@ -1,1 +1,8 @@
-<manifest package="com.sanogueralorenzo.navigation"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sanogueralorenzo.navigation">
+
+    <application>
+        <activity android:name="com.sanogueralorenzo.navigation.core.ContainerActivity" />
+    </application>
+
+</manifest>
