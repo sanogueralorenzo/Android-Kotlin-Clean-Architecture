@@ -1,30 +1,59 @@
-apply from: "$rootDir/common-android-dynamic-feature.gradle"
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion DefaultConfig.compileSdk
+
+    defaultConfig {
+        applicationId App.sample
+        minSdkVersion DefaultConfig.minSdk
+        targetSdkVersion DefaultConfig.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+kapt {
+    correctErrorTypes = true
+}
 
 dependencies {
-    implementation project(Modules.cache)
+    implementation Deps.kotlin
+    implementation project(Modules.views)
     implementation project(Modules.network)
-    implementation project(Modules.navigation)
-    implementation project(Modules.presentation)
 
-    implementation SupportLibraries.design
-    implementation SupportLibraries.cardview
-    implementation SupportLibraries.appcompat
-    implementation SupportLibraries.recyclerview
-    implementation SupportLibraries.swiperefreshlayout
+    // Dagger
+    implementation Deps.daggerAndroidSupport
+    kapt Deps.daggerCompiler
+    kapt Deps.daggerAndroidProcessor
+    kapt Deps.assistedInjectProcessor
+    compileOnly Deps.assistedInject
 
-    implementation Libraries.koinAndroid
-    implementation Libraries.koinViewModel
+    implementation Deps.mvrx
+    testImplementation Deps.mvrxTesting
 
-    implementation Libraries.lifecycleExtensions
+    // Viewmodels
+    implementation Deps.lifecycleViewModel
+    testImplementation Deps.lifecycleTesting
 
-    implementation Libraries.rxjava
-    implementation Libraries.rxkotlin
+    // Rxjava
+    implementation Deps.rxJava2
+    implementation Deps.rxAndroid2
 
-    implementation Libraries.moshiConverter
+    implementation Deps.timber
 
-    testImplementation TestLibraries.junit
-    testImplementation TestLibraries.assertjCore
-    testImplementation TestLibraries.mockitoKotlin
-    testImplementation TestLibraries.mockitoInline
-    testImplementation TestLibraries.lifecycleTesting
+    testImplementation Deps.mockk
+    testImplementation Deps.junit
+
+    debugImplementation Deps.leakCanaryAndroid
 }

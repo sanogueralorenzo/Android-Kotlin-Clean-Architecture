@@ -3,11 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion Versions.compileSdk
+    compileSdkVersion DefaultConfig.compileSdk
 
     defaultConfig {
-        minSdkVersion Versions.minSdk
-        targetSdkVersion Versions.targetSdk
+        minSdkVersion DefaultConfig.minSdk
+        targetSdkVersion DefaultConfig.targetSdk
         versionCode Releases.versionCode
         versionName Releases.versionName
     }
@@ -20,5 +20,5 @@ android {
 }
 
 dependencies {
-    implementation Libraries.kotlin
+    implementation Deps.kotlin
 }

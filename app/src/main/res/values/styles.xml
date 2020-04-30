@@ -8,6 +8,10 @@
         <item name="android:windowBackground">@color/color_window_background</item>
     </style>
 
+    <style name="AppTheme.Splash">
+        <item name="android:windowBackground">@drawable/splash_drawable</item>
+    </style>
+
     <style name="Divider">
         <item name="android:background">@color/color_divider</item>
     </style>
