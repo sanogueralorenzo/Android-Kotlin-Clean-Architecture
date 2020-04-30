@@ -19,7 +19,7 @@ Personal project to try out things:
 - [ktlint (Kotlin Style Guide Static Code Analysis Tool)](https://github.com/shyiko/ktlint) [Kotlin Style Guide](https://android.github.io/kotlin-guides/style.html)
 - [gradle versions plugin (Dependencies Updates)](https://github.com/ben-manes/gradle-versions-plugin)
 
-[Sample Posts Feature Module (Post List and Post Detail screen with comments)](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/posts)
+[Sample Giphy Project (Paginated Gifs with trending and search results)](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/sample)
 
 Discussions
 -
@@ -59,7 +59,7 @@ Articles
 License
 -
 
-    Copyright 2018 Mario Sanoguera de Lorenzo
+    Copyright 2020 Mario Sanoguera de Lorenzo
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
