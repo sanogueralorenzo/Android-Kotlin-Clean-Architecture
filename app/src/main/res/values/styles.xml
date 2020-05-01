@@ -9,6 +9,7 @@
     </style>
 
     <style name="AppTheme.Splash">
+        <item name="android:statusBarColor">@color/color_black</item>
         <item name="android:windowBackground">@drawable/splash_drawable</item>
     </style>
 

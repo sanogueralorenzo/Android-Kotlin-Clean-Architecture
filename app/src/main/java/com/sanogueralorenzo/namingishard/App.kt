@@ -18,12 +18,5 @@ class App : Application() {
         CacheLibrary.init(this)
         // Koin DI initialization
         // startKoin { androidContext(applicationContext) }
-
-        // Random nightMode to make developer aware of day/night themes
-        val nightMode = when (Random.nextBoolean()) {
-            true -> AppCompatDelegate.MODE_NIGHT_YES
-            false -> AppCompatDelegate.MODE_NIGHT_NO
-        }
-        AppCompatDelegate.setDefaultNightMode(nightMode)
     }
 }

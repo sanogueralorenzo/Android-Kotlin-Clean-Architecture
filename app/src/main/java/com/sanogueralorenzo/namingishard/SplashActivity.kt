@@ -9,7 +9,7 @@ class SplashActivity : AppCompatActivity(R.layout.activity_splash) {
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(0, 0)
         super.onCreate(savedInstanceState)
-        startActivity(HomeNavigation.home())
-        finish()
+        // startActivity(HomeNavigation.home())
+        // finish()
     }
 }
