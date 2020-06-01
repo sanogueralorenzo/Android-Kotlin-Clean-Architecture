@@ -30,17 +30,16 @@ import io.reactivex.Completable
  */
 @Suppress("Unused")
 class IntroFragment : ContainerFragment() {
-
     private val viewModel: IntroViewModel by fragmentViewModel(IntroViewModel::class)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         TextRow(context!!).apply {
-            this.setBody(getString(R.string.privacy_terms))
-            this.setStyle(TextRow.TextStyle.CAPTION)
-            this.setBodyGravity(Gravity.CENTER)
-            this.startEndPadding()
-            this.topBottomPadding(16)
+            gravity = Gravity.CENTER
+            text = getString(R.string.privacy_terms)
+            startEndPadding()
+            topBottomPadding(16)
+            setStyle(TextRow.TextStyle.CAPTION)
         }.let { bottomView.addView(it) }
         PrimaryButton.create(context!!, getString(R.string.onboarding_intro_button)) {
             viewModel.onButtonClick()
