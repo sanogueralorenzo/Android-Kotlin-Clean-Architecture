@@ -6,8 +6,9 @@
         android:id="@+id/miniButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:stateListAnimator="@null"
         android:layout_gravity="center"
-        app:cornerRadius="30dp"/>
+        android:stateListAnimator="@null"
+        android:textAllCaps="false"
+        app:cornerRadius="30dp" />
 
 </merge>

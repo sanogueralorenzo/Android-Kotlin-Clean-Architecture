@@ -21,7 +21,7 @@
 
     <!--  Intro screen  -->
     <string name="intro_title"><b>Welcome to your wellbeing assistant</b></string>
-    <string name="intro_button">Get Started</string>
+    <string name="intro_button">Get started</string>
 
     <string name="intro_journal_title">Daily reflections</string>
     <string name="intro_journal_subtitle">Express your daily feelings</string>
