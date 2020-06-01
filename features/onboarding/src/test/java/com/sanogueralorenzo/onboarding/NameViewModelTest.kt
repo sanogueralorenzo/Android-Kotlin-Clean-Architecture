@@ -44,6 +44,7 @@ internal class NameViewModelTest {
         val name = "Mario"
         val state = NameState(name = name)
         every { mockUserManager.name = name } just runs
+        every { mockUserManager.newUser = false } just runs
 
         viewModel = createViewModel(state)
         viewModel.onButtonClick()
