@@ -5,17 +5,17 @@ package com.sanogueralorenzo.views.extensions
 import android.util.TypedValue
 import android.view.View
 
-fun View.startEndPadding(dp: Int = 16) {
+fun View.startEndPadding(dp: Int = 16) =
     toDp(dp).let { setPadding(it, paddingTop, it, paddingBottom) }
-}
 
-fun View.topBottomPadding(dp: Int = 16) {
+fun View.topBottomPadding(dp: Int = 16) =
     toDp(dp).let { setPadding(paddingLeft, it, paddingRight, it) }
-}
 
-fun View.setPaddingAll(dp: Int = 16) {
-    toDp(dp).let { setPadding(it, it, it, it) }
-}
+fun View.topPadding(dp: Int = 16) = setPadding(paddingLeft, toDp(dp), paddingRight, paddingBottom)
+
+fun View.bottomPadding(dp: Int = 16) = setPadding(paddingLeft, paddingTop, paddingRight, toDp(dp))
+
+fun View.setPaddingAll(dp: Int = 16) = toDp(dp).let { setPadding(it, it, it, it) }
 
 fun View.removePadding() {
     setPadding(0, 0, 0, 0)

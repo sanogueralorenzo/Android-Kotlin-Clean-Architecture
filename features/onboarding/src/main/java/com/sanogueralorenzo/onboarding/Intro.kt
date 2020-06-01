@@ -12,9 +12,11 @@ import com.airbnb.mvrx.ViewModelContext
 import com.airbnb.mvrx.fragmentViewModel
 import com.sanogueralorenzo.navigation.features.HomeNavigation
 import com.sanogueralorenzo.usermanager.UserManager
-import com.sanogueralorenzo.views.PrimaryButton
+import com.sanogueralorenzo.views.MiniButton
 import com.sanogueralorenzo.views.TextRow
 import com.sanogueralorenzo.views.extensions.addHorizontalItemDecorator
+import com.sanogueralorenzo.views.extensions.bottomPadding
+import com.sanogueralorenzo.views.extensions.setTextWithLinks
 import com.sanogueralorenzo.views.extensions.startEndPadding
 import com.sanogueralorenzo.views.extensions.topBottomPadding
 import com.sanogueralorenzo.views.extensions.urlIntent
@@ -33,19 +35,33 @@ import io.reactivex.Completable
 class IntroFragment : ContainerFragment() {
     private val viewModel: IntroViewModel by fragmentViewModel(IntroViewModel::class)
 
+    private val terms: Pair<String, () -> Unit> by lazy {
+        Pair(getString(R.string.terms),
+            { startActivity(urlIntent(getString(R.string.terms_url))) })
+    }
+    private val privacy: Pair<String, () -> Unit> by lazy {
+        Pair(
+            getString(R.string.privacy),
+            { startActivity(urlIntent(getString(R.string.privacy_url))) })
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         TextRow(context!!).apply {
             gravity = Gravity.CENTER
-            text = getString(R.string.privacy_terms)
             startEndPadding()
             topBottomPadding(16)
             setStyle(TextRow.TextStyle.CAPTION)
-            setOnClickListener { startActivity(urlIntent(LEGAL_URL)) }
+            setTextWithLinks(getString(R.string.privacy_terms), terms, privacy)
         }.let { bottomView.addView(it) }
-        PrimaryButton.create(context!!, getString(R.string.onboarding_intro_button)) {
+
+        MiniButton.create(context!!, getString(R.string.intro_button)) {
             viewModel.onButtonClick()
-        }.let { bottomView.addView(it) }
+        }.let {
+            it.bottomPadding(8)
+            bottomView.addView(it)
+        }
+
         recyclerView.addHorizontalItemDecorator(64)
 
         viewModel.asyncSubscribe(IntroState::complete, uniqueOnly(), onSuccess = {
@@ -70,7 +86,7 @@ class IntroFragment : ContainerFragment() {
         }
         textRow {
             id("title")
-            body(R.string.onboarding_welcome_title)
+            body(R.string.intro_title)
             style(TextRow.TextStyle.HEADLINE)
             bodyGravity(Gravity.CENTER)
         }
@@ -104,11 +120,6 @@ class IntroFragment : ContainerFragment() {
             title(getString(R.string.intro_zoneout_title))
             subtitle(getString(R.string.intro_zoneout_subtitle))
         }
-    }
-
-    private companion object {
-        const val LEGAL_URL =
-            "https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/legal"
     }
 }
 

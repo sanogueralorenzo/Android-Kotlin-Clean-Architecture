@@ -3,7 +3,6 @@
     <string name="onboarding_intro_title">&#128075; Welcome!</string>
     <string name="onboarding_intro_subtitle">I\'m <b>Amiga</b>, your wellbeing assistant.</string>
     <string name="onboarding_intro">Feel better with daily reflections, healthy habits &amp; quality time.</string>
-    <string name="onboarding_intro_button">Get Started</string>
 
     <string name="onboarding_journal_subtitle">Daily reflection for a better self</string>
     <string name="onboarding_journal_description">Look back, note down your daily feelings &amp; find out the path to happiness.\n\nSee the correlation of your feelings with the rest of your daily activities.</string>
@@ -21,7 +20,8 @@
     <string name="onboarding_name_error">Please provide a name</string>
 
     <!--  Intro screen  -->
-    <string name="onboarding_welcome_title"><b>Welcome to your wellbeing assistant</b></string>
+    <string name="intro_title"><b>Welcome to your wellbeing assistant</b></string>
+    <string name="intro_button">Get Started</string>
 
     <string name="intro_journal_title">Daily reflections</string>
     <string name="intro_journal_subtitle">Express your daily feelings</string>
@@ -30,5 +30,9 @@
     <string name="intro_zoneout_title">Quality time</string>
     <string name="intro_zoneout_subtitle">Balance your life with those you care</string>
 
-    <string name="privacy_terms">By continuing, you agree to Amiga\'s <u>Terms of Service</u> &amp; <u>Privacy policy</u></string>
+    <string name="privacy_terms">By continuing, you agree to Amiga\'s Terms of Service.\nAmiga\'s Privacy policy describes how your data is handled.</string>
+    <string name="terms">Terms of Service</string>
+    <string name="privacy">Privacy policy</string>
+    <string name="terms_url" translatable="false">https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/legal/Terms%20and%20Conditions.md</string>
+    <string name="privacy_url" translatable="false">https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/blob/master/legal/Privacy%20Policy.md</string>
 </resources>
