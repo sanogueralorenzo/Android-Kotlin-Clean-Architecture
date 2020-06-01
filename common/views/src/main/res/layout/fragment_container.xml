@@ -16,9 +16,9 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/containerToolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleTextColor="@android:color/white"
+            android:layout_height="48dp"
             android:visibility="gone"
+            app:titleTextColor="@android:color/white"
             tools:title="Container Toolbar" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -30,12 +30,6 @@
         android:layout_marginTop="?android:attr/actionBarSize"
         android:visibility="gone" />
 
-    <LinearLayout
-        android:id="@+id/containerTopLL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/containerSRL"
         android:layout_width="match_parent"
@@ -46,7 +40,8 @@
         <com.airbnb.epoxy.EpoxyRecyclerView
             android:id="@+id/containerRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

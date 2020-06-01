@@ -4,6 +4,9 @@ include(
     ":navigation",
     ":common:cache",
     ":common:network",
+    ":common:resources",
     ":common:views",
-    ":features:home"
+    ":features:home",
+    ":features:onboarding",
+    ":libs:usermanager"
 )

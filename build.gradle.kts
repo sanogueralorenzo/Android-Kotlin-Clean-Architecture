@@ -37,6 +37,7 @@ val detektAll by tasks.registering(io.gitlab.arturbosch.detekt.Detekt::class) {
     autoCorrect = true
     parallel = true
     setSource(files(projectDir))
+    config.setFrom(files("$rootDir/detekt.yml"))
     include("**/*.kt")
     include("**/*.kts")
     exclude("**/build/**")

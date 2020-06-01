@@ -1,5 +1,5 @@
 apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
-    implementation Deps.rxPaper2
+    implementation Deps.rxpaper
 }

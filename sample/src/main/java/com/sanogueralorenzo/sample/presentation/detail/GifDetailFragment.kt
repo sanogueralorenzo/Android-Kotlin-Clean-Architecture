@@ -1,22 +1,22 @@
 package com.sanogueralorenzo.sample.presentation.detail
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import com.airbnb.epoxy.TypedEpoxyController
-import com.sanogueralorenzo.views.fullImage
+import com.sanogueralorenzo.views.extensions.sendIntent
+import com.sanogueralorenzo.views.imageRow
 import com.sanogueralorenzo.views.screen.ContainerFragment
+import com.sanogueralorenzo.views.screen.simpleController
 
 class GifDetailFragment : ContainerFragment() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        controller.setData(arguments!!.getString("url")!!)
-    }
+    private val url by lazy { arguments!!.getString("url")!! }
 
-    override val controller: GifDetailController = GifDetailController()
-
-    override fun invalidate() {
-        // Bad practice, should there be an MvRxContainerFragment & ContainerFragment?
+    override fun controller() = simpleController {
+        imageRow {
+            id("image")
+            url(url)
+            clickListener { _ -> startActivity(Intent.createChooser(sendIntent(url), null)) }
+        }
     }
 
     companion object {
@@ -31,16 +31,6 @@ class GifDetailFragment : ContainerFragment() {
             val fragment = GifDetailFragment()
             fragment.arguments = args
             return fragment
-        }
-    }
-}
-
-class GifDetailController : TypedEpoxyController<String>() {
-
-    override fun buildModels(data: String) {
-        fullImage {
-            id("image")
-            url(data)
         }
     }
 }

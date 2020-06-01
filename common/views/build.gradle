@@ -10,11 +10,15 @@ dependencies {
 
     api Deps.mvrx
 
+    api Deps.core
     api Deps.design
     api Deps.appcompat
+    api Deps.constraint
     api Deps.recyclerView
     api Deps.swiperefreshlayout
 
     api Deps.epoxy
     kapt Deps.epoxyProcessor
+
+    api Deps.lottie
 }

@@ -4,9 +4,7 @@
     android:id="@+id/inputLayout"
     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:errorIconDrawable="@drawable/ic_error_outline"
-    app:errorIconTint="?attr/colorError">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/input"

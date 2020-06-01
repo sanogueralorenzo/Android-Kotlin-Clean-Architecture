@@ -9,6 +9,10 @@ android {
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {

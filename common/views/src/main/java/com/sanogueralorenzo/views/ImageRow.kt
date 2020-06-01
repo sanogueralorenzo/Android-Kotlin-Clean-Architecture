@@ -2,6 +2,7 @@ package com.sanogueralorenzo.views
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.airbnb.epoxy.CallbackProp
@@ -11,7 +12,7 @@ import com.sanogueralorenzo.views.extensions.loadImage
 import com.sanogueralorenzo.views.extensions.style
 import com.sanogueralorenzo.views.extensions.toDp
 
-@ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
+@ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_MATCH_HEIGHT)
 class ImageRow @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -21,7 +22,7 @@ class ImageRow @JvmOverloads constructor(
     private val placeholder = CircularProgressDrawable(context).also { it.style() }
 
     @ModelProp(group = "image")
-    fun setDrawable(drawable: Int) {
+    fun setDrawable(@DrawableRes drawable: Int) {
         setImageResource(drawable)
     }
 
@@ -31,8 +32,8 @@ class ImageRow @JvmOverloads constructor(
     }
 
     @ModelProp
-    fun setHeight(height: Int) {
-        layoutParams.height = toDp(height)
+    fun setHeight(height: Int?) {
+        height?.let { layoutParams.height = toDp(it) }
     }
 
     @JvmOverloads

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Giphy App</string>
+    <string name="app_name">Giphy</string>
     <string name="retry">Retry</string>
     <string name="search">Search</string>
     <string name="favorites">Favorites</string>

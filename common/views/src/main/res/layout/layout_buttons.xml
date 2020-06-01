@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <Button
@@ -16,10 +17,10 @@
 
     <Button
         android:id="@+id/secondaryButton"
-        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:visibility="gone"
         tools:text="Secondary Button" />
 

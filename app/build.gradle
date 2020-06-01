@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion DefaultConfig.compileSdk
     defaultConfig {
-        applicationId App.mood
+        applicationId App.petproject
         minSdkVersion DefaultConfig.minSdk
         targetSdkVersion DefaultConfig.targetSdk
         versionCode Releases.versionCode
@@ -17,21 +17,27 @@ android {
             minifyEnabled true
         }
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
+    implementation project(Modules.resources)
+
     implementation project(Modules.home)
     implementation project(Modules.views)
     implementation project(Modules.cache)
     implementation project(Modules.navigation)
+    implementation project(Modules.usermanager)
+    implementation project(Modules.onboarding)
 
     implementation Deps.kotlin
-    implementation Deps.design
-    implementation Deps.appcompat
+
+    implementation Deps.timber
 
     implementation Deps.mvrx
-
-    implementation Deps.rxJava2
 
     debugImplementation Deps.leakCanaryAndroid
 }

@@ -4,17 +4,20 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.HorizontalScrollView
+import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.sanogueralorenzo.navigation.core.replaceFragment
 import com.sanogueralorenzo.sample.R
-import com.sanogueralorenzo.sample.domain.Gif
 import com.sanogueralorenzo.sample.presentation.detail.GifDetailFragment
-import com.sanogueralorenzo.views.extensions.replaceFragment
 import com.sanogueralorenzo.views.extensions.setInfiniteScrolling
+import com.sanogueralorenzo.views.imageRow
 import com.sanogueralorenzo.views.screen.ContainerFragment
+import com.sanogueralorenzo.views.screen.simpleController
 import com.sanogueralorenzo.views.textinput.TextInputLayoutRow
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -23,14 +26,7 @@ class GifsFragment : ContainerFragment() {
 
     @Inject
     lateinit var viewModelFactory: GifsViewModel.Factory
-
     private val viewModel: GifsViewModel by fragmentViewModel(GifsViewModel::class)
-
-    private val itemClick: (Gif) -> Unit = {
-        requireActivity().replaceFragment(GifDetailFragment.newInstance(it.original), true)
-    }
-
-    override val controller: GifsController = GifsController(itemClick)
     private var suggestionsChipGroup: ChipGroup? = null
 
     override fun onAttach(context: Context) {
@@ -46,13 +42,16 @@ class GifsFragment : ContainerFragment() {
         swipeRefreshLayout.setOnRefreshListener { viewModel.onSwipeAction() }
         suggestionsChipGroup = ChipGroup(requireContext())
             .also { it.isSingleLine = true }
-        appBarLayout.addView(
-            HorizontalScrollView(requireContext())
-                .also {
-                    it.isHorizontalScrollBarEnabled = false
-                    it.addView(suggestionsChipGroup)
-                }
-        )
+
+        val horizontalScrollView = HorizontalScrollView(requireContext())
+            .also {
+                it.isHorizontalScrollBarEnabled = false
+                it.addView(suggestionsChipGroup)
+            }
+        appBarLayout.addView(horizontalScrollView)
+
+        val params = horizontalScrollView.layoutParams as AppBarLayout.LayoutParams
+        params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
     }
 
     private fun initRecyclerView() {
@@ -61,7 +60,6 @@ class GifsFragment : ContainerFragment() {
         layoutManager.spanSizeLookup = controller.spanSizeLookup
         recyclerView.layoutManager = layoutManager
         recyclerView.setController(controller)
-        recyclerView.setItemSpacingDp(SPACING)
         recyclerView.setInfiniteScrolling(layoutManager) { viewModel.loadMore() }
 
         TextInputLayoutRow(requireContext()).also {
@@ -89,11 +87,23 @@ class GifsFragment : ContainerFragment() {
         }
     }
 
-    override fun invalidate() =
-        withState(viewModel) { state ->
-            swipeRefreshLayout.isRefreshing = state.isLoading
-            controller.setData(state)
+    override fun invalidate() {
+        super.invalidate()
+        withState(viewModel) { state -> swipeRefreshLayout.isRefreshing = state.isLoading }
+    }
+
+    override fun controller() = simpleController(viewModel) { state ->
+        state.items.forEach {
+            imageRow {
+                id(it.id)
+                url(it.thumbnail)
+                height(IMAGE_HEIGHT)
+                imageScaleType(ImageView.ScaleType.CENTER_CROP)
+                clickListener { _ -> replaceFragment(GifDetailFragment.newInstance(it.original)) }
+                spanSizeOverride { _, _, _ -> 1 }
+            }
         }
+    }
 
     override fun onDestroyView() {
         suggestionsChipGroup = null
@@ -102,6 +112,6 @@ class GifsFragment : ContainerFragment() {
 
     private companion object {
         const val GIFS_PER_ROW = 3
-        const val SPACING = 4
+        const val IMAGE_HEIGHT = 200
     }
 }

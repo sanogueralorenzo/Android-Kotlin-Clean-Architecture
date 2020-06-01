@@ -21,6 +21,9 @@ android {
         }
     }
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 kapt {
@@ -31,6 +34,8 @@ dependencies {
     implementation Deps.kotlin
     implementation project(Modules.views)
     implementation project(Modules.network)
+    implementation project(Modules.navigation)
+    implementation project(Modules.resources)
 
     // Dagger
     implementation Deps.daggerAndroidSupport
@@ -48,7 +53,6 @@ dependencies {
 
     // Rxjava
     implementation Deps.rxJava2
-    implementation Deps.rxAndroid2
 
     implementation Deps.timber
 

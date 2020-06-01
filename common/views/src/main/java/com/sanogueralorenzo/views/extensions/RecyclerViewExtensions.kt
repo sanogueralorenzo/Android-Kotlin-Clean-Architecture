@@ -2,20 +2,22 @@ package com.sanogueralorenzo.views.extensions
 
 import android.graphics.Rect
 import android.view.View
-import androidx.annotation.DimenRes
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.sanogueralorenzo.views.R
 
-fun RecyclerView.replaceItemDecorator(itemDecorator: RecyclerView.ItemDecoration) {
-    for (i in 0 until itemDecorationCount) removeItemDecorationAt(i)
-    addItemDecoration(itemDecorator)
+fun RecyclerView.enableStateRestoration() {
+    adapter!!.stateRestorationPolicy =
+        RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 }
 
-fun RecyclerView.addHorizontalItemDecorator(@DimenRes horizontalDp: Int = R.dimen.margin_regular) =
+fun RecyclerView.removeAllItemDecorators() {
+    for (i in 0 until itemDecorationCount) removeItemDecorationAt(0)
+}
+
+fun RecyclerView.addHorizontalItemDecorator(horizontalDp: Int = 16) =
     addItemDecoration(HorizontalItemDecorator(horizontalDp))
 
-fun RecyclerView.addVerticalItemDecorator(@DimenRes verticalDp: Int = R.dimen.margin_regular) =
+fun RecyclerView.addVerticalItemDecorator(verticalDp: Int = 8) =
     addItemDecoration(VerticalItemDecorator(verticalDp))
 
 fun RecyclerView.setInfiniteScrolling(layoutManager: GridLayoutManager, action: () -> Unit) {
@@ -33,7 +35,7 @@ fun RecyclerView.setInfiniteScrolling(layoutManager: GridLayoutManager, action: 
     })
 }
 
-private class HorizontalItemDecorator(@DimenRes private val horizontalDp: Int) :
+private class HorizontalItemDecorator(private val horizontalDp: Int) :
     RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
@@ -42,12 +44,12 @@ private class HorizontalItemDecorator(@DimenRes private val horizontalDp: Int) :
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        outRect.right = view.context.resources.getDimension(horizontalDp).toInt()
-        outRect.left = view.context.resources.getDimension(horizontalDp).toInt()
+        outRect.right = view.toDp(horizontalDp)
+        outRect.left = view.toDp(horizontalDp)
     }
 }
 
-private class VerticalItemDecorator(@DimenRes private val verticalDp: Int) :
+private class VerticalItemDecorator(private val verticalDp: Int) :
     RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
@@ -56,7 +58,7 @@ private class VerticalItemDecorator(@DimenRes private val verticalDp: Int) :
         parent: RecyclerView,
         state: RecyclerView.State
     ) {
-        outRect.top = view.context.resources.getDimension(verticalDp).toInt()
-        outRect.bottom = view.context.resources.getDimension(verticalDp).toInt()
+        outRect.top = view.toDp(verticalDp)
+        outRect.bottom = view.toDp(verticalDp)
     }
 }

@@ -1,0 +1,34 @@
+<resources>
+    <!--  About screen?  -->
+    <string name="onboarding_intro_title">&#128075; Welcome!</string>
+    <string name="onboarding_intro_subtitle">I\'m <b>Amiga</b>, your wellbeing assistant.</string>
+    <string name="onboarding_intro">Feel better with daily reflections, healthy habits &amp; quality time.</string>
+    <string name="onboarding_intro_button">Get Started</string>
+
+    <string name="onboarding_journal_subtitle">Daily reflection for a better self</string>
+    <string name="onboarding_journal_description">Look back, note down your daily feelings &amp; find out the path to happiness.\n\nSee the correlation of your feelings with the rest of your daily activities.</string>
+
+    <string name="onboarding_habits_subtitle">Remind yourself of healthy habits</string>
+    <string name="onboarding_habits_description">Habits like exercising &amp; reading are important in your wellbeing.\n\nCreate and keep up your healthy habits with customizable goals &amp; reminders.</string>
+
+    <string name="onboarding_zoneout_subtitle">Quality time: take care of yourself</string>
+    <string name="onboarding_zoneout_description">Balance your life alone &amp; with those you care by spending mindful quality time with them.</string>
+
+    <!--  Profile Name screen  -->
+    <string name="name">Name</string>
+    <string name="onboarding_name_title">What\'s your first name?</string>
+    <string name="onboarding_name_helper_text">For personalized messages use only &#128522;</string>
+    <string name="onboarding_name_error">Please provide a name</string>
+
+    <!--  Intro screen  -->
+    <string name="onboarding_welcome_title"><b>Welcome to your wellbeing assistant</b></string>
+
+    <string name="intro_journal_title">Daily reflections</string>
+    <string name="intro_journal_subtitle">Express your daily feelings</string>
+    <string name="intro_habits_title">Healthy habits</string>
+    <string name="intro_habits_subtitle">Improve &amp; own your lifestyle</string>
+    <string name="intro_zoneout_title">Quality time</string>
+    <string name="intro_zoneout_subtitle">Balance your life with those you care</string>
+
+    <string name="privacy_terms">By continuing, you agree to Amiga\'s <u>Terms of Service</u> &amp; <u>Privacy policy</u></string>
+</resources>

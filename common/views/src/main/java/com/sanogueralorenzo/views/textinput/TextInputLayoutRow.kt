@@ -45,6 +45,11 @@ class TextInputLayoutRow @JvmOverloads constructor(
     }
 
     @TextProp
+    fun setInnerHint(text: CharSequence?) {
+        input.hint = text
+    }
+
+    @TextProp
     fun setHelperText(text: CharSequence?) {
         inputLayout.helperText = text
     }

@@ -6,9 +6,19 @@ import android.util.TypedValue
 import android.view.View
 
 fun View.startEndPadding(dp: Int = 16) {
-    toDp(dp).let {
-        setPadding(it, 0, it, 0)
-    }
+    toDp(dp).let { setPadding(it, paddingTop, it, paddingBottom) }
+}
+
+fun View.topBottomPadding(dp: Int = 16) {
+    toDp(dp).let { setPadding(paddingLeft, it, paddingRight, it) }
+}
+
+fun View.setPaddingAll(dp: Int = 16) {
+    toDp(dp).let { setPadding(it, it, it, it) }
+}
+
+fun View.removePadding() {
+    setPadding(0, 0, 0, 0)
 }
 
 fun View.setContainerPadding() {

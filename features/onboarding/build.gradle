@@ -1,0 +1,12 @@
+apply from: "$rootDir/common-android-library.gradle"
+
+dependencies {
+    implementation project(Modules.usermanager)
+    implementation project(Modules.navigation)
+    implementation project(Modules.resources)
+    implementation project(Modules.views)
+
+    testImplementation Deps.mockk
+    testImplementation Deps.junit
+    testImplementation Deps.mvrxTesting
+}

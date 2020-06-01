@@ -11,42 +11,40 @@ import com.airbnb.mvrx.BaseMvRxFragment
 import com.google.android.material.appbar.AppBarLayout
 import com.sanogueralorenzo.views.ErrorDisplay
 import com.sanogueralorenzo.views.R
+import com.sanogueralorenzo.views.extensions.enable
+import com.sanogueralorenzo.views.extensions.enableStateRestoration
 import com.sanogueralorenzo.views.extensions.isGone
 import com.sanogueralorenzo.views.extensions.setContainerPadding
-import com.sanogueralorenzo.views.extensions.setInitialRefresh
 import com.sanogueralorenzo.views.extensions.show
 import com.sanogueralorenzo.views.extensions.visible
 import kotlinx.android.synthetic.main.fragment_container.*
 
 abstract class ContainerFragment : BaseMvRxFragment(R.layout.fragment_container) {
 
+    protected val controller by lazy { controller() }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         containerRecyclerView.setDelayMsWhenRemovingAdapterOnDetach(0)
         containerRecyclerView.setController(controller)
+        containerRecyclerView.enableStateRestoration()
     }
 
-    abstract val controller: EpoxyController
+    abstract fun controller(): EpoxyController
 
-    protected val toolbar: Toolbar
+    protected inline val toolbar: Toolbar
         get() {
             if (containerToolbar.isGone()) containerToolbar.visible()
             return containerToolbar
         }
 
-    protected val appBarLayout: AppBarLayout
+    protected inline val appBarLayout: AppBarLayout
         get() = containerAppBarLayout
 
-    protected val swipeRefreshLayout: SwipeRefreshLayout
+    protected inline val swipeRefreshLayout: SwipeRefreshLayout
         get() {
-            if (containerSRL.isEnabled.not()) containerSRL.setInitialRefresh()
+            if (containerSRL.isEnabled.not()) containerSRL.enable()
             return containerSRL
-        }
-
-    protected inline val topView: ViewGroup
-        get() {
-            if (containerTopLL.childCount == 0) containerTopLL.setContainerPadding()
-            return containerTopLL
         }
 
     protected inline val recyclerView: EpoxyRecyclerView
@@ -68,5 +66,19 @@ abstract class ContainerFragment : BaseMvRxFragment(R.layout.fragment_container)
         ErrorDisplay.create(container, throwable, retry)
             .apply { this.anchorView = containerBottomLL.getChildAt(0) ?: containerBottomLL }
             .show()
+    }
+
+    override fun invalidate() {
+        recyclerView.requestModelBuild()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        controller.onSaveInstanceState(outState)
+    }
+
+    override fun onDestroyView() {
+        controller.cancelPendingModelBuild()
+        super.onDestroyView()
     }
 }

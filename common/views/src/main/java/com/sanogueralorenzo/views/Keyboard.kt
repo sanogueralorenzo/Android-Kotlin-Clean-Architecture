@@ -9,7 +9,10 @@ object Keyboard {
     fun show(v: View) {
         if (v.requestFocus()) {
             (v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
-                .showSoftInput(v, InputMethodManager.SHOW_IMPLICIT)
+                .toggleSoftInput(
+                    InputMethodManager.SHOW_IMPLICIT,
+                    InputMethodManager.HIDE_IMPLICIT_ONLY
+                )
         }
     }
 
