@@ -17,6 +17,7 @@ import com.sanogueralorenzo.views.TextRow
 import com.sanogueralorenzo.views.extensions.addHorizontalItemDecorator
 import com.sanogueralorenzo.views.extensions.startEndPadding
 import com.sanogueralorenzo.views.extensions.topBottomPadding
+import com.sanogueralorenzo.views.extensions.urlIntent
 import com.sanogueralorenzo.views.imageRow
 import com.sanogueralorenzo.views.imageTextRow
 import com.sanogueralorenzo.views.screen.ContainerFragment
@@ -40,6 +41,7 @@ class IntroFragment : ContainerFragment() {
             startEndPadding()
             topBottomPadding(16)
             setStyle(TextRow.TextStyle.CAPTION)
+            setOnClickListener { startActivity(urlIntent(LEGAL_URL)) }
         }.let { bottomView.addView(it) }
         PrimaryButton.create(context!!, getString(R.string.onboarding_intro_button)) {
             viewModel.onButtonClick()
@@ -102,6 +104,11 @@ class IntroFragment : ContainerFragment() {
             title(getString(R.string.intro_zoneout_title))
             subtitle(getString(R.string.intro_zoneout_subtitle))
         }
+    }
+
+    private companion object {
+        const val LEGAL_URL =
+            "https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/legal"
     }
 }
 
