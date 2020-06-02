@@ -31,10 +31,11 @@ dependencies {
     implementation project(Modules.cache)
     implementation project(Modules.navigation)
     implementation project(Modules.usermanager)
+
     implementation project(Modules.onboarding)
+    implementation project(Modules.profile)
 
     implementation Deps.kotlin
-
     implementation Deps.timber
 
     implementation Deps.mvrx

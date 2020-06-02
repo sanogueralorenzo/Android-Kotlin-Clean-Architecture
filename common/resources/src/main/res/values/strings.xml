@@ -2,6 +2,7 @@
     <string name="app_name">Amiga</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
+    <string name="save">Save</string>
     <string name="done">Done</string>
 
     <string name="journal">Journal</string>

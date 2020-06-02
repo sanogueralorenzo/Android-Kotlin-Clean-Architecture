@@ -1,4 +1,4 @@
-package com.sanogueralorenzo.onboarding
+package com.sanogueralorenzo.profile
 
 import com.airbnb.mvrx.Success
 import com.airbnb.mvrx.test.MvRxTestRule
@@ -11,12 +11,13 @@ import io.mockk.runs
 import io.mockk.verify
 import org.junit.Rule
 import org.junit.Test
+
 internal class NameViewModelTest {
 
     @get:Rule
     val mvrxRule = MvRxTestRule()
 
-    private val mockUserManager:UserManager = mockk()
+    private val mockUserManager: UserManager = mockk()
 
     private lateinit var viewModel: NameViewModel
 
@@ -44,7 +45,6 @@ internal class NameViewModelTest {
         val name = "Mario"
         val state = NameState(name = name)
         every { mockUserManager.name = name } just runs
-        every { mockUserManager.newUser = false } just runs
 
         viewModel = createViewModel(state)
         viewModel.onButtonClick()

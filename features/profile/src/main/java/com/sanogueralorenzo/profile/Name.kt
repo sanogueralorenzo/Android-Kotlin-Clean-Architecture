@@ -1,4 +1,4 @@
-package com.sanogueralorenzo.onboarding
+package com.sanogueralorenzo.profile
 
 import android.os.Bundle
 import android.view.View
@@ -33,7 +33,7 @@ class NameFragment : ContainerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         PrimaryButton(requireContext()).apply {
-            get.text = getString(R.string.done)
+            get.text = getString(R.string.save)
             get.setOnClickListener { viewModel.onButtonClick() }
         }.let { bottomView.addView(it) }
 
@@ -87,7 +87,6 @@ class NameViewModel(
         withState {
             if (it.name.isNullOrBlank().not()) {
                 userManager.name = it.name
-                userManager.newUser = false
                 Completable.complete().execute { copy(complete = it) }
             } else {
                 setState { copy(error = R.string.onboarding_name_error) }

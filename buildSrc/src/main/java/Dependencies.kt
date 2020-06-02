@@ -15,6 +15,7 @@ object Modules {
 
     val home = ":features:home"
     val onboarding = ":features:onboarding"
+    val profile = ":features:profile"
 
     val usermanager = ":libs:usermanager"
 }

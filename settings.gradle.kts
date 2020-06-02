@@ -8,5 +8,6 @@ include(
     ":common:views",
     ":features:home",
     ":features:onboarding",
+    ":features:profile",
     ":libs:usermanager"
 )
