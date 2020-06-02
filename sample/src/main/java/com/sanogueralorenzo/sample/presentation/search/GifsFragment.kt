@@ -3,17 +3,15 @@ package com.sanogueralorenzo.sample.presentation.search
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.sanogueralorenzo.navigation.core.replaceFragment
 import com.sanogueralorenzo.sample.R
 import com.sanogueralorenzo.sample.presentation.detail.GifDetailFragment
+import com.sanogueralorenzo.sample.presentation.search.view.SuggestionsView
+import com.sanogueralorenzo.sample.presentation.search.view.searchInput
 import com.sanogueralorenzo.views.extensions.setInfiniteScrolling
 import com.sanogueralorenzo.views.imageRow
 import com.sanogueralorenzo.views.screen.ContainerFragment
@@ -27,7 +25,7 @@ class GifsFragment : ContainerFragment() {
     @Inject
     lateinit var viewModelFactory: GifsViewModel.Factory
     private val viewModel: GifsViewModel by fragmentViewModel(GifsViewModel::class)
-    private var suggestionsChipGroup: ChipGroup? = null
+    private lateinit var suggestionsView: SuggestionsView
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -40,18 +38,8 @@ class GifsFragment : ContainerFragment() {
         initListeners()
         toolbar.title = getString(R.string.app_name)
         swipeRefreshLayout.setOnRefreshListener { viewModel.onSwipeAction() }
-        suggestionsChipGroup = ChipGroup(requireContext())
-            .also { it.isSingleLine = true }
-
-        val horizontalScrollView = HorizontalScrollView(requireContext())
-            .also {
-                it.isHorizontalScrollBarEnabled = false
-                it.addView(suggestionsChipGroup)
-            }
-        appBarLayout.addView(horizontalScrollView)
-
-        val params = horizontalScrollView.layoutParams as AppBarLayout.LayoutParams
-        params.scrollFlags = AppBarLayout.LayoutParams.SCROLL_FLAG_NO_SCROLL
+        suggestionsView = SuggestionsView(context!!)
+        appBarLayout.addView(suggestionsView)
     }
 
     private fun initRecyclerView() {
@@ -71,19 +59,11 @@ class GifsFragment : ContainerFragment() {
     private fun initListeners() {
         viewModel.asyncSubscribe(GifsState::request, onFail = { showError(it) })
         viewModel.selectSubscribe(GifsState::suggestions) { suggestions ->
-            suggestionsChipGroup!!.removeAllViews()
-            suggestions.map { suggestion ->
-                Chip(requireContext()).also { chip ->
-                    chip.text = suggestion.toString()
-                    when (suggestion) {
-                        DisplayMode.Trending ->
-                            chip.setOnClickListener { viewModel.trending() }
-                        is DisplayMode.Search ->
-                            chip.setOnClickListener { viewModel.search(suggestion.search) }
-                    }
-                    suggestionsChipGroup!!.addView(chip)
-                }
-            }
+            suggestionsView.addSuggestions(
+                suggestions,
+                onTrendingClick = { viewModel.trending() },
+                onSearchTermClick = { viewModel.search(it) }
+            )
         }
     }
 
@@ -103,11 +83,6 @@ class GifsFragment : ContainerFragment() {
                 spanSizeOverride { _, _, _ -> 1 }
             }
         }
-    }
-
-    override fun onDestroyView() {
-        suggestionsChipGroup = null
-        super.onDestroyView()
     }
 
     private companion object {

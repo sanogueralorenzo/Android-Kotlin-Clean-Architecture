@@ -6,6 +6,7 @@ import com.airbnb.mvrx.MvRxState
 import com.airbnb.mvrx.PersistState
 import com.airbnb.mvrx.Uninitialized
 import com.sanogueralorenzo.sample.domain.Gif
+import com.sanogueralorenzo.sample.presentation.search.view.SuggestionsView
 
 /**
  * PersistState annotation saves into viewmodel store owner & properly survives process restart
@@ -18,7 +19,7 @@ data class GifsState(
     val request: Async<List<Gif>> = Uninitialized,
     val items: List<Gif> = emptyList(),
     @PersistState val displayMode: DisplayMode = DisplayMode.Trending,
-    val suggestions: List<DisplayMode> = createSuggestions()
+    val suggestions: List<DisplayMode> = SuggestionsView.createSuggestions()
 ) : MvRxState {
 
     val isLoading: Boolean
