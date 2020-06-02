@@ -1,5 +1,6 @@
 package com.sanogueralorenzo.sample.presentation.search
 
+import android.text.InputType
 import android.view.inputmethod.EditorInfo
 import com.google.android.material.textfield.TextInputLayout
 import com.sanogueralorenzo.sample.R
@@ -24,6 +25,7 @@ fun TextInputLayoutRow.searchInput(listener: (String) -> Unit) {
     }
     editText.isSingleLine = true
     editText.imeOptions = EditorInfo.IME_ACTION_SEARCH
+    editText.inputType = InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
     textInputLayout.setEndIconOnClickListener { searchClick(this, listener) }
 }
 
