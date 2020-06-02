@@ -10,12 +10,12 @@ buildscript {
 }
 
 plugins {
-    id("io.gitlab.arturbosch.detekt").version("1.8.0")
+    id("io.gitlab.arturbosch.detekt").version("1.9.1")
     id("com.github.ben-manes.versions").version("0.28.0")
 }
 
 dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.8.0")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.9.1")
 }
 
 allprojects {

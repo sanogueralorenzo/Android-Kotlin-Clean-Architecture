@@ -39,36 +39,38 @@ object Versions {
     val support = "1.1.0"
     val constraint = "1.1.3"
 
-    val dagger = "2.27"
+    val dagger = "2.28"
     val koin = "2.1.5"
     val lifecycle = "2.2.0"
     val lifecycleTesting = "2.1.0"
     val glide = "4.11.0"
 
-    val okhttp = "4.3.1"
+    val okhttp = "4.7.2"
 
     val junit = "4.13"
 
     val lottie = "3.4.0"
 
-    val retrofit = "2.7.1"
-    val mockk = "1.9.3"
+    val retrofit = "2.9.0"
+    val mockk = "1.10.0"
 
-    val leakCanary = "2.2"
-    val playCore = "1.7.1"
+    val leakCanary = "2.3"
+    val playCore = "1.7.3"
+
+    val epoxy = "4.0.0-beta4"
 }
 
 object Deps {
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
 
     //Support Libraries
-    val appcompat = "androidx.appcompat:appcompat:${Versions.support}"
+    val appcompat = "androidx.appcompat:appcompat:1.3.0-alpha01"
     val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
-    val recyclerView = "androidx.recyclerview:recyclerview:1.2.0-alpha02"
+    val recyclerView = "androidx.recyclerview:recyclerview:1.2.0-alpha03"
     val core = "androidx.core:core-ktx:1.2.0"
-    val design = "com.google.android.material:material:${Versions.support}"
+    val design = "com.google.android.material:material:1.3.0-alpha01"
     val cardview = "androidx.cardview:cardview:${Versions.support}"
-    val swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    val swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-rc01"
 
     //Annotations
     val assistedInject = "com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2"
@@ -107,8 +109,8 @@ object Deps {
     val mvrxTesting = "com.airbnb.android:mvrx-testing:2.0.0-alpha2"
     val mvrxLauncher = "com.airbnb.android:mvrx-launcher:2.0.0-alpha2"
 
-    val epoxy = "com.airbnb.android:epoxy:3.9.0"
-    val epoxyProcessor = "com.airbnb.android:epoxy-processor:3.9.0"
+    val epoxy = "com.airbnb.android:epoxy:${Versions.epoxy}"
+    val epoxyProcessor = "com.airbnb.android:epoxy-processor:${Versions.epoxy}"
 
     val okhttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
     val timber = "com.jakewharton.timber:timber:4.7.1"
