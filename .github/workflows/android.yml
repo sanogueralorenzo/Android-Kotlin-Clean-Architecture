@@ -2,7 +2,16 @@ name: Android CI
 
 on: push
 
+# 3 different jobs that run in parallel to check the following
+# Detekt: Checks for Kotlin code smells & formatting issues (Ktlint enabled within detekt)
+# Lint: Checks for Android code smells
+# Tests: Checks for failing Unit tests
+
+# Due to being different jobs they run in independent machines so each requires setup + cache config
+# Caching Gradle with key hash of top build gradle, dependencies file or gradle-wrapper change cache
+
 jobs:
+
   detekt:
     runs-on: ubuntu-latest
 
