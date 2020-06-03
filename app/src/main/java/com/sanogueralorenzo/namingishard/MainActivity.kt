@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
         overridePendingTransition(0, 0)
         super.onCreate(savedInstanceState)
         when {
-
             UserManager().newUser -> startActivity(OnboardingNavigation.intro())
             else -> startActivity(HomeNavigation.homeIntent())
         }
