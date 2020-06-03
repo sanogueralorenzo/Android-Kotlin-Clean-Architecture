@@ -13,10 +13,10 @@ jobs:
         with:
           java-version: 1.8
 
-      - uses: actions/cache@v2
-          with:
-            path: ~/.gradle
-            key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+       - uses: actions/cache@v2
+            with:
+              path: ~/.gradle
+              key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
       - name: Run Detekt & Ktlint
         run: ./gradlew detektAll
@@ -31,10 +31,10 @@ jobs:
         with:
           java-version: 1.8
 
-      - uses: actions/cache@v2
-          with:
-            path: ~/.gradle
-            key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+        - uses: actions/cache@v2
+            with:
+              path: ~/.gradle
+              key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
       - name: Run Lint
         run: ./gradlew lintDebug
@@ -49,10 +49,10 @@ jobs:
         with:
           java-version: 1.8
 
-      - uses: actions/cache@v2
-          with:
-            path: ~/.gradle
-            key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+        - uses: actions/cache@v2
+            with:
+              path: ~/.gradle
+              key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
       - name: Run Unit Tests
         run: ./gradlew testDebugUnitTest
