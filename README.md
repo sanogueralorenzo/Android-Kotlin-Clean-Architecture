@@ -1,7 +1,7 @@
 Android Kotlin Clean Architecture App
 =
 
-[![CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master.svg?style=svg)](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master)
+[![Actions Status](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/workflows/android/badge.svg)](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/actions)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.71-blue.svg)](http://kotlinlang.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
