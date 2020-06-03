@@ -1,4 +1,4 @@
-name: Android CI
+name: android
 
 on: push
 
