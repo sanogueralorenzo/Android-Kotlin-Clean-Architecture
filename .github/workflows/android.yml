@@ -14,10 +14,10 @@ jobs:
           java-version: 1.8
 
       - uses: actions/cache@v2
-          with:
-            path: ~/.gradle
-            key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
-            restore-keys: |
+        with:
+          path: ~/.gradle
+          key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
               ${{ runner.os }}-gradle-
 
       - name: Run Detekt & Ktlint
@@ -34,11 +34,11 @@ jobs:
           java-version: 1.8
 
       - uses: actions/cache@v2
-          with:
-            path: ~/.gradle
-            key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
-            restore-keys: |
-              ${{ runner.os }}-gradle-
+        with:
+          path: ~/.gradle
+          key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
       - name: Run Lint
         run: ./gradlew lintDebug
@@ -54,11 +54,11 @@ jobs:
           java-version: 1.8
 
       - uses: actions/cache@v2
-          with:
-            path: ~/.gradle
-            key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
-            restore-keys: |
-              ${{ runner.os }}-gradle-
+        with:
+          path: ~/.gradle
+          key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle.kts') }}-${{ hashFiles('buildSrc/src/main/java/Dependencies.kt') }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
 
       - name: Run Unit Tests
         run: ./gradlew testDebugUnitTest
