@@ -17,7 +17,6 @@ import com.sanogueralorenzo.views.TextRow
 import com.sanogueralorenzo.views.extensions.addHorizontalItemDecorator
 import com.sanogueralorenzo.views.extensions.bottomPadding
 import com.sanogueralorenzo.views.extensions.setTextWithLinks
-import com.sanogueralorenzo.views.extensions.startEndPadding
 import com.sanogueralorenzo.views.extensions.topBottomPadding
 import com.sanogueralorenzo.views.extensions.urlIntent
 import com.sanogueralorenzo.views.imageRow
@@ -29,7 +28,7 @@ import com.sanogueralorenzo.views.textRow
 import io.reactivex.Completable
 
 /**
- * @see com.sanogueralorenzo.navigation.features.OnboardingNavigation.intro
+ * @see com.sanogueralorenzo.navigation.features.OnboardingNavigation.introIntent
  */
 @Suppress("Unused")
 class IntroFragment : ContainerFragment() {
@@ -49,7 +48,6 @@ class IntroFragment : ContainerFragment() {
         super.onViewCreated(view, savedInstanceState)
         TextRow(context!!).apply {
             gravity = Gravity.CENTER
-            startEndPadding()
             topBottomPadding(16)
             setStyle(TextRow.TextStyle.CAPTION)
             setTextWithLinks(getString(R.string.privacy_terms), terms, privacy)
