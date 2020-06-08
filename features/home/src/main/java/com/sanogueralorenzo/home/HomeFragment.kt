@@ -33,7 +33,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             { bottomNavigationView.selectedItemId = R.id.navigation_home },
             { bottomNavigationView.selectedItemId != R.id.navigation_home }
         )
-            if (savedInstanceState != null) return
-            // replaceFragment(HomeNavigation.homeFragment(), backstack = false, containerId = homeContainer.id)
-        }
+
+        if (savedInstanceState != null) return
+        // replaceFragment(HomeNavigation.homeFragment(), backstack = false, containerId = homeContainer.id)
+    }
 }
