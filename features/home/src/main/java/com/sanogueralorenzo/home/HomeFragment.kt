@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.sanogueralorenzo.views.extensions.onFragmentBackCallback
-import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
  * @see com.sanogueralorenzo.navigation.features.HomeNavigation.homeIntent
  */
 @Suppress("Unused")
-class HomeFragment : Fragment(R.layout.activity_home) {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
