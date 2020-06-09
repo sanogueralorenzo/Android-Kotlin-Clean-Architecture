@@ -30,8 +30,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         // onBackPressed select home if not selected, otherwise just close
         onFragmentBackCallback(
-            { bottomNavigationView.selectedItemId = R.id.navigation_home },
-            { bottomNavigationView.selectedItemId != R.id.navigation_home }
+            callback = { bottomNavigationView.selectedItemId = R.id.navigation_home },
+            predicate = { bottomNavigationView.selectedItemId != R.id.navigation_home }
         )
 
         if (savedInstanceState != null) return

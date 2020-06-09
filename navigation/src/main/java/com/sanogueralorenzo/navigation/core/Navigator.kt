@@ -50,7 +50,4 @@ open class Navigator(val packageName: String = "com.sanogueralorenzo.namingishar
     // Fragment as an Intent (Container Activity within same feature module) --> ExampleFragment::class
     fun localFragmentIntent(clazz: KClass<*>, arg: Any? = null): Intent =
         fragmentIntent(clazz.qualifiedName!!, arg)
-
-    // TODO: Add nullable fragments intents for unloaded modules (debug only)?
-    // TODO: On debug only avoid crashing and just show toast or log?
 }

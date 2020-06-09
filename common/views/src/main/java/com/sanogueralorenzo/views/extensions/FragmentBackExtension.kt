@@ -6,16 +6,18 @@ import androidx.fragment.app.Fragment
 /**
  * Extension to handle back pressed on fragments
  * @param callback -> the callback to execute on back pressed
- * @param backPressHandlePredicate -> predicate that needs to be met in order to execute back press
+ * @param predicate -> condition that needs to be met in order to execute back press
+ *
+ * If predicate not met, back press is propagated to activity
  */
 fun Fragment.onFragmentBackCallback(
     callback: () -> Unit,
-    backPressHandlePredicate: () -> Boolean = { true }
+    predicate: () -> Boolean = { true }
 ) {
     activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             when {
-                backPressHandlePredicate() -> callback()
+                predicate() -> callback()
                 else -> {
                     isEnabled = false
                     activity?.onBackPressed()
