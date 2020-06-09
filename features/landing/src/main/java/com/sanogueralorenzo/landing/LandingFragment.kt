@@ -1,16 +1,16 @@
-package com.sanogueralorenzo.home
+package com.sanogueralorenzo.landing
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.sanogueralorenzo.views.extensions.onFragmentBackCallback
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_landing.*
 
 /**
- * @see com.sanogueralorenzo.navigation.features.HomeNavigation.homeIntent
+ * @see com.sanogueralorenzo.navigation.features.LandingNavigation.landingIntent
  */
 @Suppress("Unused")
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class LandingFragment : Fragment(R.layout.fragment_landing) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

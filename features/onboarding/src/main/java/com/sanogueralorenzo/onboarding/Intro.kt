@@ -10,7 +10,7 @@ import com.airbnb.mvrx.MvRxViewModelFactory
 import com.airbnb.mvrx.Uninitialized
 import com.airbnb.mvrx.ViewModelContext
 import com.airbnb.mvrx.fragmentViewModel
-import com.sanogueralorenzo.navigation.features.HomeNavigation
+import com.sanogueralorenzo.navigation.features.LandingNavigation
 import com.sanogueralorenzo.usermanager.UserManager
 import com.sanogueralorenzo.views.MiniButton
 import com.sanogueralorenzo.views.TextRow
@@ -63,7 +63,7 @@ class IntroFragment : ContainerFragment() {
         recyclerView.addHorizontalItemDecorator(64)
 
         viewModel.asyncSubscribe(IntroState::complete, uniqueOnly(), onSuccess = {
-            startActivity(HomeNavigation.homeIntent())
+            startActivity(LandingNavigation.landingIntent())
             activity?.finish()
         })
     }

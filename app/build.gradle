@@ -26,7 +26,7 @@ android {
 dependencies {
     implementation project(Modules.resources)
 
-    implementation project(Modules.home)
+    implementation project(Modules.landing)
     implementation project(Modules.views)
     implementation project(Modules.cache)
     implementation project(Modules.navigation)

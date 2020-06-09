@@ -2,7 +2,7 @@ package com.sanogueralorenzo.namingishard
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.sanogueralorenzo.navigation.features.HomeNavigation
+import com.sanogueralorenzo.navigation.features.LandingNavigation
 import com.sanogueralorenzo.navigation.features.OnboardingNavigation
 import com.sanogueralorenzo.usermanager.UserManager
 
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         when {
             UserManager().newUser -> startActivity(OnboardingNavigation.introIntent())
-            else -> startActivity(HomeNavigation.homeIntent())
+            else -> startActivity(LandingNavigation.landingIntent())
         }
         finish()
     }
