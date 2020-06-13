@@ -7,7 +7,6 @@ include(
     ":common:resources",
     ":common:views",
     ":features:onboarding",
-    ":features:landing",
     ":features:home",
     ":features:profile",
     ":libs:usermanager"

@@ -32,7 +32,6 @@ dependencies {
     implementation project(Modules.usermanager)
 
     implementation project(Modules.onboarding)
-    implementation project(Modules.landing)
     implementation project(Modules.home)
     implementation project(Modules.profile)
 

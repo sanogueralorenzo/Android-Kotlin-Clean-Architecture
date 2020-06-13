@@ -14,7 +14,6 @@ object Modules {
     val views = ":common:views"
 
     val onboarding = ":features:onboarding"
-    val landing = ":features:landing"
     val home = ":features:home"
     val profile = ":features:profile"
 
