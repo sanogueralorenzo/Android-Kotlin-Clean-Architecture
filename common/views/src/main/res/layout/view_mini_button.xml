@@ -9,6 +9,7 @@
         android:layout_gravity="center"
         android:stateListAnimator="@null"
         android:textAllCaps="false"
+        android:textColor="@android:color/white"
         app:cornerRadius="30dp" />
 
 </merge>

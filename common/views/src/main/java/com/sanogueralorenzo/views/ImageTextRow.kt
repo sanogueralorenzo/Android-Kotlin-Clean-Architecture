@@ -44,7 +44,7 @@ class ImageTextRow @JvmOverloads constructor(
     @ModelProp
     @JvmOverloads
     fun setSubtitleStyle(style: TextRow.TextStyle = TextRow.TextStyle.BODY) {
-        title.setStyle(style)
+        subtitle.setStyle(style)
     }
 
     @ModelProp
