@@ -1,4 +1,4 @@
-package com.sanogueralorenzo.navigation.core
+package com.sanogueralorenzo.navigation.extensions
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

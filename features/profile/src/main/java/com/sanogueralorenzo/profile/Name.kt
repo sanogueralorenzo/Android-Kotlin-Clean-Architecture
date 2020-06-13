@@ -43,7 +43,7 @@ class NameFragment : ContainerFragment() {
 
         viewModel.asyncSubscribe(NameState::complete, uniqueOnly(), onSuccess = {
             Keyboard.hide(view)
-            startActivity(HomeNavigation.homeIntent())
+            startActivity(HomeNavigation.home())
             activity?.finish()
         })
     }

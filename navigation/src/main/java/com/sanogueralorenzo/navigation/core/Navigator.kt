@@ -31,7 +31,7 @@ import kotlin.reflect.KClass
  *
  * Requires Unit testing on String vs Canonical name to prevent bugs on name refactoring or class moving
  */
-open class Navigator(val packageName: String = "com.sanogueralorenzo.namingishard") {
+open class Navigator(private val packageName: String = "com.sanogueralorenzo.namingishard") {
 
     // Fragment creation between different modules --> "com.example.ExampleFragment"
     internal fun fragment(name: String, arg: Any? = null): Fragment =
@@ -44,10 +44,10 @@ open class Navigator(val packageName: String = "com.sanogueralorenzo.namingishar
             .putExtra(ContainerActivity.FRAGMENT_BUNDLE, arg?.toBundle())
 
     // Fragment creation within same feature module --> ExampleFragment::class
-    fun localFragment(clazz: KClass<*>, arg: Any? = null): Fragment =
+    fun fragment(clazz: KClass<*>, arg: Any? = null): Fragment =
         fragment(clazz.qualifiedName!!, arg)
 
     // Fragment as an Intent (Container Activity within same feature module) --> ExampleFragment::class
-    fun localFragmentIntent(clazz: KClass<*>, arg: Any? = null): Intent =
+    fun fragmentIntent(clazz: KClass<*>, arg: Any? = null): Intent =
         fragmentIntent(clazz.qualifiedName!!, arg)
 }

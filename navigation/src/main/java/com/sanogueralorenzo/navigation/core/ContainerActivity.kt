@@ -2,6 +2,7 @@ package com.sanogueralorenzo.navigation.core
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.sanogueralorenzo.navigation.extensions.replaceFragment
 
 class ContainerActivity : AppCompatActivity() {
 

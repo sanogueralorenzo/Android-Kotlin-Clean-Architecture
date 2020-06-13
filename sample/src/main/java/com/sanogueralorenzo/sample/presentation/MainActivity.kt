@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(0, 0)
         super.onCreate(savedInstanceState)
-        startActivity(GifsNavigation.localFragmentIntent(GifsFragment::class))
+        startActivity(GifsNavigation.fragmentIntent(GifsFragment::class))
         finish()
     }
 

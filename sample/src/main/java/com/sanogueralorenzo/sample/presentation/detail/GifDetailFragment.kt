@@ -1,7 +1,8 @@
 package com.sanogueralorenzo.sample.presentation.detail
 
 import android.content.Intent
-import android.os.Bundle
+import androidx.core.os.bundleOf
+import com.sanogueralorenzo.navigation.features.GifsNavigation
 import com.sanogueralorenzo.views.extensions.sendIntent
 import com.sanogueralorenzo.views.imageRow
 import com.sanogueralorenzo.views.screen.ContainerFragment
@@ -9,7 +10,7 @@ import com.sanogueralorenzo.views.screen.simpleController
 
 class GifDetailFragment : ContainerFragment() {
 
-    private val url by lazy { arguments!!.getString("url")!! }
+    private val url by lazy { arguments!!.getString(URL_KEY)!! }
 
     override fun controller() = simpleController {
         imageRow {
@@ -20,17 +21,9 @@ class GifDetailFragment : ContainerFragment() {
     }
 
     companion object {
-        /**
-         * Alternatives if it was a more complex screen:
-         * 1. Just pass the id and fetch from memory cache
-         * 2. Have a shared parent ViewModel and just look up the data
-         */
-        fun newInstance(url: String): GifDetailFragment {
-            val args = Bundle()
-            args.putString("url", url)
-            val fragment = GifDetailFragment()
-            fragment.arguments = args
-            return fragment
-        }
+        private const val URL_KEY = "url"
+
+        fun newInstance(url: String) = GifsNavigation
+            .fragment(GifDetailFragment::class, bundleOf(URL_KEY to url))
     }
 }

@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
-import com.sanogueralorenzo.navigation.core.replaceFragment
+import com.sanogueralorenzo.navigation.extensions.replaceFragment
 import com.sanogueralorenzo.sample.R
 import com.sanogueralorenzo.sample.presentation.detail.GifDetailFragment
 import com.sanogueralorenzo.sample.presentation.search.view.SuggestionsView

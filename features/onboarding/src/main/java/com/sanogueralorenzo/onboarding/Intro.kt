@@ -28,7 +28,7 @@ import com.sanogueralorenzo.views.textRow
 import io.reactivex.Completable
 
 /**
- * @see com.sanogueralorenzo.navigation.features.OnboardingNavigation.introIntent
+ * @see com.sanogueralorenzo.navigation.features.OnboardingNavigation.intro
  */
 @Suppress("Unused")
 class IntroFragment : ContainerFragment() {
@@ -62,7 +62,7 @@ class IntroFragment : ContainerFragment() {
         recyclerView.addHorizontalItemDecorator(64)
 
         viewModel.asyncSubscribe(IntroState::complete, uniqueOnly(), onSuccess = {
-            startActivity(HomeNavigation.homeIntent())
+            startActivity(HomeNavigation.home())
             activity?.finish()
         })
     }
