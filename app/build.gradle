@@ -26,13 +26,14 @@ android {
 dependencies {
     implementation project(Modules.resources)
 
-    implementation project(Modules.landing)
     implementation project(Modules.views)
     implementation project(Modules.cache)
     implementation project(Modules.navigation)
     implementation project(Modules.usermanager)
 
     implementation project(Modules.onboarding)
+    implementation project(Modules.landing)
+    implementation project(Modules.home)
     implementation project(Modules.profile)
 
     implementation Deps.kotlin

@@ -3,6 +3,8 @@ package com.sanogueralorenzo.landing
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.sanogueralorenzo.navigation.core.replaceFragment
+import com.sanogueralorenzo.navigation.features.HomeNavigation
 import com.sanogueralorenzo.views.extensions.onFragmentBackCallback
 import kotlinx.android.synthetic.main.fragment_landing.*
 
@@ -16,13 +18,15 @@ class LandingFragment : Fragment(R.layout.fragment_landing) {
         super.onViewCreated(view, savedInstanceState)
         bottomNavigationView.apply {
                 setOnNavigationItemSelectedListener {
-                    when (it.itemId) {
-                        R.id.navigation_home -> { }
-                        R.id.navigation_search -> { }
-                        R.id.navigation_add -> { }
-                        R.id.navigation_notifications -> { }
-                        R.id.navigation_profile -> { }
-                        else -> error("unhandled bottom navigation item")
+                    if (bottomNavigationView.selectedItemId != it.itemId) {
+                        when (it.itemId) {
+                            R.id.navigation_home -> navigateTo(HomeNavigation.homeFragment())
+                            R.id.navigation_search -> { }
+                            R.id.navigation_add -> { }
+                            R.id.navigation_notifications -> { }
+                            R.id.navigation_profile -> { }
+                            else -> error("unhandled bottom navigation item")
+                        }
                     }
                     true
                 }
@@ -35,6 +39,9 @@ class LandingFragment : Fragment(R.layout.fragment_landing) {
         )
 
         if (savedInstanceState != null) return
-        // replaceFragment(HomeNavigation.homeFragment(), backstack = false, containerId = homeContainer.id)
+        navigateTo(HomeNavigation.homeFragment())
     }
+
+    private fun navigateTo(fragment: Fragment) =
+        replaceFragment(fragment, backstack = false, containerId = landingContainer.id)
 }

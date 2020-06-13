@@ -39,8 +39,7 @@ class IntroFragment : ContainerFragment() {
             { startActivity(urlIntent(getString(R.string.terms_url))) })
     }
     private val privacy: Pair<String, () -> Unit> by lazy {
-        Pair(
-            getString(R.string.privacy),
+        Pair(getString(R.string.privacy),
             { startActivity(urlIntent(getString(R.string.privacy_url))) })
     }
 

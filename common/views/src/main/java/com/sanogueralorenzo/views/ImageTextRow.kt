@@ -1,11 +1,14 @@
 package com.sanogueralorenzo.views
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
@@ -20,8 +23,6 @@ class ImageTextRow @JvmOverloads constructor(
 
     init {
         View.inflate(context, R.layout.view_image_text, this)
-        title.setStyle(TextRow.TextStyle.HEADLINE)
-        subtitle.setStyle(TextRow.TextStyle.BODY)
     }
 
     @TextProp
@@ -29,9 +30,21 @@ class ImageTextRow @JvmOverloads constructor(
         title.text = text
     }
 
+    @ModelProp
+    @JvmOverloads
+    fun setTitleStyle(style: TextRow.TextStyle = TextRow.TextStyle.HEADLINE) {
+        title.setStyle(style)
+    }
+
     @TextProp
     fun setSubtitle(text: CharSequence?) {
         subtitle.text = text
+    }
+
+    @ModelProp
+    @JvmOverloads
+    fun setSubtitleStyle(style: TextRow.TextStyle = TextRow.TextStyle.BODY) {
+        title.setStyle(style)
     }
 
     @ModelProp
@@ -42,5 +55,15 @@ class ImageTextRow @JvmOverloads constructor(
     @ModelProp
     fun setImage(@DrawableRes drawable: Int) {
         image.setDrawable(drawable)
+    }
+
+    @ModelProp
+    fun setImageColor(@ColorRes color: Int?) {
+        color?.let {
+            ImageViewCompat.setImageTintList(
+                image,
+                ColorStateList.valueOf(ContextCompat.getColor(context, it))
+            )
+        }
     }
 }

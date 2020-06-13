@@ -6,8 +6,9 @@ include(
     ":common:network",
     ":common:resources",
     ":common:views",
-    ":features:landing",
     ":features:onboarding",
+    ":features:landing",
+    ":features:home",
     ":features:profile",
     ":libs:usermanager"
 )

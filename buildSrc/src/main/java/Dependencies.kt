@@ -13,8 +13,9 @@ object Modules {
     val network = ":common:network"
     val views = ":common:views"
 
-    val landing = ":features:landing"
     val onboarding = ":features:onboarding"
+    val landing = ":features:landing"
+    val home = ":features:home"
     val profile = ":features:profile"
 
     val usermanager = ":libs:usermanager"
