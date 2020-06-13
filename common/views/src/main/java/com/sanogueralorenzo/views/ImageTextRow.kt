@@ -23,6 +23,8 @@ class ImageTextRow @JvmOverloads constructor(
 
     init {
         View.inflate(context, R.layout.view_image_text, this)
+        title.setStyle(TextRow.TextStyle.SUBTITLE)
+        subtitle.setStyle(TextRow.TextStyle.BODY)
     }
 
     @TextProp
@@ -30,26 +32,9 @@ class ImageTextRow @JvmOverloads constructor(
         title.text = text
     }
 
-    @ModelProp
-    @JvmOverloads
-    fun setTitleStyle(style: TextRow.TextStyle = TextRow.TextStyle.HEADLINE) {
-        title.setStyle(style)
-    }
-
     @TextProp
     fun setSubtitle(text: CharSequence?) {
         subtitle.text = text
-    }
-
-    @ModelProp
-    @JvmOverloads
-    fun setSubtitleStyle(style: TextRow.TextStyle = TextRow.TextStyle.BODY) {
-        subtitle.setStyle(style)
-    }
-
-    @ModelProp
-    fun setTitleColor(@ColorRes color: Int?) {
-        title.setBodyColor(color)
     }
 
     @ModelProp
