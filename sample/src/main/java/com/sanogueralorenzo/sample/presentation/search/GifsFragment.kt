@@ -25,7 +25,7 @@ class GifsFragment : ContainerFragment() {
     @Inject
     lateinit var viewModelFactory: GifsViewModel.Factory
     private val viewModel: GifsViewModel by fragmentViewModel(GifsViewModel::class)
-    private lateinit var suggestionsView: SuggestionsView
+    private var suggestionsView: SuggestionsView? = null
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -59,7 +59,7 @@ class GifsFragment : ContainerFragment() {
     private fun initListeners() {
         viewModel.asyncSubscribe(GifsState::request, onFail = { showError(it) })
         viewModel.selectSubscribe(GifsState::suggestions) { suggestions ->
-            suggestionsView.addSuggestions(
+            suggestionsView!!.addSuggestions(
                 suggestions,
                 onTrendingClick = { viewModel.trending() },
                 onSearchTermClick = { viewModel.search(it) }
@@ -83,6 +83,11 @@ class GifsFragment : ContainerFragment() {
                 spanSizeOverride { _, _, _ -> 1 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        suggestionsView = null
+        super.onDestroyView()
     }
 
     private companion object {
