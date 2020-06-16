@@ -1,9 +1,9 @@
 package com.sanogueralorenzo.sample.presentation.search
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
@@ -17,20 +17,13 @@ import com.sanogueralorenzo.views.imageRow
 import com.sanogueralorenzo.views.screen.ContainerFragment
 import com.sanogueralorenzo.views.screen.simpleController
 import com.sanogueralorenzo.views.textinput.TextInputLayoutRow
-import dagger.android.support.AndroidSupportInjection
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GifsFragment : ContainerFragment() {
 
-    @Inject
-    lateinit var viewModelFactory: GifsViewModel.Factory
-    private val viewModel: GifsViewModel by fragmentViewModel(GifsViewModel::class)
+    private val viewModel: GifsViewModel by viewModels()
     private var suggestionsView: SuggestionsView? = null
-
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -39,7 +39,9 @@ object Versions {
     val support = "1.1.0"
     val constraint = "1.1.3"
 
-    val dagger = "2.28"
+    val daggerHilt = "2.28-alpha"
+    val daggerHiltJetpack = "1.0.0-alpha01"
+
     val koin = "2.1.5"
     val lifecycle = "2.2.0"
     val lifecycleTesting = "2.1.0"
@@ -72,18 +74,19 @@ object Deps {
     val cardview = "androidx.cardview:cardview:${Versions.support}"
     val swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-rc01"
 
-    //Annotations
-    val assistedInject = "com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2"
-    val assistedInjectProcessor = "com.squareup.inject:assisted-inject-processor-dagger2:0.5.2"
-    val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
-    val daggerAndroidProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
-
     val koin = "org.koin:koin-android-viewmodel:${Versions.koin}"
 
     val junit = "junit:junit:${Versions.junit}"
     val mockk = "io.mockk:mockk:${Versions.mockk}"
 
-    val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+    val assistedInject = "com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2"
+    val assistedInjectProcessor = "com.squareup.inject:assisted-inject-processor-dagger2:0.5.2"
+
+    val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
+    val daggerHiltProcessor = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
+
+    val daggerHiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.daggerHiltJetpack}"
+    val daggerHiltAndroidProcessor = "androidx.hilt:hilt-compiler:${Versions.daggerHiltJetpack}"
 
     val converterMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     val adapterRxJava2 = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
