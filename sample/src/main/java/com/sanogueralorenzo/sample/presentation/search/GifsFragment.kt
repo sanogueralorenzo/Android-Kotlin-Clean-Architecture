@@ -18,11 +18,15 @@ import com.sanogueralorenzo.views.screen.ContainerFragment
 import com.sanogueralorenzo.views.screen.simpleController
 import com.sanogueralorenzo.views.textinput.TextInputLayoutRow
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class GifsFragment : ContainerFragment() {
 
-    private val viewModel: GifsViewModel by viewModels()
+    @Inject
+    lateinit var viewModelFactory: GifsViewModel.Factory
+    private val viewModel: GifsViewModel by fragmentViewModel(GifsViewModel::class)
+
     private var suggestionsView: SuggestionsView? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

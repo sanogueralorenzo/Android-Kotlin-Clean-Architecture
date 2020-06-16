@@ -1,12 +1,17 @@
 package com.sanogueralorenzo.sample.presentation.search
 
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
 import com.airbnb.mvrx.BaseMvRxViewModel
+import com.airbnb.mvrx.FragmentViewModelContext
+import com.airbnb.mvrx.MvRxViewModelFactory
+import com.airbnb.mvrx.ViewModelContext
 import com.sanogueralorenzo.sample.domain.SearchGifsUseCase
 import com.sanogueralorenzo.sample.domain.TrendingGifsUseCase
+import com.squareup.inject.assisted.Assisted
+import com.squareup.inject.assisted.AssistedInject
+import dagger.hilt.android.scopes.ActivityScoped
 
-class GifsViewModel @ViewModelInject constructor(
+@ActivityScoped
+class GifsViewModel @AssistedInject constructor(
     @Assisted state: GifsState,
     private val searchUseCase: SearchGifsUseCase,
     private val trendingUseCase: TrendingGifsUseCase
@@ -52,4 +57,16 @@ class GifsViewModel @ViewModelInject constructor(
     }
 
     fun onSwipeAction() = withState { it.loadPage() }
+
+    @AssistedInject.Factory
+    interface Factory {
+        fun create(state: GifsState): GifsViewModel
+    }
+
+    companion object : MvRxViewModelFactory<GifsViewModel, GifsState> {
+        override fun create(viewModelContext: ViewModelContext, state: GifsState): GifsViewModel? =
+            (viewModelContext as FragmentViewModelContext)
+                .fragment<GifsFragment>()
+                .viewModelFactory.create(state)
+    }
 }
