@@ -1,10 +1,13 @@
 apply from: "$rootDir/common-android-library.gradle"
+apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation project(Modules.usermanager)
     implementation project(Modules.navigation)
     implementation project(Modules.resources)
     implementation project(Modules.views)
+
+    kapt Deps.epoxyProcessor
 
     testImplementation Deps.mockk
     testImplementation Deps.junit

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/loading_container"
+    android:id="@+id/loading"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
     android:clickable="true"
-    android:focusable="true"
-    android:gravity="center"
-    android:minHeight="48dp">
+    android:focusable="true">
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"

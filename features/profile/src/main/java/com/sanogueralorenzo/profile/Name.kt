@@ -11,7 +11,6 @@ import com.airbnb.mvrx.PersistState
 import com.airbnb.mvrx.Uninitialized
 import com.airbnb.mvrx.ViewModelContext
 import com.airbnb.mvrx.fragmentViewModel
-import com.sanogueralorenzo.navigation.features.HomeNavigation
 import com.sanogueralorenzo.usermanager.UserManager
 import com.sanogueralorenzo.views.Keyboard
 import com.sanogueralorenzo.views.PrimaryButton
@@ -43,8 +42,7 @@ class NameFragment : ContainerFragment() {
 
         viewModel.asyncSubscribe(NameState::complete, uniqueOnly(), onSuccess = {
             Keyboard.hide(view)
-            startActivity(HomeNavigation.home())
-            activity?.finish()
+            activity?.onBackPressed()
         })
     }
 

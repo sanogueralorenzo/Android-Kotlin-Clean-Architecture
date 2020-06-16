@@ -5,7 +5,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 
 fun ImageView.loadImage(url: String, placeholder: CircularProgressDrawable) =
-    Glide.with(this).asGif().load(url).placeholder(placeholder).into(this)
+    Glide.with(this).load(url).placeholder(placeholder).into(this)
 
 fun ImageView.loadImageRound(url: String, placeholder: CircularProgressDrawable) =
     Glide.with(this).load(url)

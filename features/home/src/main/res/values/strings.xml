@@ -1,0 +1,9 @@
+<resources>
+    <string name="goals"><b>Goals</b></string>
+    <string name="calendar"><b>Calendar</b></string>
+    <string name="trending"><b>Trending</b></string>
+    <string name="today"><b>Today</b></string>
+    <string name="unscheduled"><b>Unscheduled</b></string>
+
+    <string name="share_app_text">Check out the Amiga App:</string>
+</resources>

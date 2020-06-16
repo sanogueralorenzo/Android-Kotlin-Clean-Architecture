@@ -48,7 +48,7 @@ abstract class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
         }
 }
 
-private fun ViewPager2.removeOverScroll() {
+fun ViewPager2.removeOverScroll() {
     val child: View = this.getChildAt(0)
     if (child is RecyclerView) {
         child.overScrollMode = View.OVER_SCROLL_NEVER

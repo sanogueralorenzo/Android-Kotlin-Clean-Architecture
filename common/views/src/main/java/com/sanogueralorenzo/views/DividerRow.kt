@@ -7,22 +7,20 @@ import android.widget.FrameLayout
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.sanogueralorenzo.views.extensions.toDp
-import kotlinx.android.synthetic.main.view_loading.view.*
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
-class LoadingRow @JvmOverloads constructor(
+class DividerRow @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     init {
-        View.inflate(context, R.layout.view_loading, this)
+        View.inflate(context, R.layout.view_divider, this)
     }
 
     @ModelProp
-    @JvmOverloads
-    fun size(size: Int = 48) {
-        loading.minimumHeight = toDp(size)
+    fun setPaddingStart(paddingStart: Int?) {
+        paddingStart?.let { this.setPadding(toDp(it), paddingTop, paddingRight, paddingBottom) }
     }
 }
