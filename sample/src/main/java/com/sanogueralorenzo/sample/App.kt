@@ -15,4 +15,3 @@ class App : Application() {
         MvRx.viewModelConfigFactory = MvRxViewModelConfigFactory(applicationContext)
     }
 }
-

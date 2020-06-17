@@ -3,7 +3,6 @@ package com.sanogueralorenzo.sample.presentation.search
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState

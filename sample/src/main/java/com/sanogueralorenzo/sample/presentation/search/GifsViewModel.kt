@@ -8,9 +8,9 @@ import com.sanogueralorenzo.sample.domain.SearchGifsUseCase
 import com.sanogueralorenzo.sample.domain.TrendingGifsUseCase
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
-import dagger.hilt.android.scopes.ActivityScoped
+import dagger.hilt.android.scopes.FragmentScoped
 
-@ActivityScoped
+@FragmentScoped
 class GifsViewModel @AssistedInject constructor(
     @Assisted state: GifsState,
     private val searchUseCase: SearchGifsUseCase,

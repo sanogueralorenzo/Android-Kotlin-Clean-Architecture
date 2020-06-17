@@ -52,9 +52,6 @@ dependencies {
     implementation Deps.lifecycleViewModel
     testImplementation Deps.lifecycleTesting
 
-    implementation "androidx.core:core-ktx:1.2.0"
-    implementation "androidx.fragment:fragment-ktx:1.2.4"
-
     implementation Deps.mvrx
     testImplementation Deps.mvrxTesting
 
