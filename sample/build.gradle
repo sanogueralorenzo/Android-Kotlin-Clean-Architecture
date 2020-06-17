@@ -42,9 +42,6 @@ dependencies {
     implementation Deps.daggerHilt
     kapt Deps.daggerHiltProcessor
 
-    implementation Deps.daggerHiltViewModel
-    kapt Deps.daggerHiltAndroidProcessor
-
     kapt Deps.assistedInjectProcessor
     compileOnly Deps.assistedInject
 

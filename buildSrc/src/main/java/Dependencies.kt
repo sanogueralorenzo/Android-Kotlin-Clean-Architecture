@@ -40,7 +40,6 @@ object Versions {
     val constraint = "1.1.3"
 
     val daggerHilt = "2.28-alpha"
-    val daggerHiltJetpack = "1.0.0-alpha01"
 
     val koin = "2.1.5"
     val lifecycle = "2.2.0"
@@ -84,9 +83,6 @@ object Deps {
 
     val daggerHilt = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
     val daggerHiltProcessor = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
-
-    val daggerHiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.daggerHiltJetpack}"
-    val daggerHiltAndroidProcessor = "androidx.hilt:hilt-compiler:${Versions.daggerHiltJetpack}"
 
     val converterMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     val adapterRxJava2 = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
