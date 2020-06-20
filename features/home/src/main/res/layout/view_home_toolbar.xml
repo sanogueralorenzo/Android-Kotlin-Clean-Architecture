@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:gravity="center"
+    android:gravity="center_vertical"
     android:paddingStart="8dp"
     android:paddingEnd="8dp"
     android:orientation="horizontal">
@@ -29,8 +29,8 @@
 
     <ImageView
         android:id="@+id/profile"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/ic_logo"/>
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_profile"/>
 
 </LinearLayout>
