@@ -23,6 +23,7 @@ import com.sanogueralorenzo.views.extensions.addVerticalItemDecorator
 import com.sanogueralorenzo.views.screen.ContainerFragment
 import com.sanogueralorenzo.views.screen.simpleController
 import io.reactivex.Completable
+import com.sanogueralorenzo.resources.R as G
 
 class NameFragment : ContainerFragment() {
 
@@ -32,7 +33,7 @@ class NameFragment : ContainerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         PrimaryButton(requireContext()).apply {
-            get.text = getString(R.string.save)
+            get.text = getString(G.string.save)
             get.setOnClickListener { viewModel.onButtonClick() }
         }.let { bottomView.addView(it) }
 

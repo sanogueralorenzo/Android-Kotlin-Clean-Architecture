@@ -26,6 +26,7 @@ import com.sanogueralorenzo.views.screen.simpleController
 import com.sanogueralorenzo.views.spaceRow
 import com.sanogueralorenzo.views.textRow
 import io.reactivex.Completable
+import com.sanogueralorenzo.resources.R as G
 
 /**
  * @see com.sanogueralorenzo.navigation.features.OnboardingNavigation.intro
@@ -74,7 +75,7 @@ class IntroFragment : ContainerFragment() {
         }
         imageRow {
             id("logo")
-            drawable(R.drawable.ic_logo)
+            drawable(G.drawable.ic_logo)
             height(80)
         }
         spaceRow {
@@ -93,7 +94,7 @@ class IntroFragment : ContainerFragment() {
         }
         imageTextRow {
             id("journey")
-            image(R.drawable.ic_section_journal)
+            image(G.drawable.ic_section_journal)
             title(getString(R.string.intro_journal_title))
             subtitle(getString(R.string.intro_journal_subtitle))
         }
@@ -103,7 +104,7 @@ class IntroFragment : ContainerFragment() {
         }
         imageTextRow {
             id("habits")
-            image(R.drawable.ic_section_habits)
+            image(G.drawable.ic_section_habits)
             title(getString(R.string.intro_habits_title))
             subtitle(getString(R.string.intro_habits_subtitle))
         }
@@ -113,7 +114,7 @@ class IntroFragment : ContainerFragment() {
         }
         imageTextRow {
             id("zoneout")
-            image(R.drawable.ic_section_zoneout)
+            image(G.drawable.ic_section_zoneout)
             title(getString(R.string.intro_zoneout_title))
             subtitle(getString(R.string.intro_zoneout_subtitle))
         }

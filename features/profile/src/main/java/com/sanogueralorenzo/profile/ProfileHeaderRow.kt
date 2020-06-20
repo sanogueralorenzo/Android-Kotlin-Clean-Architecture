@@ -10,6 +10,7 @@ import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
 import com.sanogueralorenzo.views.TextRow
 import kotlinx.android.synthetic.main.view_profile_header.view.*
+import com.sanogueralorenzo.resources.R as G
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class ProfileHeaderRow @JvmOverloads constructor(
@@ -36,7 +37,7 @@ class ProfileHeaderRow @JvmOverloads constructor(
 
     @ModelProp
     @JvmOverloads
-    fun setImage(@DrawableRes drawable: Int = R.drawable.ic_logo) {
+    fun setImage(@DrawableRes drawable: Int = G.drawable.ic_logo) {
         image.setDrawable(drawable)
     }
 }
