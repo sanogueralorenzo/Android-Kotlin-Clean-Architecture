@@ -1,6 +1,5 @@
 package com.sanogueralorenzo.sample.presentation.search
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -17,20 +16,17 @@ import com.sanogueralorenzo.views.imageRow
 import com.sanogueralorenzo.views.screen.ContainerFragment
 import com.sanogueralorenzo.views.screen.simpleController
 import com.sanogueralorenzo.views.textinput.TextInputLayoutRow
-import dagger.android.support.AndroidSupportInjection
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class GifsFragment : ContainerFragment() {
 
     @Inject
     lateinit var viewModelFactory: GifsViewModel.Factory
     private val viewModel: GifsViewModel by fragmentViewModel(GifsViewModel::class)
-    private var suggestionsView: SuggestionsView? = null
 
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
+    private var suggestionsView: SuggestionsView? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

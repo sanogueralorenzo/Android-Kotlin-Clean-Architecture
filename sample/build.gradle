@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -38,18 +39,18 @@ dependencies {
     implementation project(Modules.resources)
 
     // Dagger
-    implementation Deps.daggerAndroidSupport
-    kapt Deps.daggerCompiler
-    kapt Deps.daggerAndroidProcessor
+    implementation Deps.daggerHilt
+    kapt Deps.daggerHiltProcessor
+
     kapt Deps.assistedInjectProcessor
     compileOnly Deps.assistedInject
-
-    implementation Deps.mvrx
-    testImplementation Deps.mvrxTesting
 
     // Viewmodels
     implementation Deps.lifecycleViewModel
     testImplementation Deps.lifecycleTesting
+
+    implementation Deps.mvrx
+    testImplementation Deps.mvrxTesting
 
     // Rxjava
     implementation Deps.rxJava2

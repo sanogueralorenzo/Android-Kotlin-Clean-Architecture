@@ -5,10 +5,13 @@ import com.sanogueralorenzo.sample.BuildConfig
 import com.sanogueralorenzo.sample.datasource.remote.GifService
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
+@InstallIn(ApplicationComponent::class)
 object NetworkModule {
 
     // TODO Move this key to NDK module so it is bundled in a .so (harder to decompile)
