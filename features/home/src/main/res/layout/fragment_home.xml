@@ -32,8 +32,8 @@
         android:layout_margin="16dp"
         android:scaleX="0"
         android:scaleY="0"
-        app:backgroundTint="@color/colorBackgroundInverse"
-        app:rippleColor="?android:colorBackground"
-        app:tint="?android:colorBackground" />
+        app:backgroundTint="@color/colorAccent"
+        app:rippleColor="@android:color/white"
+        app:tint="@android:color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
