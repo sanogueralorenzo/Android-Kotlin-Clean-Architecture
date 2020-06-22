@@ -3,9 +3,7 @@ package com.sanogueralorenzo.navigation.core
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sanogueralorenzo.navigation.extensions.replaceFragment
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class ContainerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
