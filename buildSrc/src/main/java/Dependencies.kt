@@ -39,7 +39,7 @@ object Versions {
     val support = "1.1.0"
     val constraint = "1.1.3"
 
-    val daggerHilt = "2.28-alpha"
+    val daggerHilt = "2.28.1-alpha"
 
     val koin = "2.1.5"
     val lifecycle = "2.2.0"
