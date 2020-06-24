@@ -3,7 +3,9 @@ package com.sanogueralorenzo.sample.presentation.detail
 import android.content.Intent
 import androidx.core.os.bundleOf
 import com.sanogueralorenzo.views.extensions.sendIntent
+import com.sanogueralorenzo.views.imageRow
 import com.sanogueralorenzo.views.screen.ContainerFragment
+import com.sanogueralorenzo.views.screen.simpleController
 
 class GifDetailFragment : ContainerFragment() {
 
