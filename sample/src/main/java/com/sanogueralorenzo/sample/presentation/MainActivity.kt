@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(0, 0)
         super.onCreate(savedInstanceState)
+        if (savedInstanceState != null) return
         replaceFragment(GifsFragment(), backstack = false)
     }
 }
