@@ -55,7 +55,7 @@ object Versions {
     val retrofit = "2.9.0"
     val mockk = "1.10.0"
 
-    val leakCanary = "2.3"
+    val leakCanary = "2.4"
     val playCore = "1.7.3"
 
     val epoxy = "4.0.0-beta4"
