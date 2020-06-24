@@ -2,7 +2,7 @@ package com.sanogueralorenzo.views.screen
 
 import com.airbnb.epoxy.AsyncEpoxyController
 import com.airbnb.epoxy.EpoxyController
-import com.airbnb.mvrx.BaseMvRxViewModel
+import com.airbnb.mvrx.MavericksViewModel
 import com.airbnb.mvrx.MvRxState
 import com.airbnb.mvrx.withState
 
@@ -36,7 +36,7 @@ fun ContainerFragment.simpleController(
  * Create a [SimpleController] that builds models with the given callback.
  * When models are built the current state of the viewmodel will be provided.
  */
-fun <S : MvRxState, A : BaseMvRxViewModel<S>> ContainerFragment.simpleController(
+fun <S : MvRxState, A : MavericksViewModel<S>> ContainerFragment.simpleController(
     viewModel: A,
     buildModels: EpoxyController.(state: S) -> Unit
 ) = SimpleController {

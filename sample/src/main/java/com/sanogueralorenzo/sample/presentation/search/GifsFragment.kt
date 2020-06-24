@@ -31,10 +31,11 @@ class GifsFragment : ContainerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
+        initSearchView()
         initListeners()
         toolbar.title = getString(R.string.app_name)
         swipeRefreshLayout.setOnRefreshListener { viewModel.onSwipeAction() }
-        suggestionsView = SuggestionsView(context!!)
+        suggestionsView = SuggestionsView(requireContext())
         appBarLayout.addView(suggestionsView)
     }
 
@@ -43,9 +44,10 @@ class GifsFragment : ContainerFragment() {
         controller.spanCount = GIFS_PER_ROW
         layoutManager.spanSizeLookup = controller.spanSizeLookup
         recyclerView.layoutManager = layoutManager
-        recyclerView.setController(controller)
         recyclerView.setInfiniteScrolling(layoutManager) { viewModel.loadMore() }
+    }
 
+    private fun initSearchView() {
         TextInputLayoutRow(requireContext()).also {
             it.searchInput { text -> viewModel.search(text) }
             bottomView.addView(it)
@@ -53,8 +55,8 @@ class GifsFragment : ContainerFragment() {
     }
 
     private fun initListeners() {
-        viewModel.asyncSubscribe(GifsState::request, onFail = { showError(it) })
-        viewModel.selectSubscribe(GifsState::suggestions) { suggestions ->
+        viewModel.onAsync(GifsState::request, onFail = { showError(it) })
+        viewModel.onEach(GifsState::suggestions) { suggestions ->
             suggestionsView!!.addSuggestions(
                 suggestions,
                 onTrendingClick = { viewModel.trending() },

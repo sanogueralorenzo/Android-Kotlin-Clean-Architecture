@@ -1,19 +1,20 @@
 package com.sanogueralorenzo.sample.presentation.search
 
-import com.airbnb.mvrx.BaseMvRxViewModel
 import com.airbnb.mvrx.FragmentViewModelContext
+import com.airbnb.mvrx.MavericksViewModel
 import com.airbnb.mvrx.MvRxViewModelFactory
 import com.airbnb.mvrx.ViewModelContext
 import com.sanogueralorenzo.sample.domain.SearchGifsUseCase
 import com.sanogueralorenzo.sample.domain.TrendingGifsUseCase
 import com.squareup.inject.assisted.Assisted
 import com.squareup.inject.assisted.AssistedInject
+import kotlinx.coroutines.Dispatchers
 
 class GifsViewModel @AssistedInject constructor(
     @Assisted state: GifsState,
     private val searchUseCase: SearchGifsUseCase,
     private val trendingUseCase: TrendingGifsUseCase
-) : BaseMvRxViewModel<GifsState>(state) {
+) : MavericksViewModel<GifsState>(state) {
 
     /**
      * ViewModel initialization can be first time or after process recreation
@@ -28,24 +29,21 @@ class GifsViewModel @AssistedInject constructor(
         is DisplayMode.Search -> search(displayMode.search, offset)
     }
 
-    fun search(search: String, offset: Int = 0) {
-        searchUseCase(search, offset).execute {
+    fun search(search: String, offset: Int = 0) = suspend { searchUseCase.run(search, offset) }
+        .execute {
             copy(
                 request = it,
                 items = combinePaginationItems(offset, DisplayMode.Search(search), it),
                 displayMode = DisplayMode.Search(search)
             )
         }
-    }
 
-    fun trending(offset: Int = 0) {
-        trendingUseCase(offset).execute {
-            copy(
-                request = it,
-                items = combinePaginationItems(offset, DisplayMode.Trending, it),
-                displayMode = DisplayMode.Trending
-            )
-        }
+    fun trending(offset: Int = 0) = suspend { trendingUseCase.run(offset) }.execute(Dispatchers.IO) {
+        copy(
+            request = it,
+            items = combinePaginationItems(offset, DisplayMode.Trending, it),
+            displayMode = DisplayMode.Trending
+        )
     }
 
     fun loadMore() = withState {

@@ -2,7 +2,7 @@ package com.sanogueralorenzo.views.extensions
 
 import android.graphics.Rect
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 fun RecyclerView.enableStateRestoration() {
@@ -20,7 +20,7 @@ fun RecyclerView.addHorizontalItemDecorator(horizontalDp: Int = 16) =
 fun RecyclerView.addVerticalItemDecorator(verticalDp: Int = 8) =
     addItemDecoration(VerticalItemDecorator(verticalDp))
 
-fun RecyclerView.setInfiniteScrolling(layoutManager: GridLayoutManager, action: () -> Unit) {
+fun RecyclerView.setInfiniteScrolling(layoutManager: LinearLayoutManager, action: () -> Unit) {
     this.addOnScrollListener(object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)

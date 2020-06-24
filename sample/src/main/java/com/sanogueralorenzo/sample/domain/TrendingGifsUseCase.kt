@@ -1,7 +1,6 @@
 package com.sanogueralorenzo.sample.domain
 
 import com.sanogueralorenzo.sample.data.GifsRepository
-import io.reactivex.Single
 import javax.inject.Inject
 
 /**
@@ -11,7 +10,7 @@ import javax.inject.Inject
  */
 class TrendingGifsUseCase @Inject constructor(
     private val repository: GifsRepository
-) : (Int) -> Single<List<Gif>> {
+) {
 
-    override fun invoke(offset: Int): Single<List<Gif>> = repository.loadTrending(offset)
+    suspend fun run(offset: Int): List<Gif> = repository.loadTrending(offset)
 }

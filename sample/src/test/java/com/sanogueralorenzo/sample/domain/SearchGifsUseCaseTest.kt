@@ -1,10 +1,10 @@
 package com.sanogueralorenzo.sample.domain
 
 import com.sanogueralorenzo.sample.data.GifsRepository
-import io.mockk.every
+import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
-import io.reactivex.Single
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
@@ -22,14 +22,14 @@ class SearchGifsUseCaseTest {
     }
 
     @Test
-    fun `usecase calls search from repository with parameter search term and returns expected result`() {
+    fun `usecase calls search from repository with parameter search term and returns expected result`() = runBlocking {
         val searchTerm = "dog"
-        every { mockRepository.search(searchTerm, offset) } returns Single.just(mockResult)
+        coEvery { mockRepository.search(searchTerm, offset) } returns mockResult
 
-        val test = usecase(searchTerm, offset).test()
+        val test = usecase.run(searchTerm, offset)
 
-        verify { mockRepository.search(searchTerm, offset) }
-        test.assertValue(mockResult)
+        coVerify { mockRepository.search(searchTerm, offset) }
+        assert(test == mockResult)
     }
 
     //  TODO Test error flow if converting it

@@ -1,10 +1,10 @@
 package com.sanogueralorenzo.sample.domain
 
 import com.sanogueralorenzo.sample.data.GifsRepository
-import io.mockk.every
+import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
-import io.reactivex.Single
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
@@ -22,12 +22,12 @@ class TrendingGifsUseCaseTest {
     }
 
     @Test
-    fun `usecase calls trending from repository and returns expected result`() {
-        every { mockRepository.loadTrending(offset) } returns Single.just(mockResult)
+    fun `usecase calls trending from repository and returns expected result`() = runBlocking {
+        coEvery { mockRepository.loadTrending(offset) } returns mockResult
 
-        val test = usecase(offset).test()
+        val test = usecase.run(offset)
 
-        verify { mockRepository.loadTrending(offset) }
-        test.assertValue(mockResult)
+        coVerify { mockRepository.loadTrending(offset) }
+        assert(test == mockResult)
     }
 }
