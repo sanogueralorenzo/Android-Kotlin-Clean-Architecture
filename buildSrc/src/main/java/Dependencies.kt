@@ -50,7 +50,7 @@ object Versions {
 
     val junit = "4.13"
 
-    val lottie = "3.4.0"
+    val lottie = "3.4.1"
 
     val retrofit = "2.9.0"
     val mockk = "1.10.0"
