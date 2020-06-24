@@ -31,10 +31,11 @@ class GifsFragment : ContainerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
+        initSearchView()
         initListeners()
         toolbar.title = getString(R.string.app_name)
         swipeRefreshLayout.setOnRefreshListener { viewModel.onSwipeAction() }
-        suggestionsView = SuggestionsView(context!!)
+        suggestionsView = SuggestionsView(requireContext())
         appBarLayout.addView(suggestionsView)
     }
 
@@ -45,7 +46,9 @@ class GifsFragment : ContainerFragment() {
         recyclerView.layoutManager = layoutManager
         recyclerView.setController(controller)
         recyclerView.setInfiniteScrolling(layoutManager) { viewModel.loadMore() }
+    }
 
+    private fun initSearchView() {
         TextInputLayoutRow(requireContext()).also {
             it.searchInput { text -> viewModel.search(text) }
             bottomView.addView(it)
