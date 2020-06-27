@@ -28,7 +28,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewPager.adapter = stateAdapter()
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                appBarLayout.setExpanded(true, true)
+                // appBarLayout.setExpanded(true, true)
                 homeToolbar.onPageSelected(position)
                 animateFabPageSelected(position)
             }

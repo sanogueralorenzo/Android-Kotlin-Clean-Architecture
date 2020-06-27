@@ -8,13 +8,13 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent">
+        android:background="@color/colorStatusBar">
 
         <com.sanogueralorenzo.home.HomeToolbar
             android:id="@+id/homeToolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|snap|enterAlways" />
+            android:layout_height="wrap_content" />
+        <!--app:layout_scrollFlags="scroll|snap|enterAlways"-->
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#57B894</color>
-    <color name="colorPrimaryDark">#57B894</color>
-    <color name="colorAccent">#57B894</color>
+    <color name="colorPrimary">@color/color_logo</color>
+    <color name="colorPrimaryDark">@color/color_logo</color>
+    <color name="colorAccent">@color/color_logo</color>
+    <color name="colorStatusBar">@color/color_logo</color>
+    <color name="colorNavigationBar">@color/color_logo</color>
 
     <color name="colorBackgroundInverse">@color/color_black</color>
 </resources>
