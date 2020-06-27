@@ -6,7 +6,7 @@ import com.sanogueralorenzo.navigation.features.HomeNavigation
 import com.sanogueralorenzo.navigation.features.OnboardingNavigation
 import com.sanogueralorenzo.usermanager.UserManager
 
-class MainActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         overridePendingTransition(0, 0)

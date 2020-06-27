@@ -8,7 +8,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorStatusBar">
+        android:background="@color/colorAccent">
 
         <com.sanogueralorenzo.home.HomeToolbar
             android:id="@+id/homeToolbar"
