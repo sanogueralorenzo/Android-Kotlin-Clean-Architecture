@@ -7,7 +7,9 @@ Android Kotlin Clean Architecture App
 [![Gradle](https://img.shields.io/badge/Gradle-6.5-blue)](https://gradle.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
-<img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" align="center"/>
+<p align="center">
+  <img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
+</p>
 
 This repository holds 2 projects. both share some modules under the common directory (see [Views](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/views), [Network](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/network), [Resources](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/resources) & [Cache](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/cache).
 
