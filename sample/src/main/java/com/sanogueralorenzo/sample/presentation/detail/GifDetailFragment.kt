@@ -9,7 +9,7 @@ import com.sanogueralorenzo.views.screen.simpleController
 
 class GifDetailFragment : ContainerFragment() {
 
-    private val url by lazy { arguments!!.getString(URL_KEY)!! }
+    private val url by lazy { requireArguments().getString(URL_KEY)!! }
 
     override fun controller() = simpleController {
         imageRow {

@@ -44,7 +44,6 @@ class GifsFragment : ContainerFragment() {
         controller.spanCount = GIFS_PER_ROW
         layoutManager.spanSizeLookup = controller.spanSizeLookup
         recyclerView.layoutManager = layoutManager
-        recyclerView.setController(controller)
         recyclerView.setInfiniteScrolling(layoutManager) { viewModel.loadMore() }
     }
 
@@ -56,8 +55,8 @@ class GifsFragment : ContainerFragment() {
     }
 
     private fun initListeners() {
-        viewModel.asyncSubscribe(GifsState::request, onFail = { showError(it) })
-        viewModel.selectSubscribe(GifsState::suggestions) { suggestions ->
+        viewModel.onAsync(GifsState::request, onFail = { showError(it) })
+        viewModel.onEach(GifsState::suggestions) { suggestions ->
             suggestionsView!!.addSuggestions(
                 suggestions,
                 onTrendingClick = { viewModel.trending() },

@@ -1,7 +1,6 @@
 package com.sanogueralorenzo.sample.domain
 
 import com.sanogueralorenzo.sample.data.GifsRepository
-import io.reactivex.Single
 import javax.inject.Inject
 
 /**
@@ -11,8 +10,7 @@ import javax.inject.Inject
  */
 class SearchGifsUseCase @Inject constructor(
     private val repository: GifsRepository
-) : (String, Int) -> Single<List<Gif>> {
-
-    override fun invoke(searchTerm: String, offset: Int): Single<List<Gif>> =
+) {
+    suspend fun run(searchTerm: String, offset: Int): List<Gif> =
         repository.search(searchTerm, offset)
 }

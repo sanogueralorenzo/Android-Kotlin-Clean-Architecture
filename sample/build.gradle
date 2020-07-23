@@ -51,15 +51,12 @@ dependencies {
     kapt Deps.assistedInjectProcessor
     compileOnly Deps.assistedInject
 
-    // Viewmodels
-    implementation Deps.lifecycleViewModel
-    testImplementation Deps.lifecycleTesting
-
     implementation Deps.mvrx
     testImplementation Deps.mvrxTesting
 
-    // Rxjava
-    implementation Deps.rxJava2
+    implementation Deps.coroutines
+    implementation Deps.coroutinesAndroid
+    testImplementation Deps.coroutinesTest
 
     implementation Deps.timber
 

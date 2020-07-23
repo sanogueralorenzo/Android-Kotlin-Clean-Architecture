@@ -1,9 +1,9 @@
 package com.sanogueralorenzo.sample.datasource.remote
 
-import io.mockk.every
+import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
-import io.reactivex.Single
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
@@ -22,24 +22,24 @@ class GifsRemoteDataSourceTest {
     }
 
     @Test
-    fun `remote data source get trending gifs calls and returns expected gifs`() {
-        every { mockService.getTrendingGifs(offset) } returns Single.just(mockResult)
+    fun `remote data source get trending gifs calls and returns expected gifs`() = runBlocking {
+        coEvery { mockService.getTrendingGifs(offset) } returns mockResult
 
-        val test = remoteDataSource.loadTrending(offset).test()
+        val test = remoteDataSource.loadTrending(offset)
 
-        verify { mockService.getTrendingGifs(offset) }
-        test.assertValue { it == mockResult.toDomainModel() }
+        coVerify { mockService.getTrendingGifs(offset) }
+        assert(test == mockResult.toDomainModel())
     }
 
     @Test
-    fun `remote data source search calls with the expected search term and returns expected gifs`() {
+    fun `remote data source search calls with the expected search term and returns expected gifs`() = runBlocking {
         val searchTerm = "dog"
-        every { mockService.searchGifs(searchTerm, offset) } returns Single.just(mockResult)
+        coEvery { mockService.searchGifs(searchTerm, offset) } returns mockResult
 
-        val test = remoteDataSource.search(searchTerm, offset).test()
+        val test = remoteDataSource.search(searchTerm, offset)
 
-        verify { mockService.searchGifs(searchTerm, offset) }
-        test.assertValue { it == mockResult.toDomainModel() }
+        coVerify { mockService.searchGifs(searchTerm, offset) }
+        assert(test == mockResult.toDomainModel())
     }
 
     // TODO Test errors if we were converting them

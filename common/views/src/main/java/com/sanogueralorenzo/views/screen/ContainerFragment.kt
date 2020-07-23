@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.epoxy.EpoxyRecyclerView
-import com.airbnb.mvrx.BaseMvRxFragment
+import com.airbnb.mvrx.MavericksView
 import com.google.android.material.appbar.AppBarLayout
 import com.sanogueralorenzo.views.ErrorDisplay
 import com.sanogueralorenzo.views.R
@@ -19,7 +20,7 @@ import com.sanogueralorenzo.views.extensions.show
 import com.sanogueralorenzo.views.extensions.visible
 import kotlinx.android.synthetic.main.fragment_container.*
 
-abstract class ContainerFragment : BaseMvRxFragment(R.layout.fragment_container) {
+abstract class ContainerFragment : Fragment(R.layout.fragment_container), MavericksView {
 
     protected val controller by lazy { controller() }
 
@@ -70,6 +71,12 @@ abstract class ContainerFragment : BaseMvRxFragment(R.layout.fragment_container)
 
     override fun invalidate() {
         recyclerView.requestModelBuild()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // required for static screens without ViewModel
+        postInvalidate()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

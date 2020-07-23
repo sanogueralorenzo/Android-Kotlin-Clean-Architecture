@@ -1,7 +1,6 @@
 package com.sanogueralorenzo.sample.datasource.remote
 
 import com.sanogueralorenzo.sample.domain.Gif
-import io.reactivex.Single
 import javax.inject.Inject
 
 /**
@@ -12,10 +11,11 @@ class GifsRemoteDataSource @Inject constructor(
     private val service: GifService
 ) {
 
-    fun search(searchTerm: String, offset: Int): Single<List<Gif>> =
+    suspend fun search(searchTerm: String, offset: Int): List<Gif> =
         service.searchGifs(searchTerm, offset)
-            .map { it.toDomainModel() }
+            .toDomainModel()
 
-    fun loadTrending(offset: Int): Single<List<Gif>> = service.getTrendingGifs(offset)
-        .map { it.toDomainModel() }
+    suspend fun loadTrending(offset: Int): List<Gif> =
+        service.getTrendingGifs(offset)
+            .toDomainModel()
 }

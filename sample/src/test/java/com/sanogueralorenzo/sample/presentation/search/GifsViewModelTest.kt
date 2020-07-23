@@ -5,10 +5,9 @@ import com.airbnb.mvrx.withState
 import com.sanogueralorenzo.sample.domain.Gif
 import com.sanogueralorenzo.sample.domain.SearchGifsUseCase
 import com.sanogueralorenzo.sample.domain.TrendingGifsUseCase
-import io.mockk.every
+import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
-import io.reactivex.Single
 import org.junit.Rule
 import org.junit.Test
 
@@ -31,11 +30,11 @@ class GifsViewModelTest {
 
     @Test
     fun `initial state load calls trending usecase and updates state`() {
-        every { mockTrendingGifsUseCase(offset) } returns Single.just(mockResult)
+        coEvery { mockTrendingGifsUseCase.run(offset) } returns mockResult
 
         viewModel = createViewModel(GifsState())
 
-        verify { mockTrendingGifsUseCase(offset) }
+        coVerify { mockTrendingGifsUseCase.run(offset) }
         withState(viewModel) { assert(it.request() == mockResult) }
     }
 
@@ -43,11 +42,11 @@ class GifsViewModelTest {
     fun `process restore with search calls search usecase and updates state`() {
         val searchTerm = "dog"
         val displayMode = DisplayMode.Search(searchTerm)
-        every { mockSearchGifsUseCase(searchTerm, offset) } returns Single.just(mockResult)
+        coEvery { mockSearchGifsUseCase.run(searchTerm, offset) } returns mockResult
 
         viewModel = createViewModel(GifsState(displayMode = displayMode))
 
-        verify { mockSearchGifsUseCase(searchTerm, offset) }
+        coVerify { mockSearchGifsUseCase.run(searchTerm, offset) }
         withState(viewModel) { assert(it.request() == mockResult) }
     }
 
@@ -55,12 +54,12 @@ class GifsViewModelTest {
     fun `on trending calls trending usecase and updates state`() {
         val searchTerm = "dog"
         val displayMode = DisplayMode.Search(searchTerm)
-        every { mockTrendingGifsUseCase(offset) } returns Single.just(mockResult)
+        coEvery { mockTrendingGifsUseCase.run(offset) } returns mockResult
 
         viewModel = createViewModel(GifsState(displayMode = displayMode))
         viewModel.trending()
 
-        verify { mockTrendingGifsUseCase(offset) }
+        coVerify { mockTrendingGifsUseCase.run(offset) }
         withState(viewModel) {
             assert(it.request() == mockResult)
             assert(it.displayMode == DisplayMode.Trending)
@@ -71,12 +70,12 @@ class GifsViewModelTest {
     fun `on search calls search usecase and updates state`() {
         val searchTerm = "dog"
         val displayMode = DisplayMode.Search(searchTerm)
-        every { mockSearchGifsUseCase(searchTerm, offset) } returns Single.just(mockResult)
+        coEvery { mockSearchGifsUseCase.run(searchTerm, offset) } returns mockResult
 
         viewModel = createViewModel(GifsState(displayMode = DisplayMode.Trending))
         viewModel.search(searchTerm)
 
-        verify { mockSearchGifsUseCase(searchTerm, offset) }
+        coVerify { mockSearchGifsUseCase.run(searchTerm, offset) }
         withState(viewModel) {
             assert(it.request() == mockResult)
             assert(it.displayMode == displayMode)

@@ -42,8 +42,6 @@ object Versions {
     val daggerHilt = "2.28.1-alpha"
 
     val koin = "2.1.5"
-    val lifecycle = "2.2.0"
-    val lifecycleTesting = "2.1.0"
     val glide = "4.11.0"
 
     val okhttp = "4.7.2"
@@ -85,28 +83,23 @@ object Deps {
     val daggerHiltProcessor = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
 
     val converterMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
-    val adapterRxJava2 = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
 
     val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    val rxJava2 = "io.reactivex.rxjava2:rxjava:2.2.19"
 
-    val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.6"
-    val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.6"
-
+    val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
+    val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7"
+    val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7"
 
     val leakCanaryAndroid = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
-
-    val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
-    val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycleTesting}"
 
     val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
 
     val rxpaper = "com.github.pakoito:RxPaper2:${Versions.rxpaper}"
 
-    val mvrx = "com.airbnb.android:mvrx:2.0.0-alpha2"
-    val mvrxTesting = "com.airbnb.android:mvrx-testing:2.0.0-alpha2"
-    val mvrxLauncher = "com.airbnb.android:mvrx-launcher:2.0.0-alpha2"
+    val mvrx = "com.airbnb.android:mvrx:2.0.0-alpha3"
+    val mvrxTesting = "com.airbnb.android:mvrx-testing:2.0.0-alpha3"
+    val mvrxLauncher = "com.airbnb.android:mvrx-launcher:2.0.0-alpha3"
 
     val epoxy = "com.airbnb.android:epoxy:${Versions.epoxy}"
     val epoxyProcessor = "com.airbnb.android:epoxy-processor:${Versions.epoxy}"

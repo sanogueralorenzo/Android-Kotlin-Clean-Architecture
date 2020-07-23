@@ -2,10 +2,10 @@ package com.sanogueralorenzo.sample.data
 
 import com.sanogueralorenzo.sample.datasource.remote.GifsRemoteDataSource
 import com.sanogueralorenzo.sample.domain.Gif
-import io.mockk.every
+import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
-import io.reactivex.Single
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
@@ -24,29 +24,24 @@ class GifsRepositoryTest {
     }
 
     @Test
-    fun `repository get trending gifs calls and returns expected gifs`() {
-        every { mockRemoteDataSource.loadTrending(offset) } returns Single.just(mockResult)
+    fun `repository get trending gifs calls and returns expected gifs`() = runBlocking {
+        coEvery { mockRemoteDataSource.loadTrending(offset) } returns mockResult
 
-        val test = repository.loadTrending(offset).test()
+        val test = repository.loadTrending(offset)
 
-        verify { mockRemoteDataSource.loadTrending(offset) }
-        test.assertValue(mockResult)
+        coVerify { mockRemoteDataSource.loadTrending(offset) }
+        assert(test == mockResult)
     }
 
     @Test
-    fun `repository search calls with the expected search term and returns expected gifs`() {
+    fun `repository search calls with the expected search term and returns expected gifs`() = runBlocking {
         val searchTerm = "dog"
-        every {
-            mockRemoteDataSource.search(
-                searchTerm,
-                offset
-            )
-        } returns Single.just(mockResult)
+        coEvery { mockRemoteDataSource.search(searchTerm, offset) } returns mockResult
 
-        val test = repository.search(searchTerm, offset).test()
+        val test = repository.search(searchTerm, offset)
 
-        verify { mockRemoteDataSource.search(searchTerm, offset) }
-        test.assertValue(mockResult)
+        coVerify { mockRemoteDataSource.search(searchTerm, offset) }
+        assert(test ==  mockResult)
     }
 
     // TODO Test errors if we were converting them
