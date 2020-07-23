@@ -6,12 +6,14 @@
 [![Gradle](https://img.shields.io/badge/Gradle-6.5-blue)](https://gradle.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
-This repository holds 2 projects. both share some modules under the common directory (see [Views](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/views), [Network](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/network), [Resources](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/resources) & [Cache](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/cache).
+This repository holds 2 projects:
 
 - [Sample Giphy App](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/sample) is a test Project that displays paginated trending GIFs from Giphy and also contains search functionality.
 This small project is a good starting point to get an overview of what current frameworks, architectural decisions and testing amongst other things can be expected on the other project in this repository.
 
 - [Amiga App](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/app) is a larger feature modularized project aimed at reinventing the todo-calendar-wellbeing concept. Amiga is a digital wellbeing experiment.
+
+    - Both share some common modules like [Views](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/views), [Network](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/network), [Resources](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/resources) and [Cache](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/cache).
 
 Both projects are under active development. If you think something can be improved please open an issue. I always use this repo to try out new things, benchmark & also write about it.
 
