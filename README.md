@@ -1,13 +1,13 @@
 Android Kotlin Clean Architecture App
 =
 
-<img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" align="center">
-
 [![Actions Status](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/workflows/android/badge.svg)](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/actions)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.71-blue.svg)](http://kotlinlang.org/)
 [![AGP](https://img.shields.io/badge/AGP-4.0.0-blue)](https://developer.android.com/studio/releases/gradle-plugin)
 [![Gradle](https://img.shields.io/badge/Gradle-6.5-blue)](https://gradle.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
+<img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" align="center"/>
 
 This repository holds 2 projects. both share some modules under the common directory (see [Views](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/views), [Network](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/network), [Resources](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/resources) & [Cache](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/cache).
 
