@@ -1,25 +1,37 @@
 Android Kotlin Clean Architecture App
 =
 
+<img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" align="center">
+
 [![Actions Status](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/workflows/android/badge.svg)](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/actions)
 [![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.71-blue.svg)](http://kotlinlang.org/)
+[![AGP](https://img.shields.io/badge/AGP-4.0.0-blue)](https://developer.android.com/studio/releases/gradle-plugin)
+[![Gradle](https://img.shields.io/badge/Gradle-6.5-blue)](https://gradle.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
+This repository holds 2 projects. both share some modules under the common directory (see [Views](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/views), [Network](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/network), [Resources](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/resources) & [Cache](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/common/cache).
+
+- [Sample Giphy App](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/sample) is a test Project that displays paginated trending GIFs from Giphy and also contains search functionality.
+This small project is a good starting point to get an overview of what current frameworks, architectural decisions and testing amongst other things can be expected on the other project in this repository.
+
+- [Amiga App](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/app) is a larger feature modularized project aimed at reinventing the todo-calendar-wellbeing concept. Amiga is a digital wellbeing experiment.
+
+Both projects are under active development. If you think something can be improved please open an issue. I always use this repo to try out new things, benchmark & also write about it.
+
+My main objective is to achieve with the least amount of code RUDT principles which means that the code must be easy to:
+- Read
+- Update
+- Debug
+- Test (Unit & UI)
+
 Personal project to try out things:
-- Simplified Clean Architecture approach.
-- Simplified Dependency Injection with Koin
-- Simplified Dependency-less & independent Navigation.
+- Clean Architecture approach (from a pure approach to a simplified feature modularized approach).
+- DI (Dagger 2, Koin & now Dagger Hilt)
+- Dependency-less, independent, simplified Navigation with reflection.
 - Dynamic Feature Modularized.
 - Easy to RUDT (read, update, debug & test).
 - Playground to try different architectures.
 - Playground to try different libraries/frameworks.
-- [CircleCI](https://circleci.com/gh/sanogueralorenzo/Android-Kotlin-Clean-Architecture)
-- [koin (Kotlin Dependency Injection framework)](https://github.com/InsertKoinIO/koin)
-- [detekt (Kotlin Static Code Analysis Tool)](https://github.com/arturbosch/detekt)
-- [ktlint (Kotlin Style Guide Static Code Analysis Tool)](https://github.com/shyiko/ktlint) [Kotlin Style Guide](https://android.github.io/kotlin-guides/style.html)
-- [gradle versions plugin (Dependencies Updates)](https://github.com/ben-manes/gradle-versions-plugin)
-
-[Sample Giphy Project (Paginated Gifs with trending and search results)](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/tree/master/sample)
 
 Discussions
 -
