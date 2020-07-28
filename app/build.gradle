@@ -35,10 +35,10 @@ dependencies {
     implementation project(Modules.home)
     implementation project(Modules.profile)
 
-    implementation Deps.kotlin
-    implementation Deps.timber
+    implementation Libs.kotlin_stdlib_jdk7
+    implementation Libs.timber
 
-    implementation Deps.mvrx
+    implementation Libs.mvrx
 
-    debugImplementation Deps.leakCanaryAndroid
+    debugImplementation Libs.leakcanary_android
 }

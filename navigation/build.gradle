@@ -1,7 +1,7 @@
 apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
-    implementation Deps.appcompat
-    implementation Deps.mvrx
-    implementation Deps.playCore
+    implementation Libs.appcompat
+    implementation Libs.mvrx
+    implementation Libs.com_google_android_play_core
 }

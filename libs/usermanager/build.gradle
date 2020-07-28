@@ -2,6 +2,6 @@ apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
     api project(Modules.cache)
-    testImplementation Deps.junit
-    testImplementation Deps.mockk
+    testImplementation Libs.junit
+    testImplementation Libs.mockk
 }

@@ -6,7 +6,7 @@ dependencies {
     implementation project(Modules.resources)
     implementation project(Modules.views)
 
-    testImplementation Deps.mockk
-    testImplementation Deps.junit
-    testImplementation Deps.mvrxTesting
+    testImplementation Libs.mockk
+    testImplementation Libs.junit
+    testImplementation Libs.mvrx_testing
 }

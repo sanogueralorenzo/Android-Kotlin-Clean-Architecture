@@ -1,5 +1,5 @@
 apply plugin: 'kotlin'
 
 dependencies {
-    implementation Deps.kotlin
+    implementation Libs.kotlin_stdlib_jdk7
 }

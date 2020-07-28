@@ -6,19 +6,19 @@ kapt {
 }
 
 dependencies {
-    api Deps.glide
+    api Libs.glide
 
-    api Deps.mvrx
+    api Libs.mvrx
 
-    api Deps.core
-    api Deps.design
-    api Deps.appcompat
-    api Deps.constraint
-    api Deps.recyclerView
-    api Deps.swiperefreshlayout
+    api Libs.core_ktx
+    api Libs.material
+    api Libs.appcompat
+    api Libs.constraintlayout
+    api Libs.recyclerview
+    api Libs.swiperefreshlayout
 
-    api Deps.epoxy
-    kapt Deps.epoxyProcessor
+    api Libs.epoxy
+    kapt Libs.epoxy_processor
 
-    api Deps.lottie
+    api Libs.lottie
 }

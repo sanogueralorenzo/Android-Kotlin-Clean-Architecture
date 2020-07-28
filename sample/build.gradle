@@ -38,33 +38,30 @@ kapt {
 }
 
 dependencies {
-    implementation Deps.kotlin
+    implementation Libs.kotlin_stdlib_jdk7
     implementation project(Modules.views)
     implementation project(Modules.network)
     implementation project(Modules.navigation)
     implementation project(Modules.resources)
 
-    // Dagger
-    implementation Deps.daggerHilt
-    kapt Deps.daggerHiltProcessor
+    implementation Libs.hilt_android
+    kapt Libs.hilt_android_compiler
 
-    kapt Deps.assistedInjectProcessor
-    compileOnly Deps.assistedInject
+    kapt Libs.assisted_inject_processor_dagger2
+    compileOnly Libs.assisted_inject_annotations_dagger2
 
-    // Viewmodels
-    implementation Deps.lifecycleViewModel
-    testImplementation Deps.lifecycleTesting
+    implementation Libs.lifecycle_viewmodel_ktx
+    testImplementation Libs.core_testing
 
-    implementation Deps.mvrx
-    testImplementation Deps.mvrxTesting
+    implementation Libs.mvrx
+    testImplementation Libs.mvrx_testing
 
-    // Rxjava
-    implementation Deps.rxJava2
+    implementation Libs.rxjava
 
-    implementation Deps.timber
+    implementation Libs.timber
 
-    testImplementation Deps.mockk
-    testImplementation Deps.junit
+    testImplementation Libs.mockk
+    testImplementation Libs.junit
 
-    debugImplementation Deps.leakCanaryAndroid
+    debugImplementation Libs.leakcanary_android
 }
