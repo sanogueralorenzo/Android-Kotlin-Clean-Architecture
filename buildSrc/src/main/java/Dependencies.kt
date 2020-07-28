@@ -34,19 +34,19 @@ object DefaultConfig {
 object Versions {
     val gradle = "4.0.0"
     val kotlin = "1.3.72"
-    val rxpaper = "1.4.0"
+    val rxpaper = "1.5.0"
 
     val support = "1.1.0"
     val constraint = "1.1.3"
 
-    val daggerHilt = "2.28.1-alpha"
+    val daggerHilt = "2.28.3-alpha"
 
     val koin = "2.1.5"
     val lifecycle = "2.2.0"
     val lifecycleTesting = "2.1.0"
     val glide = "4.11.0"
 
-    val okhttp = "4.7.2"
+    val okhttp = "4.8.0"
 
     val junit = "4.13"
 
@@ -58,7 +58,7 @@ object Versions {
     val leakCanary = "2.4"
     val playCore = "1.7.3"
 
-    val epoxy = "4.0.0-beta4"
+    val epoxy = "4.0.0-beta6"
 }
 
 object Deps {
@@ -68,8 +68,8 @@ object Deps {
     val appcompat = "androidx.appcompat:appcompat:1.3.0-alpha01"
     val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
     val recyclerView = "androidx.recyclerview:recyclerview:1.2.0-alpha03"
-    val core = "androidx.core:core-ktx:1.2.0"
-    val design = "com.google.android.material:material:1.3.0-alpha01"
+    val core = "androidx.core:core-ktx:1.5.0-alpha01"
+    val design = "com.google.android.material:material:1.3.0-alpha02"
     val cardview = "androidx.cardview:cardview:${Versions.support}"
     val swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-rc01"
 
