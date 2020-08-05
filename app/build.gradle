@@ -4,12 +4,17 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion DefaultConfig.compileSdk
+
     defaultConfig {
         applicationId App.petproject
         minSdkVersion DefaultConfig.minSdk
         targetSdkVersion DefaultConfig.targetSdk
         versionCode Releases.versionCode
         versionName Releases.versionName
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -20,6 +25,11 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 }
 

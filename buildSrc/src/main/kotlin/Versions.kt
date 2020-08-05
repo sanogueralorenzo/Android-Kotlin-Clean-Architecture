@@ -1,4 +1,4 @@
-import kotlin.String
+
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -22,11 +22,9 @@ object Versions {
 
     const val com_google_dagger: String = "2.28.3-alpha"
 
-    const val com_android_tools_build_gradle: String = "4.0.0" // available: "4.0.1"
+    const val com_android_tools_build_gradle: String = "4.0.1"
 
-    const val com_google_android_play_core: String = "1.7.3"
-
-    const val com_github_ben_manes_versions_gradle_plugin: String = "0.29.0"
+    const val com_google_android_play_core: String = "1.8.0"
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
@@ -48,6 +46,8 @@ object Versions {
 
     const val recyclerview: String = "1.2.0-alpha03"
 
+    const val lint_gradle: String = "27.0.1"
+
     const val appcompat: String = "1.3.0-alpha01"
 
     const val core_ktx: String = "1.5.0-alpha01"
@@ -62,6 +62,8 @@ object Versions {
 
     const val timber: String = "4.7.1"
 
+    const val aapt2: String = "4.0.1-6197926"
+
     const val epoxy: String = "4.0.0-beta6"
 
     const val glide: String = "4.11.0"
@@ -73,7 +75,7 @@ object Versions {
     const val mvrx: String = "2.0.0-alpha2"
 
     /**
-     * Current version: "6.6-rc-3"
+     * Current version: "6.6-rc-5"
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */

@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import com.sanogueralorenzo.navigation.BuildConfig
 import com.sanogueralorenzo.navigation.core.ContainerActivity
 import timber.log.Timber
 
