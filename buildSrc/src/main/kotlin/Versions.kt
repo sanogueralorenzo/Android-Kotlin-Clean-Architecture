@@ -1,4 +1,4 @@
-
+import kotlin.String
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -12,11 +12,11 @@ import org.gradle.plugin.use.PluginDependencySpec
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
-    const val io_gitlab_arturbosch_detekt: String = "1.10.0"
+    const val io_gitlab_arturbosch_detekt: String = "1.10.0" // available: "1.12.0"
 
     const val com_squareup_retrofit2: String = "2.9.0"
 
-    const val org_jetbrains_kotlin: String = "1.3.72"
+    const val org_jetbrains_kotlin: String = "1.3.72" // use 1.4.20-dev when available https://github.com/airbnb/MvRx/pull/438
 
     const val com_squareup_inject: String = "0.5.2"
 
@@ -30,13 +30,13 @@ object Versions {
 
     const val lifecycle_viewmodel_ktx: String = "2.2.0"
 
-    const val logging_interceptor: String = "4.8.0"
+    const val logging_interceptor: String = "4.8.1"
 
     const val leakcanary_android: String = "2.4"
 
-    const val swiperefreshlayout: String = "1.1.0-rc01" // available: "1.1.0"
+    const val swiperefreshlayout: String = "1.1.0"
 
-    const val constraintlayout: String = "1.1.3"
+    const val constraintlayout: String = "2.0.1"
 
     const val epoxy_processor: String = "4.0.0-beta6"
 
@@ -56,7 +56,7 @@ object Versions {
 
     const val rxpaper2: String = "1.5.0"
 
-    const val lottie: String = "3.4.1"
+    const val lottie: String = "3.4.2"
 
     const val rxjava: String = "2.2.19"
 
@@ -75,11 +75,11 @@ object Versions {
     const val mvrx: String = "2.0.0-alpha2"
 
     /**
-     * Current version: "6.6-rc-5"
+     * Current version: "6.6.1"
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
-    const val gradleLatestVersion: String = "6.5.1"
+    const val gradleLatestVersion: String = "6.6.1"
 }
 
 /**
