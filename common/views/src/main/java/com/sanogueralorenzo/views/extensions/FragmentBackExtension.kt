@@ -14,7 +14,7 @@ fun Fragment.onFragmentBackCallback(
     callback: () -> Unit,
     predicate: () -> Boolean = { true }
 ) {
-    requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+    requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             when {
                 predicate() -> callback()

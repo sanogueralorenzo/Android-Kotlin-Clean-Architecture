@@ -60,7 +60,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun FloatingActionButton.animate(@DrawableRes image: Int) {
         this.scale(0F).withEndAction {
-            this.setImageDrawable(ContextCompat.getDrawable(context!!, image))
+            this.setImageDrawable(ContextCompat.getDrawable(requireContext(), image))
             this.scale(1F).start()
         }.start()
     }
