@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.airbnb.mvrx.Async
-import com.airbnb.mvrx.BaseMvRxViewModel
-import com.airbnb.mvrx.MvRxState
-import com.airbnb.mvrx.MvRxViewModelFactory
+import com.airbnb.mvrx.MavericksState
+import com.airbnb.mvrx.MavericksViewModel
+import com.airbnb.mvrx.MavericksViewModelFactory
 import com.airbnb.mvrx.PersistState
 import com.airbnb.mvrx.Uninitialized
 import com.airbnb.mvrx.ViewModelContext
@@ -22,7 +22,6 @@ import com.sanogueralorenzo.views.extensions.addHorizontalItemDecorator
 import com.sanogueralorenzo.views.extensions.addVerticalItemDecorator
 import com.sanogueralorenzo.views.screen.ContainerFragment
 import com.sanogueralorenzo.views.screen.simpleController
-import io.reactivex.Completable
 import com.sanogueralorenzo.resources.R as G
 
 class NameFragment : ContainerFragment() {
@@ -34,17 +33,16 @@ class NameFragment : ContainerFragment() {
         super.onViewCreated(view, savedInstanceState)
         PrimaryButton(requireContext()).apply {
             get.text = getString(G.string.save)
-            get.setOnClickListener { viewModel.onButtonClick() }
+            get.setOnClickListener {
+                viewModel.onButtonClick()
+                Keyboard.hide(view)
+                requireActivity().onBackPressed()
+            }
         }.let { bottomView.addView(it) }
 
         recyclerView.addVerticalItemDecorator()
         recyclerView.addHorizontalItemDecorator()
         (recyclerView.layoutManager as LinearLayoutManager).reverseLayout = true
-
-        viewModel.asyncSubscribe(NameState::complete, uniqueOnly(), onSuccess = {
-            Keyboard.hide(view)
-            activity?.onBackPressed()
-        })
     }
 
     override fun controller() = simpleController(viewModel) { state ->
@@ -75,7 +73,7 @@ class NameFragment : ContainerFragment() {
 class NameViewModel(
     state: NameState,
     private val userManager: UserManager = UserManager()
-) : BaseMvRxViewModel<NameState>(state) {
+) : MavericksViewModel<NameState>(state) {
 
     fun onNameChanged(name: String) = setState {
         val error = if (name.isBlank()) this.error else null
@@ -84,16 +82,12 @@ class NameViewModel(
 
     fun onButtonClick() {
         withState {
-            if (it.name.isNullOrBlank().not()) {
-                userManager.name = it.name
-                Completable.complete().execute { copy(complete = it) }
-            } else {
-                setState { copy(error = R.string.onboarding_name_error) }
-            }
+            if (it.name.isNullOrBlank().not()) userManager.name = it.name
+            else setState { copy(error = R.string.onboarding_name_error) }
         }
     }
 
-    companion object : MvRxViewModelFactory<NameViewModel, NameState> {
+    companion object : MavericksViewModelFactory<NameViewModel, NameState> {
 
         override fun initialState(viewModelContext: ViewModelContext): NameState =
             NameState(UserManager().name)
@@ -109,4 +103,4 @@ data class NameState(
     @PersistState val name: String? = null,
     @PersistState val error: Int? = null,
     val complete: Async<Unit> = Uninitialized
-) : MvRxState
+) : MavericksState

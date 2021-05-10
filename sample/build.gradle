@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -13,12 +12,6 @@ android {
         targetSdkVersion DefaultConfig.targetSdk
         versionCode Releases.versionCode
         versionName Releases.versionName
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
-            }
-        }
     }
 
     buildFeatures {
@@ -53,19 +46,11 @@ dependencies {
     implementation project(Modules.navigation)
     implementation project(Modules.resources)
 
-    implementation Libs.hilt_android
-    kapt Libs.hilt_android_compiler
+    implementation Libs.moshi
+    kapt Libs.moshi_codegen
 
-    kapt Libs.assisted_inject_processor_dagger2
-    compileOnly Libs.assisted_inject_annotations_dagger2
-
-    implementation Libs.lifecycle_viewmodel_ktx
-    testImplementation Libs.core_testing
-
-    implementation Libs.mvrx
-    testImplementation Libs.mvrx_testing
-
-    implementation Libs.rxjava
+    implementation Libs.mavericks
+    testImplementation Libs.mavericks_testing
 
     implementation Libs.timber
 

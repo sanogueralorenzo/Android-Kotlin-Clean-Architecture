@@ -1,0 +1,3 @@
+# !/bin/bash
+# Run with ./detektBaseline
+java -jar config/detekt/detekt-cli-*-all.jar --build-upon-default-config --config "config/detekt/detekt.yml" --baseline "config/detekt/baseline.xml" --includes "**/src/main/**/*.kt" -p config/detekt/detekt-formatting-*.jar --auto-correct --parallel --create-baseline

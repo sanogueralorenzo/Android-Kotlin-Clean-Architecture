@@ -8,5 +8,5 @@ dependencies {
 
     testImplementation Libs.mockk
     testImplementation Libs.junit
-    testImplementation Libs.mvrx_testing
+    testImplementation Libs.mavericks_testing
 }

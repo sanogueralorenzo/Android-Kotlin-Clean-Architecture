@@ -1,19 +1,15 @@
 package com.sanogueralorenzo.sample.presentation.search
 
-import com.airbnb.mvrx.BaseMvRxViewModel
-import com.airbnb.mvrx.FragmentViewModelContext
-import com.airbnb.mvrx.MvRxViewModelFactory
+import com.airbnb.mvrx.MavericksViewModel
+import com.airbnb.mvrx.MavericksViewModelFactory
 import com.airbnb.mvrx.ViewModelContext
-import com.sanogueralorenzo.sample.domain.SearchGifsUseCase
-import com.sanogueralorenzo.sample.domain.TrendingGifsUseCase
-import com.squareup.inject.assisted.Assisted
-import com.squareup.inject.assisted.AssistedInject
+import com.sanogueralorenzo.sample.data.GifsRepository
+import kotlinx.coroutines.Dispatchers
 
-class GifsViewModel @AssistedInject constructor(
-    @Assisted state: GifsState,
-    private val searchUseCase: SearchGifsUseCase,
-    private val trendingUseCase: TrendingGifsUseCase
-) : BaseMvRxViewModel<GifsState>(state) {
+class GifsViewModel constructor(
+    state: GifsState,
+    private val repository: GifsRepository = GifsRepository()
+) : MavericksViewModel<GifsState>(state) {
 
     /**
      * ViewModel initialization can be first time or after process recreation
@@ -29,7 +25,9 @@ class GifsViewModel @AssistedInject constructor(
     }
 
     fun search(search: String, offset: Int = 0) {
-        searchUseCase(search, offset).execute {
+        suspend {
+            repository.search(search, offset)
+        }.execute(Dispatchers.IO) {
             copy(
                 request = it,
                 items = combinePaginationItems(offset, DisplayMode.Search(search), it),
@@ -39,7 +37,9 @@ class GifsViewModel @AssistedInject constructor(
     }
 
     fun trending(offset: Int = 0) {
-        trendingUseCase(offset).execute {
+        suspend {
+            repository.loadTrending(offset)
+        }.execute {
             copy(
                 request = it,
                 items = combinePaginationItems(offset, DisplayMode.Trending, it),
@@ -56,15 +56,8 @@ class GifsViewModel @AssistedInject constructor(
 
     fun onSwipeAction() = withState { it.loadPage() }
 
-    @AssistedInject.Factory
-    interface Factory {
-        fun create(state: GifsState): GifsViewModel
-    }
-
-    companion object : MvRxViewModelFactory<GifsViewModel, GifsState> {
-        override fun create(viewModelContext: ViewModelContext, state: GifsState): GifsViewModel? =
-            (viewModelContext as FragmentViewModelContext)
-                .fragment<GifsFragment>()
-                .viewModelFactory.create(state)
+    companion object : MavericksViewModelFactory<GifsViewModel, GifsState> {
+        override fun create(viewModelContext: ViewModelContext, state: GifsState): GifsViewModel =
+            GifsViewModel(state)
     }
 }

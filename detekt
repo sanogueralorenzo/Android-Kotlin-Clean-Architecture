@@ -1,0 +1,4 @@
+# !/bin/bash
+# Run with ./detekt
+# Download latest version from https://bintray.com/arturbosch/code-analysis/detekt
+java -jar config/detekt/detekt-cli-*-all.jar --build-upon-default-config --config "config/detekt/detekt.yml" --baseline "config/detekt/baseline.xml" --includes "**/src/main/**/*.kt" -p config/detekt/detekt-formatting-*.jar --auto-correct --parallel

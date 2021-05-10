@@ -2,7 +2,7 @@ package com.sanogueralorenzo.sample.presentation.search
 
 import com.airbnb.mvrx.Async
 import com.airbnb.mvrx.Incomplete
-import com.airbnb.mvrx.MvRxState
+import com.airbnb.mvrx.MavericksState
 import com.airbnb.mvrx.PersistState
 import com.airbnb.mvrx.Uninitialized
 import com.sanogueralorenzo.sample.domain.Gif
@@ -20,7 +20,7 @@ data class GifsState(
     val items: List<Gif> = emptyList(),
     @PersistState val displayMode: DisplayMode = DisplayMode.Trending,
     val suggestions: List<DisplayMode> = SuggestionsView.createSuggestions()
-) : MvRxState {
+) : MavericksState {
 
     val isLoading: Boolean
         get() = request is Incomplete

@@ -1,29 +1,24 @@
 package com.sanogueralorenzo.sample.presentation.search
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.airbnb.mvrx.fragmentViewModel
 import com.airbnb.mvrx.withState
-import com.sanogueralorenzo.navigation.extensions.replaceFragment
 import com.sanogueralorenzo.sample.R
-import com.sanogueralorenzo.sample.presentation.detail.GifDetailFragment
 import com.sanogueralorenzo.sample.presentation.search.view.SuggestionsView
 import com.sanogueralorenzo.sample.presentation.search.view.searchInput
+import com.sanogueralorenzo.views.extensions.sendIntent
 import com.sanogueralorenzo.views.extensions.setInfiniteScrolling
 import com.sanogueralorenzo.views.imageRow
 import com.sanogueralorenzo.views.screen.ContainerFragment
 import com.sanogueralorenzo.views.screen.simpleController
 import com.sanogueralorenzo.views.textinput.TextInputLayoutRow
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
-@AndroidEntryPoint
 class GifsFragment : ContainerFragment() {
 
-    @Inject
-    lateinit var viewModelFactory: GifsViewModel.Factory
     private val viewModel: GifsViewModel by fragmentViewModel(GifsViewModel::class)
 
     private var suggestionsView: SuggestionsView? = null
@@ -56,8 +51,8 @@ class GifsFragment : ContainerFragment() {
     }
 
     private fun initListeners() {
-        viewModel.asyncSubscribe(GifsState::request, onFail = { showError(it) })
-        viewModel.selectSubscribe(GifsState::suggestions) { suggestions ->
+        viewModel.onAsync(GifsState::request, onFail = { showError(it) })
+        viewModel.onEach(GifsState::suggestions) { suggestions ->
             suggestionsView!!.addSuggestions(
                 suggestions,
                 onTrendingClick = { viewModel.trending() },
@@ -78,7 +73,9 @@ class GifsFragment : ContainerFragment() {
                 url(it.thumbnail)
                 height(IMAGE_HEIGHT)
                 imageScaleType(ImageView.ScaleType.CENTER_CROP)
-                clickListener { _ -> replaceFragment(GifDetailFragment.newInstance(it.original)) }
+                clickListener { _ ->
+                    startActivity(Intent.createChooser(sendIntent(it.original), null))
+                }
                 spanSizeOverride { _, _, _ -> 1 }
             }
         }

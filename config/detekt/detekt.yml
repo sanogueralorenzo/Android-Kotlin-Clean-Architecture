@@ -1,0 +1,8 @@
+# Building upon default config
+# Only include rule modifications in this file
+# For default rules see:
+# https://github.com/detekt/detekt/blob/master/detekt-core/src/main/resources/default-detekt-config.yml
+style:
+  active: true
+  MagicNumber:
+    active: false

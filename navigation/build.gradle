@@ -2,6 +2,6 @@ apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
     implementation Libs.appcompat
-    implementation Libs.mvrx
+    implementation Libs.mavericks
     implementation Libs.com_google_android_play_core
 }

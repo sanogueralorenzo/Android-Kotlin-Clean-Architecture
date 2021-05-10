@@ -6,9 +6,7 @@ import com.sanogueralorenzo.views.screen.ContainerFragment
 import com.sanogueralorenzo.views.screen.simpleController
 import com.sanogueralorenzo.views.secondaryButton
 
-/**
- * @see com.sanogueralorenzo.navigation.features.ProfileNavigation.profile
- */
+/** @see com.sanogueralorenzo.navigation.features.ProfileNavigation.profile */
 @Suppress("Unused")
 class ProfileFragment : ContainerFragment() {
     override fun controller() = simpleController {

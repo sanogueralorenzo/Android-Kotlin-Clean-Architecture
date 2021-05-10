@@ -2,7 +2,7 @@ package com.sanogueralorenzo.navigation.core
 
 import android.os.Bundle
 import android.os.Parcelable
-import com.airbnb.mvrx.MvRx
+import com.airbnb.mvrx.Mavericks
 
 /**
  * Navigation with arguments
@@ -41,13 +41,13 @@ internal fun Any.toBundle(): Bundle = if (this is Bundle) this else this.toMvRxB
 @Suppress("UNCHECKED_CAST")
 private fun Any.toMvRxBundle(): Bundle = Bundle().also {
     when {
-        this is String -> it.putString(MvRx.KEY_ARG, this)
-        this is Long -> it.putLong(MvRx.KEY_ARG, this)
-        this is Boolean -> it.putBoolean(MvRx.KEY_ARG, this)
-        this is Int -> it.putInt(MvRx.KEY_ARG, this)
-        this is Parcelable -> it.putParcelable(MvRx.KEY_ARG, this)
+        this is String -> it.putString(Mavericks.KEY_ARG, this)
+        this is Long -> it.putLong(Mavericks.KEY_ARG, this)
+        this is Boolean -> it.putBoolean(Mavericks.KEY_ARG, this)
+        this is Int -> it.putInt(Mavericks.KEY_ARG, this)
+        this is Parcelable -> it.putParcelable(Mavericks.KEY_ARG, this)
         this is List<*> && this.isNotEmpty() && this.first() is String ->
-            it.putStringArrayList(MvRx.KEY_ARG, this as ArrayList<String>)
+            it.putStringArrayList(Mavericks.KEY_ARG, this as ArrayList<String>)
         else -> throw IllegalArgumentException("Non implemented simpleMvRxArg")
     }
 }

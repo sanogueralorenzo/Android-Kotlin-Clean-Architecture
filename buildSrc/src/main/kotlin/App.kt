@@ -1,4 +1,4 @@
 object App {
-    val petproject = "com.sanogueralorenzo.namingishard"
-    val sample = "com.sanogueralorenzo.sample"
+    const val petproject = "com.sanogueralorenzo.namingishard"
+    const val sample = "com.sanogueralorenzo.sample"
 }

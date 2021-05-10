@@ -12,14 +12,31 @@ android {
         versionName Releases.versionName
     }
 
-    buildTypes {
-        release {
-            minifyEnabled true
-        }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    buildTypes {
+        buildType.javaCompileOptions.annotationProcessorOptions.arguments =
+                [
+                        logEpoxyTimings              : "false",
+                        enableParallelEpoxyProcessing: "true",
+                        validateEpoxyModelUsage      : String.valueOf(buildType.name == 'debug')
+                ]
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "$rootDir/app/proguard-rules.pro"
+        }
     }
 }
 

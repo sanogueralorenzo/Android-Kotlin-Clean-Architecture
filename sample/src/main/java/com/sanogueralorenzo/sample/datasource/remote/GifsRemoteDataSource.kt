@@ -1,21 +1,19 @@
 package com.sanogueralorenzo.sample.datasource.remote
 
 import com.sanogueralorenzo.sample.domain.Gif
-import io.reactivex.Single
-import javax.inject.Inject
+import com.sanogueralorenzo.sample.network.NetworkModule
 
 /**
  * Mapping from response to a basic domain object in the RemoteDataSource layer
  * This avoids the propagation of the response model from the data source layer
  */
-class GifsRemoteDataSource @Inject constructor(
-    private val service: GifService
+class GifsRemoteDataSource constructor(
+    private val service: GifService = NetworkModule.provideGifService()
 ) {
 
-    fun search(searchTerm: String, offset: Int): Single<List<Gif>> =
-        service.searchGifs(searchTerm, offset)
-            .map { it.toDomainModel() }
+    suspend fun search(searchTerm: String, offset: Int): List<Gif> =
+        service.searchGifs(searchTerm, offset).toDomainModel()
 
-    fun loadTrending(offset: Int): Single<List<Gif>> = service.getTrendingGifs(offset)
-        .map { it.toDomainModel() }
+    suspend fun loadTrending(offset: Int): List<Gif> =
+        service.getTrendingGifs(offset).toDomainModel()
 }

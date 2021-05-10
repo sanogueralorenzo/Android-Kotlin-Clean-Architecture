@@ -8,7 +8,7 @@ kapt {
 dependencies {
     api Libs.glide
 
-    api Libs.mvrx
+    api Libs.mavericks
 
     api Libs.core_ktx
     api Libs.material

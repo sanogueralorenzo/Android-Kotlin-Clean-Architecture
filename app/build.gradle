@@ -48,7 +48,7 @@ dependencies {
     implementation Libs.kotlin_stdlib_jdk7
     implementation Libs.timber
 
-    implementation Libs.mvrx
+    implementation Libs.mavericks
 
     debugImplementation Libs.leakcanary_android
 }

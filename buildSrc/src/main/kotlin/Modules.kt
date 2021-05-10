@@ -1,16 +1,16 @@
 object Modules {
-    val app = ":app"
+    const val app = ":app"
 
-    val navigation = ":navigation"
+    const val navigation = ":navigation"
 
-    val resources = ":common:resources"
-    val cache = ":common:cache"
-    val network = ":common:network"
-    val views = ":common:views"
+    const val resources = ":common:resources"
+    const val cache = ":common:cache"
+    const val network = ":common:network"
+    const val views = ":common:views"
 
-    val onboarding = ":features:onboarding"
-    val home = ":features:home"
-    val profile = ":features:profile"
+    const val onboarding = ":features:onboarding"
+    const val home = ":features:home"
+    const val profile = ":features:profile"
 
-    val usermanager = ":libs:usermanager"
+    const val usermanager = ":libs:usermanager"
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>Filename:com.sanogueralorenzo.onboarding.Intro.kt:1</ID>
+    <ID>MatchingDeclarationName:Intro.kt$IntroFragment : ContainerFragment</ID>
+    <ID>UnusedPrivateMember:RecyclerViewExtensions.kt$i</ID>
+  </CurrentIssues>
+</SmellBaseline>

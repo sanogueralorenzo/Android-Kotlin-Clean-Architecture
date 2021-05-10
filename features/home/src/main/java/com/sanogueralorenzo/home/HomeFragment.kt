@@ -16,9 +16,7 @@ import com.sanogueralorenzo.views.extensions.sendIntent
 import com.sanogueralorenzo.views.screen.removeOverScroll
 import kotlinx.android.synthetic.main.fragment_home.*
 
-/**
- * @see com.sanogueralorenzo.navigation.features.HomeNavigation.home
- */
+/** @see com.sanogueralorenzo.navigation.features.HomeNavigation.home */
 @Suppress("Unused")
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
