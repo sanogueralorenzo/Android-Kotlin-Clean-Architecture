@@ -14,13 +14,13 @@ fun Fragment.onFragmentBackCallback(
     callback: () -> Unit,
     predicate: () -> Boolean = { true }
 ) {
-    activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
+    requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             when {
                 predicate() -> callback()
                 else -> {
                     isEnabled = false
-                    activity?.onBackPressed()
+                    requireActivity().onBackPressed()
                 }
             }
         }

@@ -45,7 +45,7 @@ class IntroFragment : ContainerFragment() {
         MiniButton.create(requireContext(), getString(R.string.intro_button)) {
             UserManager().newUser = false
             startActivity(HomeNavigation.home())
-            activity?.finish()
+            requireActivity().finish()
         }.let {
             it.bottomPadding(8)
             bottomView.addView(it)

@@ -14,7 +14,7 @@ object Versions {
 
     const val org_jetbrains_kotlin: String = "1.5.0"
 
-    const val com_android_tools_build_gradle: String = "4.1.3"
+    const val com_android_tools_build_gradle: String = "4.2.0"
 
     const val com_google_android_play_core: String = "1.10.0"
 

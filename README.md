@@ -1,9 +1,9 @@
 <img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
 
 [![Actions Status](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/workflows/android/badge.svg)](https://github.com/sanogueralorenzo/Android-Kotlin-Clean-Architecture/actions)
-[![Kotlin Version](https://img.shields.io/badge/kotlin-1.3.71-blue.svg)](http://kotlinlang.org/)
-[![AGP](https://img.shields.io/badge/AGP-4.0.0-blue)](https://developer.android.com/studio/releases/gradle-plugin)
-[![Gradle](https://img.shields.io/badge/Gradle-6.6-blue)](https://gradle.org)
+[![Kotlin Version](https://img.shields.io/badge/kotlin-1.5.0-blue.svg)](http://kotlinlang.org/)
+[![AGP](https://img.shields.io/badge/AGP-4.2.0-blue)](https://developer.android.com/studio/releases/gradle-plugin)
+[![Gradle](https://img.shields.io/badge/Gradle-7.0-blue)](https://gradle.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 This repository holds 2 projects:
