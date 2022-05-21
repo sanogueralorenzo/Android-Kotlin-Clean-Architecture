@@ -1,0 +1,110 @@
+# To add a new library:
+# 1. Add the dependency here but use _ as the version
+# 2. Add the dependency to a module
+# 3. Run ./gradlew refreshVersions
+# 4. This command should add your new dependency to versions.properties
+# 5. Make sure it is using the version you want
+
+[plugins]
+ksp = { id = "com.google.devtools.ksp", version = "1.6.21-1.0.5" }
+
+[libraries]
+androidxAnnotation = "androidx.annotation:annotation:_"
+appcompat = "androidx.appcompat:appcompat:_"
+cameraCore = "androidx.camera:camera-core:_"
+cameraView = "androidx.camera:camera-view:_"
+cameraLifecycle = "androidx.camera:camera-lifecycle:_"
+camera2 = "androidx.camera:camera-camera2:_"
+constraintLayout = "androidx.constraintlayout:constraintlayout:_"
+coreKtx = "androidx.core:core-ktx:_"
+datastorePreferences = "androidx.datastore:datastore-preferences:_"
+fragmentKtx = "androidx.fragment:fragment-ktx:_"
+lifecycleCommonJava8 = "androidx.lifecycle:lifecycle-common-java8:_"
+lifecycleLivedataCore = "androidx.lifecycle:lifecycle-livedata-core:_"
+lifecycleProcess = "androidx.lifecycle:lifecycle-process:_"
+lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:_"
+lifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel:_"
+lifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:_"
+paging = "androidx.paging:paging-runtime-ktx:_"
+preference = "androidx.preference:preference:_"
+recyclerview = "androidx.recyclerview:recyclerview:_"
+roomCommon = "androidx.room:room-common:_"
+roomCompiler = "androidx.room:room-compiler:_"
+roomRuntime = "androidx.room:room-runtime:_"
+roomKtx = "androidx.room:room-ktx:_"
+roomTest = "androidx.room:room-testing:_"
+swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:_"
+viewPager = "androidx.viewpager2:viewpager2:_"
+workRuntime = "androidx.work:work-runtime:_"
+workRuntimeKtx = "androidx.work:work-runtime-ktx:_"
+
+androidTestExtJunit = "androidx.test.ext:junit:_"
+androidTestRunner = "androidx.test:runner:_"
+androidTestRules = "androidx.test:rules:_"
+androidTestCore = "androidx.test:core:_"
+androidCoreTesting = "androidx.arch.core:core-testing:_"
+androidTestOrchestrator = "androidx.test:orchestrator:_"
+espresso = "androidx.test.espresso:espresso-core:_"
+
+kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:_"
+kotlinCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:_"
+kotlinCoroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:_"
+kotlinAllOpenGradle = "org.jetbrains.kotlin:kotlin-allopen:_"
+kotlinAndroidExtensions = "org.jetbrains.kotlin:kotlin-android-extensions:_"
+kotlinAndroidExtensionsRuntime = "org.jetbrains.kotlin:kotlin-android-extensions-runtime:_"
+kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:_"
+kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:_"
+kotlinStdlibJdk8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:_"
+
+composeActivity = 'androidx.activity:activity-compose:_'
+composeAnimation = 'androidx.compose.animation:animation:_'
+composeMaterial = 'androidx.compose.material:material:_'
+composeMaterialIconsExtended = 'androidx.compose.material:material-icons-extended:_'
+composeUiTooling = 'androidx.compose.ui:ui-tooling:_'
+composeViewModel = 'androidx.lifecycle:lifecycle-viewmodel-compose:_'
+
+aapt2 = "com.android.tools.build:aapt2:_"
+androidGradle = "com.android.tools.build:gradle:_"
+anrWatchdog = "com.github.anrwatchdog:anrwatchdog:_"
+anvilGradle = "com.squareup.anvil:gradle-plugin:_"
+coil = "io.coil-kt:coil-base:_"
+dagger = "com.google.dagger:dagger:_"
+daggerCompiler = "com.google.dagger:dagger-compiler:_"
+epoxy = "com.airbnb.android:epoxy:_"
+epoxyProcessor = "com.airbnb.android:epoxy-processor:_"
+flipper = "com.facebook.flipper:flipper:_"
+flipperNetwork = "com.facebook.flipper:flipper-network-plugin:_"
+flipperNoOp = "com.facebook.flipper:flipper-noop:_"
+glide = "com.github.bumptech.glide:glide:_"
+javaxInject = "javax.inject:javax.inject:_"
+junit = "junit:junit:_"
+kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:_"
+leakCanary = "com.squareup.leakcanary:leakcanary-android:_"
+lintGradle = "com.android.tools.lint:lint-gradle:_"
+lottie = "com.airbnb.android:lottie:_"
+material = "com.google.android.material:material:_"
+mavericks = "com.airbnb.android:mavericks-rxjava2:_"
+mavericksTest = "com.airbnb.android:mavericks-testing:_"
+mockk = "io.mockk:mockk:_"
+mockito = "org.mockito:mockito-core:_"
+mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:_"
+moshi = "com.squareup.moshi:moshi:_"
+moshiAdapters = "com.squareup.moshi:moshi-adapters:_"
+moshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:_"
+moshiGradle = "dev.zacsweers.moshix:moshi-gradle-plugin:_"
+redactedGradle = "dev.zacsweers.redacted:dev.zacsweers.redacted.gradle.plugin:_"
+# This should ALWAYS be used with excludes kotlin-reflect
+moshiKotlin = "com.squareup.moshi:moshi-kotlin:_"
+mpAndroidChart = "com.github.PhilJay:MPAndroidChart:_"
+okHttp = "com.squareup.okhttp3:okhttp:_"
+okHttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:_"
+okHttpMockWebServer = "com.squareup.okhttp3:mockwebserver:_"
+okio = "com.squareup.okio:okio:_"
+playCore = "com.google.android.play:core:_"
+processPhoenix = "com.jakewharton:process-phoenix:_"
+retrofit = "com.squareup.retrofit2:retrofit:_"
+retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:_"
+rxpaper2 = "com.github.pakoito:RxPaper2:_"
+store4 = "com.dropbox.mobile.store:store4:_"
+stripe = "com.stripe:stripe-android:_"
+timber = "com.jakewharton.timber:timber:_"

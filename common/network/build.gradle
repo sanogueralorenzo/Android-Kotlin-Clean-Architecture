@@ -1,7 +1,7 @@
 apply from: "$rootDir/common-kotlin-library.gradle"
 
 dependencies {
-    api Libs.retrofit
-    implementation Libs.converter_moshi
-    implementation Libs.logging_interceptor
+    api libs.retrofit
+    implementation libs.retrofitMoshiConverter
+    implementation libs.okHttpLoggingInterceptor
 }

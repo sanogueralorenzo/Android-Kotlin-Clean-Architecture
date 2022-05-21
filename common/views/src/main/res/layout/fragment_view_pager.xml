@@ -8,13 +8,13 @@
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/containerAppBarLayout"
+        android:id="@+id/container_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:liftOnScroll="true">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/containerToolbar"
+            android:id="@+id/container_toolbar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:visibility="gone"
@@ -30,7 +30,7 @@
         android:layout_weight="1" />
 
     <LinearLayout
-        android:id="@+id/containerBottomLL"
+        android:id="@+id/container_bottom_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" />

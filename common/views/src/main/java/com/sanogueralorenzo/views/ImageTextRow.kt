@@ -12,7 +12,8 @@ import androidx.core.widget.ImageViewCompat
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
-import kotlinx.android.synthetic.main.view_image_text.view.*
+import com.sanogueralorenzo.views.binding.viewBinding
+import com.sanogueralorenzo.views.databinding.ViewImageTextBinding
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class ImageTextRow @JvmOverloads constructor(
@@ -21,32 +22,34 @@ class ImageTextRow @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    private val binding: ViewImageTextBinding by viewBinding()
+
     init {
         View.inflate(context, R.layout.view_image_text, this)
-        title.setStyle(TextRow.TextStyle.SUBTITLE)
-        subtitle.setStyle(TextRow.TextStyle.BODY)
+        binding.title.setStyle(TextRow.TextStyle.SUBTITLE)
+        binding.subtitle.setStyle(TextRow.TextStyle.BODY)
     }
 
     @TextProp
     fun setTitle(text: CharSequence) {
-        title.text = text
+        binding.title.text = text
     }
 
     @TextProp
     fun setSubtitle(text: CharSequence?) {
-        subtitle.text = text
+        binding.subtitle.text = text
     }
 
     @ModelProp
     fun setImage(@DrawableRes drawable: Int) {
-        image.setDrawable(drawable)
+        binding.image.setDrawable(drawable)
     }
 
     @ModelProp
     fun setImageColor(@ColorRes color: Int?) {
         color?.let {
             ImageViewCompat.setImageTintList(
-                image,
+                binding.image,
                 ColorStateList.valueOf(ContextCompat.getColor(context, it))
             )
         }

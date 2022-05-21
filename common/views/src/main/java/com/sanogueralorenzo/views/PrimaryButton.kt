@@ -8,7 +8,8 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
 import com.google.android.material.button.MaterialButton
-import kotlinx.android.synthetic.main.view_primary_button.view.*
+import com.sanogueralorenzo.views.binding.viewBinding
+import com.sanogueralorenzo.views.databinding.ViewPrimaryButtonBinding
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class PrimaryButton @JvmOverloads constructor(
@@ -17,28 +18,30 @@ class PrimaryButton @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    val binding: ViewPrimaryButtonBinding by viewBinding()
+
     init {
         View.inflate(context, R.layout.view_primary_button, this)
     }
 
     val get: MaterialButton
-        get() = primaryButton
+        get() = binding.primaryButton
 
     @TextProp
     fun setText(text: CharSequence) {
-        primaryButton.text = text
+        binding.primaryButton.text = text
     }
 
     @CallbackProp
     fun setClickListener(clickListener: OnClickListener?) {
-        primaryButton.setOnClickListener(clickListener)
+        binding.primaryButton.setOnClickListener(clickListener)
     }
 
     companion object {
         fun create(c: Context, text: String, clickListener: () -> Unit): PrimaryButton =
             PrimaryButton(c).apply {
-                primaryButton.text = text
-                primaryButton.setOnClickListener { clickListener() }
+                binding.primaryButton.text = text
+                binding.primaryButton.setOnClickListener { clickListener() }
             }
     }
 }

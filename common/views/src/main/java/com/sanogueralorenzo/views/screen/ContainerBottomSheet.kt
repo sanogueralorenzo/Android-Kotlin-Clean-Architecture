@@ -8,9 +8,12 @@ import com.airbnb.epoxy.EpoxyController
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.sanogueralorenzo.views.R
-import kotlinx.android.synthetic.main.bottom_sheet_container.*
+import com.sanogueralorenzo.views.binding.viewBinding
+import com.sanogueralorenzo.views.databinding.BottomSheetContainerBinding
 
 abstract class ContainerBottomSheet : BottomSheetDialogFragment() {
+
+    val binding: BottomSheetContainerBinding by viewBinding()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,11 +23,11 @@ abstract class ContainerBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sheetRecyclerView.setController(controller)
+        binding.sheetRecyclerView.setController(controller)
     }
 
     abstract val controller: EpoxyController
 
     protected inline val recyclerView: EpoxyRecyclerView
-        get() = sheetRecyclerView
+        get() = binding.sheetRecyclerView
 }

@@ -8,13 +8,13 @@
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/containerAppBarLayout"
+        android:id="@+id/container_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:liftOnScroll="true">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/containerToolbar"
+            android:id="@+id/container_toolbar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:visibility="gone"
@@ -24,21 +24,21 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.sanogueralorenzo.views.LoadingRow
-        android:id="@+id/containerLoading"
+        android:id="@+id/container_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:visibility="gone" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/containerSRL"
+        android:id="@+id/container_srl"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:enabled="false">
 
         <com.airbnb.epoxy.EpoxyRecyclerView
-            android:id="@+id/containerRecyclerView"
+            android:id="@+id/container_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:overScrollMode="never"
@@ -47,7 +47,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <LinearLayout
-        android:id="@+id/containerBottomLL"
+        android:id="@+id/container_bottom_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

@@ -8,7 +8,8 @@ import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
 import com.google.android.material.button.MaterialButton
-import kotlinx.android.synthetic.main.view_mini_button.view.*
+import com.sanogueralorenzo.views.binding.viewBinding
+import com.sanogueralorenzo.views.databinding.ViewMiniButtonBinding
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class MiniButton @JvmOverloads constructor(
@@ -17,28 +18,30 @@ class MiniButton @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    val binding: ViewMiniButtonBinding by viewBinding()
+
     init {
         View.inflate(context, R.layout.view_mini_button, this)
     }
 
     val get: MaterialButton
-        get() = miniButton
+        get() = binding.miniButton
 
     @TextProp
     fun setText(text: CharSequence) {
-        miniButton.text = text
+        binding.miniButton.text = text
     }
 
     @CallbackProp
     fun setClickListener(clickListener: OnClickListener?) {
-        miniButton.setOnClickListener(clickListener)
+        binding.miniButton.setOnClickListener(clickListener)
     }
 
     companion object {
         fun create(c: Context, text: String, clickListener: () -> Unit): MiniButton =
             MiniButton(c).apply {
-                miniButton.text = text
-                miniButton.setOnClickListener { clickListener() }
+                binding.miniButton.text = text
+                binding.miniButton.setOnClickListener { clickListener() }
             }
     }
 }

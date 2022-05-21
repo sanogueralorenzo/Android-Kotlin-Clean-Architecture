@@ -1,7 +1,7 @@
 apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
-    implementation project(Modules.views)
-    implementation project(Modules.resources)
-    implementation project(Modules.navigation)
+    implementation project(':common:views')
+    implementation project(':common:resources')
+    implementation project(':navigation')
 }

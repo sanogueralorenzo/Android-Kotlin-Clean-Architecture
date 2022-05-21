@@ -10,32 +10,35 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.sanogueralorenzo.home.databinding.FragmentHomeBinding
 import com.sanogueralorenzo.navigation.features.ProfileNavigation
+import com.sanogueralorenzo.views.binding.viewBinding
 import com.sanogueralorenzo.views.extensions.onFragmentBackCallback
 import com.sanogueralorenzo.views.extensions.sendIntent
 import com.sanogueralorenzo.views.screen.removeOverScroll
-import kotlinx.android.synthetic.main.fragment_home.*
 
 /** @see com.sanogueralorenzo.navigation.features.HomeNavigation.home */
 @Suppress("Unused")
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
+    private val binding: FragmentHomeBinding by viewBinding()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewPager.removeOverScroll()
-        viewPager.adapter = stateAdapter()
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        binding.viewPager.removeOverScroll()
+        binding.viewPager.adapter = stateAdapter()
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 // appBarLayout.setExpanded(true, true)
-                homeToolbar.onPageSelected(position)
+                binding.homeToolbar.onPageSelected(position)
                 animateFabPageSelected(position)
             }
         })
-        homeToolbar.onGoalsClick { viewPager.currentItem = GOAL_POSITION }
-        homeToolbar.onCalendarClick { viewPager.currentItem = CALENDAR_POSITION }
-        homeToolbar.onProfileClick { viewPager.currentItem = PROFILE_POSITION }
-        fab.setOnClickListener {
-            when (viewPager.currentItem) {
+        binding.homeToolbar.onGoalsClick { binding.viewPager.currentItem = GOAL_POSITION }
+        binding.homeToolbar.onCalendarClick { binding.viewPager.currentItem = CALENDAR_POSITION }
+        binding.homeToolbar.onProfileClick { binding.viewPager.currentItem = PROFILE_POSITION }
+        binding.fab.setOnClickListener {
+            when (binding.viewPager.currentItem) {
                 GOAL_POSITION -> { }
                 CALENDAR_POSITION -> { }
                 else -> startActivity(
@@ -47,15 +50,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         onFragmentBackCallback(
-            callback = { viewPager.currentItem = GOAL_POSITION },
-            predicate = { viewPager.currentItem != GOAL_POSITION }
+            callback = { binding.viewPager.currentItem = GOAL_POSITION },
+            predicate = { binding.viewPager.currentItem != GOAL_POSITION }
         )
     }
 
     private fun animateFabPageSelected(position: Int) = when (position) {
-        GOAL_POSITION -> fab.animate(R.drawable.ic_add)
-        CALENDAR_POSITION -> fab.animate(R.drawable.ic_search)
-        else -> fab.animate(R.drawable.ic_share)
+        GOAL_POSITION -> binding.fab.animate(R.drawable.ic_add)
+        CALENDAR_POSITION -> binding.fab.animate(R.drawable.ic_search)
+        else -> binding.fab.animate(R.drawable.ic_share)
     }
 
     private fun FloatingActionButton.animate(@DrawableRes image: Int) {

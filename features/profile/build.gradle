@@ -2,14 +2,14 @@ apply from: "$rootDir/common-android-library.gradle"
 apply plugin: 'kotlin-kapt'
 
 dependencies {
-    implementation project(Modules.usermanager)
-    implementation project(Modules.navigation)
-    implementation project(Modules.resources)
-    implementation project(Modules.views)
+    implementation project(':libs:usermanager')
+    implementation project(':navigation')
+    implementation project(':common:resources')
+    implementation project(':common:views')
 
-    kapt Libs.epoxy_processor
+    kapt libs.epoxyProcessor
 
-    testImplementation Libs.mockk
-    testImplementation Libs.junit
-    testImplementation Libs.mavericks_testing
+    testImplementation libs.mockk
+    testImplementation libs.junit
+    testImplementation libs.mavericksTest
 }

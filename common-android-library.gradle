@@ -1,15 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion DefaultConfig.compileSdk
+    compileSdkVersion 32
 
     defaultConfig {
-        minSdkVersion DefaultConfig.minSdk
-        targetSdkVersion DefaultConfig.targetSdk
-        versionCode Releases.versionCode
-        versionName Releases.versionName
+        minSdkVersion 24
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
     }
 
     compileOptions {
@@ -23,6 +22,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+
     }
 
     buildTypes {
@@ -41,5 +41,5 @@ android {
 }
 
 dependencies {
-    implementation Libs.kotlin_stdlib_jdk7
+    implementation libs.kotlinStdlibJdk8
 }

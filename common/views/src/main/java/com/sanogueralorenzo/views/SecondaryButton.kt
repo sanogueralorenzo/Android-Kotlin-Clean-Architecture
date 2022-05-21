@@ -7,7 +7,8 @@ import android.widget.FrameLayout
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
-import kotlinx.android.synthetic.main.view_secondary_button.view.*
+import com.sanogueralorenzo.views.binding.viewBinding
+import com.sanogueralorenzo.views.databinding.ViewSecondaryButtonBinding
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class SecondaryButton @JvmOverloads constructor(
@@ -16,13 +17,15 @@ class SecondaryButton @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    private val binding: ViewSecondaryButtonBinding by viewBinding()
+
     init {
         View.inflate(context, R.layout.view_secondary_button, this)
     }
 
     @TextProp
     fun setText(text: CharSequence) {
-        secondaryButton.text = text
+        binding.secondaryButton.text = text
     }
 
     @CallbackProp
@@ -33,8 +36,8 @@ class SecondaryButton @JvmOverloads constructor(
     companion object {
         fun create(c: Context, text: String, clickListener: () -> Unit): SecondaryButton =
             SecondaryButton(c).apply {
-                secondaryButton.text = text
-                secondaryButton.setOnClickListener { clickListener() }
+                binding.secondaryButton.text = text
+                binding.secondaryButton.setOnClickListener { clickListener() }
             }
     }
 }
