@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <com.airbnb.epoxy.EpoxyRecyclerView
-        android:id="@+id/dialogRecyclerView"
+        android:id="@+id/dialog_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

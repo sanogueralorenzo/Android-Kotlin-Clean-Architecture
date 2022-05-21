@@ -8,8 +8,9 @@ import androidx.annotation.DrawableRes
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.airbnb.epoxy.TextProp
+import com.sanogueralorenzo.profile.databinding.ViewProfileHeaderBinding
 import com.sanogueralorenzo.views.TextRow
-import kotlinx.android.synthetic.main.view_profile_header.view.*
+import com.sanogueralorenzo.views.binding.viewBinding
 import com.sanogueralorenzo.resources.R as G
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
@@ -19,25 +20,27 @@ class ProfileHeaderRow @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
+    private val binding: ViewProfileHeaderBinding by viewBinding()
+
     init {
         View.inflate(context, R.layout.view_profile_header, this)
-        name.setStyle(TextRow.TextStyle.SUBTITLE)
-        goals.setStyle(TextRow.TextStyle.BODY)
+        binding.name.setStyle(TextRow.TextStyle.SUBTITLE)
+        binding.goals.setStyle(TextRow.TextStyle.BODY)
     }
 
     @TextProp
     fun setName(text: CharSequence) {
-        name.text = text
+        binding.name.text = text
     }
 
     @TextProp
     fun setGoals(text: CharSequence?) {
-        goals.text = text
+        binding.goals.text = text
     }
 
     @ModelProp
     @JvmOverloads
     fun setImage(@DrawableRes drawable: Int = G.drawable.ic_logo) {
-        image.setDrawable(drawable)
+        binding.image.setDrawable(drawable)
     }
 }

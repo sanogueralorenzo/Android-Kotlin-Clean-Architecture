@@ -12,49 +12,51 @@ import com.airbnb.mvrx.MavericksView
 import com.google.android.material.appbar.AppBarLayout
 import com.sanogueralorenzo.views.ErrorDisplay
 import com.sanogueralorenzo.views.R
+import com.sanogueralorenzo.views.binding.viewBinding
+import com.sanogueralorenzo.views.databinding.FragmentContainerBinding
 import com.sanogueralorenzo.views.extensions.enable
 import com.sanogueralorenzo.views.extensions.enableStateRestoration
 import com.sanogueralorenzo.views.extensions.isGone
 import com.sanogueralorenzo.views.extensions.setContainerPadding
-import com.sanogueralorenzo.views.extensions.show
 import com.sanogueralorenzo.views.extensions.visible
-import kotlinx.android.synthetic.main.fragment_container.*
 
 abstract class ContainerFragment : Fragment(R.layout.fragment_container), MavericksView {
+
+    val binding: FragmentContainerBinding by viewBinding()
 
     protected val controller by lazy { controller() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        containerRecyclerView.setDelayMsWhenRemovingAdapterOnDetach(0)
-        containerRecyclerView.setController(controller)
-        containerRecyclerView.enableStateRestoration()
+        binding.containerRecyclerView.setDelayMsWhenRemovingAdapterOnDetach(0)
+        binding.containerRecyclerView.setController(controller)
+        binding.containerRecyclerView.enableStateRestoration()
     }
 
     abstract fun controller(): EpoxyController
 
     protected inline val toolbar: Toolbar
         get() {
-            if (containerToolbar.isGone()) containerToolbar.visible()
-            return containerToolbar
+            if (binding.containerToolbar.isGone()) binding.containerToolbar.visible()
+            return binding.containerToolbar
         }
 
     protected inline val appBarLayout: AppBarLayout
-        get() = containerAppBarLayout
+        get() = binding.containerAppBarLayout
 
     protected inline val swipeRefreshLayout: SwipeRefreshLayout
         get() {
-            if (containerSRL.isEnabled.not()) containerSRL.enable()
-            return containerSRL
+            if (binding.containerSrl.isEnabled.not()) binding.containerSrl.enable()
+            return binding.containerSrl
         }
 
     protected inline val recyclerView: EpoxyRecyclerView
-        get() = containerRecyclerView
+        get() = binding.containerRecyclerView
 
     protected inline val bottomView: ViewGroup
         get() {
-            if (containerBottomLL.childCount == 0) containerBottomLL.setContainerPadding()
-            return containerBottomLL
+            if (binding.containerBottomLl.childCount == 0) binding.containerBottomLl.setContainerPadding()
+            return binding.containerBottomLl
         }
 
     protected fun showError(throwable: Throwable, retry: (() -> Unit)? = null) {
@@ -62,8 +64,8 @@ abstract class ContainerFragment : Fragment(R.layout.fragment_container), Maveri
         // Probably have an error modules for generic throwables?
         // Examples: App Update, Logout (Token expired), Authentication required
         // if (throwable.isNavigationalError()) return <- screen will not display error and just navigate
-        ErrorDisplay.create(container, throwable, retry)
-            .apply { this.anchorView = containerBottomLL.getChildAt(0) ?: containerBottomLL }
+        ErrorDisplay.create(binding.container, throwable, retry)
+            .apply { this.anchorView = binding.containerBottomLl.getChildAt(0) ?: binding.containerBottomLl }
             .show()
     }
 

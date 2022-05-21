@@ -1,7 +1,7 @@
 package com.sanogueralorenzo.sample.presentation.search
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 // TODO Add Favorites feature to DisplayMode (Favorites are saved locally and have no pagination)
 sealed class DisplayMode : Parcelable {

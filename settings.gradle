@@ -1,0 +1,19 @@
+plugins {
+    id("de.fayard.refreshVersions") version "0.40.1"
+}
+
+enableFeaturePreview("VERSION_CATALOGS")
+
+rootProject.name = 'Android-Kotlin-Clean-Architecture'
+
+include ':app',
+        ':sample',
+        ':navigation',
+        ':common:cache',
+        ':common:network',
+        ':common:resources',
+        ':common:views',
+        ':features:onboarding',
+        ':features:home',
+        ':features:profile',
+        ':libs:usermanager'

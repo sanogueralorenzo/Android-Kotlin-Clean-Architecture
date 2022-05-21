@@ -8,10 +8,12 @@ import androidx.fragment.app.DialogFragment
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.sanogueralorenzo.views.R
-import kotlinx.android.synthetic.main.bottom_sheet_container.*
-import kotlinx.android.synthetic.main.dialog_fragment_container.*
+import com.sanogueralorenzo.views.binding.viewBinding
+import com.sanogueralorenzo.views.databinding.DialogFragmentContainerBinding
 
 abstract class ContainerDialogFragment : DialogFragment() {
+
+    val binding: DialogFragmentContainerBinding by viewBinding()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,11 +23,11 @@ abstract class ContainerDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialogRecyclerView.setController(controller)
+        binding.dialogRecyclerView.setController(controller)
     }
 
     abstract val controller: EpoxyController
 
     protected inline val recyclerView: EpoxyRecyclerView
-        get() = dialogRecyclerView
+        get() = binding.dialogRecyclerView
 }

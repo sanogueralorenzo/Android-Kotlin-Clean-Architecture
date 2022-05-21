@@ -7,15 +7,18 @@ import android.widget.Button
 import android.widget.FrameLayout
 import androidx.annotation.AttrRes
 import com.sanogueralorenzo.views.R
+import com.sanogueralorenzo.views.binding.viewBinding
+import com.sanogueralorenzo.views.databinding.LayoutButtonsBinding
 import com.sanogueralorenzo.views.extensions.gone
 import com.sanogueralorenzo.views.extensions.visible
-import kotlinx.android.synthetic.main.layout_buttons.view.*
 
 class ButtonsLayout @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     @AttrRes defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
+
+    val binding: LayoutButtonsBinding by viewBinding()
 
     init {
         View.inflate(context, R.layout.layout_buttons, this)
@@ -25,18 +28,18 @@ class ButtonsLayout @JvmOverloads constructor(
         when (it) {
             is ButtonType.None -> {
                 this.gone()
-                primaryButton.gone()
-                secondaryButton.gone()
+                binding.primaryButton.gone()
+                binding.secondaryButton.gone()
             }
             is ButtonType.Single -> {
                 this.visible()
-                primaryButton.setupButton(it.text, it.action)
-                secondaryButton.gone()
+                binding.primaryButton.setupButton(it.text, it.action)
+                binding.secondaryButton.gone()
             }
             is ButtonType.Double -> {
                 this.visible()
-                primaryButton.setupButton(it.primaryText, it.primaryAction)
-                secondaryButton.setupButton(it.secondaryText, it.secondaryAction)
+                binding.primaryButton.setupButton(it.primaryText, it.primaryAction)
+                binding.secondaryButton.setupButton(it.secondaryText, it.secondaryAction)
             }
         }
     }

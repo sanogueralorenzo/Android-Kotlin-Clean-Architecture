@@ -6,9 +6,6 @@ import com.google.android.material.textfield.TextInputLayout
 import com.sanogueralorenzo.sample.R
 import com.sanogueralorenzo.views.Keyboard
 import com.sanogueralorenzo.views.textinput.TextInputLayoutRow
-import com.sanogueralorenzo.views.textinput.editText
-import com.sanogueralorenzo.views.textinput.text
-import com.sanogueralorenzo.views.textinput.textInputLayout
 
 /**
  * Uses Text Input from views module and extends it to avoid having to duplicate XMLs

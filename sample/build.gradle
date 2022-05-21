@@ -1,21 +1,22 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion DefaultConfig.compileSdk
+    compileSdkVersion 32
 
     defaultConfig {
-        applicationId App.sample
-        minSdkVersion DefaultConfig.minSdk
-        targetSdkVersion DefaultConfig.targetSdk
-        versionCode Releases.versionCode
-        versionName Releases.versionName
+        applicationId "com.sanogueralorenzo.sample"
+        minSdkVersion 24
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
     }
 
     buildFeatures {
         buildConfig = true
+        viewBinding = true
     }
 
     buildTypes {
@@ -40,22 +41,22 @@ kapt {
 }
 
 dependencies {
-    implementation Libs.kotlin_stdlib_jdk7
-    implementation project(Modules.views)
-    implementation project(Modules.network)
-    implementation project(Modules.navigation)
-    implementation project(Modules.resources)
+    implementation libs.kotlinStdlibJdk8
+    implementation project(':common:views')
+    implementation project(':common:network')
+    implementation project(':navigation')
+    implementation project(':common:resources')
 
-    implementation Libs.moshi
-    kapt Libs.moshi_codegen
+    implementation libs.moshi
+    kapt libs.moshiCodegen
 
-    implementation Libs.mavericks
-    testImplementation Libs.mavericks_testing
+    implementation libs.mavericks
+    testImplementation libs.mavericksTest
 
-    implementation Libs.timber
+    implementation libs.timber
 
-    testImplementation Libs.mockk
-    testImplementation Libs.junit
+    testImplementation libs.mockk
+    testImplementation libs.junit
 
-    debugImplementation Libs.leakcanary_android
+    debugImplementation libs.leakCanary
 }

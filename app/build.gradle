@@ -1,20 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion DefaultConfig.compileSdk
+    compileSdkVersion 32
 
     defaultConfig {
-        applicationId App.petproject
-        minSdkVersion DefaultConfig.minSdk
-        targetSdkVersion DefaultConfig.targetSdk
-        versionCode Releases.versionCode
-        versionName Releases.versionName
+        applicationId "com.sanogueralorenzo.namingishard"
+        minSdkVersion 24
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
     }
 
     buildFeatures {
         buildConfig = true
+        viewBinding = true
     }
 
     buildTypes {
@@ -34,21 +34,21 @@ android {
 }
 
 dependencies {
-    implementation project(Modules.resources)
+    implementation project(':common:resources')
 
-    implementation project(Modules.views)
-    implementation project(Modules.cache)
-    implementation project(Modules.navigation)
-    implementation project(Modules.usermanager)
+    implementation project(':common:views')
+    implementation project(':common:cache')
+    implementation project(':navigation')
+    implementation project(':libs:usermanager')
 
-    implementation project(Modules.onboarding)
-    implementation project(Modules.home)
-    implementation project(Modules.profile)
+    implementation project(':features:onboarding')
+    implementation project(':features:home')
+    implementation project(':features:profile')
 
-    implementation Libs.kotlin_stdlib_jdk7
-    implementation Libs.timber
+    implementation libs.kotlinStdlibJdk8
+    implementation libs.timber
 
-    implementation Libs.mavericks
+    implementation libs.mavericks
 
-    debugImplementation Libs.leakcanary_android
+    debugImplementation libs.leakCanary
 }
